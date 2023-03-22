@@ -1,4 +1,8 @@
 import styles from "./styles/thirdpartylogin.module.css";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import AppleIcon from "@mui/icons-material/Apple";
 
 export default function ThirdPartyLogin() {
     return (
@@ -6,11 +10,11 @@ export default function ThirdPartyLogin() {
             className={`container ${styles.ThirdPartyLogin__Container} peach-background`}
         >
             <h2>Continue with...</h2>
-            <div className={styles.ThirdPartyLogin__Icons}>
-                <h3>Facebook Icon</h3>
-                <h3>Google Icon</h3>
-                <h3>Instagram Icon</h3>
-                <h3>Apple Icon</h3>
+            <div className={styles.icons}>
+                <FacebookIcon className="social-media-icon" />
+                <GoogleIcon className="social-media-icon" />
+                <InstagramIcon className="social-media-icon" />
+                <AppleIcon className="social-media-icon" />
             </div>
         </div>
     );
