@@ -1,0 +1,15 @@
+.achievementContainer {
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 1rem;
+  min-width: 90%;
+  margin-top: 1rem;
+}
+
+.title {
+  color: red;
+}
+
+.description {
+  color: blue;
+}
