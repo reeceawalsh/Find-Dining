@@ -1,5 +1,19 @@
-import '@component/styles/globals.css';
+import "@component/styles/globals.css";
+import "../styles/reset.css";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+    return (
+        <div>
+            <Head>
+                <title>Find Dining</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                ></meta>
+            </Head>
+            {/** Check for authentication and then redirect to the homepage if the user is logged in and redirect to the login page if the user is not logged in.*/}
+            <Component {...pageProps} />
+        </div>
+    );
 }

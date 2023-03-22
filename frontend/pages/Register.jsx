@@ -1,5 +1,8 @@
-function Register() {
-    return <div>Register Page</div>;
+// Registration page
+export default function Register() {
+    return (
+        <div className="container">
+            <h1>Register Page</h1>
+        </div>
+    );
 }
-
-export default Register;
