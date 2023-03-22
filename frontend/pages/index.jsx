@@ -1,19 +1,24 @@
-import Head from "next/head";
-import Login from "@component/components/Login";
-import ThirdPartyLogin from "@component/components/ThirdPartyLogin";
+// Landing page
+import Link from "next/link";
 
 export default function LandingPage() {
     return (
-        <>
-            <Head>
-                <title>Find Dining</title>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                ></meta>
-            </Head>
-            <Login />
-            <ThirdPartyLogin />
-        </>
+        <div className="container">
+            <Link className="link" href="/home">
+                Home
+            </Link>
+            <Link className="link" href="/profile">
+                Profile
+            </Link>
+            <Link className="link" href="/restaurants">
+                Restaurants
+            </Link>
+            <Link className="link" href="/login">
+                Login
+            </Link>
+            <Link className="link" href="/register">
+                Register
+            </Link>
+        </div>
     );
 }
