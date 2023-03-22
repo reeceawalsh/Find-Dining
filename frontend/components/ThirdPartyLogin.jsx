@@ -9,6 +9,5 @@ export default function ThirdPartyLogin() {
         <h3>Apple Icon</h3>
       </div>
     </div>
-  )
+  );
 }
-
