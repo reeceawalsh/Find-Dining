@@ -14,7 +14,7 @@ export default function Login() {
         <div
             className={`container ${styles.Login__Container} blue-background black-text`}
         >
-            <Link className={styles.Login__Skip} href="/home">
+            <Link className={styles.title} href="/home">
                 Skip
             </Link>
             <h1 className="title">Find Dining</h1>
@@ -38,7 +38,7 @@ export default function Login() {
                     <div className={`${styles.Login__ErrorMessage} error`}>
                         {wrongDetails && <p>Incorrect login details.</p>}
                     </div>
-                    <div className={styles.Login__Buttons}>
+                    <div className={styles.buttons}>
                         <button className="button" type="submit">
                             Login
                         </button>

@@ -1,8 +1,10 @@
 // About us page
+import Header from "@component/components/Header";
+
 export default function AboutUs() {
     return (
         <div className="container">
-            <h1>About Page</h1>
+            <Header name="About Us" />
         </div>
     );
 }
