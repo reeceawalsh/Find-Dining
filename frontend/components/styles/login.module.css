@@ -1,0 +1,40 @@
+/* Login */
+.Login__Container {
+  padding-top: 2rem;
+  border-bottom: 2px solid white;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.Login__Skip {
+  margin-top: -1rem;
+  margin-left: 13rem;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+.Login__Buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 10rem;
+  margin-top: 1rem;
+  width: 230px;
+}
+
+.Login__LoginForm form {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.Login__LoginForm form input {
+  margin: 0.5rem 0 0.5rem 0;
+  height: 2rem;
+}
+
+.Login__ErrorMessage {
+  font-size: 1.2rem;
+}

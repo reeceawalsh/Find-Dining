@@ -1,0 +1,13 @@
+/* ThirdPartyLogin */
+.ThirdPartyLogin__Container {
+  padding-top: 1rem;
+  height: 30rem;
+  overflow: hidden;
+}
+
+.ThirdPartyLogin__Icons {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2rem;
+  gap: 5rem;
+}
