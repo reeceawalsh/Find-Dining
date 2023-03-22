@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./styles/login.module.css";
 
 // variables
 const wrongDetails = true;
@@ -10,8 +11,10 @@ export default function Login() {
     };
 
     return (
-        <div className="container Login__Container blue-background black-text">
-            <Link className="Login__Skip" href="/home">
+        <div
+            className={`container ${styles.Login__Container} blue-background black-text`}
+        >
+            <Link className={styles.Login__Skip} href="/home">
                 Skip
             </Link>
             <h1 className="title">Find Dining</h1>
@@ -22,7 +25,7 @@ export default function Login() {
                 width="240"
                 alt="logo"
             />
-            <div className="Login__Login-form">
+            <div className={styles.Login__LoginForm}>
                 <form onSubmit={login}>
                     <label>Email</label>
                     <input
@@ -32,12 +35,16 @@ export default function Login() {
                     />
                     <label>Password</label>
                     <input name="password" type="text" placeholder="Password" />
-                    <div className="Login__Error-message">
+                    <div className={`${styles.Login__ErrorMessage} error`}>
                         {wrongDetails && <p>Incorrect login details.</p>}
                     </div>
-                    <div className="Login__Buttons">
-                        <button type="submit">Login</button>
-                        <button type="submit">Sign Up</button>
+                    <div className={styles.Login__Buttons}>
+                        <button className="button" type="submit">
+                            Login
+                        </button>
+                        <button className="button" type="submit">
+                            Sign Up
+                        </button>
                     </div>
                 </form>
             </div>
