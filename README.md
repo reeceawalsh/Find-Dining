@@ -70,3 +70,7 @@ Public for images and designs.
 Styles are for css files. (If you want to make a css file for each component that is okay.)
 Pages store pages.
 Components store components.
+
+## Backend
+
+Grab the .env details from discord until I make the GitHub secrets.
