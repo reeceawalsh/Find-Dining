@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run develop\"",
+    "build": "concurrently \"cd frontend && npm run build\" \"cd backend && npm run build\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

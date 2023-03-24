@@ -2,6 +2,8 @@
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
+    "description": "Find Dining - A restaurant web app that helps users find the closest eateries.",
+    "author": "Find Dining",
     "scripts": {
         "dev": "next dev",
         "build": "next build",

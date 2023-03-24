@@ -2,7 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Find Dining - A restaurant web app that helps users find the closest eateries.",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -17,7 +17,7 @@
     "better-sqlite3": "8.0.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Find Dining"
   },
   "strapi": {
     "uuid": "e2a2600f-e5a0-4c23-b0a5-00d7893d74ee"
@@ -25,6 +25,5 @@
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }
