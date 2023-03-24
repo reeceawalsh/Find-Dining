@@ -46,7 +46,7 @@ These are css files that are specific to the file you are working on.
 They end in module.css.
 If I'm working on the login page I would have a css file called login.module.css.
 I can import it to the login page by typing 'import styles from './styles/login.module.css' or whatever the path is.
-Then I can access the classnames as properties of the styles object e.g. {styles.Login\_\_SubmitButton} (ignore the slashes)
+Then I can access the classnames as properties of the styles object e.g. {styles.SubmitButton} (ignore the slashes)
 
 ## Before Working Each Time
 
@@ -61,7 +61,6 @@ Functions not classes.
 Components named with Capital Letters (PASCAL CASE) e.g. Component.jsx
 Variables are camelCase e.g. firstButton.
 Global classes are lower case with dashes e.g. upper-case.
-Component specific are the name of Component then double space and the name of the class e.g. ComponentName\_\_Title.
 Pages should be named lowercase (for routing purposes).
 Components uppercase.
 
