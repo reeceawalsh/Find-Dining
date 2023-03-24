@@ -113,3 +113,12 @@ exports
 dist
 build
 .strapi-updater.json
+
+############################
+# Terraform
+############################
+
+.terraform
+terraform.*
+terraform.*
+.auto.tfvars
