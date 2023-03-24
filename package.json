@@ -4,7 +4,7 @@
   },
   "scripts": {
     "testDev": "concurrently \"cd frontend && npm i && npm run dev\" \"cd backend && npm i && npm run develop\"",
-    "testBuild": "concurrently \"cd frontend && npm i && npm run build\" \"cd backend && npm i && npm run build\""
+    "testBuild": "concurrently \"cd frontend && npm i && npm run build\" \"cd backend && npm i && npm run start\""
   },
   "dependencies": {
     "concurrently": "^7.6.0"
