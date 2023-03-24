@@ -1,8 +1,8 @@
 {
-  "name": "backend",
+  "name": "standard-strapi-project",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "A standard MySQL based setup of Strapi deployable on Azure with Terraform and GitHub Actions.",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -11,16 +11,20 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.8.2",
-    "@strapi/plugin-users-permissions": "4.8.2",
-    "@strapi/plugin-i18n": "4.8.2",
-    "better-sqlite3": "8.0.1"
+    "@strapi/strapi": "4.6.0",
+    "@strapi/plugin-documentation": "4.6.0",
+    "@strapi/plugin-i18n": "4.6.0",
+    "@strapi/plugin-sentry": "4.6.0",
+    "@strapi/plugin-users-permissions": "4.6.0",
+    "mysql": "2.18.1",
+    "strapi-plugin-import-export-entries": "^1.18.0",
+    "strapi-plugin-transformer": "^2.1.1"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "e2a2600f-e5a0-4c23-b0a5-00d7893d74ee"
+    "uuid": "c021dbc7-ecde-4480-b789-291488138599"
   },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
