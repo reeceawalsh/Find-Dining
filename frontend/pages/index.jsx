@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function LandingPage() {
     return (
         <div className="container">
-            <Link className="link" href="/home">
+            <Link className="link" href="/home"
                 Home
             </Link>
             <Link className="link" href="/profile">
