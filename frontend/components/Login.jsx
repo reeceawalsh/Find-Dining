@@ -12,9 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Dancing_Script } from "next/font/google";
 
-const font = Dancing_Script({ subsets: ["latin"] });
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [incorrectCredentials, setIncorrectCredentials] = useState(true);
@@ -27,10 +25,10 @@ export default function Login() {
 
     return (
         <div
-            className={`container ${styles.Login__Container} ${font.className} blue-background black-text`}
+            className={`container ${styles.Login__Container} blue-background black-text`}
         >
             <div className="header">
-                <h1 className={font.className}>Find Dining</h1>
+                <h1>Find Dining</h1>
                 <Link className={styles.skip} href="/home">
                     Skip
                 </Link>
@@ -98,11 +96,11 @@ export default function Login() {
                     </FormControl>
                     <div className={styles.buttons}>
                         <button className={styles.button} type="submit">
-                            <a href="/home">Login</a>
+                            <Link href="/home">Login</Link>
                         </button>
 
                         <button className={styles.button}>
-                            <a href="/register">Sign Up </a>
+                            <Link href="/register">Sign Up </Link>
                         </button>
                     </div>
                 </Box>
