@@ -102,7 +102,7 @@ export default function Login() {
                         </button>
 
                         <button className={styles.button}>
-                            <a href="/register">Sign Up </a>
+                            <Link href="/register">Sign Up </Link>
                         </button>
                     </div>
                 </Box>
