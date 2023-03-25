@@ -6,22 +6,13 @@ name: Test and Build Frontend
 on:
   push:
     branches: [main]
-    paths:
-      - 'frontend'
   pull_request:
     branches: [main]
-    paths:
-      - 'frontend'
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 14
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run develop
+      - name: Use frontend file
+      - uses: ./frontend/github/actions/deploy.yaml
