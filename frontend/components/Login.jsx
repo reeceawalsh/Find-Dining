@@ -98,7 +98,7 @@ export default function Login() {
                     </FormControl>
                     <div className={styles.buttons}>
                         <button className={styles.button} type="submit">
-                            <a href="/home">Login</a>
+                            <Link href="/home">Login</Link>
                         </button>
 
                         <button className={styles.button}>
