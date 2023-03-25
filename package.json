@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "(cd frontend && npm ci && npm run dev)"
+    "test": "(cd frontend && npm i && npm run dev)"
   }
 }
