@@ -5,9 +5,9 @@ name: Test and Build Frontend
 
 on:
   push:
-    branches: [test]
+    branches: [main]
   pull_request:
-    branches: [test]
+    branches: [main]
 
 jobs:
   build:
