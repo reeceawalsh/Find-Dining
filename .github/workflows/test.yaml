@@ -9,18 +9,17 @@ on:
   pull_request:
     branches: [main]
 
+defaults:
+  run:
+    working-directory: frontend
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v2
-        working-directory: frontend
         with:
           node-version: 14
           cache: 'npm'
