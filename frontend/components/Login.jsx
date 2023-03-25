@@ -25,10 +25,10 @@ export default function Login() {
 
     return (
         <div
-            className={`container ${styles.Login__Container} ${font.className} blue-background black-text`}
+            className={`container ${styles.Login__Container} blue-background black-text`}
         >
             <div className="header">
-                <h1 className={font.className}>Find Dining</h1>
+                <h1>Find Dining</h1>
                 <Link className={styles.skip} href="/home">
                     Skip
                 </Link>
