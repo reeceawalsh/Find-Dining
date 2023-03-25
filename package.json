@@ -1,8 +1,0 @@
-{
-  "name": "find-dining",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "test": "(cd frontend && npm i && npm run dev)"
-  }
-}
