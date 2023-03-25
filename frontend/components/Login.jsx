@@ -12,9 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Dancing_Script } from "next/font/google";
 
-const font = Dancing_Script({ subsets: ["latin"] });
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [incorrectCredentials, setIncorrectCredentials] = useState(true);
