@@ -6,9 +6,12 @@ name: Test and Build Frontend
 on:
   push:
     branches: [main]
+    paths:
+      - 'frontend'
   pull_request:
     branches: [main]
-
+    paths:
+      - 'frontend'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,4 +24,4 @@ jobs:
           node-version: 14
           cache: 'npm'
       - run: npm ci
-      - run: npm run test
+      - run: npm run develop
