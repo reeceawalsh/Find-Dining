@@ -16,6 +16,7 @@
     "@strapi/plugin-users-permissions": "4.8.2",
     "@strapi/strapi": "4.6.0",
     "mysql": "^2.18.1",
+    "request": "^2.88.2",
     "strapi-plugin-import-export-entries": "^1.18.0",
     "strapi-plugin-transformer": "^2.1.1"
   },
