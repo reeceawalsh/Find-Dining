@@ -70,12 +70,6 @@
       "type": "uid",
       "required": true
     },
-    "achievements": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::achievement.achievement",
-      "inversedBy": "users"
-    },
     "restaurants": {
       "type": "relation",
       "relation": "manyToMany",
@@ -96,6 +90,12 @@
       "relation": "manyToMany",
       "target": "api::dietary-restriction.dietary-restriction",
       "mappedBy": "users_permissions_users"
+    },
+    "achievements": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::achievement.achievement",
+      "mappedBy": "user"
     }
   }
 }

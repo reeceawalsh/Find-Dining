@@ -4,7 +4,8 @@
   "info": {
     "singularName": "achievement",
     "pluralName": "achievements",
-    "displayName": "achievement"
+    "displayName": "achievement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,17 +22,14 @@
     "description": {
       "type": "text"
     },
-    "startDate": {
+    "AchievedDate": {
       "type": "date"
     },
-    "endDate": {
-      "type": "date"
-    },
-    "users": {
+    "user": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "mappedBy": "achievements"
+      "inversedBy": "achievements"
     }
   }
 }
