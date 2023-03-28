@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "images",
+  "info": {
+    "singularName": "image",
+    "pluralName": "images",
+    "displayName": "Image"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageURL": {
+      "type": "string"
+    },
+    "imageType": {
+      "type": "string"
+    },
+    "imageOrder": {
+      "type": "integer"
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "images"
+    }
+  }
+}
