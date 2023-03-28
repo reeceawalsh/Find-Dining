@@ -14,7 +14,7 @@
   "attributes": {
     "dietaryRestrictionID": {
       "type": "uid",
-      "required": true
+      "required": false
     },
     "foodType": {
       "type": "string"
