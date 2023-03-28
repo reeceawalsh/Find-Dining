@@ -17,7 +17,7 @@
     },
     "achievementID": {
       "type": "uid",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text"
