@@ -68,7 +68,7 @@
     },
     "userID": {
       "type": "uid",
-      "required": true
+      "required": false
     },
     "restaurants": {
       "type": "relation",

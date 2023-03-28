@@ -4,7 +4,8 @@
   "info": {
     "singularName": "image",
     "pluralName": "images",
-    "displayName": "Image"
+    "displayName": "Image",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,9 @@
       "relation": "manyToOne",
       "target": "api::restaurant.restaurant",
       "inversedBy": "images"
+    },
+    "imageID": {
+      "type": "uid"
     }
   }
 }
