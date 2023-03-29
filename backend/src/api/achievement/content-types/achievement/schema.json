@@ -13,14 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
-    },
-    "achievementID": {
-      "type": "uid",
-      "required": false
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "AchievedDate": {
       "type": "date"
@@ -30,6 +29,12 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "achievements"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "visited_restaurants"
     }
   }
 }

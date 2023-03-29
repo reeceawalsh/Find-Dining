@@ -66,20 +66,16 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "userID": {
-      "type": "uid",
-      "required": false
-    },
-    "restaurants": {
+    "favourite_restaurants": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::restaurant.restaurant",
-      "mappedBy": "users"
+      "inversedBy": "users"
     },
-    "facebookLinked": {
+    "facebook_linked": {
       "type": "boolean"
     },
-    "instagramLinked": {
+    "instagram_linked": {
       "type": "boolean"
     },
     "googleLinked": {
@@ -96,6 +92,12 @@
       "relation": "manyToMany",
       "target": "api::achievement.achievement",
       "mappedBy": "user"
+    },
+    "visited_restaurants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::achievement.achievement",
+      "inversedBy": "users"
     }
   }
 }

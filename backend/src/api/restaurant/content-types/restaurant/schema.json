@@ -33,17 +33,17 @@
       "target": "api::image.image",
       "mappedBy": "restaurant"
     },
-    "users": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "restaurants"
-    },
     "telephone": {
       "type": "string"
     },
     "cuisine": {
       "type": "string"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "favourite_restaurants"
     }
   }
 }
