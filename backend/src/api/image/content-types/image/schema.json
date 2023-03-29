@@ -26,9 +26,6 @@
       "relation": "manyToOne",
       "target": "api::restaurant.restaurant",
       "inversedBy": "images"
-    },
-    "imageID": {
-      "type": "uid"
     }
   }
 }
