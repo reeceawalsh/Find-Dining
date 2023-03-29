@@ -15,9 +15,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "goalID": {
-      "type": "uid"
     }
   }
 }
