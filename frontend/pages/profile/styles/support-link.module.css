@@ -1,0 +1,17 @@
+.support-link {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  
+  .support-link h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .support-link p {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+  

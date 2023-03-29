@@ -4,5 +4,11 @@
   "private": true,
   "scripts": {
     "test": "(cd frontend && npm i && npm run dev)"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "dependencies": {
+    "supports-color": "^9.3.1"
   }
 }
