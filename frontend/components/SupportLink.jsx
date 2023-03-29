@@ -1,11 +1,14 @@
-import React from "react";
-import styles from "./SupportLink.module.css";
+import React, { Component } from "react";
+import styles from "./styles/support-link.module.css";
 
-const SupportLink = ({ title, body }) => {
+
+const SupportLink = ({ title, link, description }) => {
   return (
-    <div className={styles.supportLink}>
-      <h3>{title}</h3>
-      <p>{body}</p>
+    <div className={styles.linkContainer}>
+      <a href={link} className={styles.link}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
+      </a>
     </div>
   );
 };

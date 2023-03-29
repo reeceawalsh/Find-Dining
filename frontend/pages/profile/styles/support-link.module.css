@@ -1,17 +1,19 @@
-.support-link {
-    border: 1px solid #ccc;
-    padding: 16px;
-    margin: 16px 0;
-    border-radius: 4px;
+.linkContainer {
+    margin-bottom: 16px;
   }
   
-  .support-link h3 {
-    margin: 0;
-    font-size: 20px;
+  .link {
+    color: #333;
+    text-decoration: none;
+    display: block;
   }
   
-  .support-link p {
-    margin-top: 8px;
-    font-size: 16px;
+  .title {
+    margin-bottom: 4px;
+    font-size: 1.2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
   }
   

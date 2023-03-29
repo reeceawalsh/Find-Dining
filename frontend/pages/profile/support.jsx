@@ -4,29 +4,34 @@ import React from "react";
 import Header from "../../components/Header";
 import SupportLink from "../../components/SupportLink";
 
-import styles from "./styles/support-page.module.css";
+import styles from "./styles/support-link.module.css";
 
 export default function Support() {
   return (
     <div className={styles.container}>
-      <Header />
-      <h1 className={styles.supportTitle}>Support Page</h1>
-      <SupportLink
-        title="How do view restaurants which adhere to my dietary requirments?"
-        body="In order to view restaurants based on your dietary restrictions, please ."
-      />
-      <SupportLink
-        title="How do I add restaurants to my favourites list?"
-        body="Whilst browning the app and looking at different restaurants, use the favoruite button to add the restaurant to your favourites list."
-      />
-      <SupportLink
-        title="How do I view my favourite restaurants?"
-        body="In order to view your favourite restaurants, please click on the favourites button in the homepage"
-      />
-      <SupportLink
-        title="How do I provide feedback on my experience?"
-        body="We value your feedback and would love to hear about your experience. Please click on the review button on the popup you'll receive after visiting the restaurant."
-      />
+      <Header name="Support" backButton />
+      <div className={styles.linksContainer}>
+        <SupportLink
+          title="Contact Us"
+          link="/contact page not done yet"
+          description="Need help with something specific? Reach out to us directly."
+        />
+        <SupportLink
+          title="App Feedback"
+          link="www google survery not done yet "
+          description="Let us know how we can improve your experience with our app."
+        />
+        <SupportLink
+          title="Privacy Policy"
+          link="/privacy-policy.pdf not done yet, on github "
+          description="Read about our commitment to your privacy."
+        />
+        <SupportLink
+          title="Terms of Use"
+          link="/terms-of-use.pdf not done yet too, on github"
+          description="Understand the terms and conditions of using our app."
+        />
+      </div>
     </div>
   );
 }
