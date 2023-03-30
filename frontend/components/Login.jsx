@@ -37,7 +37,6 @@ export default function Login() {
 
     // check if the user is registered
     const handleCheckUser = () => {
-        e.preventDefault();
         console.log(validatedLoginData);
         // send data to check if user is registered and details are correct.
         // create error message for invalid login details
@@ -61,12 +60,8 @@ export default function Login() {
 
     const handleForgotPassword = (e) => {
         setDisplayModal(!displayModal);
+        setErrors([]);
         e.preventDefault();
-        let newErrors = checkErrors(loginData);
-        // if there are no errors...
-        if (Object.keys(newErrors).length === 0) {
-            // send link to reset password
-        }
     };
 
     const handleCancel = (e) => {
@@ -110,7 +105,7 @@ export default function Login() {
                         displayModal={displayModal}
                         setDisplayModal={setDisplayModal}
                         loginData={loginData}
-                        setLoginData={loginData}
+                        setLoginData={setLoginData}
                         handleCancel={handleCancel}
                         handleForgotPassword={handleForgotPassword}
                         errors={errors}
