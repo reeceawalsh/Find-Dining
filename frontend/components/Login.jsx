@@ -2,108 +2,120 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles/login.module.css";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import validate from "../validationRules/LoginVR";
+import LoginForm from "./Forms/LoginForm";
+import ForgotPassword from "./Modals/ForgotPassword";
 
 export default function Login() {
-    const [showPassword, setShowPassword] = useState(false);
-    const [incorrectCredentials, setIncorrectCredentials] = useState(true);
+    // loginDetails are details the user inputs before validation
+    const [loginData, setLoginData] = useState({
+        email: "",
+        password: "",
+    });
+    // validatedLoginDetails are the user inputs but validated
+    const [validatedLoginData, setValidatedLoginData] = useState({
+        email: "",
+        password: "",
+    });
+    const [errors, setErrors] = useState([]);
+    const [validLogin, setValidLogin] = useState(true);
+    const [displayModal, setDisplayModal] = useState(false);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleLogin = (e) => {
+        console.log("loginProcess");
+        e.preventDefault();
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+        // runs validation on the logindetails
+        let newErrors = checkErrors(loginData);
+
+        // if there are no errors...
+        if (Object.keys(newErrors).length === 0) {
+            setValidatedLoginData(loginData);
+            handleCheckUser();
+        }
+    };
+
+    // check if the user is registered
+    const handleCheckUser = () => {
+        e.preventDefault();
+        console.log(validatedLoginData);
+        // send data to check if user is registered and details are correct.
+        // create error message for invalid login details
+        // if they are set valid login to true
+        // setValidLogin(true)
+        // if they are not then set invalid
+        // setValidLogin(false);
+    };
+
+    const handleRegister = (e) => {
+        console.log("Registration process");
+        e.preventDefault();
+        // send them to registration page
+    };
+
+    const checkErrors = (data) => {
+        let newErrors = validate(data);
+        setErrors(newErrors);
+        return newErrors;
+    };
+
+    const handleForgotPassword = (e) => {
+        setDisplayModal(!displayModal);
+        e.preventDefault();
+        let newErrors = checkErrors(loginData);
+        // if there are no errors...
+        if (Object.keys(newErrors).length === 0) {
+            // send link to reset password
+        }
+    };
+
+    const handleCancel = (e) => {
+        e.preventDefault();
+
+        setErrors({});
+        setDisplayModal(!displayModal);
     };
 
     return (
         <div
-            className={`container ${styles.Login__Container} blue-background black-text`}
+            className={`container blue-background black-text border-bottom-white`}
         >
-            <div className="header">
-                <h1>Find Dining</h1>
-                <Link className={styles.skip} href="/home">
-                    Skip
-                </Link>
-            </div>
-            <Image
-                src="/LogoCropped.png"
-                className="app-logo"
-                height="170"
-                width="250"
-                alt="logo"
-            />
-            <div className={styles.loginForm}>
-                <Box
-                    component="form"
-                    sx={{
-                        "& .MuiTextField-root": { m: 1, width: "25ch" },
-                    }}
-                    autoComplete="off"
-                >
-                    <TextField
-                        id="outlined-basic"
-                        className={styles.email}
-                        label="Email"
-                        variant="outlined"
-                        type="email"
+            <div className={styles.container}>
+                <div className="header">
+                    <h1>Find Dining</h1>
+                    <Link className={styles.skip} href="/home">
+                        Skip
+                    </Link>
+                </div>
+                <div className="sub-container">
+                    <Image
+                        src="/LogoCropped.png"
+                        className="app-logo"
+                        height="170"
+                        width="250"
+                        alt="logo"
                     />
-
-                    <FormControl
-                        sx={{ m: 1, width: "25ch" }}
-                        variant="outlined"
-                    >
-                        <InputLabel htmlFor="outlined-adornment-password">
-                            Password
-                        </InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={showPassword ? "text" : "password"}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? (
-                                            <VisibilityOff />
-                                        ) : (
-                                            <Visibility />
-                                        )}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                        {incorrectCredentials && (
-                            <FormHelperText
-                                className={styles.errorMessage}
-                                id="component-error-text"
-                            >
-                                Error! We cannot find these details on the
-                                system.
-                            </FormHelperText>
-                        )}
-                    </FormControl>
-                    <div className={styles.buttons}>
-                        <button className={styles.button} type="submit">
-                            <Link href="/home">Login</Link>
-                        </button>
-
-                        <button className={styles.button}>
-                            <Link href="/register">Sign Up </Link>
-                        </button>
-                    </div>
-                </Box>
+                    <LoginForm
+                        styles={styles}
+                        setLoginData={setLoginData}
+                        loginData={loginData}
+                        errors={errors}
+                        handleForgotPassword={handleForgotPassword}
+                        handleLogin={handleLogin}
+                        handleRegister={handleRegister}
+                        validLogin={validLogin}
+                    />
+                    <ForgotPassword
+                        styles={styles}
+                        displayModal={displayModal}
+                        setDisplayModal={setDisplayModal}
+                        loginData={loginData}
+                        setLoginData={loginData}
+                        handleCancel={handleCancel}
+                        handleForgotPassword={handleForgotPassword}
+                        errors={errors}
+                    />
+                </div>
             </div>
         </div>
     );
