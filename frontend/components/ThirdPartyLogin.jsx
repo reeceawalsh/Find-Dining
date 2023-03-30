@@ -6,9 +6,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 
 export default function ThirdPartyLogin() {
     return (
-        <div
-            className={`container ${styles.ThirdPartyLogin__Container} peach-background`}
-        >
+        <div className={`container ${styles.container} peach-background`}>
             <h2>Continue with...</h2>
             <div className={styles.icons}>
                 <FacebookIcon className="social-media-icon" />

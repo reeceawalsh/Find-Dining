@@ -1,8 +1,10 @@
 /* ThirdPartyLogin */
-.ThirdPartyLogin__Container {
+.container {
   padding-top: 1.4rem;
+  width: 100%;
+  min-height: 20%;
   height: 10rem;
-  overflow: hidden;
+  z-index: 1;
 }
 
 .icons {
