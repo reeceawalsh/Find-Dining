@@ -4,7 +4,7 @@
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   font-size: 1.5rem;
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   justify-items: center;
   flex-direction: column;
@@ -43,7 +43,7 @@
   color: #EE7674;
   border: 1px solid black;
   border-radius: 8px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bolder;
   letter-spacing: 2px;
   box-shadow: 1px 1px 1px black;
@@ -63,7 +63,7 @@
 }
 
 .loginForm form input {
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem 0 0.1rem 0;
   height: 2rem;
 }
 

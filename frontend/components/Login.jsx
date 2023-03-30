@@ -86,8 +86,8 @@ export default function Login() {
                     <Image
                         src="/LogoCropped.png"
                         className="app-logo"
-                        height="170"
-                        width="250"
+                        height="190"
+                        width="290"
                         alt="logo"
                     />
                     <LoginForm
