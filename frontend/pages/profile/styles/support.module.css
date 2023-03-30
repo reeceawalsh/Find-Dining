@@ -1,0 +1,18 @@
+.linkContainer {
+  margin-bottom: 16px;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.title {
+  margin-bottom: 4px;
+  font-size: 1.2rem;
+}
+
+.description {
+  font-size: 1rem;
+}
