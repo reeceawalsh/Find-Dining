@@ -1,23 +1,21 @@
+import validateDateOfBirth from "@component/fieldValidation/DateOfBirth";
+import validateUsername from "@component/fieldValidation/UserName";
+
 export default function validateRegistration({
     username,
     email,
     password,
     firstName,
     lastName,
+    dateOfBirth,
 }) {
     let errors = {};
 
-    if (!username) {
-        errors.username = "Required";
-    }
+    errors = validateUsername(errors, username);
 
-    if (!email) {
-        errors.email = "Required";
-    }
+    errors = validateEmail(errors, email);
 
-    if (!password) {
-        errors.password = "Required";
-    }
+    errors = validatePassword(errors, password);
 
     if (!firstName) {
         errors.firstName = "Required";
@@ -26,6 +24,8 @@ export default function validateRegistration({
     if (!lastName) {
         errors.lastName = "Required";
     }
+
+    errors = validateDateOfBirth(errors, dateOfBirth);
 
     return errors;
 }
