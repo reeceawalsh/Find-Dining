@@ -17,6 +17,9 @@ export default function Profile() {
             <Link className="link" href="/profile/support">
                 Support
             </Link>
+            <Link className="link" href="/profile/privacynotice">
+                Privacy Notice
+            </Link>
         </div>
     );
 }
