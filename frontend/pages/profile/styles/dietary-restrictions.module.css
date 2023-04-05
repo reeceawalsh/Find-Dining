@@ -1,0 +1,51 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .restrictionsContainer {
+    margin-top: 20px;
+  }
+  
+  .restrictionsHeader {
+    margin-bottom: 10px;
+  }
+  
+  .restrictions label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .restrictions label:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .restrictions label input {
+    display: none;
+  }
+  
+  .restrictions label span {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .restrictions label input:checked + span {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .resetButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f44336;
+    color: white;
+    cursor: pointer;
+  }
+  

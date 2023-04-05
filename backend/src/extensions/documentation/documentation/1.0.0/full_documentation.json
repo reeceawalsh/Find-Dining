@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-03-28T18:42:03.503Z"
+    "x-generation-date": "2023-03-29T09:44:34.651Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -28,7 +28,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
@@ -94,15 +94,10 @@
         ],
         "properties": {
           "data": {
-            "required": [
-              "achievementID"
-            ],
+            "required": [],
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
-              },
-              "achievementID": {
                 "type": "string"
               },
               "description": {
@@ -140,9 +135,6 @@
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
-              },
-              "achievementID": {
                 "type": "string"
               },
               "description": {
@@ -611,9 +603,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -929,9 +918,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -1023,9 +1009,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -1219,9 +1202,6 @@
               "name": {
                 "type": "string"
               },
-              "achievementID": {
-                "type": "string"
-              },
               "description": {
                 "type": "string"
               },
@@ -1688,9 +1668,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -2006,9 +1983,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -2100,9 +2074,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -2329,9 +2300,6 @@
               "name": {
                 "type": "string"
               },
-              "achievementID": {
-                "type": "string"
-              },
               "description": {
                 "type": "string"
               },
@@ -2798,9 +2766,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -3116,9 +3081,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -3210,9 +3172,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -3406,9 +3365,6 @@
               "name": {
                 "type": "string"
               },
-              "achievementID": {
-                "type": "string"
-              },
               "description": {
                 "type": "string"
               },
@@ -3875,9 +3831,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -4193,9 +4146,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -4287,9 +4237,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -4488,14 +4435,9 @@
         ],
         "properties": {
           "data": {
-            "required": [
-              "dietaryRestrictionID"
-            ],
+            "required": [],
             "type": "object",
             "properties": {
-              "dietaryRestrictionID": {
-                "type": "string"
-              },
               "foodType": {
                 "type": "string"
               },
@@ -4526,9 +4468,6 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "dietaryRestrictionID": {
-                "type": "string"
-              },
               "foodType": {
                 "type": "string"
               },
@@ -4991,9 +4930,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -5309,9 +5245,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -5403,9 +5336,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -5596,9 +5526,6 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "dietaryRestrictionID": {
-                "type": "string"
-              },
               "foodType": {
                 "type": "string"
               },
@@ -6061,9 +5988,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -6379,9 +6303,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -6473,9 +6394,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -6699,9 +6617,6 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "dietaryRestrictionID": {
-                "type": "string"
-              },
               "foodType": {
                 "type": "string"
               },
@@ -7164,9 +7079,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -7482,9 +7394,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -7576,9 +7485,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -7769,9 +7675,6 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "dietaryRestrictionID": {
-                "type": "string"
-              },
               "foodType": {
                 "type": "string"
               },
@@ -8234,9 +8137,6 @@
                                 }
                               }
                             },
-                            "userID": {
-                              "type": "string"
-                            },
                             "restaurants": {
                               "type": "object",
                               "properties": {
@@ -8552,9 +8452,6 @@
                                       "attributes": {
                                         "type": "object",
                                         "properties": {
-                                          "dietaryRestrictionID": {
-                                            "type": "string"
-                                          },
                                           "foodType": {
                                             "type": "string"
                                           },
@@ -8646,9 +8543,6 @@
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
-                                          },
-                                          "achievementID": {
                                             "type": "string"
                                           },
                                           "description": {
@@ -8848,11 +8742,11 @@
         "properties": {
           "data": {
             "required": [
-              "Name"
+              "name"
             ],
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               }
             }
@@ -8868,7 +8762,7 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               },
               "createdAt": {
@@ -9181,7 +9075,7 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               },
               "createdAt": {
@@ -9527,7 +9421,7 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               },
               "createdAt": {
@@ -9840,7 +9734,7 @@
           "attributes": {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               },
               "createdAt": {
@@ -10876,9 +10770,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -10922,9 +10813,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -11016,9 +10904,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -11946,9 +11831,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -11992,9 +11874,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -12086,9 +11965,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -13049,9 +12925,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -13095,9 +12968,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -13189,9 +13059,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -14119,9 +13986,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -14165,9 +14029,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -14259,9 +14120,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -14518,9 +14376,7 @@
         ],
         "properties": {
           "data": {
-            "required": [
-              "menuID"
-            ],
+            "required": [],
             "type": "object",
             "properties": {
               "menuID": {
@@ -15243,9 +15099,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -15289,9 +15142,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -15383,9 +15233,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -16317,9 +16164,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -16363,9 +16207,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -16457,9 +16298,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -17424,9 +17262,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -17470,9 +17305,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -17564,9 +17396,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -18498,9 +18327,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -18544,9 +18370,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -18638,9 +18461,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -19599,9 +19419,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -19645,9 +19462,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -19739,9 +19553,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -20718,9 +20529,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -20764,9 +20572,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -20858,9 +20663,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -21870,9 +21672,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -21916,9 +21715,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -22010,9 +21806,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -22989,9 +22782,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -23035,9 +22825,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -23129,9 +22916,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -29047,9 +28831,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -29365,9 +29146,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -29459,9 +29237,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -30107,9 +29882,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -30425,9 +30197,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -30519,9 +30288,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -31200,9 +30966,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -31518,9 +31281,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -31612,9 +31372,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -32260,9 +32017,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -32578,9 +32332,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -32672,9 +32423,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -33091,9 +32839,6 @@
                                                             }
                                                           }
                                                         }
-                                                      },
-                                                      "userID": {
-                                                        "type": "string"
                                                       },
                                                       "restaurants": {
                                                         "type": "object",
@@ -33661,9 +33406,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -33755,9 +33497,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -34181,9 +33920,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -34750,9 +34486,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -34844,9 +34577,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -35303,9 +35033,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -35872,9 +35599,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -35966,9 +35690,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -36392,9 +36113,6 @@
                                                           }
                                                         }
                                                       },
-                                                      "userID": {
-                                                        "type": "string"
-                                                      },
                                                       "restaurants": {
                                                         "type": "object",
                                                         "properties": {
@@ -36961,9 +36679,6 @@
                                                                 "attributes": {
                                                                   "type": "object",
                                                                   "properties": {
-                                                                    "dietaryRestrictionID": {
-                                                                      "type": "string"
-                                                                    },
                                                                     "foodType": {
                                                                       "type": "string"
                                                                     },
@@ -37055,9 +36770,6 @@
                                                                   "type": "object",
                                                                   "properties": {
                                                                     "name": {
-                                                                      "type": "string"
-                                                                    },
-                                                                    "achievementID": {
                                                                       "type": "string"
                                                                     },
                                                                     "description": {
@@ -37371,8 +37083,7 @@
           "data": {
             "required": [
               "username",
-              "email",
-              "userID"
+              "email"
             ],
             "type": "object",
             "properties": {
@@ -37413,9 +37124,6 @@
                   }
                 ],
                 "example": "string or id"
-              },
-              "userID": {
-                "type": "string"
               },
               "restaurants": {
                 "type": "array",
@@ -37911,9 +37619,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -38229,9 +37934,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -38323,9 +38025,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -38504,9 +38203,6 @@
                     }
                   }
                 }
-              },
-              "userID": {
-                "type": "string"
               },
               "restaurants": {
                 "type": "object",
@@ -39062,9 +38758,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -39380,9 +39073,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -39474,9 +39164,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -39655,9 +39342,6 @@
                     }
                   }
                 }
-              },
-              "userID": {
-                "type": "string"
               },
               "restaurants": {
                 "type": "object",
@@ -40246,9 +39930,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -40564,9 +40245,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -40658,9 +40336,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -40839,9 +40514,6 @@
                     }
                   }
                 }
-              },
-              "userID": {
-                "type": "string"
               },
               "restaurants": {
                 "type": "object",
@@ -41397,9 +41069,6 @@
                                             }
                                           }
                                         },
-                                        "userID": {
-                                          "type": "string"
-                                        },
                                         "restaurants": {
                                           "type": "object",
                                           "properties": {
@@ -41715,9 +41384,6 @@
                                                   "attributes": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "dietaryRestrictionID": {
-                                                        "type": "string"
-                                                      },
                                                       "foodType": {
                                                         "type": "string"
                                                       },
@@ -41809,9 +41475,6 @@
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
-                                                      },
-                                                      "achievementID": {
                                                         "type": "string"
                                                       },
                                                       "description": {
@@ -41990,9 +41653,6 @@
                     }
                   }
                 }
-              },
-              "userID": {
-                "type": "string"
               },
               "restaurants": {
                 "type": "object",
