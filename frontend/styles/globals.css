@@ -111,6 +111,11 @@ a {
   width: 3.1rem;
 }
 
+.content-body {
+  margin: 3rem 5rem;
+  text-align: justify;
+}
+
 /** Forms **/
 
 span.error {
