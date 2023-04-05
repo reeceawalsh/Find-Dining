@@ -4,7 +4,7 @@ import ThirdPartyLogin from "@component/components/ThirdPartyLogin";
 export default function login() {
     return (
         <div>
-            <Login />
+            <Login display />
             <ThirdPartyLogin />
         </div>
     );

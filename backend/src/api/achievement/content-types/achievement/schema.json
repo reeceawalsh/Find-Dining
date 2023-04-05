@@ -15,10 +15,6 @@
     "name": {
       "type": "string"
     },
-    "achievementID": {
-      "type": "uid",
-      "required": true
-    },
     "description": {
       "type": "text"
     },

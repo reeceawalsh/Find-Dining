@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "dietaryRestrictionID": {
-      "type": "uid",
-      "required": true
-    },
     "foodType": {
       "type": "string"
     },

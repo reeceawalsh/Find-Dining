@@ -14,7 +14,7 @@
   "attributes": {
     "menuID": {
       "type": "uid",
-      "required": true
+      "required": false
     },
     "Category": {
       "type": "string"

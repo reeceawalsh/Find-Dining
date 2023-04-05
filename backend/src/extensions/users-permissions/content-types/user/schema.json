@@ -66,10 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "userID": {
-      "type": "uid",
-      "required": true
-    },
     "restaurants": {
       "type": "relation",
       "relation": "manyToMany",
