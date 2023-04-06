@@ -1,6 +1,7 @@
 // Achievements Page
 import Achievement from "@component/components/Achievement";
 import Header from "@component/components/Header";
+import Navbar from "@component/components/Navbar";
 
 export default function Achievements() {
     return (
@@ -66,6 +67,7 @@ export default function Achievements() {
                 date="23.march.1994"
                 progress="5/7"
             />
+            <Navbar />
         </div>
     );
 }

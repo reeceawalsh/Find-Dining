@@ -1,0 +1,23 @@
+.navbarContainer {
+position: sticky;
+bottom: 0;
+background-color: #EE7674;
+width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 16px;
+}
+
+.icons {
+    display: inline-flex;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.navbar a:hover {
+    background-color: #36DBFF;
+}
