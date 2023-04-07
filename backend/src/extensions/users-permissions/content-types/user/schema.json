@@ -92,6 +92,11 @@
       "relation": "manyToMany",
       "target": "api::achievement.achievement",
       "mappedBy": "user"
+    },
+    "profile_slug": {
+      "type": "uid",
+      "required": false,
+      "targetField": "username"
     }
   }
 }

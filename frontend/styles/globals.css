@@ -272,3 +272,8 @@ span.error:after {
   padding: 5px;
   font-size: 1rem;
 }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
