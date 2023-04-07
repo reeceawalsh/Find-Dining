@@ -272,3 +272,19 @@ span.error:after {
   padding: 5px;
   font-size: 1rem;
 }
+
+
+.info-section-container {
+  border: 2px black solid;
+  background-color: #FFFFFF;
+  min-width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.info-section-item {
+  background-color: #FFFFFF;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-width: 100%;
+}
