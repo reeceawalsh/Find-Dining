@@ -1,10 +1,13 @@
-import Register from "@component/components/Register";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+
 import { useUser } from "@component/lib/authContext";
-import { useEffect } from "react";
-export default function register() {
+const Register = () => {
     const router = useRouter();
-    const { user, loading } = useUser();
+
+    // Get the user object from the auth context
+    const { user } = useUser();
+    console.log(user);
 
     useEffect(() => {
         // Redirect logged-in users to the homepage
@@ -12,9 +15,13 @@ export default function register() {
             router.push("/home");
         }
     }, [user, router]);
+
     return (
-        <div className="container">
-            <Register />
+        <div>
+            <h1>Registration Component</h1>
         </div>
     );
-}
+    // ... Rest of the component
+};
+
+export default Register;

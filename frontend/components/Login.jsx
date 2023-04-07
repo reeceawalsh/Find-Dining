@@ -1,25 +1,25 @@
 import { useState } from "react";
 import Image from "next/image";
+import useSetToken from "@component/lib/useSetToken";
+
 import Link from "next/link";
 import styles from "./styles/login.module.css";
 import validate from "../validationRules/LoginVR";
 import LoginForm from "./Forms/LoginForm";
 import ForgotPassword from "./Modals/ForgotPassword";
+import axios from "axios";
 
-export default function Login() {
+const Login = () => {
     // loginDetails are details the user inputs before validation
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
     });
-    // validatedLoginDetails are the user inputs but validated
-    const [validatedLoginData, setValidatedLoginData] = useState({
-        email: "",
-        password: "",
-    });
+
     const [errors, setErrors] = useState([]);
     const [validLogin, setValidLogin] = useState(true);
     const [displayModal, setDisplayModal] = useState(false);
+    const setToken = useSetToken();
 
     const handleLogin = (e) => {
         console.log("loginProcess");
@@ -30,20 +30,43 @@ export default function Login() {
 
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
-            setValidatedLoginData(loginData);
             handleCheckUser();
+        } else {
+            console.log("errors");
+            setLoginData({ email: "", password: "" });
         }
     };
 
-    // check if the user is registered
     const handleCheckUser = () => {
-        console.log(validatedLoginData);
-        // send data to check if user is registered and details are correct.
-        // create error message for invalid login details
-        // if they are set valid login to true
-        // setValidLogin(true)
-        // if they are not then set invalid
-        // setValidLogin(false);
+        console.log("checking user");
+        const token =
+            "853026529cdea7d5f74ced9350fed93bcd88245bf2be9d213ec035b2c99907ed9fef5fd0d40b5ef8d1fcc74b27e7f24bf115a8b324c4263346dbb4ea8bf3a987f5e7783a5db09c18cc80baec220ae4804af218622a86c7b16ce3968f1ef82b3f24f353f67f2088dfdc994c4ade2403ac6e2641a729d724c7e791e879da66a811";
+        let data = JSON.stringify({
+            identifier: loginData.email,
+            password: loginData.password,
+        });
+
+        const config = {
+            method: "post",
+            maxBodyLength: Infinity,
+            url: "http://localhost:1337/api/auth/local",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            data: data,
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(response.data);
+                setToken(response.data);
+                setValidLogin(true);
+            })
+            .catch(function (error) {
+                console.error(error);
+                setValidLogin(false);
+            });
     };
 
     const handleRegister = (e) => {
@@ -114,4 +137,6 @@ export default function Login() {
             </div>
         </div>
     );
-}
+};
+
+export default Login;
