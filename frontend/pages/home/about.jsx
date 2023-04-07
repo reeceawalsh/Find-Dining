@@ -1,6 +1,6 @@
 // About us page
 import Header from "@component/components/Header";
-import Navbar from "@component/components/Navbar";
+import Navbar from "@component/components/MobileNavbar";
 
 export default function AboutUs() {
     return (
