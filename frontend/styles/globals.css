@@ -168,6 +168,8 @@ span.error:after {
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-control {
@@ -177,7 +179,6 @@ span.error:after {
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  height: calc(2.55rem + 2px);
   padding-left: 19px;
   padding: 1.2rem 0.75rem;
   font-size: 1rem;
@@ -189,6 +190,8 @@ span.error:after {
   width: 20rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   min-width: 100%;
+  min-height: 100%;
+  margin-top: 0;
 }
 
 
@@ -198,6 +201,7 @@ span.error:after {
 
 .password-input {
   padding-right: 40px;
+  height: 100%;
 }
 
 .hidden {
@@ -267,4 +271,106 @@ span.error:after {
 .forgot-password-btn {
   padding: 5px;
   font-size: 1rem;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+/*App Feedback css*/
+
+.panel-container {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  border-radius: 4px;
+  font-size: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  min-width: 800px;
+}
+
+.panel-container strong {
+  line-height: 20px;
+}
+
+.ratings-container {
+  display: flex;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.icon_sat_1 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: red;
+}
+
+.icon_sat_2 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: orange;
+}
+
+.icon_sat_3 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: green;
+}
+
+.rating {
+  flex: 1;
+  cursor: pointer;
+  padding: 20px;
+  margin: 10px 5px;
+}
+
+.rating:hover,
+.rating.active {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating small {
+  color: #555;
+  display: inline-block;
+  margin: 10px 0 0;
+}
+
+.rating:hover small,
+.rating:active small {
+  color: #111;
+}
+
+.btn {
+  background-color: #302d2b;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 30px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.fa-heart {
+  color: red;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.feedback-textarea {
+  resize: none;
 }
