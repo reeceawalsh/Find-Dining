@@ -16,7 +16,7 @@ export default function Support() {
                 />
                 <SupportLink
                     title="App Feedback"
-                    link="www google survery not done yet "
+                    link="/support/appfeedback"
                     description="Let us know how we can improve your experience with our app."
                 />
                 <SupportLink
