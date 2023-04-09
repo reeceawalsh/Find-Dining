@@ -1,5 +1,6 @@
 import { useUser } from "@component/lib/authContext";
 import Layout from "@component/components/Layout";
+import Header from "@component/components/Header";
 
 export default function Home() {
     const { user, loading } = useUser();
@@ -7,7 +8,7 @@ export default function Home() {
     return (
         <Layout user={user}>
             <div className="container">
-                <h1>Find Dining</h1>
+                <Header name="Find Dining" />
                 {user ? (
                     <div>
                         <h1>

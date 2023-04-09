@@ -13,7 +13,6 @@ export default function AboutUs() {
                 <div className="about us main" style={{ minHeight: "100vh" }}>
                     blah blah blah
                 </div>
-                <Navbar />
             </div>
         </Layout>
     );
