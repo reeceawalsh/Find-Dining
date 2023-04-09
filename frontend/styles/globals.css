@@ -275,11 +275,6 @@ span.error:after {
   font-size: 1rem;
 }
 
-.navbar {
-  display: flex;
-  flex-direction: row;
-}
-
 /*App Feedback css*/
 
 .panel-container {

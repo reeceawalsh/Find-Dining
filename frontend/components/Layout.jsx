@@ -8,7 +8,6 @@ const Layout = ({ user, loading = false, children }) => (
         <main>
             <div>{children}</div>
         </main>
-        <MobileNavbar />
     </UserProvider>
 );
 
