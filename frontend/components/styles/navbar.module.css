@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  height: 7rem;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-family: sans-serif, Arial, Helvetica;
+  align-items: center;
+  padding: 1rem;
+}
+
+.link {
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  height: 5rem;
+  width: 7rem;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
