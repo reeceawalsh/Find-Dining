@@ -3,6 +3,7 @@ import { useUser } from "@component/lib/authContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Layout from "@component/components/Layout";
+import Header from "@component/components/Header";
 
 export default function Profile() {
     const { user, loading } = useUser();
@@ -17,7 +18,7 @@ export default function Profile() {
     return (
         <Layout user={user}>
             <div className="container">
-                <h1>Profile Page</h1>
+                <Header name="Profile Page" />
                 {user && (
                     <div>
                         <h1>

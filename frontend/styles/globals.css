@@ -371,3 +371,28 @@ span.error:after {
 .feedback-textarea {
   resize: none;
 }
+
+.spinner {
+  position: absolute;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #000;
+  animation: spinner 1s linear infinite;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.active-link {
+  text-decoration: underline;
+  font-weight: bolder;
+}

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useUser } from "@component/lib/authContext";
 import Layout from "@component/components/Layout";
 

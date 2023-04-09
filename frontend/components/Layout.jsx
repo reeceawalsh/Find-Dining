@@ -6,7 +6,7 @@ const Layout = ({ user, loading = false, children }) => (
     <UserProvider value={{ user, loading }}>
         <Navbar />
         <main>
-            <div>{children}</div>
+            {loading ? <div className="spinner"></div> : <div>{children}</div>}
         </main>
     </UserProvider>
 );
