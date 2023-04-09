@@ -19,12 +19,13 @@ const Navbar = () => {
     return (
         <div className={`${styles.navbar} blue-background`}>
             <div className={styles.logoContainer}>
-                <Image
-                    className={styles.logo}
-                    src={logo}
-                    alt="Find Dining Logo - A very cute burger with a knife and fork."
-                />
-                {/* <p>Find Dining</p> */}
+                <Link href="/home">
+                    <Image
+                        className={styles.logo}
+                        src={logo}
+                        alt="Find Dining Logo - A very cute burger with a knife and fork."
+                    />
+                </Link>
             </div>
             <div className="left-navbar">
                 <NavLink className={styles.link} href="/home">
