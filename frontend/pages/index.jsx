@@ -1,5 +1,3 @@
-import Home from "./home";
-
 export default function LandingPage() {
-    return <Home />;
+    // will automatically take the user to /home
 }

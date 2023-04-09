@@ -3,6 +3,7 @@ import { useUser } from "@component/lib/authContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "./styles/navbar.module.css";
+import NavLink from "./NavLink";
 
 const logo = require("../public/LogoCropped.png");
 
@@ -26,21 +27,22 @@ const Navbar = () => {
                 {/* <p>Find Dining</p> */}
             </div>
             <div className="left-navbar">
-                <Link className={styles.link} href="/home/about">
+                <NavLink className={styles.link} href="/home">
+                    Home
+                </NavLink>
+                <NavLink className={styles.link} href="/home/about">
                     About
-                </Link>
-                <Link className={styles.link} href="/home/search">
+                </NavLink>
+                <NavLink className={styles.link} href="/home/search">
                     Search
-                </Link>
-                <Link className={styles.link} href="/home/setlocation">
+                </NavLink>
+                <NavLink className={styles.link} href="/home/setlocation">
                     Set Location
-                </Link>
+                </NavLink>
                 {user && (
-                    <>
-                        <Link className={styles.link} href="/home/favourites">
-                            Favourites
-                        </Link>
-                    </>
+                    <NavLink className={styles.link} href="/home/favourites">
+                        Favourites
+                    </NavLink>
                 )}
             </div>
             <div className="right-navbar">
@@ -48,21 +50,25 @@ const Navbar = () => {
                     <span>Loading...</span>
                 ) : user ? (
                     <>
-                        <Link className={styles.link} href="/profile">
+                        <NavLink className={styles.link} href="/profile">
                             Profile
-                        </Link>
-                        <a className={styles.link} onClick={handleLogout}>
+                        </NavLink>
+                        <NavLink
+                            className={styles.link}
+                            href="/home"
+                            onClick={handleLogout}
+                        >
                             Logout
-                        </a>
+                        </NavLink>
                     </>
                 ) : (
                     <>
-                        <Link className={styles.link} href="/login">
+                        <NavLink className={styles.link} href="/login">
                             Login
-                        </Link>
-                        <Link className={styles.link} href="/register">
+                        </NavLink>
+                        <NavLink className={styles.link} href="/register">
                             Register
-                        </Link>
+                        </NavLink>
                     </>
                 )}
             </div>

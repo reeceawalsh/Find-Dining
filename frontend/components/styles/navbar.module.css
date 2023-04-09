@@ -13,9 +13,16 @@
   color: black;
   padding-left: 1rem;
   padding-right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .link:hover {
+  text-decoration: underline;
+}
+
+.underline {
   text-decoration: underline;
 }
 

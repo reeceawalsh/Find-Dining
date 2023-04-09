@@ -1,8 +1,15 @@
-// Account Details Page
+import Layout from "@component/components/Layout";
+import { useUser } from "@component/lib/authContext";
+import Header from "@component/components/Header";
+
 export default function AccountDetails() {
+    const { user, loading } = useUser();
+
     return (
-        <div className="container">
-            <h1>Account Details Page</h1>
-        </div>
+        <Layout user={user}>
+            <div className="container">
+                <Header name="Account Details Page" />
+            </div>
+        </Layout>
     );
 }
