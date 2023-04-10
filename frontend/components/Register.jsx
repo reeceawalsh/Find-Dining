@@ -7,6 +7,7 @@ import validate from "../validationRules/RegistrationVR";
 import RegistrationForm from "./Forms/RegistrationForm";
 import axios from "axios";
 
+
 const Register = () => {
 
     const router = useRouter()
@@ -27,11 +28,8 @@ const Register = () => {
         dateOfBirth: null,
     });
 
-
-    
     const [errors, setErrors] = useState([]);
-    const [alreadyRegistered, setAlreadyRegistered] = useState(false); // Use for emails that are already registered
-    const [successfulRegister, setSuccessfulRegister] = useState(false);
+    const [validRegistration, setValidRegistration] = useState(false); 
     const setToken = useSetToken();
 
     const handleRegister = (e) => {
@@ -48,9 +46,10 @@ const Register = () => {
             console.log("errors");
             setRegistrationData({username: "", email: "", password: "", dateOfBirth: null});
         }
-    }
-};
+    };
 
+
+    // Posts email, username, password and DOB to be added to Database
     const handleCheckRegistered = () => {
         console.log("checking user");
         const token =
@@ -59,6 +58,7 @@ const Register = () => {
             identifier: registrationData.email,
             username: registrationData.username,
             password: registrationData.password,
+            dateOfBirth: registrationData.dateOfBirth,
         });
 
         const config = {
@@ -76,12 +76,11 @@ const Register = () => {
         .then(function (response) {
             console.log(response.data);
             setToken(response.data);
-            setAlreadyRegistered(false);
-            setSuccessfulRegister(true);
+            setValidRegistration(true);
         })
         .catch(function (error) {
             console.error(error);
-            setAlreadyRegistered(true);
+            setValidRegistration(false);
         });
     };
 
@@ -99,7 +98,7 @@ const Register = () => {
             registrationData={registrationData}
             errors={errors}
             handleRegister={handleRegister}
-            alreadyRegistered={alreadyRegistered} // boolean state to track if email already exists in system or not
+            validRegister={validRegistration}
             />
         </div>
     );

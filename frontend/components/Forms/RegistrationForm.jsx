@@ -50,7 +50,7 @@ export default function RegistrationForm({
                     type="date"
                     name="Date of Birth"
                     placeholder="Date of Birth (dd/mm/yy)"
-                    value={registrationData.value}
+                    value={registrationData.dateOfBirth}
                     error={errors.dateOfBirth}
                     onChange={(event) =>
                         setRegistrationData({
