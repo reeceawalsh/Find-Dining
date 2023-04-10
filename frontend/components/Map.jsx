@@ -17,6 +17,7 @@ const Map = () => {
     });
 
     const [radius, setRadius] = useState(1000);
+    const [zoom, setZoom] = useState(14);
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -46,15 +47,52 @@ const Map = () => {
             <div className={styles.sidebar}>
                 <h1 className={styles.title}>Set Location</h1>
                 <SearchBar onPlaceSelected={handlePlaceSelected} />
+                {/* <DistanceSlider
+                    radius={radius}
+                    onRadiusChange={(newRadius) => {
+                        setRadius(newRadius);
+                        switch (newRadius) {
+                            case newRadius <= 2000:
+                                setZoom(14);
+                                break;
+                            case newRadius <= 4000:
+                                setZoom(13);
+                                break;
+                            case newRadius <= 6000:
+                                setZoom(12);
+                                break;
+                            case newRadius <= 8000:
+                                setZoom(11);
+                                break;
+                            case newRadius <= 10000:
+                                setZoom(10);
+                                break;
+                        }
+                    }}
+                /> */}
                 <DistanceSlider
                     radius={radius}
-                    onRadiusChange={(newRadius) => setRadius(newRadius)}
+                    onRadiusChange={(newRadius) => {
+                        setRadius(newRadius);
+
+                        if (newRadius >= 10000) {
+                            setZoom(11.2);
+                        } else if (newRadius >= 7200) {
+                            setZoom(11.5);
+                        } else if (newRadius >= 3600) {
+                            setZoom(12);
+                        } else if (newRadius >= 2000) {
+                            setZoom(13);
+                        } else {
+                            setZoom(14);
+                        }
+                    }}
                 />
             </div>
             <div className={styles.map}>
                 <GoogleMap
                     options={mapOptions}
-                    zoom={14}
+                    zoom={zoom}
                     center={mapCenter}
                     mapContainerStyle={{ width: "100%", height: "100%" }}
                     onLoad={() => console.log("Map loaded")}

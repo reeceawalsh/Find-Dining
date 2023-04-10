@@ -9,7 +9,7 @@ const DistanceSlider = ({ radius, onRadiusChange }) => {
             <input
                 type="range"
                 min="100"
-                max="2000"
+                max="10000"
                 value={radius}
                 onChange={(e) => onRadiusChange(parseInt(e.target.value, 10))}
                 className={styles.slider}
