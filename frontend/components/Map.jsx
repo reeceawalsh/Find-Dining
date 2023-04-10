@@ -5,9 +5,10 @@ import {
     MarkerF,
 } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import SearchBar from "./SearchBar";
 import DistanceSlider from "./DistanceSlider";
+import useFetchNearbyRestaurants from "../lib/useFetchRestaurants";
 
 const Map = () => {
     const libraries = useMemo(() => ["places"], []);
@@ -18,6 +19,7 @@ const Map = () => {
 
     const [radius, setRadius] = useState(1000);
     const [zoom, setZoom] = useState(14);
+    const restaurants = useFetchNearbyRestaurants(mapCenter, radius);
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -47,29 +49,6 @@ const Map = () => {
             <div className={styles.sidebar}>
                 <h1 className={styles.title}>Set Location</h1>
                 <SearchBar onPlaceSelected={handlePlaceSelected} />
-                {/* <DistanceSlider
-                    radius={radius}
-                    onRadiusChange={(newRadius) => {
-                        setRadius(newRadius);
-                        switch (newRadius) {
-                            case newRadius <= 2000:
-                                setZoom(14);
-                                break;
-                            case newRadius <= 4000:
-                                setZoom(13);
-                                break;
-                            case newRadius <= 6000:
-                                setZoom(12);
-                                break;
-                            case newRadius <= 8000:
-                                setZoom(11);
-                                break;
-                            case newRadius <= 10000:
-                                setZoom(10);
-                                break;
-                        }
-                    }}
-                /> */}
                 <DistanceSlider
                     radius={radius}
                     onRadiusChange={(newRadius) => {
@@ -88,6 +67,11 @@ const Map = () => {
                         }
                     }}
                 />
+                <div className={styles.restaurantsList}>
+                    {restaurants.map((restaurant) => (
+                        <div key={restaurant.place_id}>{restaurant.name}</div>
+                    ))}
+                </div>
             </div>
             <div className={styles.map}>
                 <GoogleMap
