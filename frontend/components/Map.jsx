@@ -1,8 +1,8 @@
 import {
     useLoadScript,
     GoogleMap,
-    CircleF,
-    MarkerF,
+    Circle,
+    Marker,
 } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
@@ -99,7 +99,7 @@ const Map = () => {
                     mapContainerStyle={{ width: "100%", height: "100%" }}
                     onLoad={() => console.log("Map loaded")}
                 >
-                    <CircleF
+                    <Circle
                         center={mapCenter}
                         radius={radius}
                         onLoad={() => console.log("Loaded circle radius")}
@@ -109,7 +109,7 @@ const Map = () => {
                         }}
                     />
                     {hoveredRestaurant && (
-                        <MarkerF
+                        <Marker
                             position={{
                                 lat: hoveredRestaurant.geometry.location.lat(),
                                 lng: hoveredRestaurant.geometry.location.lng(),
