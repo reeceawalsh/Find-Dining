@@ -8,6 +8,7 @@ import styles from "./styles/map.module.css";
 import { useState, useMemo } from "react";
 import SearchBar from "./SearchBar";
 import { getGeocode } from "use-places-autocomplete";
+import DistanceSlider from "./DistanceSlider";
 
 const Map = () => {
     const libraries = useMemo(() => ["places"], []);
@@ -43,19 +44,10 @@ const Map = () => {
             <div className={styles.sidebar}>
                 <h1 className={styles.title}>Set Location</h1>
                 <SearchBar onPlaceSelected={handlePlaceSelected} />
-                <div className={styles.sliderWrapper}>
-                    <p>Radius: {(radius / 1000).toFixed(1)} km</p>
-                    <input
-                        type="range"
-                        min="100"
-                        max="2000"
-                        value={radius}
-                        onChange={(e) =>
-                            setRadius(parseInt(e.target.value, 10))
-                        }
-                        className={styles.slider}
-                    />
-                </div>
+                <DistanceSlider
+                    radius={radius}
+                    onRadiusChange={(newRadius) => setRadius(newRadius)}
+                />
             </div>
             <div className={styles.map}>
                 <GoogleMap
