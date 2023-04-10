@@ -31,3 +31,11 @@
 .sliderWrapper {
   margin-top: 1rem;
 }
+
+.restaurant {
+  cursor: pointer;
+}
+
+.restaurant:hover {
+  font-weight: bold;
+}
