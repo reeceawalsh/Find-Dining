@@ -1,8 +1,8 @@
 import {
     useLoadScript,
     GoogleMap,
-    Circle,
-    Marker,
+    CircleF,
+    MarkerF,
 } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
@@ -99,17 +99,17 @@ const Map = () => {
                     mapContainerStyle={{ width: "100%", height: "100%" }}
                     onLoad={() => console.log("Map loaded")}
                 >
-                    <Circle
+                    <CircleF
                         center={mapCenter}
                         radius={radius}
                         onLoad={() => console.log("Loaded circle radius")}
                         options={{
-                            fillColor: radius > 1000 ? "grey" : "green",
-                            strokeOpacity: 0.3,
+                            fillColor: "green",
+                            strokeOpacity: 0.35,
                         }}
                     />
                     {hoveredRestaurant && (
-                        <Marker
+                        <MarkerF
                             position={{
                                 lat: hoveredRestaurant.geometry.location.lat(),
                                 lng: hoveredRestaurant.geometry.location.lng(),
