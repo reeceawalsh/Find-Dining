@@ -82,9 +82,15 @@ const Map = () => {
                         } else if (newRadius >= 3600) {
                             setZoom(12);
                         } else if (newRadius >= 2000) {
-                            setZoom(13);
-                        } else {
+                            setZoom(13.5);
+                        } else if (newRadius >= 1000) {
                             setZoom(14);
+                        } else if (newRadius >= 500) {
+                            setZoom(15);
+                        } else if (newRadius >= 300) {
+                            setZoom(16);
+                        } else {
+                            setZoom(17);
                         }
                     }}
                 />
