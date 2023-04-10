@@ -16,8 +16,9 @@ export default function register() {
     }, [user, router]);
     return (
         <div className="container">
-            <Layout />
-            <Register />
+            <Layout user={user}>
+                <Register />
+            </Layout>
         </div>
     );
 }
