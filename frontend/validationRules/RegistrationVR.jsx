@@ -1,4 +1,6 @@
 import validateDateOfBirth from "@component/fieldValidation/DateOfBirth";
+import validateEmail from "@component/fieldValidation/Email";
+import validatePassword from "@component/fieldValidation/Password";
 import validateUsername from "@component/fieldValidation/UserName";
 
 export default function validateRegistration({

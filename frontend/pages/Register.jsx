@@ -1,7 +1,9 @@
 import Register from "@component/components/Register";
+import Layout from "@component/components/Layout";
 import { useRouter } from "next/router";
 import { useUser } from "@component/lib/authContext";
 import { useEffect } from "react";
+
 export default function register() {
     const router = useRouter();
     const { user, loading } = useUser();
@@ -14,6 +16,7 @@ export default function register() {
     }, [user, router]);
     return (
         <div className="container">
+            <Layout />
             <Register />
         </div>
     );
