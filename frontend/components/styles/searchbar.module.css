@@ -1,0 +1,31 @@
+.dropdownItem {
+  border-top: 1px black solid;
+}
+
+.dropdownItem:hover {
+  font-weight: bold;
+}
+
+.dropdownWrapper {
+  background-color: white;
+  width: 22rem;
+  padding-left: 2px;
+  padding-right: 2px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+
+.dropdownWrapper .searchbar {
+  padding: 2px;
+}
+
+.searchbar {
+  width: 22rem;
+  padding-left: 5px;
+  border-radius: 2px;
+}
+
+.searchbar:active {
+  border: 2px solid #36DBFF;
+}

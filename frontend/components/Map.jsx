@@ -7,15 +7,15 @@ import {
 import styles from "./styles/map.module.css";
 import { useState, useMemo } from "react";
 import SearchBar from "./SearchBar";
-import { getGeocode } from "use-places-autocomplete";
 import DistanceSlider from "./DistanceSlider";
 
 const Map = () => {
     const libraries = useMemo(() => ["places"], []);
-    const mapCenter = useMemo(() => ({
+    const [mapCenter, setMapCenter] = useState({
         lat: 54.9783,
         lng: -1.61396,
-    }));
+    });
+
     const [radius, setRadius] = useState(1000);
 
     const { isLoaded } = useLoadScript({
@@ -34,11 +34,13 @@ const Map = () => {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
 
-    const handlePlaceSelected = (address) => {
-        console.log(getGeocode(address));
-        console.log(address.geometry.location.lat());
-    };
+    const handlePlaceSelected = ({ address, lat, lng }) => {
+        console.log("Selected address:", address);
+        console.log("Latitude:", lat);
+        console.log("Longitude:", lng);
 
+        setMapCenter({ lat, lng });
+    };
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
