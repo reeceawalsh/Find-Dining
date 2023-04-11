@@ -1,0 +1,41 @@
+/* components/AccountDetails/account-details.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .inputField {
+    margin-bottom: 1rem;
+  }
+  
+  .socialAccounts {
+    margin-top: 2rem;
+  }
+  
+  .socialAccount {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .socialIcon {
+    margin-right: 1rem;
+  }
+  
+  .accountName {
+    margin-right: 1rem;
+  }
+  
+  .deleteDataButton,
+  .deleteAccountButton {
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  .deleteAccountButton {
+    margin-top: 2rem;
+    color: red;
+  }
+  
