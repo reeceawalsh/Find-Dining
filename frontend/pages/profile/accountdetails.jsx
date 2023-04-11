@@ -35,6 +35,8 @@ export default function AccountDetails() {
             <div className="info-section-container">
                 <div className="info-section-item"><TextField fullWidth id="filled-basic" label="Name" variant="filled" /></div>
                 <div className="info-section-item"><TextField fullWidth id="filled-basic" label="City" variant="filled" /></div>
+                <div className="info-section-item"><TextField fullWidth id="filled-basic" label="Email" variant="filled" /></div>
+                <div className="info-section-item"><TextField fullWidth id="filled-basic" label="Password" variant="filled" /></div>
             </div>
             <div className="info-section-container">
                 <div className="info-section-item">
