@@ -17,16 +17,26 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 // Account Details Page
 export default function AccountDetails() {
-    const [open, setOpen] = React.useState(false);
+    const [openSavedData, setOpenSavedData] = React.useState(false);
+    const [openAccount, setOpenAccount] = React.useState(false);
     const theme = useTheme();
+
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleClickOpenSavedData = () => {
+        setOpenSavedData(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleClickOpenAccount = () => {
+        setOpenAccount(true);
+    };
+
+    const handleCloseSavedData = () => {
+        setOpenSavedData(false);
+    };
+
+    const handleCloseAccount = () => {
+        setOpenAccount(false);
     };
 
     return (
@@ -52,13 +62,13 @@ export default function AccountDetails() {
                 <div>Find Dining will never post your account without your express permission.</div>
                 <br></br>
                 <div>
-                    <Button variant="outlined" onClick={handleClickOpen}>
+                    <Button variant="outlined" onClick={handleClickOpenSavedData}>
                         Delete all saved data
                     </Button>
                     <Dialog
                         fullScreen={fullScreen}
-                        open={open}
-                        onClose={handleClose}
+                        open={openSavedData}
+                        onClose={handleCloseSavedData}
                         aria-labelledby="responsive-dialog-title"
                     >
                         <DialogContent>
@@ -68,10 +78,10 @@ export default function AccountDetails() {
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button autoFocus onClick={handleClose}>
+                            <Button autoFocus onClick={handleCloseSavedData}>
                                 Yes
                             </Button>
-                            <Button onClick={handleClose} autoFocus>
+                            <Button onClick={handleCloseSavedData} autoFocus>
                                 No
                             </Button>
                         </DialogActions>
@@ -79,26 +89,26 @@ export default function AccountDetails() {
                 </div>
                 <br></br>
                 <div>
-                <Button variant="outlined" onClick={handleClickOpen}>
+                <Button variant="outlined" onClick={handleClickOpenAccount}>
                         Delete account
                     </Button>
                     <Dialog
                         fullScreen={fullScreen}
-                        open={open}
-                        onClose={handleClose}
+                        open={openAccount}
+                        onClose={handleCloseAccount}
                         aria-labelledby="responsive-dialog-title"
                     >
                         <DialogContent>
                             <DialogContentText>
-                                Are you sure you want to delete all your saved data?
-                                <br></br>(This will include your history and achievements)
+                                Are you sure you want to delete your account?
+                                <br></br>It is unrecoverable.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button autoFocus onClick={handleClose}>
+                            <Button autoFocus onClick={handleCloseAccount}>
                                 Yes
                             </Button>
-                            <Button onClick={handleClose} autoFocus>
+                            <Button onClick={handleCloseAccount} autoFocus>
                                 No
                             </Button>
                         </DialogActions>
