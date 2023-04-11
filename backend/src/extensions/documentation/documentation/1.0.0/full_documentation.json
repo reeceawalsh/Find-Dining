@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-03-29T09:44:34.651Z"
+    "x-generation-date": "2023-04-11T20:01:30.191Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -28,7 +28,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337/api",
+      "url": "http://localhost:3000/api",
       "description": "Development server"
     }
   ],
@@ -1090,6 +1090,9 @@
                                   }
                                 }
                               }
+                            },
+                            "currentLocation": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -2155,6 +2158,9 @@
                                   }
                                 }
                               }
+                            },
+                            "currentLocation": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -3254,6 +3260,9 @@
                                 }
                               }
                             },
+                            "currentLocation": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -4318,6 +4327,9 @@
                                   }
                                 }
                               }
+                            },
+                            "currentLocation": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -5418,6 +5430,9 @@
                                 }
                               }
                             },
+                            "currentLocation": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -6475,6 +6490,9 @@
                                   }
                                 }
                               }
+                            },
+                            "currentLocation": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -7567,6 +7585,9 @@
                                 }
                               }
                             },
+                            "currentLocation": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -8624,6 +8645,9 @@
                                   }
                                 }
                               }
+                            },
+                            "currentLocation": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -10986,6 +11010,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -12046,6 +12073,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -13141,6 +13171,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -14201,6 +14234,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -15315,6 +15351,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -16379,6 +16418,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -17478,6 +17520,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -18542,6 +18587,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -19634,6 +19682,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "currentLocation": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -20744,6 +20795,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "currentLocation": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -21888,6 +21942,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "currentLocation": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -22997,6 +23054,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "currentLocation": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -29319,6 +29379,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -30369,6 +30432,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -31454,6 +31520,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -32504,6 +32573,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "currentLocation": {
+                                          "type": "string"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -33578,6 +33650,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "currentLocation": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -34658,6 +34733,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "currentLocation": {
+                                                        "type": "string"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -35772,6 +35850,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "currentLocation": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -36852,6 +36933,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "currentLocation": {
+                                                        "type": "string"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -37175,6 +37259,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "currentLocation": {
+                "type": "string"
               }
             }
           }
@@ -38107,6 +38194,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -38272,6 +38362,9 @@
                     }
                   }
                 }
+              },
+              "currentLocation": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",
@@ -39246,6 +39339,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -39411,6 +39507,9 @@
                     }
                   }
                 }
+              },
+              "currentLocation": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",
@@ -40418,6 +40517,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -40583,6 +40685,9 @@
                     }
                   }
                 }
+              },
+              "currentLocation": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",
@@ -41557,6 +41662,9 @@
                                             }
                                           }
                                         },
+                                        "currentLocation": {
+                                          "type": "string"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -41722,6 +41830,9 @@
                     }
                   }
                 }
+              },
+              "currentLocation": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "string",

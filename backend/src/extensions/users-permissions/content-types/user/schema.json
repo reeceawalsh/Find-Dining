@@ -92,6 +92,9 @@
       "relation": "manyToMany",
       "target": "api::achievement.achievement",
       "mappedBy": "user"
+    },
+    "currentLocation": {
+      "type": "string"
     }
   }
 }
