@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useSetToken from "@component/lib/useSetToken";
 import { useRouter } from "next/router";
-import { useUser } from "@component/lib/authContenxt"
+import { useUser } from "@component/lib/authContext"
 import styles from "./styles/register.module.css";
 import validate from "../validationRules/RegistrationVR";
 import RegistrationForm from "./Forms/RegistrationForm";
