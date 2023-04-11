@@ -25,7 +25,7 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
-        dateOfBirth: null,
+        dateOfBirth: "",
     });
 
     const [errors, setErrors] = useState([]);
@@ -44,7 +44,7 @@ const Register = () => {
             handleCheckRegistered();
         } else {
             console.log("errors");
-            setRegistrationData({username: "", email: "", password: "", dateOfBirth: null});
+            setRegistrationData({username: "", email: "", password: "", dateOfBirth: ""});
         }
     };
 
