@@ -7,7 +7,10 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "format": "prettier --list-different \"./**/*.{js,jsx,json,md}\""
+        "test": "jest --watch",
+        "format": "prettier --list-different \"./**/*.{js,jsx,json,md}\"",
+        "cypress": "cypress open",
+        "e2e": "start-server-and-test dev http://localhost:5174 \"cypress open --e2e\""
     },
     "dependencies": {
         "@emotion/react": "^11.10.6",
@@ -35,5 +38,12 @@
     "cacheDirectories": [
         "node_modules/",
         ".next/cache/"
-    ]
+    ],
+    "devDependencies": {
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^14.0.0",
+        "cypress": "^12.9.0",
+        "jest": "^29.5.0",
+        "jest-environment-jsdom": "^29.5.0"
+    }
 }
