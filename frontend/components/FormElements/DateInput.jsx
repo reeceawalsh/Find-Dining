@@ -21,4 +21,4 @@ const DateInput = (props) => {
     );
 };
 
-export default NumberInput;
+export default DateInput;

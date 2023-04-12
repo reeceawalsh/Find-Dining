@@ -3,7 +3,6 @@ import TagFacesIcon from "@mui/icons-material/TagFaces";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 
-// Privacy Notice Page
 export default function AppFeedback() {
     return (
         <div className="container">
