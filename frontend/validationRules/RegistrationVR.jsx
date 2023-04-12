@@ -19,13 +19,13 @@ export default function validateRegistration({
 
     errors = validatePassword(errors, password);
 
-    if (!firstName) {
-        errors.firstName = "Required";
-    }
+    // if (!firstName) {
+    //     errors.firstName = "Required";
+    // }
 
-    if (!lastName) {
-        errors.lastName = "Required";
-    }
+    // if (!lastName) {
+    //     errors.lastName = "Required";
+    // }
 
     errors = validateDateOfBirth(errors, dateOfBirth);
 
