@@ -92,6 +92,10 @@
       "relation": "manyToMany",
       "target": "api::achievement.achievement",
       "mappedBy": "user"
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
     }
   }
 }
