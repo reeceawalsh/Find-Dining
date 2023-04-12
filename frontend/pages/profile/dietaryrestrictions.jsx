@@ -1,7 +1,6 @@
 // Dietary Restrictions Page
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { useState } from "react";
 import Layout from "@component/components/Layout";
 import { useUser } from "@component/lib/authContext";
 import styles from "./styles/dietary-restrictions.module.css";
