@@ -4,32 +4,35 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import Header from "@component/components/Header";
 import HeaderWithSave from "@component/components/HeaderWithSave";
-import { useFormControl } from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SocialLinkItem from "./SocialLinkItem";
 import styles from "./styles/accountDetails.module.css";
 import TextInput from "./FormElements/TextInput";
-import TextInputLabel from "./FormElements/TextInputLabel";
+import PasswordInput from "./FormElements/PasswordInput";
+import ProfileTextInput from "./FormElements/ProfileTextInput";
+import ChangePassword from "./Forms/ChangePasswordForm";
+import validate from "../validationRules/ChangePasswordVR";
 
 // Account Details Page
 export default function AccountDetails({ user }) {
     const [openSavedData, setOpenSavedData] = useState(false);
     const [openAccount, setOpenAccount] = useState(false);
+    const [openChangePassword, setOpenChangePassword] = useState(false);
     const [connected, setConnected] = useState([]);
-    const [isEditable, setIsEditable] = useState({
-        username: false,
-        email: false,
-    });
+    const [isEditable, setIsEditable] = useState(false);
     const theme = useTheme();
     const [localUser, setLocalUser] = useState({ ...user });
+    const [passwordData, setPasswordData] = useState({
+        password: "",
+        newPassword: "",
+        confirmPassword: "",
+    });
+    const [errors, setErrors] = useState([]);
 
     console.log(user);
 
@@ -63,11 +66,42 @@ export default function AccountDetails({ user }) {
         // updateCookie("user", { ...user, [field]: localUser[field] });
 
         // Toggle off the editable state
-        toggleEditable(field);
+        toggleEditable();
     };
 
-    const toggleEditable = (field) => {
-        setIsEditable({ ...isEditable, [field]: !isEditable[field] });
+    const handleChangePassword = (e) => {
+        // check that passwords match
+        e.preventDefault();
+        // runs validation on the new password
+        let newErrors = checkErrors(passwordData);
+
+        // if there are no errors...
+        if (Object.keys(newErrors).length === 0) {
+            // if (passwordData.password === user password)
+            console.log("Changing password to " + passwordData.newPassword);
+        } else {
+            console.log("errors", newErrors);
+            setErrors(newErrors);
+        }
+    };
+
+    const checkErrors = (data) => {
+        let newErrors = validate(data);
+        setErrors(newErrors);
+        return newErrors;
+    };
+
+    const wipePasswordData = () => {
+        const newPasswordData = {
+            password: "",
+            newPassword: "",
+            confirmPassword: "",
+        };
+        setPasswordData(newPasswordData);
+    };
+
+    const toggleEditable = () => {
+        setIsEditable(!isEditable);
     };
     const handleClickOpenSavedData = () => {
         setOpenSavedData(true);
@@ -84,6 +118,11 @@ export default function AccountDetails({ user }) {
     const handleCloseAccount = () => {
         setOpenAccount(false);
     };
+
+    const handleCloseChangePassword = () => {
+        setOpenChangePassword(false);
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setLocalUser({ ...localUser, [name]: value });
@@ -91,44 +130,44 @@ export default function AccountDetails({ user }) {
 
     return (
         <div className="container">
-            <HeaderWithSave name="Account Details Page" />
+            <HeaderWithSave
+                name="Account Details Page"
+                handleEdit={toggleEditable}
+                handleSave={handleSave}
+                editMode={isEditable}
+            />
             <div className="info-section-container">
                 <div className="info-section-item">
                     <p>Username:</p>
-                    <TextInput
+                    <ProfileTextInput
                         name="username"
                         value={localUser.username}
                         onChange={handleInputChange}
-                        className={styles.inputbox}
-                        editable={isEditable.username}
-                        onToggleEditable={() => {
-                            if (isEditable.username) {
-                                handleSave("username");
-                            } else {
-                                toggleEditable("username");
-                            }
-                        }}
-                        hasEditButton={true}
+                        additionalClass={!isEditable ? styles.pointer : ""}
+                        editable={isEditable}
                     />
-                    <TextInput
+                </div>
+                <div className="info-section-item">
+                    <p>Email:</p>
+                    <ProfileTextInput
                         name="email"
                         value={localUser.email}
                         onChange={handleInputChange}
-                        className={styles.inputbox}
-                        editable={isEditable.email}
-                        onToggleEditable={() => {
-                            if (isEditable.email) {
-                                handleSave("email");
-                            } else {
-                                toggleEditable("email");
-                            }
-                        }}
-                        hasEditButton={true}
+                        additionalClass={!isEditable ? styles.pointer : ""}
+                        editable={isEditable}
                     />
                 </div>
 
                 <div className="info-section-item">
-                    <Button variant="outlined">Change Password</Button>
+                    <Button
+                        variant="outlined"
+                        onClick={() => {
+                            wipePasswordData();
+                            setOpenChangePassword(true);
+                        }}
+                    >
+                        Change Password
+                    </Button>
                 </div>
             </div>
             <div className="info-section-container">
@@ -225,6 +264,26 @@ export default function AccountDetails({ user }) {
                             No
                         </Button>
                     </DialogActions>
+                </Dialog>
+            </div>
+            <div>
+                <Dialog
+                    fullScreen={fullScreen}
+                    open={openChangePassword}
+                    onClose={handleCloseChangePassword}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogContent>
+                        <div>
+                            <ChangePassword
+                                styles={styles}
+                                setPasswordData={setPasswordData}
+                                passwordData={passwordData}
+                                errors={errors}
+                                handleChangePassword={handleChangePassword}
+                            />
+                        </div>
+                    </DialogContent>
                 </Dialog>
             </div>
         </div>

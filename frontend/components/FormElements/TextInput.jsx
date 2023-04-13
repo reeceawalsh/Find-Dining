@@ -11,13 +11,7 @@ const TextInput = (props) => {
                 className={`form-control ${props.error ? "red-outline" : ""}`}
                 placeholder={props.placeholder}
                 onChange={props.onChange}
-                readOnly={!props.editable}
             />
-            {props.hasEditButton && (
-                <button onClick={props.onToggleEditable}>
-                    {props.editable ? "Save" : "Edit"}
-                </button>
-            )}
         </div>
     );
 };
