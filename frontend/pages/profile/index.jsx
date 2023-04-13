@@ -1,14 +1,23 @@
 import Link from "next/link";
 import { useUser } from "@component/lib/authContext";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "@component/components/Layout";
 import Header from "@component/components/Header";
 import styles from "./styles/profile.module.css";
+import AccountDetails from "../../components/AccountDetails";
+import Achievements from "../../components/Achievements";
+import Support from "../../components/Support";
+import PrivacyNotice from "../../components/PrivacyNotice";
 
 export default function Profile() {
     const { user, loading } = useUser();
+    const [page, setPage] = useState("Account Details");
     const router = useRouter();
+
+    const changePage = (pageName) => {
+        setPage(pageName);
+    };
 
     useEffect(() => {
         // Redirect logged-out users to the homepage
@@ -16,6 +25,8 @@ export default function Profile() {
             router.push("/home");
         }
     }, [user, router]);
+
+    useEffect(() => {}, [page]);
     return (
         <Layout user={user}>
             <div className={styles.container}>
@@ -23,35 +34,39 @@ export default function Profile() {
                     <Header name="Profile Page" />
                     {user && (
                         <div>
-                            <h1>
-                                User - {!loading ? user.username : "Loading..."}{" "}
-                            </h1>
+                            {page == "Account Details" && <AccountDetails />}
+                            {page == "Achievements" && <Achievements />}
+                            {page == "Support" && <Support />}
+                            {page == "Privacy Notice" && <PrivacyNotice />}
                         </div>
                     )}
                 </div>
                 <div className={styles.leftContainer}>
                     <h1>Profile</h1>
-                    <Link
+                    <button
                         className={styles.link}
-                        href="/profile/dietaryrestrictions"
+                        onClick={() => changePage("Achievements")}
                     >
-                        Dietary Restrictions
-                    </Link>
-                    <Link className={styles.link} href="/profile/achievements">
                         Achievements
-                    </Link>
-                    <Link
+                    </button>
+                    <button
                         className={styles.link}
-                        href="/profile/accountdetails"
+                        onClick={() => changePage("Account Details")}
                     >
                         Account Details
-                    </Link>
-                    <Link className={styles.link} href="/profile/support">
+                    </button>
+                    <button
+                        className={styles.link}
+                        onClick={() => changePage("Support")}
+                    >
                         Support
-                    </Link>
-                    <Link className={styles.link} href="/profile/privacynotice">
+                    </button>
+                    <button
+                        className={styles.link}
+                        onClick={() => changePage("Privacy Notice")}
+                    >
                         Privacy Notice
-                    </Link>
+                    </button>
                 </div>
             </div>
         </Layout>
