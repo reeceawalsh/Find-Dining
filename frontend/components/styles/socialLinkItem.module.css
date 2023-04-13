@@ -1,0 +1,39 @@
+.connect {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-left: 0.3rem;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  align-self: center;
+  padding-top: 5px;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.connected {
+  padding-right: 2rem;
+  font-size: 1.1rem;
+}

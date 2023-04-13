@@ -1,12 +1,14 @@
 .headerWithSaveContainer {
-  background-color: #36DBFF;
+  background-color: #daf6fc;
   padding: 1rem;
   min-width: 100%;
   margin-top: 0;
   display: flex;
-  flex-direction: row;            /* default value; can be omitted */
-  flex-wrap: nowrap;   
-  justify-content: space-between   ;
+  flex-direction: row;
+  /* default value; can be omitted */
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border: 2px solid black;
 }
 
 .title {
