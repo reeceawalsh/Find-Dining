@@ -100,15 +100,15 @@ a {
 }
 
 .social-media-icon {
-  height: 3rem;
-  width: 3rem;
+  height: 3em;
+  width: 3em;
   opacity: 0.5;
 }
 
 .social-media-icon:hover {
   opacity: 1;
-  height: 3.1rem;
-  width: 3.1rem;
+  height: 3.1em;
+  width: 3.1em;
 }
 
 .content-body {
@@ -277,20 +277,17 @@ span.error:after {
   font-size: 1rem;
 }
 
-
-
 .info-section-container {
   border: 2px black solid;
   background-color: #FFFFFF;
   min-width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 }
 
 .info-section-item {
   background-color: #FFFFFF;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 0.3rem;
   min-width: 100%;
 }
 
@@ -418,4 +415,8 @@ span.error:after {
 .active-link {
   text-decoration: underline;
   font-weight: bolder;
+}
+
+.padding-left {
+  padding-left: 1rem;
 }

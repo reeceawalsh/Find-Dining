@@ -31,10 +31,11 @@ export default function Profile() {
         <Layout user={user}>
             <div className={styles.container}>
                 <div className={styles.rightContainer}>
-                    <Header name="Profile Page" />
                     {user && (
                         <div>
-                            {page == "Account Details" && <AccountDetails />}
+                            {page == "Account Details" && (
+                                <AccountDetails user={user} />
+                            )}
                             {page == "Achievements" && <Achievements />}
                             {page == "Support" && <Support />}
                             {page == "Privacy Notice" && <PrivacyNotice />}
