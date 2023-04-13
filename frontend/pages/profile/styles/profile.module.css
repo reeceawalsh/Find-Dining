@@ -1,0 +1,42 @@
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  padding-left: 2rem;
+  padding-top: 1.2rem;
+  width: 20vw;
+  border: 2px solid black;
+  height: 100vh;
+  gap: 1rem;
+}
+
+.rightContainer {
+  border: 2px solid black;
+  width: 80vw;
+  height: 100vh;
+  padding-left: 2rem;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.link {
+  font-size: 1.5rem;
+}
+
+.link:hover {
+  font-weight: bold;
+}
+
+.leftContainer h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: underline;
+}

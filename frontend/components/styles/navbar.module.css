@@ -10,6 +10,20 @@
   border-bottom: 2px solid black;
 }
 
+.rightNavbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rightNavbarLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .link {
   color: black;
   padding-left: 1rem;
@@ -17,6 +31,16 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.username {
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.username span {
+  font-weight: bold;
 }
 
 .link:hover {

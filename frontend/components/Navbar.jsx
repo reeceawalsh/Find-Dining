@@ -46,21 +46,30 @@ const Navbar = () => {
                     </NavLink>
                 )}
             </div>
-            <div className="right-navbar">
+            <div className={styles.rightNavbar}>
                 {loading ? (
                     <span>Loading...</span>
                 ) : user ? (
                     <>
-                        <NavLink className={styles.link} href="/profile">
-                            Profile
-                        </NavLink>
-                        <NavLink
-                            className={styles.link}
-                            href="/home"
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </NavLink>
+                        <p className={styles.username}>
+                            Signed in as:
+                            <span>
+                                {" "}
+                                {!loading ? user.username : "Loading..."}{" "}
+                            </span>
+                        </p>
+                        <div className={styles.rightNavbarLinks}>
+                            <NavLink className={styles.link} href="/profile">
+                                Profile
+                            </NavLink>
+                            <NavLink
+                                className={styles.link}
+                                href="/home"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </NavLink>
+                        </div>
                     </>
                 ) : (
                     <>

@@ -12,8 +12,7 @@ export default function Home() {
                 {user ? (
                     <div>
                         <h1>
-                            Welcome back{" "}
-                            {!loading ? user.username : "Loading..."}{" "}
+                            Welcome {!loading ? user.username : "Loading..."}{" "}
                         </h1>
                     </div>
                 ) : (
