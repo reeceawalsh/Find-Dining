@@ -5,7 +5,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const PasswordInput = (props) => {
     const [showPassword, setShowPassword] = useState(false);
 
-    const toggleShowPassword = () => {
+    const toggleShowPassword = (e) => {
+        e.preventDefault();
         setShowPassword(!showPassword);
     };
 
@@ -26,13 +27,16 @@ const PasswordInput = (props) => {
                             props.error ? "red-outline" : ""
                         }`}
                     />
-                    <span className="eye-icon" onClick={toggleShowPassword}>
+                    <button
+                        className="eye-icon"
+                        onClick={(e) => toggleShowPassword(e)}
+                    >
                         {showPassword ? (
                             <FontAwesomeIcon icon={faEyeSlash} />
                         ) : (
                             <FontAwesomeIcon icon={faEye} />
                         )}
-                    </span>
+                    </button>
                 </div>
             </div>
         </div>

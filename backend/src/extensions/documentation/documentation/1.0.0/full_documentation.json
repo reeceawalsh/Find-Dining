@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-03-29T09:44:34.651Z"
+    "x-generation-date": "2023-04-13T10:33:07.052Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1091,6 +1091,10 @@
                                 }
                               }
                             },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -2155,6 +2159,10 @@
                                   }
                                 }
                               }
+                            },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
                             },
                             "createdAt": {
                               "type": "string",
@@ -3254,6 +3262,10 @@
                                 }
                               }
                             },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -4318,6 +4330,10 @@
                                   }
                                 }
                               }
+                            },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
                             },
                             "createdAt": {
                               "type": "string",
@@ -5418,6 +5434,10 @@
                                 }
                               }
                             },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -6475,6 +6495,10 @@
                                   }
                                 }
                               }
+                            },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
                             },
                             "createdAt": {
                               "type": "string",
@@ -7567,6 +7591,10 @@
                                 }
                               }
                             },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -8624,6 +8652,10 @@
                                   }
                                 }
                               }
+                            },
+                            "dateOfBirth": {
+                              "type": "string",
+                              "format": "date"
                             },
                             "createdAt": {
                               "type": "string",
@@ -10986,6 +11018,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -12046,6 +12082,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -13141,6 +13181,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -14201,6 +14245,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -15315,6 +15363,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -16379,6 +16431,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -17478,6 +17534,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -18542,6 +18602,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -19634,6 +19698,10 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -20744,6 +20812,10 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -21888,6 +21960,10 @@
                                                           }
                                                         }
                                                       },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -22997,6 +23073,10 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -29319,6 +29399,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -30369,6 +30453,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -31454,6 +31542,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -32504,6 +32596,10 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -33578,6 +33674,10 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -34658,6 +34758,10 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -35772,6 +35876,10 @@
                                                           }
                                                         }
                                                       },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -36852,6 +36960,10 @@
                                                           }
                                                         }
                                                       },
+                                                      "dateOfBirth": {
+                                                        "type": "string",
+                                                        "format": "date"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -37083,7 +37195,8 @@
           "data": {
             "required": [
               "username",
-              "email"
+              "email",
+              "dateOfBirth"
             ],
             "type": "object",
             "properties": {
@@ -37175,6 +37288,10 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "format": "date"
               }
             }
           }
@@ -38107,6 +38224,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -38272,6 +38393,10 @@
                     }
                   }
                 }
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "format": "date"
               },
               "createdAt": {
                 "type": "string",
@@ -39246,6 +39371,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -39411,6 +39540,10 @@
                     }
                   }
                 }
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "format": "date"
               },
               "createdAt": {
                 "type": "string",
@@ -40418,6 +40551,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -40583,6 +40720,10 @@
                     }
                   }
                 }
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "format": "date"
               },
               "createdAt": {
                 "type": "string",
@@ -41557,6 +41698,10 @@
                                             }
                                           }
                                         },
+                                        "dateOfBirth": {
+                                          "type": "string",
+                                          "format": "date"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -41722,6 +41867,10 @@
                     }
                   }
                 }
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "format": "date"
               },
               "createdAt": {
                 "type": "string",

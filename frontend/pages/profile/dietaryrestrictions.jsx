@@ -1,11 +1,13 @@
 // Dietary Restrictions Page
 import React, { useState } from "react";
 import Header from "../../components/Header";
-
+import Layout from "@component/components/Layout";
+import { useUser } from "@component/lib/authContext";
 import styles from "./styles/dietary-restrictions.module.css";
 
 export default function DietaryRestrictions() {
     // this initialises restrictions to false, because not set true by user with clicking on it
+    const { user, loading } = useUser();
 
     const [restrictions, setRestrictions] = useState({
         Vegan: false,
@@ -70,35 +72,37 @@ export default function DietaryRestrictions() {
     );
 
     return (
-        <div className={`"container" ${styles.container}`}>
-            <Header name="Dietary Restrictions" />
-            <h2 className={styles.description}>
-                You will not receive results for restaurants that do not cater
-                for your restrictions.
-            </h2>
-            <div className={styles.subContainer}>
-                <RestrictionButton name="Vegan" />
-                <RestrictionButton name="Vegetarian" />
-                <RestrictionButton name="Halal" />
-                <RestrictionButton name="Kosher" />
-                <RestrictionButton name="GlutenFree" />
-                <RestrictionButton name="LactoseFree" />
-                <RestrictionButton name="SoyFree" />
-                <RestrictionButton name="NutFree" />
-                <RestrictionButton name="Keto" />
-                <RestrictionButton name="LowSodium" />
-                <RestrictionButton name="Healthy" />
-                <RestrictionButton name="ShellfishFree" />
-                <RestrictionButton name="Organic" />
+        <Layout user={user}>
+            <div className={`"container" ${styles.container}`}>
+                <Header name="Dietary Restrictions" />
+                <h2 className={styles.description}>
+                    You will not receive results for restaurants that do not
+                    cater for your restrictions.
+                </h2>
+                <div className={styles.subContainer}>
+                    <RestrictionButton name="Vegan" />
+                    <RestrictionButton name="Vegetarian" />
+                    <RestrictionButton name="Halal" />
+                    <RestrictionButton name="Kosher" />
+                    <RestrictionButton name="GlutenFree" />
+                    <RestrictionButton name="LactoseFree" />
+                    <RestrictionButton name="SoyFree" />
+                    <RestrictionButton name="NutFree" />
+                    <RestrictionButton name="Keto" />
+                    <RestrictionButton name="LowSodium" />
+                    <RestrictionButton name="Healthy" />
+                    <RestrictionButton name="ShellfishFree" />
+                    <RestrictionButton name="Organic" />
+                </div>
+                <div className={styles.buttons}>
+                    <button className={styles.button} onClick={handleSave}>
+                        Save
+                    </button>
+                    <button className={styles.button} onClick={handleReset}>
+                        Reset
+                    </button>
+                </div>
             </div>
-            <div className={styles.buttons}>
-                <button className={styles.button} onClick={handleSave}>
-                    Save
-                </button>
-                <button className={styles.button} onClick={handleReset}>
-                    Reset
-                </button>
-            </div>
-        </div>
+        </Layout>
     );
 }

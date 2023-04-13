@@ -1,0 +1,63 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  height: 7rem;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-family: sans-serif, Arial, Helvetica;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid black;
+}
+
+.rightNavbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rightNavbarLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.link {
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.username {
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.username span {
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.logo {
+  height: 5rem;
+  width: 8rem;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

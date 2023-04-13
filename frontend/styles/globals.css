@@ -170,6 +170,8 @@ span.error:after {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-control {
@@ -214,6 +216,8 @@ span.error:after {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 /** Containers for modals **/
@@ -274,6 +278,7 @@ span.error:after {
 }
 
 
+
 .info-section-container {
   border: 2px black solid;
   background-color: #FFFFFF;
@@ -291,4 +296,125 @@ span.error:after {
 
 .margin-top {
   margin-top: 1rem;
+
+/*App Feedback css*/
+
+.panel-container {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  border-radius: 4px;
+  font-size: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  min-width: 800px;
+}
+
+.panel-container strong {
+  line-height: 20px;
+}
+
+.ratings-container {
+  display: flex;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.icon_sat_1 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: red;
+}
+
+.icon_sat_2 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: orange;
+}
+
+.icon_sat_3 {
+  height: 4rem;
+  width: 4rem;
+  opacity: 0.5;
+  color: green;
+}
+
+.rating {
+  flex: 1;
+  cursor: pointer;
+  padding: 20px;
+  margin: 10px 5px;
+}
+
+.rating:hover,
+.rating.active {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating small {
+  color: #555;
+  display: inline-block;
+  margin: 10px 0 0;
+}
+
+.rating:hover small,
+.rating:active small {
+  color: #111;
+}
+
+.btn {
+  background-color: #302d2b;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 30px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.fa-heart {
+  color: red;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.feedback-textarea {
+  resize: none;
+}
+
+.spinner {
+  position: absolute;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #000;
+  animation: spinner 1s linear infinite;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.active-link {
+  text-decoration: underline;
+  font-weight: bolder;
 }
