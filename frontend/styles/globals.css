@@ -216,6 +216,8 @@ span.error:after {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 /** Containers for modals **/
