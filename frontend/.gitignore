@@ -31,3 +31,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+frontend/package.json
+package-lock.json
+
+/package.json
+/package-lock.json
+
+
+/frontend/package.json
+/frontend/package-lock.json
