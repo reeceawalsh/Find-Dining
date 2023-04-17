@@ -13,6 +13,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logout();
+
         router.push("/home");
     };
 

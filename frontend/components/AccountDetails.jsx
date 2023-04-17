@@ -12,8 +12,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SocialLinkItem from "./SocialLinkItem";
 import styles from "./styles/accountDetails.module.css";
-import TextInput from "./FormElements/TextInput";
-import PasswordInput from "./FormElements/PasswordInput";
+
 import ProfileTextInput from "./FormElements/ProfileTextInput";
 import ChangePassword from "./Forms/ChangePasswordForm";
 import validate from "../validationRules/ChangePasswordVR";

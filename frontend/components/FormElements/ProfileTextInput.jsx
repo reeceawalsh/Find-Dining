@@ -14,6 +14,7 @@ const ProfileTextInput = (props) => {
                 placeholder={props.placeholder}
                 onChange={props.onChange}
                 readOnly={!props.editable}
+                autoComplete={props.autoComplete}
             />
             {props.hasEditButton && (
                 <button onClick={props.onToggleEditable}>

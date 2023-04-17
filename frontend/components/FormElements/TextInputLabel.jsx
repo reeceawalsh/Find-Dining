@@ -9,6 +9,7 @@ const TextInputLabel = (props) => {
                 className="form-control required"
                 placeholder={props.placeholder}
                 onChange={props.onChange}
+                autoComplete={props.autoComplete}
             />
         </div>
     );
