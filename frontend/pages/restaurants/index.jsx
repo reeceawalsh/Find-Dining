@@ -19,7 +19,7 @@ export default function Restaurants() {
     };
 
     return (
-        <Layout user={user}>
+        <Layout>
             <div className="container">
                 <h1>Either list view or map view</h1>
                 <Link className="link" href={`/restaurants/${restaurant.name}`}>

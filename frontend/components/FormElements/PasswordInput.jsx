@@ -26,7 +26,7 @@ const PasswordInput = (props) => {
                         className={`form-control password-input ${
                             props.error ? "red-outline" : ""
                         }`}
-                        autoComplete={props.autocomplete}
+                        autoComplete={props.autoComplete}
                     />
                     <button
                         className="eye-icon"

@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }) {
                         content="width=device-width, initial-scale=1"
                     ></meta>
                 </Head>
-                {/** Check for authentication and then redirect to the homepage if the user is logged in and redirect to the login page if the user is not logged in.*/}
                 <Component {...pageProps} />
             </UserProvider>
         </CookiesProvider>

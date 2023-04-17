@@ -10,7 +10,7 @@
 }
 
 .rightContainer {
-  width: 80vw;
+  min-width: 80vw;
 }
 
 .selected {
@@ -32,6 +32,10 @@
 }
 
 .link:hover {
+  font-weight: bold;
+}
+
+.link:active {
   font-weight: bold;
 }
 

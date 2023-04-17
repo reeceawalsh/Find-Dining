@@ -4,17 +4,13 @@
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   font-size: 1.5rem;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   justify-items: center;
   flex-direction: column;
   align-items: center;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-}
 
 .skip {
   position: absolute;
@@ -23,9 +19,26 @@
   font-size: 1.2rem;
 }
 
+.logo {
+  position: absolute;
+  left: 1em;
+  top: 0.1em;
+}
+
 .skip:hover {
   text-decoration: underline;
 
+}
+
+.registrationContainer {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0.1em 2em 1em 2em;
+}
+
+.title {
+  font-size: 2.2rem;
+  padding-bottom: 0.5em;
 }
 
 .buttons {
@@ -35,24 +48,6 @@
   width: 100%;
   align-items: center;
   margin-top: 1rem;
-}
-
-.button {
-  width: 90%;
-  background-color: #36DBFF;
-  color: #EE7674;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 1.4rem;
-  font-weight: bolder;
-  letter-spacing: 2px;
-  box-shadow: 1px 1px 1px black;
-}
-
-.button:hover {
-  cursor: grab;
-  background-color: #EE7674;
-  color: #36DBFF;
 }
 
 .loginForm form {
@@ -85,4 +80,38 @@
 
 .hidden {
   display: none;
+}
+
+.button {
+  width: 100%;
+  background-color: white;
+  color: #EE7674;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  box-shadow: 1px 1px 1px black;
+  margin-top: 0.5em;
+}
+
+.button:hover {
+  cursor: grab;
+  background-color: #36DBFF;
+  color: #EE7674;
+}
+
+.registrationForm form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.registrationForm form input {
+  margin: 0;
+  height: 3rem;
+}
+
+.header {
+  height: 2rem;
 }

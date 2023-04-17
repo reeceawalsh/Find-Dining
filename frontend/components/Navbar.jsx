@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useUser } from "@component/lib/authContext";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "./styles/navbar.module.css";
 import NavLink from "./NavLink";
@@ -8,12 +7,9 @@ import NavLink from "./NavLink";
 const logo = require("../public/LogoCropped.png");
 
 const Navbar = () => {
-    const { user, loading, logout } = useUser();
-    const router = useRouter();
-
+    const { user, loading, logout, setUser } = useUser();
     const handleLogout = () => {
         logout();
-        router.push("/home");
     };
 
     return (

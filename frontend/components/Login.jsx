@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import useSetToken from "@component/lib/useSetToken";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 import styles from "./styles/login.module.css";
@@ -15,6 +16,8 @@ const Login = () => {
         email: "",
         password: "",
     });
+
+    const router = useRouter();
 
     const [errors, setErrors] = useState([]);
     const [validLogin, setValidLogin] = useState(true);
@@ -72,6 +75,8 @@ const Login = () => {
     const handleRegister = (e) => {
         console.log("Registration process");
         e.preventDefault();
+
+        router.push("/register");
         // send them to registration page
     };
 

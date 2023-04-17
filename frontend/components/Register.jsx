@@ -6,7 +6,8 @@ import styles from "./styles/register.module.css";
 import validate from "../validationRules/RegistrationVR";
 import RegistrationForm from "./Forms/RegistrationForm";
 import axios from "axios";
-import { Data } from "@react-google-maps/api";
+import Link from "next/link";
+import Image from "next/image";
 
 const Register = () => {
     const router = useRouter();
@@ -90,15 +91,36 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <RegistrationForm
-                styles={styles}
-                setRegistrationData={setRegistrationData}
-                registrationData={registrationData}
-                errors={errors}
-                handleRegister={handleRegister}
-                validRegister={validRegistration}
-            />
+        <div
+            className={`container blue-background black-text border-bottom-white`}
+        >
+            <div className={`${styles.container}`}>
+                <div className={styles.header}>
+                    <Image
+                        src="/LogoCropped.png"
+                        className={`app-logo ${styles.logo}`}
+                        height="70"
+                        width="120"
+                        alt="logo"
+                    />{" "}
+                    <Link className={styles.skip} href="/home">
+                        Home
+                    </Link>
+                </div>
+                <div
+                    className={`sub-container peach-background ${styles.registrationContainer}`}
+                >
+                    <h1 className={styles.title}>Sign Up</h1>
+                    <RegistrationForm
+                        styles={styles}
+                        setRegistrationData={setRegistrationData}
+                        registrationData={registrationData}
+                        errors={errors}
+                        handleRegister={handleRegister}
+                        validRegister={validRegistration}
+                    />
+                </div>
+            </div>
         </div>
     );
 };

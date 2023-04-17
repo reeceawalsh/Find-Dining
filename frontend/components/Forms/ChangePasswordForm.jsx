@@ -2,7 +2,7 @@ import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
 
-export default function ChangePassword({
+export default function ChangePasswordForm({
     styles,
     setPasswordData,
     passwordData,
