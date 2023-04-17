@@ -16,7 +16,6 @@ export const unsetToken = (removeCookie) => {
 export const getTokenFromLocalCookie = (cookies) => {
     return cookies["jwt"];
 };
-
 export const getUserFromLocalCookie = async (cookies) => {
     const jwt = getTokenFromLocalCookie(cookies);
     if (jwt) {
@@ -30,6 +29,13 @@ export const getUserFromLocalCookie = async (cookies) => {
                     },
                 }
             );
+
+            if (data.error) {
+                console.error(data.error);
+                return;
+            }
+
+            data.jwt = jwt; // Add the jwt property to the returned user object
             return data;
         } catch (err) {
             return console.error(err);

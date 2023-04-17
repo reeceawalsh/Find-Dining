@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -12,13 +12,22 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SocialLinkItem from "./SocialLinkItem";
 import styles from "./styles/accountDetails.module.css";
-
+import updateUserDetails from "@component/lib/updateUserDetails";
+import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
 import ProfileTextInput from "./FormElements/ProfileTextInput";
 import ChangePassword from "./Forms/ChangePasswordForm";
 import validate from "../validationRules/ChangePasswordVR";
+import { useUser } from "@component/lib/authContext";
+import {
+    handleClickConnected,
+    checkConnected,
+} from "../lib/accountDetailsUtil";
 
 // Account Details Page
 export default function AccountDetails({ user }) {
+    const { user: contextUser, setUser } = useUser();
+    const router = useRouter();
     const [openSavedData, setOpenSavedData] = useState(false);
     const [openAccount, setOpenAccount] = useState(false);
     const [openChangePassword, setOpenChangePassword] = useState(false);
@@ -31,38 +40,47 @@ export default function AccountDetails({ user }) {
         newPassword: "",
         confirmPassword: "",
     });
+    const [, setCookie, removeCookie] = useCookies([
+        "jwt",
+        "username",
+        "email",
+    ]);
+
     const [errors, setErrors] = useState([]);
 
     console.log(user);
 
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-    const handleClickConnected = (name) => {
-        if (!checkConnected(name)) {
-            const newConnected = [...connected, name];
-            setConnected(newConnected);
+    const handleSave = async (e) => {
+        e.preventDefault();
+        // if there isn't an authenticated user then redirect back to home
+        if (!contextUser) {
+            console.log("User not authenticated or logged in.");
+            router.push("/home");
         }
 
-        // replace with put request to server
-    };
+        const accessToken = user.jwt;
 
-    const checkConnected = (name) => {
-        let found = false;
-        connected.map((item) => {
-            if (item == name) {
-                found = true;
+        // update user details
+        try {
+            const updatedUser = await updateUserDetails(
+                contextUser.id,
+                localUser.email,
+                localUser.username,
+                accessToken
+            );
+            console.log(updatedUser);
+
+            // update cookies and userdata
+            if (updatedUser) {
+                setCookie("username", updatedUser.username);
+                setCookie("email", updatedUser.email);
+                setUser(updatedUser);
             }
-        });
-
-        return found;
-    };
-
-    const handleSave = (field) => {
-        // Send updates to the backend, for example:
-        // updateUserField(user.id, field, localUser[field]);
-
-        // Once the backend updates are successful, update the cookie:
-        // updateCookie("user", { ...user, [field]: localUser[field] });
+        } catch (error) {
+            console.error("Error updating user details:", error);
+        }
 
         // Toggle off the editable state
         toggleEditable();
@@ -102,6 +120,7 @@ export default function AccountDetails({ user }) {
     const toggleEditable = () => {
         setIsEditable(!isEditable);
     };
+
     const handleClickOpenSavedData = () => {
         setOpenSavedData(true);
     };
@@ -127,12 +146,20 @@ export default function AccountDetails({ user }) {
         setLocalUser({ ...localUser, [name]: value });
     };
 
+    if (!user) {
+        return null;
+    }
+
     return (
         <div className="container">
             <HeaderWithSave
                 name="Account Details Page"
-                handleEdit={toggleEditable}
-                handleSave={handleSave}
+                handleEdit={(e) => {
+                    toggleEditable(e);
+                }}
+                handleSave={(e) => {
+                    handleSave(e);
+                }}
                 editMode={isEditable}
             />
             <div className="info-section-container">
@@ -144,6 +171,7 @@ export default function AccountDetails({ user }) {
                         onChange={handleInputChange}
                         additionalClass={!isEditable ? styles.pointer : ""}
                         editable={isEditable}
+                        className={isEditable && "blue-outline"}
                     />
                 </div>
                 <div className="info-section-item">
@@ -154,6 +182,7 @@ export default function AccountDetails({ user }) {
                         onChange={handleInputChange}
                         additionalClass={!isEditable ? styles.pointer : ""}
                         editable={isEditable}
+                        className={isEditable && "blue-outline"}
                     />
                 </div>
 

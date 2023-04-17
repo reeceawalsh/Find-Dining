@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
-
     useEffect(() => {
         const fetchUser = async () => {
             const fetchedUser = await getUserFromLocalCookie(cookies);

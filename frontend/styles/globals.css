@@ -96,6 +96,7 @@ a {
   font-size: 1.3rem;
 }
 
+
 .error {
   color: red;
 }
@@ -163,6 +164,10 @@ span.error:after {
   border-color: #e34f4f;
 }
 
+.blue-outline {
+  border: 2px solid #48a7ff !important;
+}
+
 .form-group {
   position: relative;
   margin-bottom: 1rem;
@@ -189,7 +194,7 @@ span.error:after {
   padding-left: 19px;
   padding: 1.2rem 0.75rem;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1;
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;

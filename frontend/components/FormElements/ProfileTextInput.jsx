@@ -8,9 +8,9 @@ const ProfileTextInput = (props) => {
                 type="text"
                 name={props.name}
                 value={props.value || ""}
-                className={`form-control ${props.error ? "red-outline" : ""}${
-                    !props.editable && "pointer"
-                }`}
+                className={`${props.className} form-control ${
+                    props.error ? "red-outline" : ""
+                }${!props.editable && "pointer"}`}
                 placeholder={props.placeholder}
                 onChange={props.onChange}
                 readOnly={!props.editable}
