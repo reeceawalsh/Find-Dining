@@ -6,8 +6,11 @@ import Button from "@mui/material/Button";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
+import deleteAccount from "@component/lib/deleteAccount";
+import { useUser } from "@component/lib/authContext";
 
-export default function AccountDataDialogs() {
+const AccountDataDialogs = () => {
+    const { user, logout } = useUser();
     const [openSavedData, setOpenSavedData] = useState(false);
     const [openAccount, setOpenAccount] = useState(false);
     const theme = useTheme();
@@ -19,6 +22,20 @@ export default function AccountDataDialogs() {
 
     const handleToggleAccountModal = () => {
         setOpenAccount(!openAccount);
+    };
+
+    const handleDeleteAllSavedData = (e) => {
+        e.preventDefault();
+        handleToggleSavedDataModal();
+        console.log("Deleting all saved data");
+    };
+
+    const handleDeleteAccount = (e) => {
+        e.preventDefault();
+        handleToggleAccountModal();
+        const accessToken = user.jwt;
+        deleteAccount(user.id, accessToken, logout);
+        console.log("Deleting account");
     };
 
     return (
@@ -47,7 +64,12 @@ export default function AccountDataDialogs() {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleToggleSavedDataModal}>
+                    <Button
+                        autoFocus
+                        onClick={(e) => {
+                            handleDeleteAllSavedData(e);
+                        }}
+                    >
                         Yes
                     </Button>
                     <Button onClick={handleToggleSavedDataModal} autoFocus>
@@ -70,7 +92,12 @@ export default function AccountDataDialogs() {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleToggleAccountModal}>
+                    <Button
+                        autoFocus
+                        onClick={(e) => {
+                            handleDeleteAccount(e);
+                        }}
+                    >
                         Yes
                     </Button>
                     <Button onClick={handleToggleAccountModal} autoFocus>
@@ -80,4 +107,6 @@ export default function AccountDataDialogs() {
             </Dialog>
         </div>
     );
-}
+};
+
+export default AccountDataDialogs;

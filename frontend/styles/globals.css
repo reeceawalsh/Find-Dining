@@ -301,6 +301,10 @@ span.error:after {
   min-width: 100%;
 }
 
+.info-section-title {
+  padding-left: 2rem;
+}
+
 .margin-top {
   margin-top: 1rem;
 }

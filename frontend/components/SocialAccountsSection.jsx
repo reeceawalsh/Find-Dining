@@ -2,20 +2,46 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GoogleIcon from "@mui/icons-material/Google";
 import SocialLinkItem from "./SocialLinkItem";
+import { useState, useEffect } from "react";
 
-export default function SocialAccountsSection({ user, styles }) {
+export default function SocialAccountsSection({ user }) {
+    const [connected, setConnected] = useState({});
+
+    const handleClickConnected = (name) => {
+        let successful = false;
+        // add ability to link a social media account and try to do so, if it's successful then continue.
+        if (successful) {
+            setConnected((prevState) => {
+                return {
+                    ...prevState,
+                    [name.toLowerCase()]: !prevState[name.toLowerCase()],
+                };
+            });
+        }
+    };
+
+    useEffect(() => {
+        if (user) {
+            setConnected({
+                facebook: user.FacebookLinked,
+                instagram: user.InstagramLinked,
+                twitter: user.twitterLinked,
+            });
+        }
+    }, [user]);
+
     return (
         <div className="container">
             <div className="info-section-container">
                 <div className="info-section-item">
-                    <h2 style={{ paddingLeft: "1rem" }}>Social Accounts</h2>
+                    <h2 className="info-section-title">Social Accounts</h2>
                 </div>
             </div>
             <div className="info-section-container">
                 <SocialLinkItem
                     icon={<FacebookIcon />}
                     name="Facebook"
-                    checkConnected={user.FacebookLinked}
+                    checkConnected={connected["facebook"]}
                     handleClickConnected={() =>
                         handleClickConnected("Facebook")
                     }
@@ -23,7 +49,7 @@ export default function SocialAccountsSection({ user, styles }) {
                 <SocialLinkItem
                     icon={<InstagramIcon />}
                     name="Instagram"
-                    checkConnected={user.InstagramLinked}
+                    checkConnected={connected["instagram"]}
                     handleClickConnected={() =>
                         handleClickConnected("Instagram")
                     }
@@ -31,7 +57,7 @@ export default function SocialAccountsSection({ user, styles }) {
                 <SocialLinkItem
                     icon={<GoogleIcon />}
                     name="Google"
-                    checkConnected={user.GoogleLinked}
+                    checkConnected={connected["google"]}
                     handleClickConnected={() => handleClickConnected("Google")}
                 />
             </div>

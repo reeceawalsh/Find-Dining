@@ -3,6 +3,7 @@ import { getUserFromLocalCookie } from "./auth";
 import { useCookies } from "react-cookie";
 import { unsetToken } from "./auth";
 import useForceUpdate from "@component/lib/useForceUpdate.jsx";
+import { useRouter } from "next/router";
 
 const User = createContext({ user: null, loading: false });
 
@@ -10,6 +11,7 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+    const router = useRouter();
 
     const forceUpdate = useForceUpdate(); // Add this line
 
@@ -31,6 +33,7 @@ export const UserProvider = ({ children }) => {
     const logout = () => {
         unsetToken(removeCookie);
         setUser(null);
+        router.push("/home");
     };
 
     return (
