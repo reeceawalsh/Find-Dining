@@ -62,11 +62,11 @@
   border-radius: 0 20px 20px 0;
   border: 2px solid black;
   width: 7rem;
-  background: #36DBFF;
+  background: #EE7674;
 }
 
 .button:hover {
-  background: #EE7674;
+  background: #36DBFF;
   cursor: pointer;
   font-weight: bold;
 }

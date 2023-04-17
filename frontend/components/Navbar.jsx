@@ -30,9 +30,6 @@ const Navbar = () => {
                 <NavLink className={styles.link} href="/home/about">
                     About
                 </NavLink>
-                <NavLink className={styles.link} href="/home/search">
-                    Search
-                </NavLink>
                 <NavLink className={styles.link} href="/home/setlocation">
                     Set Location
                 </NavLink>
