@@ -3,7 +3,6 @@ import { useUser } from "@component/lib/authContext";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Layout from "@component/components/Layout";
-import Header from "@component/components/Header";
 import styles from "./styles/profile.module.css";
 import AccountDetails from "../../components/AccountDetails";
 import Achievements from "../../components/Achievements";
@@ -11,9 +10,11 @@ import Support from "../../components/Support";
 import PrivacyNotice from "../../components/PrivacyNotice";
 
 export default function Profile() {
-    const { user, loading } = useUser();
+    const { user, loading, setUser } = useUser();
     const [page, setPage] = useState("Account Details");
     const router = useRouter();
+    console.log("Profile");
+    console.log(user);
 
     const changePage = (pageName) => {
         setPage(pageName);
@@ -28,17 +29,13 @@ export default function Profile() {
 
     useEffect(() => {}, [page]);
     return (
-        <Layout user={user}>
+        <Layout>
             <div className={styles.container}>
                 <div className={styles.rightContainer}>
-                    <div>
-                        {page == "Account Details" && (
-                            <AccountDetails user={user} />
-                        )}
-                        {page == "Achievements" && <Achievements />}
-                        {page == "Support" && <Support />}
-                        {page == "Privacy Notice" && <PrivacyNotice />}
-                    </div>
+                    {page == "Account Details" && <AccountDetails />}
+                    {page == "Achievements" && <Achievements />}
+                    {page == "Support" && <Support />}
+                    {page == "Privacy Notice" && <PrivacyNotice />}
                 </div>
                 <div className={styles.leftContainer}>
                     <h1>Profile</h1>

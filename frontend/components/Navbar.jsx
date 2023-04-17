@@ -8,12 +8,14 @@ import NavLink from "./NavLink";
 const logo = require("../public/LogoCropped.png");
 
 const Navbar = () => {
-    const { user, loading, logout } = useUser();
+    const { user, loading, logout, setUser } = useUser();
     const router = useRouter();
+    console.log("Navbar - ");
+    console.log(user);
 
     const handleLogout = () => {
         logout();
-
+        setUser(null);
         router.push("/home");
     };
 

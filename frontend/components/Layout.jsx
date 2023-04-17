@@ -1,14 +1,10 @@
 import Navbar from "./Navbar";
-import { UserProvider } from "@component/lib/authContext";
-import MobileNavbar from "./MobileNavbar";
 
-const Layout = ({ user, loading = false, children }) => (
-    <UserProvider value={{ user, loading }}>
+const Layout = ({ children }) => (
+    <>
         <Navbar />
-        <main>
-            {loading ? <div className="spinner"></div> : <div>{children}</div>}
-        </main>
-    </UserProvider>
+        <main>{children}</main>
+    </>
 );
 
 export default Layout;
