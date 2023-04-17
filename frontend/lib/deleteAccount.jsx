@@ -10,7 +10,7 @@ const deleteAccount = async (userId, accessToken, logout) => {
                 },
             }
         );
-        console.log("Account deleted successfully:", response.data);
+        console.log("Account deleted successfully:");
         logout();
     } catch (error) {
         console.error("Error:", error);

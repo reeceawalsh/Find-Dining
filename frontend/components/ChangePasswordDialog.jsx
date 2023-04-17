@@ -2,9 +2,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import ChangePassword from "./Forms/ChangePasswordForm";
+import ChangePasswordForm from "./Forms/ChangePasswordForm";
 import Button from "@mui/material/Button";
 import validate from "@component/validationRules/ChangePasswordVR";
+import changePassword from "@component/lib/changePassword";
 
 import { useState } from "react";
 
@@ -20,8 +21,10 @@ export default function ChangePasswordDialog({ user, styles }) {
     const [errors, setErrors] = useState(validate(passwordData));
 
     const toggleDialog = () => {
+        wipePasswordData();
         setOpenDialog(!openDialog);
     };
+
     const handleChangePassword = (e) => {
         // check that passwords match
         e.preventDefault();
@@ -31,7 +34,14 @@ export default function ChangePasswordDialog({ user, styles }) {
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
             // if (passwordData.password === user password)
-            console.log("Changing password to " + passwordData.newPassword);
+            const accessToken = user.jwt;
+            changePassword(
+                passwordData.password,
+                passwordData.newPassword,
+                passwordData.confirmPassword,
+                accessToken
+            );
+            toggleDialog();
         } else {
             console.log("errors", newErrors);
             setErrors(newErrors);
@@ -67,7 +77,7 @@ export default function ChangePasswordDialog({ user, styles }) {
                 aria-labelledby="responsive-dialog-title"
             >
                 <DialogContent>
-                    <ChangePassword
+                    <ChangePasswordForm
                         setPasswordData={setPasswordData}
                         passwordData={passwordData}
                         errors={errors}
