@@ -34,7 +34,9 @@ export default function AccountDetails() {
             accessToken
         );
 
-        if (updatedUser) {
+        console.log(updatedUser);
+
+        if (updatedUser.id == user.id) {
             setCookie("username", updatedUser.username);
             setCookie("email", updatedUser.email);
             setUser((prevUser) => {
