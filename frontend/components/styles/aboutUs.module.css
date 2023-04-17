@@ -1,10 +1,10 @@
 .container h1 {
-    margin-top: 1em;
     min-width: 600px;
     max-width: 35vw;
+    text-align: center;
 }
 
-.container p{
+.container p {
     padding-top: 30px;
     min-width: 600px;
     max-width: 35vw;
@@ -12,4 +12,16 @@
 
 .highlightedText {
     color: #36DBFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 2em 2em 2em 2em;
+    margin-top: 1.5rem;
+    background-color: #EE7674;
 }
