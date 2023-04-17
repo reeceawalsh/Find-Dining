@@ -1,0 +1,13 @@
+.searchSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  gap: 1rem;
+}
+
+.welcomeMessage {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
