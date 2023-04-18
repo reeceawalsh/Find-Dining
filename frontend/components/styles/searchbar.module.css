@@ -7,7 +7,7 @@
 
 .dropdownItem:hover {
   font-weight: bold;
-  background-color: #EE7674;
+  background-color: #36DBFF;
 }
 
 .dropdownItem:last-child {
@@ -62,11 +62,11 @@
   border-radius: 0 20px 20px 0;
   border: 2px solid black;
   width: 7rem;
-  background: #EE7674;
+  background: #36DBFF;
 }
 
 .button:hover {
-  background: #36DBFF;
+  background: #3eff4b;
   cursor: pointer;
   font-weight: bold;
 }
