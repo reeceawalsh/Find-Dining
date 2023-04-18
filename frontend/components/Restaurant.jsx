@@ -1,6 +1,5 @@
 import styles from "./styles/restaurant.module.css";
 const Restaurant = ({ restaurant }) => {
-    console.log(restaurant);
     return (
         <div className={styles.restaurantWrapper}>
             <h2>{restaurant.name}</h2>
