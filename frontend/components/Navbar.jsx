@@ -30,8 +30,8 @@ const Navbar = () => {
                 <NavLink className={styles.link} href="/home/about">
                     About
                 </NavLink>
-                <NavLink className={styles.link} href="/home/setlocation">
-                    Set Location
+                <NavLink className={styles.link} href="/home/browselocations">
+                    Browse Locations
                 </NavLink>
                 {user && (
                     <NavLink className={styles.link} href="/home/favourites">

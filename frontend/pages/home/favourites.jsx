@@ -5,7 +5,7 @@ export default function Favourites() {
     const { user, loading } = useUser();
 
     return (
-        <Layout user={user}>
+        <Layout>
             <div className="container">
                 <Header name="Favourites Page" />
             </div>

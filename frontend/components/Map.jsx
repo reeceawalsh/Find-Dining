@@ -42,7 +42,7 @@ const Map = () => {
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
-                <h1 className={styles.title}>Set Location</h1>
+                <h1 className={styles.title}>Browse Locations</h1>
                 <SearchBar onPlaceSelected={handlePlaceSelected} />
                 <DistanceSlider
                     radius={radius}

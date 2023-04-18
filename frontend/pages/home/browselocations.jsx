@@ -3,13 +3,10 @@ import Layout from "@component/components/Layout";
 import Header from "@component/components/Header";
 import Map from "@component/components/Map";
 
-export default function SetLocation() {
-    const { user, loading } = useUser();
-
+export default function BrowseLocation() {
     return (
-        <Layout user={user}>
+        <Layout>
             <div className="container">
-                {/* <Header name="Set Location Page" /> */}
                 <Map />
             </div>
         </Layout>

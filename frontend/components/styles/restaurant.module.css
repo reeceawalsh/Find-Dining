@@ -1,0 +1,12 @@
+.restaurantWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurantInformation {
+  align-self: self-start;
+  padding: 1rem;
+}
