@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-    const { latitude, longitude, cuisine, sortType } = req.query;
-    // const latitude = req.query.latitude || 54.9783;
-    // const longitude = req.query.longitude || -1.61396;
+    const { term, sort_by, radius, offset, limit } = req.query;
+    const latitude = req.query.latitude || 54.9783;
+    const longitude = req.query.longitude || -1.61396;
 
     try {
         const response = await axios.get(
@@ -16,8 +16,11 @@ export default async function handler(req, res) {
                 params: {
                     latitude,
                     longitude,
-                    categories: cuisine,
-                    sort_by: sortType,
+                    term: term,
+                    sort_by: sort_by,
+                    radius: radius,
+                    offset: offset,
+                    limit: limit,
                 },
             }
         );

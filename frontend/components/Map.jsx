@@ -1,9 +1,4 @@
-import {
-    useLoadScript,
-    GoogleMap,
-    CircleF,
-    MarkerF,
-} from "@react-google-maps/api";
+import { GoogleMap, CircleF, MarkerF } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
 import SearchBar from "./SearchBar";
@@ -11,7 +6,6 @@ import DistanceSlider from "./DistanceSlider";
 import useFetchNearbyRestaurants from "../lib/useFetchRestaurants";
 
 const Map = () => {
-    const libraries = useMemo(() => ["places"], []);
     const [mapCenter, setMapCenter] = useState({
         lat: 54.9783,
         lng: -1.61396,
@@ -21,16 +15,7 @@ const Map = () => {
     const [zoom, setZoom] = useState(14);
     const [hoveredRestaurant, setHoveredRestaurant] = useState(null);
 
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: libraries,
-    });
-
-    const restaurants = useFetchNearbyRestaurants(mapCenter, radius, isLoaded);
-
-    if (!isLoaded) {
-        return <p>Loading...</p>;
-    }
+    const restaurants = useFetchNearbyRestaurants(mapCenter, radius);
 
     const handlePlaceSelected = ({ address, lat, lng }) => {
         console.log("Selected address:", address);
@@ -42,8 +27,6 @@ const Map = () => {
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
-                <h1 className={styles.title}>Browse Locations</h1>
-                <SearchBar onPlaceSelected={handlePlaceSelected} />
                 <DistanceSlider
                     radius={radius}
                     onRadiusChange={(newRadius) => {

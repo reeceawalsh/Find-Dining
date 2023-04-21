@@ -6,7 +6,7 @@
 }
 
 .dropdownItem:hover {
-  font-weight: bold;
+  /* font-weight: bold; */
   background-color: #36DBFF;
 }
 
@@ -16,7 +16,7 @@
 
 .dropdownWrapper {
   background-color: white;
-  width: calc(100% - 7rem + 2px);
+  max-width: calc(100% - 7rem + 2px);
   /* 100% of container but minus the button */
   cursor: pointer;
   border-radius: 2px 2px 20px 20px;

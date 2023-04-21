@@ -1,12 +1,11 @@
 import { useUser } from "@component/lib/authContext";
-import Header from "@component/components/Header";
 import Layout from "../../components/Layout";
 import SearchBar from "@component/components/SearchBar";
 import styles from "./styles/home.module.css";
 
 export default function Home() {
     const { user, loading } = useUser();
-    console.log(user);
+
     return (
         <Layout>
             <div className="container">

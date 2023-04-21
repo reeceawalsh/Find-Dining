@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-const useFetchNearbyRestaurants = (mapCenter, radius, isLoaded) => {
+const useFetchNearbyRestaurants = (mapCenter, radius) => {
     const [restaurants, setRestaurants] = useState([]);
 
     useEffect(() => {
-        if (!isLoaded || typeof google === "undefined") {
+        if (typeof google === "undefined") {
             console.error("Google Maps API is not loaded yet.");
             return;
         }
@@ -26,7 +26,7 @@ const useFetchNearbyRestaurants = (mapCenter, radius, isLoaded) => {
                 console.error("Error fetching nearby restaurants:", status);
             }
         });
-    }, [mapCenter, radius, isLoaded]);
+    }, [mapCenter, radius]);
 
     return restaurants;
 };
