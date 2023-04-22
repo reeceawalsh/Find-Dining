@@ -1,31 +1,72 @@
 .dropdownItem {
-  border-top: 1px black solid;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  padding-left: 2rem;
 }
 
 .dropdownItem:hover {
-  font-weight: bold;
+  /* font-weight: bold; */
+  background-color: #36DBFF;
+}
+
+.dropdownItem:last-child {
+  border-radius: 0 0 18px 18px;
 }
 
 .dropdownWrapper {
   background-color: white;
-  width: 22rem;
-  padding-left: 2px;
-  padding-right: 2px;
+  max-width: calc(100% - 7rem + 2px);
+  /* 100% of container but minus the button */
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 2px 2px 20px 20px;
+  border: 2px solid black;
+  border-top: 0;
+  margin-top: -1.2rem;
+  z-index: 1;
+  padding-top: 1rem;
 }
-
 
 .dropdownWrapper .searchbar {
   padding: 2px;
 }
 
-.searchbar {
-  width: 22rem;
-  padding-left: 5px;
-  border-radius: 2px;
+.dropdownWrapper:last-child {
+  border-radius: 0 0 20px 20px;
 }
 
+.searchbarContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchbar {
+  width: 30rem;
+  padding-left: 1rem;
+  border-radius: 20px 0 0 20px;
+  height: 3rem;
+  outline: none;
+  border: 2px solid black;
+  border-right: 0;
+}
+
+.searchbar:focus,
 .searchbar:active {
-  border: 2px solid #36DBFF;
+  border: 2px solid black;
+  border-radius: 20px 0 0 0;
+  border-right: 0;
+}
+
+.button {
+  background: white;
+  border-radius: 0 20px 20px 0;
+  border: 2px solid black;
+  width: 7rem;
+  background: #36DBFF;
+}
+
+.button:hover {
+  background: #3eff4b;
+  cursor: pointer;
+  font-weight: bold;
 }

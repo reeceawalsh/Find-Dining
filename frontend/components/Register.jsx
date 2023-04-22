@@ -8,6 +8,7 @@ import RegistrationForm from "./Forms/RegistrationForm";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+const logo = require("../public/LogoCropped.png");
 
 const Register = () => {
     const router = useRouter();
@@ -96,13 +97,14 @@ const Register = () => {
         >
             <div className={`${styles.container}`}>
                 <div className={styles.header}>
-                    <Image
-                        src="/LogoCropped.png"
-                        className={`app-logo ${styles.logo}`}
-                        height="70"
-                        width="120"
-                        alt="logo"
-                    />{" "}
+                    <Link href="/home">
+                        <Image
+                            className={`logo app-logo ${styles.logo}`}
+                            src={logo}
+                            alt="Find Dining Logo - A very cute burger with a knife and fork."
+                            priority="true"
+                        />
+                    </Link>
                     <Link className={styles.skip} href="/home">
                         Home
                     </Link>

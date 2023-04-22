@@ -51,11 +51,6 @@
   text-decoration: underline;
 }
 
-.logo {
-  height: 5rem;
-  width: 8rem;
-}
-
 .logoContainer {
   display: flex;
   flex-direction: row;

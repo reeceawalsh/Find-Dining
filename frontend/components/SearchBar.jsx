@@ -3,8 +3,13 @@ import usePlacesAutocomplete, {
     getGeocode,
 } from "use-places-autocomplete";
 import styles from "./styles/searchbar.module.css";
+import { useState, useEffect, useMemo } from "react";
+import { useRouter } from "next/router";
 
 const SearchBar = ({ onPlaceSelected }) => {
+    const [location, setLocation] = useState({ lat: "", lng: "" });
+    const router = useRouter();
+
     const {
         ready,
         value,
@@ -29,20 +34,46 @@ const SearchBar = ({ onPlaceSelected }) => {
             if (onPlaceSelected) {
                 onPlaceSelected({ address, lat, lng });
             }
+            setLocation({ ...location, lat: lat, lng: lng });
+            console.log(location);
         } catch (error) {
             console.error("Error fetching geocode: ", error);
         }
     };
 
+    const handleSearch = () => {
+        if (location.lat && location.lng) {
+            router.push("/restaurants");
+        }
+    };
+
+    useEffect(() => {
+        if (location.lat && location.lng) {
+            // Save the location to the local storage
+            localStorage.setItem("location", JSON.stringify(location));
+            console.log(location);
+        }
+    }, [location]);
+
     return (
         <div>
-            <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                disabled={!ready}
-                placeholder="Search for a location"
-                className={styles.searchbar}
-            />
+            <div className={styles.searchbarContainer}>
+                <input
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    disabled={!ready}
+                    placeholder="Search for a location"
+                    className={styles.searchbar}
+                />
+                <button
+                    className={styles.button}
+                    onClick={(e) => {
+                        handleSearch(e);
+                    }}
+                >
+                    Search
+                </button>
+            </div>
             <div className={styles.dropdownWrapper}>
                 {status === "OK" &&
                     data.map(({ id, description }) => (

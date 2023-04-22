@@ -17,9 +17,10 @@ const Navbar = () => {
             <div className={styles.logoContainer}>
                 <Link href="/home">
                     <Image
-                        className={styles.logo}
+                        className="logo"
                         src={logo}
                         alt="Find Dining Logo - A very cute burger with a knife and fork."
+                        priority="true"
                     />
                 </Link>
             </div>
@@ -30,12 +31,7 @@ const Navbar = () => {
                 <NavLink className={styles.link} href="/home/about">
                     About
                 </NavLink>
-                <NavLink className={styles.link} href="/home/search">
-                    Search
-                </NavLink>
-                <NavLink className={styles.link} href="/home/setlocation">
-                    Set Location
-                </NavLink>
+
                 {user && (
                     <NavLink className={styles.link} href="/home/favourites">
                         Favourites

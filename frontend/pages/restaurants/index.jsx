@@ -2,38 +2,30 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "@component/components/Layout";
 import { useUser } from "@component/lib/authContext";
+import RestaurantsList from "@component/components/RestaurantsList";
+import Toggle from "@component/components/FormElements/Toggle";
+import Map from "@component/components/Map";
 
 // Restaurants Page
 export default function Restaurants() {
-    const [restaurant, setRestaurant] = useState({
-        name: "",
-    });
     const { user, loading } = useUser();
+    const [selectedValue, setSelectedValue] = useState("List View");
 
-    const setName = (event) => {
-        const { name, value } = event.target;
-        setRestaurant((prevName) => ({
-            ...prevName,
-            [name]: value,
-        }));
+    const handleToggle = (newValue) => {
+        setSelectedValue(newValue);
     };
 
     return (
         <Layout>
             <div className="container">
-                <h1>Either list view or map view</h1>
-                <Link className="link" href={`/restaurants/${restaurant.name}`}>
-                    {restaurant.name}
-                </Link>
-                <form>
-                    <input
-                        name="name"
-                        type="text"
-                        placeholder="RestaurantName"
-                        value={restaurant.name}
-                        onChange={setName}
-                    />
-                </form>
+                <Toggle
+                    value1="List View"
+                    value2="Map View"
+                    selectedValue={selectedValue}
+                    handleToggle={handleToggle}
+                />
+                {selectedValue == "List View" && <RestaurantsList />}
+                {selectedValue == "Map View" && <Map />}
             </div>
         </Layout>
     );

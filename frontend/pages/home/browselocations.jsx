@@ -1,13 +1,13 @@
 import { useUser } from "@component/lib/authContext";
 import Layout from "@component/components/Layout";
 import Header from "@component/components/Header";
-export default function Search() {
-    const { user, loading } = useUser();
+import Map from "@component/components/Map";
 
+export default function BrowseLocation() {
     return (
-        <Layout user={user}>
+        <Layout>
             <div className="container">
-                <Header name="Search Page" />
+                <Map />
             </div>
         </Layout>
     );
