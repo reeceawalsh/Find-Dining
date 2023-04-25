@@ -95,9 +95,11 @@ const RestaurantPage = ({
     const submitReview = async (review, token, rating) => {
         const Restaurant = strapiRestaurantDetails.id;
         const User = user.id;
+        const reviewer = user.username;
+        console.log(reviewer);
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/addReview?review=${review}&Restaurant=${Restaurant}&User=${User}&rating=${rating}&token=${token}`
+                `${process.env.NEXT_PUBLIC_BASE_URL}/api/addReview?review=${review}&Restaurant=${Restaurant}&User=${User}&rating=${rating}&token=${token}&reviewer=${reviewer}`
             );
 
             if (response.status === 201) {

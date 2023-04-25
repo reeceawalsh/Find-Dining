@@ -17,42 +17,40 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
     const [token, setToken] = useState(null);
     const { user } = useUser();
     const [favourite, setFavourite] = useState(false);
-    console.log("Initial favourite state", favourite);
-
-    console.log("Favourites inside Restaurant:", favourites);
 
     const getRestaurantData = async () => {
         const restaurantData = await fetchRestaurantID(
             restaurant.id,
-            restaurant.name,
-            user.id
+            restaurant.name
         );
-        if (restaurantData) {
-            return restaurantData;
-        }
+        return restaurantData;
     };
 
     const handleFavoriteClick = async () => {
         const restaurantData = await getRestaurantData();
-        console.log(restaurantData);
-        let uuid = restaurantData.id;
-        const tempRestaurant = { uuid: uuid, id: restaurant.id };
-        const index = favourites.findIndex(
-            (fav) =>
-                fav.uuid === tempRestaurant.uuid && fav.id === tempRestaurant.id
-        );
-        let temp;
-        if (index !== -1) {
-            temp = [
-                ...favourites.slice(0, index),
-                ...favourites.slice(index + 1),
-            ];
+        if (restaurantData) {
+            console.log("working");
+            let uuid = restaurantData.id;
+            const tempRestaurant = { uuid: uuid, id: restaurant.id };
+            const index = favourites.findIndex(
+                (fav) =>
+                    fav.uuid === tempRestaurant.uuid &&
+                    fav.id === tempRestaurant.id
+            );
+            let temp;
+            if (index !== -1) {
+                temp = [
+                    ...favourites.slice(0, index),
+                    ...favourites.slice(index + 1),
+                ];
+            } else {
+                temp = [...favourites, { uuid: uuid, id: restaurant.id }];
+            }
+            setFavourites(temp);
+            setFavourite(!favourite);
         } else {
-            temp = [...favourites, { uuid: uuid, id: restaurant.id }];
+            console.log("restaurant data not set yet", restaurantData);
         }
-        setFavourites(temp);
-        addToFavourites(favourites, uuid);
-        setFavourite(!favourite);
     };
 
     useEffect(() => {
@@ -60,8 +58,11 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
     }, [cookies]);
 
     useEffect(() => {
+        if (user & user.id) {
+            addToFavourites(favourites, user.id);
+        }
         setFavourite(favourites.some((fav) => fav.id === restaurant.id));
-    }, [favourites, restaurant.id]);
+    }, [favourites, user, restaurant.id]);
 
     return (
         <div className={styles.restaurantWrapper}>

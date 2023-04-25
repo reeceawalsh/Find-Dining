@@ -1,7 +1,7 @@
 import { getUserFromLocalCookie } from "./auth";
 const axios = require("axios");
 
-const postReview = async ({ reviewData, token, restaurantID }) => {
+const postReview = async ({ reviewData, token, restaurantID, User }) => {
     let config = {
         method: "post",
         maxBodyLength: Infinity,
@@ -12,7 +12,7 @@ const postReview = async ({ reviewData, token, restaurantID }) => {
         },
         data: {
             review: { reviewData },
-            reviewer: await getUserFromLocalCookie(),
+            reviewer: User,
             restaurant: restaurantID,
         },
     };

@@ -7,6 +7,7 @@ import cuisines from "../lib/cuisines.json";
 import filters from "../lib/filters.json";
 import { useUser } from "@component/lib/authContext";
 import fetchUserData from "@component/lib/fetchUserData";
+import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 
 const RestaurantsList = () => {
     const { user, loading } = useUser();
@@ -51,6 +52,9 @@ const RestaurantsList = () => {
             renderedIds.push(...newIds);
             setRestaurants((prevRestaurants) => {
                 return [...prevRestaurants, ...newRestaurants];
+            });
+            newRestaurants.forEach(async (restaurant) => {
+                await fetchRestaurantID(restaurant.id, restaurant.name);
             });
         } catch (error) {
             console.error("Error fetching data:", error);
