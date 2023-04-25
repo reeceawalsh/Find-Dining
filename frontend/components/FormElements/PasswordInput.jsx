@@ -28,6 +28,7 @@ const PasswordInput = (props) => {
                         }`}
                         autoComplete={props.autoComplete}
                     />
+
                     <button
                         className="eye-icon"
                         onClick={(e) => toggleShowPassword(e)}

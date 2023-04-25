@@ -33,9 +33,17 @@ const Navbar = () => {
                 </NavLink>
 
                 {user && (
-                    <NavLink className={styles.link} href="/home/favourites">
-                        Favourites
-                    </NavLink>
+                    <>
+                        <NavLink
+                            className={styles.link}
+                            href="/home/favourites"
+                        >
+                            Favourites
+                        </NavLink>
+                        <NavLink className={styles.link} href="/restaurants">
+                            Find Dining
+                        </NavLink>
+                    </>
                 )}
             </div>
             <div className={styles.rightNavbar}>

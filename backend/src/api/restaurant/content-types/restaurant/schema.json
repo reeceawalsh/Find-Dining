@@ -12,38 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "Restaurant"
+    },
     "restaurantID": {
-      "type": "uid"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
-    "information": {
-      "type": "text"
-    },
-    "address": {
-      "type": "text"
-    },
-    "menus": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu.menu",
-      "mappedBy": "restaurant"
-    },
-    "images": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::image.image",
-      "mappedBy": "restaurant"
+    "name": {
+      "type": "string"
     },
     "users": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "restaurants"
-    },
-    "telephone": {
-      "type": "string"
-    },
-    "cuisine": {
-      "type": "string"
+      "mappedBy": "restaurants"
     }
   }
 }

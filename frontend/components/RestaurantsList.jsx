@@ -3,59 +3,30 @@ import axios from "axios";
 import useLocation from "@component/lib/useLocation";
 import Restaurant from "./Restaurant";
 import styles from "./styles/restaurantsList.module.css";
+import cuisines from "../lib/cuisines.json";
+import filters from "../lib/filters.json";
+import { useUser } from "@component/lib/authContext";
+import fetchUserData from "@component/lib/fetchUserData";
 
 const RestaurantsList = () => {
+    const { user, loading } = useUser();
     const location = useLocation();
     const loader = useRef(null);
     const { lat, lng } = location;
     const [restaurants, setRestaurants] = useState([]);
     const [cuisine, setCuisine] = useState("");
     const [renderedIds, setRenderedIds] = useState([]);
-
-    const allCuisines = [
-        { key: "", value: "All Cuisines" },
-        { key: "Asian fusion", value: "Asian fusion" },
-        { key: "Bangladeshi", value: "Bangladeshi" },
-        { key: "Brazilian", value: "Brazilian" },
-        { key: "British", value: "British" },
-        { key: "Carribean", value: "Carribean" },
-        { key: "Chinese", value: "Chinese" },
-        { key: "Cuban", value: "Cuban" },
-        { key: "Ethiopian", value: "Ethiopian" },
-        { key: "Filipino", value: "Filipino" },
-        { key: "French", value: "French" },
-        { key: "German", value: "German" },
-        { key: "Greek", value: "Greek" },
-        { key: "Indian", value: "Indian" },
-        { key: "Indonesian", value: "Indonesian" },
-        { key: "Italian", value: "Italian" },
-        { key: "Japenese", value: "Japenese" },
-        { key: "Korean", value: "Korean" },
-        { key: "Lebanese", value: "Lebanese" },
-        { key: "Malaysian", value: "Malaysian" },
-        { key: "Mexican", value: "Mexican" },
-        { key: "Moroccan", value: "Moroccan" },
-        { key: "Pakistani", value: "Pakistani" },
-        { key: "Portuguese", value: "Portuguese" },
-        { key: "Spanish", value: "Spanish" },
-        { key: "Thai", value: "Thai" },
-        { key: "Turkish", value: "Turkish" },
-        { key: "Vietnamese", value: "Vietnamese" },
-    ];
+    const [favourites, setFavourites] = useState([]);
+    const [userData, setUserData] = useState(null);
 
     // can sort by rating, review_count, distance, price, open_now and best_match (Default)
     const [sortType, setSortType] = useState("best_match");
-    const [allSortTypes, setAllSortTypes] = useState([
-        { key: "best_match", value: "Best match" },
-        { key: "rating", value: "Rating" },
-        { key: "review_count", value: "Amount of Reviews" },
-        { key: "distance", value: "Distance" },
-    ]);
 
     // Yelps maximum radius is 40k
     const [radius, setRadius] = useState(40000);
     const [page, setPage] = useState(1);
 
+    // fetch data from yelp for the restaurants
     const fetchData = async () => {
         try {
             const response = await axios.get("/api/yelp", {
@@ -90,6 +61,7 @@ const RestaurantsList = () => {
         fetchData();
     }, [cuisine, sortType, lat, lng, page]);
 
+    // handles the cuisine dropdown option changing
     const handleCuisineChange = (e) => {
         setPage(1);
         setRestaurants([]);
@@ -97,6 +69,7 @@ const RestaurantsList = () => {
         setRenderedIds([]);
     };
 
+    // handles the sort filter dropdown option changing
     const handleSortChange = (e) => {
         setPage(1);
         setRestaurants([]);
@@ -104,6 +77,7 @@ const RestaurantsList = () => {
         setRenderedIds([]);
     };
 
+    // fully resets both dropdowns and search parameters
     const reset = (e) => {
         e.preventDefault();
         setCuisine("");
@@ -136,6 +110,32 @@ const RestaurantsList = () => {
             }
         };
     }, []);
+
+    // ensure the list of favourite restaurants for the user is up to date
+    useEffect(() => {
+        const getData = async () => {
+            // get up-to-date userData
+            const data = await fetchUserData(user.id);
+            setUserData(data);
+            // create temp for immutability
+            const temp = [];
+            // need the uuid for adding to favourites and need the yelp id (id) for checking if they are favourited already
+            if (userData) {
+                userData.restaurants.map((restaurant) =>
+                    temp.push({
+                        uuid: restaurant.id,
+                        id: restaurant.restaurantID,
+                    })
+                );
+                setFavourites(temp);
+                console.log(favourites);
+            }
+        };
+        if (user) {
+            getData();
+        }
+    }, [user]);
+
     return (
         <div className={`container`}>
             <div className={styles.top}>
@@ -148,7 +148,7 @@ const RestaurantsList = () => {
                         <option value="" selected disabled>
                             Select a Cuisine
                         </option>
-                        {allCuisines.map((type) => {
+                        {cuisines.map((type) => {
                             return (
                                 <option value={type.key}>{type.value}</option>
                             );
@@ -158,7 +158,7 @@ const RestaurantsList = () => {
                         <option value="" selected disabled>
                             Filter By:
                         </option>
-                        {allSortTypes.map((type) => {
+                        {filters.map((type) => {
                             return (
                                 <option value={type.key}>{type.value}</option>
                             );
@@ -174,7 +174,12 @@ const RestaurantsList = () => {
 
             <div className={styles.restaurantsWrapper}>
                 {restaurants.map((restaurant, index) => (
-                    <Restaurant key={index} restaurant={restaurant} />
+                    <Restaurant
+                        key={index}
+                        restaurant={restaurant}
+                        favourites={favourites}
+                        setFavourites={setFavourites}
+                    />
                 ))}
             </div>
             <div ref={loader} className={styles.loader}></div>

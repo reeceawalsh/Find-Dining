@@ -16,17 +16,17 @@ export default function AccountDetails() {
     const [isEditable, setIsEditable] = useState(false);
     const [formData, setFormData] = useState({});
     const [, setCookie] = useCookies(["jwt", "username", "email"]);
+    const accessToken = user.jwt;
 
+    // handles pressing save
     const handleSave = async (e) => {
         e.preventDefault();
-
         if (!user) {
             console.log("User not authenticated or logged in.");
             router.push("/home");
         }
 
-        const accessToken = user.jwt;
-
+        // sends a put request to the server to update the users email and username. updating password is a separate request.
         const updatedUser = await updateUserDetails(
             user.id,
             formData.email,
@@ -34,8 +34,7 @@ export default function AccountDetails() {
             accessToken
         );
 
-        console.log(updatedUser);
-
+        // update cookies with the new username and email if applicable
         if (updatedUser.id == user.id) {
             setCookie("username", updatedUser.username);
             setCookie("email", updatedUser.email);
@@ -43,19 +42,22 @@ export default function AccountDetails() {
                 return { ...prevUser, ...updatedUser };
             });
         }
-
+        // turn edit mode off
         toggleEditable();
     };
 
+    // toggles the ability to edit fields
     const toggleEditable = () => {
         setIsEditable(!isEditable);
     };
 
+    // tracks the fields that are being edited.
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // updates the formdata when the user has changed their info with the info they changed it to.
     useEffect(() => {
         if (user) {
             setFormData({ ...user });

@@ -66,12 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "restaurants": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::restaurant.restaurant",
-      "mappedBy": "users"
-    },
     "facebookLinked": {
       "type": "boolean"
     },
@@ -81,21 +75,27 @@
     "googleLinked": {
       "type": "boolean"
     },
-    "dietary_restrictions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::dietary-restriction.dietary-restriction",
-      "mappedBy": "users_permissions_users"
-    },
-    "achievements": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::achievement.achievement",
-      "mappedBy": "user"
-    },
     "dateOfBirth": {
       "type": "date",
       "required": true
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "user"
+    },
+    "dietary_restrictions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dietary-restriction.dietary-restriction",
+      "mappedBy": "users_permissions_user"
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "users"
     }
   }
 }

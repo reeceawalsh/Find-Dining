@@ -1,0 +1,16 @@
+.stars {
+  display: flex;
+}
+
+.starWrapper {
+  cursor: pointer;
+  width: 3rem;
+  position: relative;
+}
+
+.starOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}

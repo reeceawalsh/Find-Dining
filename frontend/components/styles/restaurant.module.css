@@ -17,6 +17,13 @@
 
 .imageWrapper {
   margin-right: 16px;
+  border: 0.5px solid black;
+  height: 240px;
+  border-radius: 5px;
+}
+
+.image {
+  border-radius: 5px;
 }
 
 .infoWrapper {
@@ -49,9 +56,14 @@
   cursor: pointer;
 }
 
-.iconButton:hover {
+.iconButton:hover,
+.favourited {
   color: #36DBFF;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }
+
 
 .infoSubWrapper {
   margin-top: 8px;
@@ -76,4 +88,11 @@
 
 .reviewButton:hover {
   background-color: #36DBFF;
+}
+
+.link {
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

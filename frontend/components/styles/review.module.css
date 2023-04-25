@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 80vw;
+}
+
+.text {
+  margin-top: 0.5rem;
+}
+
+.username {
+  font-weight: bold;
+}

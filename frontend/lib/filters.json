@@ -1,0 +1,6 @@
+[
+    { "key": "best_match", "value": "Best match" },
+    { "key": "rating", "value": "Rating" },
+    { "key": "review_count", "value": "Amount of Reviews" },
+    { "key": "distance", "value": "Distance" }
+]
