@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function handler(req, res) {
     if (req.method === "GET") {
-        const { review, Restaurant, User, rating, token } = req.query;
+        const { review, Restaurant, User, rating, token, reviewer } = req.query;
         try {
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_STRAPI_URL}/reviews?populate=*`,
@@ -11,6 +11,7 @@ export default async function handler(req, res) {
                         review,
                         Restaurant,
                         User,
+                        reviewer,
                         rating,
                     },
                 },
