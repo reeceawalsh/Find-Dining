@@ -215,19 +215,29 @@ const RestaurantPage = ({
                     ))}
             </div>
             <div id="writeReview" ref={writeReviewRef}>
-                <form
-                    className={styles.reviewForm}
-                    onSubmit={handleSubmitReview}
-                >
-                    <h2>Submit your review</h2>
-                    <InteractiveStarRating onRatingChange={setSelectedRating} />
-                    <textarea
-                        placeholder="Write your review here..."
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                    />
-                    <button type="submit">Submit</button>
-                </form>
+                {user ? (
+                    <form
+                        className={styles.reviewForm}
+                        onSubmit={handleSubmitReview}
+                    >
+                        <h2>Submit your review</h2>
+                        <InteractiveStarRating
+                            onRatingChange={setSelectedRating}
+                        />
+                        <textarea
+                            placeholder="Write your review here..."
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
+                ) : (
+                    <div>
+                        <p className={styles.loginToLeaveReviewMsg}>
+                            Please login to leave a review.
+                        </p>
+                    </div>
+                )}
             </div>
         </div>
     );
