@@ -48,6 +48,7 @@ const RestaurantPage = ({
         lat: coordinates.latitude,
         lng: coordinates.longitude,
     });
+    const [error, setError] = useState(false);
 
     const { user } = useUser();
 
@@ -116,10 +117,15 @@ const RestaurantPage = ({
 
     const handleSubmitReview = (e) => {
         e.preventDefault();
-        submitReview(review, token, selectedRating);
-        console.log("Submitted review:", review);
-        setReview("");
-        setSelectedRating(0);
+        if (review.length > 60) {
+            submitReview(review, token, selectedRating);
+            console.log("Submitted review:", review);
+            setReview("");
+            setSelectedRating(0);
+            setError(false);
+        } else {
+            setError(true);
+        }
     };
 
     useEffect(() => {
@@ -229,6 +235,13 @@ const RestaurantPage = ({
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                         />
+                        {error && (
+                            <p className="error">
+                                I'm sorry, we don't expect War and Peace, but a
+                                few more words would make a world of difference,
+                                thank you!
+                            </p>
+                        )}
                         <button type="submit">Submit</button>
                     </form>
                 ) : (
