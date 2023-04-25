@@ -49,8 +49,7 @@ const Register = () => {
     // Posts email, username, password and DOB to be added to Database
     const handleCheckRegistered = () => {
         console.log("checking user");
-        const token =
-            "853026529cdea7d5f74ced9350fed93bcd88245bf2be9d213ec035b2c99907ed9fef5fd0d40b5ef8d1fcc74b27e7f24bf115a8b324c4263346dbb4ea8bf3a987f5e7783a5db09c18cc80baec220ae4804af218622a86c7b16ce3968f1ef82b3f24f353f67f2088dfdc994c4ade2403ac6e2641a729d724c7e791e879da66a811";
+        const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
         let data = JSON.stringify({
             email: registrationData.email,
             username: registrationData.username,
@@ -62,7 +61,7 @@ const Register = () => {
         const config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: "http://localhost:1337/api/auth/local/register",
+            url: `${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/local/register`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,

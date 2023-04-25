@@ -1,11 +1,68 @@
 import styles from "./styles/restaurant.module.css";
 import Image from "next/image";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useUser } from "@component/lib/authContext";
+import NavLink from "./NavLink";
+import Link from "next/link";
+import { useCookies } from "react-cookie";
+import { getTokenFromLocalCookie } from "@component/lib/auth";
+import { useState, useEffect } from "react";
+import addToFavourites from "@component/lib/addToFavourites";
+import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 
-const Restaurant = ({ restaurant }) => {
+const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
+    const [cookies] = useCookies(["jwt"]);
+    const [token, setToken] = useState(null);
     const { user } = useUser();
+    const [favourite, setFavourite] = useState(false);
+    console.log("Initial favourite state", favourite);
+
+    console.log("Favourites inside Restaurant:", favourites);
+
+    const getRestaurantData = async () => {
+        const restaurantData = await fetchRestaurantID(
+            restaurant.id,
+            restaurant.name,
+            user.id
+        );
+        if (restaurantData) {
+            return restaurantData;
+        }
+    };
+
+    const handleFavoriteClick = async () => {
+        const restaurantData = await getRestaurantData();
+        console.log(restaurantData);
+        let uuid = restaurantData.id;
+        const tempRestaurant = { uuid: uuid, id: restaurant.id };
+        const index = favourites.findIndex(
+            (fav) =>
+                fav.uuid === tempRestaurant.uuid && fav.id === tempRestaurant.id
+        );
+        let temp;
+        if (index !== -1) {
+            temp = [
+                ...favourites.slice(0, index),
+                ...favourites.slice(index + 1),
+            ];
+        } else {
+            temp = [...favourites, { uuid: uuid, id: restaurant.id }];
+        }
+        setFavourites(temp);
+        addToFavourites(favourites, uuid);
+        setFavourite(!favourite);
+    };
+
+    useEffect(() => {
+        setToken(getTokenFromLocalCookie(cookies));
+    }, [cookies]);
+
+    useEffect(() => {
+        setFavourite(favourites.some((fav) => fav.id === restaurant.id));
+    }, [favourites, restaurant.id]);
+
     return (
         <div className={styles.restaurantWrapper}>
             <div className={styles.imageWrapper}>
@@ -13,11 +70,13 @@ const Restaurant = ({ restaurant }) => {
                     <img
                         src={restaurant.image_url}
                         alt={restaurant.name}
+                        className={styles.image}
                         width="240"
                         height="240"
                     />
                 ) : (
                     <Image
+                        className={styles.image}
                         width="240"
                         height="240"
                         src="/LogoCropped.png"
@@ -28,15 +87,32 @@ const Restaurant = ({ restaurant }) => {
             <div className={styles.infoWrapper}>
                 <div className={styles.topWrapper}>
                     <div>
-                        <h2 className={styles.restaurantName}>
-                            {restaurant.name}
-                        </h2>
+                        <NavLink
+                            className={styles.link}
+                            href={`/restaurants/${restaurant.name}?id=${restaurant.id}`}
+                        >
+                            <h2>{restaurant.name}</h2>
+                        </NavLink>
                     </div>
                     {user && (
                         <div className={styles.btnWrapper}>
-                            <button className={styles.iconButton}>
-                                <FavoriteIcon />
-                            </button>
+                            {favourite ? (
+                                <button
+                                    className={
+                                        (styles.iconButton, styles.favourited)
+                                    }
+                                    onClick={handleFavoriteClick}
+                                >
+                                    <FavoriteIcon />
+                                </button>
+                            ) : (
+                                <button
+                                    className={styles.iconButton}
+                                    onClick={handleFavoriteClick}
+                                >
+                                    <FavoriteBorderIcon />
+                                </button>
+                            )}
                             <button className={styles.iconButton}>
                                 <CheckCircleIcon />
                             </button>
@@ -73,14 +149,18 @@ const Restaurant = ({ restaurant }) => {
                     {restaurant.price && <p>Price: {restaurant.price}</p>}
                 </div>
                 <div className={styles.bottomWrapper}>
-                    <button className={styles.reviewButton}>
-                        Read Reviews
-                    </button>
-                    {user && (
+                    <Link
+                        href={`/restaurants/${restaurant.name}?id=${restaurant.id}`}
+                    >
                         <button className={styles.reviewButton}>
-                            Leave Review
+                            More Info
                         </button>
-                    )}
+                    </Link>
+                    <Link
+                        href={`/restaurants/${restaurant.name}?id=${restaurant.id}#reviews`}
+                    >
+                        <button className={styles.reviewButton}>Reviews</button>
+                    </Link>
                 </div>
             </div>
         </div>

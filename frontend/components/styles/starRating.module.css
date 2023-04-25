@@ -1,0 +1,5 @@
+.stars {
+  display: inline-flex;
+  margin-right: 0.5rem;
+  width: 10rem;
+}

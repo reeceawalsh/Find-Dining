@@ -15,9 +15,9 @@
     "foodType": {
       "type": "string"
     },
-    "users_permissions_users": {
+    "users_permissions_user": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "dietary_restrictions"
     }
