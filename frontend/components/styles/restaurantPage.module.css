@@ -78,9 +78,13 @@
 .reviewForm textarea {
   resize: none;
   height: 10rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   width: 100%;
   padding: 0.3rem;
+}
+
+.reviewForm p {
+  text-align: center;
 }
 
 .reviewForm button {
@@ -88,6 +92,7 @@
   color: white;
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  margin-top: 0.5rem;
   border: none;
   cursor: pointer;
   align-self: center;
