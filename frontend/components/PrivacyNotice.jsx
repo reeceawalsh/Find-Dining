@@ -8,9 +8,9 @@ export default function PrivacyNotice() {
     const { user, loading } = useUser();
 
     return (
-        <div className="container">
+        <div className={`container`}>
             <Header name="Privacy Notice Page" />
-            <div className="content-body">
+            <div>
                 <p>
                     At Find Dining, we are committed to protecting your privacy
                     and personal data. This privacy notice explains how we

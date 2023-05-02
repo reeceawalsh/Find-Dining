@@ -17,12 +17,14 @@
   font-size: 0.9rem;
   background-color: #EE7674;
   border: 0;
-  color: white;
+  color: black;
+  cursor: pointer;
   border-radius: 5px;
 }
 
 .button:hover {
   background-color: #36DBFF;
+  color: white;
 }
 
 .options select {

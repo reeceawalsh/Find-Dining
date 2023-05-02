@@ -16,7 +16,7 @@ export default function AccountDetails() {
     const [isEditable, setIsEditable] = useState(false);
     const [formData, setFormData] = useState({});
     const [, setCookie] = useCookies(["jwt", "username", "email"]);
-    const accessToken = user.jwt;
+    const [accessToken, setAccessToken] = useState(user && user.jwt);
 
     // handles pressing save
     const handleSave = async (e) => {

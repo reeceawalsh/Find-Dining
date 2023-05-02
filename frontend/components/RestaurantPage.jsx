@@ -48,6 +48,8 @@ const RestaurantPage = ({
         lat: coordinates.latitude,
         lng: coordinates.longitude,
     });
+    const [displayedReviewsCount, setDisplayedReviewsCount] = useState(5);
+
     const [error, setError] = useState(false);
 
     const { user } = useUser();
@@ -214,11 +216,23 @@ const RestaurantPage = ({
             >
                 <h2>Reviews</h2>
                 {reviews &&
-                    reviews.map((review, index) => (
-                        <div key={index} className={styles.review}>
-                            <RestaurantReview review={review} />
-                        </div>
-                    ))}
+                    reviews
+                        .slice(0, displayedReviewsCount)
+                        .map((review, index) => (
+                            <div key={index} className={styles.review}>
+                                <RestaurantReview review={review} />
+                            </div>
+                        ))}
+                {displayedReviewsCount < reviews.length && (
+                    <button
+                        onClick={() =>
+                            setDisplayedReviewsCount(displayedReviewsCount + 5)
+                        }
+                        className={styles.loadMoreButton}
+                    >
+                        Show More
+                    </button>
+                )}
             </div>
             <div id="writeReview" ref={writeReviewRef}>
                 {user ? (

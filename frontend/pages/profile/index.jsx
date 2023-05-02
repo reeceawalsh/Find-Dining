@@ -35,7 +35,6 @@ export default function Profile() {
                     {page == "Account Details" && <AccountDetails />}
                     {page == "Achievements" && <Achievements />}
                     {page == "Support" && <Support />}
-                    {page == "Privacy Notice" && <PrivacyNotice />}
                 </div>
                 <div className={styles.leftContainer}>
                     <h1>Profile</h1>
@@ -56,12 +55,6 @@ export default function Profile() {
                         onClick={() => changePage("Support")}
                     >
                         Support
-                    </button>
-                    <button
-                        className={styles.link}
-                        onClick={() => changePage("Privacy Notice")}
-                    >
-                        Privacy Notice
                     </button>
                 </div>
             </div>
