@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
-const useLocation = () => {
-    const [location, setLocation] = useState({});
+// const useLocation = () => {
+//     const [location, setLocation] = useState({});
 
-    useEffect(() => {
-        const storedLocation = localStorage.getItem("location");
+//     useEffect(() => {
+//         const storedLocation = localStorage.getItem("location");
 
-        if (storedLocation) {
-            setLocation(JSON.parse(storedLocation));
-        }
-    }, []);
+//         if (storedLocation) {
+//             setLocation(JSON.parse(storedLocation));
+//         }
+//     }, []);
 
-    return location;
-};
+//     return location;
+// };
 
-export default useLocation;
+// export default useLocation;

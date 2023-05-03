@@ -3,11 +3,13 @@ import usePlacesAutocomplete, {
     getGeocode,
 } from "use-places-autocomplete";
 import styles from "./styles/searchbar.module.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import { useRouter } from "next/router";
+import Location from "../lib/locationContext";
 
 const SearchBar = ({ onPlaceSelected }) => {
-    const [location, setLocation] = useState({ lat: "", lng: "" });
+    const { location, setLocation } = useContext(Location);
+
     const router = useRouter();
 
     const {
@@ -34,7 +36,7 @@ const SearchBar = ({ onPlaceSelected }) => {
             if (onPlaceSelected) {
                 onPlaceSelected({ address, lat, lng });
             }
-            setLocation({ ...location, lat: lat, lng: lng });
+            setLocation({ lat, lng });
             console.log(location);
         } catch (error) {
             console.error("Error fetching geocode: ", error);

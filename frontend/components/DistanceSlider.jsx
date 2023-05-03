@@ -1,5 +1,3 @@
-// RadiusSlider.js
-import React from "react";
 import styles from "./styles/map.module.css";
 
 const DistanceSlider = ({ radius, onRadiusChange }) => {

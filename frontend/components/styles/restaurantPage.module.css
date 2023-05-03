@@ -33,6 +33,10 @@
   gap: 0;
 }
 
+.yelpLink:hover {
+  text-decoration: underline;
+}
+
 .headerRating span {
   font-size: 1.5rem;
   -webkit-text-stroke-width: 0.2px;
@@ -123,4 +127,29 @@
 
 .loginToLeaveReviewMsg {
   font-size: 1.2rem;
+}
+
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filterContainer button {
+  background-color: #EE7674;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.filterContainer button:hover {
+  background-color: #36DBFF;
+  color: #ffffff;
 }

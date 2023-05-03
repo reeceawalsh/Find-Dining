@@ -96,29 +96,20 @@ const Map = ({
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
-                <DistanceSlider
-                    radius={radius}
-                    onRadiusChange={(newRadius) => {
-                        setRadius(newRadius);
-                        onRadiusChange(newRadius);
-                    }}
-                />
                 <div className={styles.restaurantsList}>
-                    <h2>Top Rated Nearby Restaurants:</h2>
-                    {filteredRestaurants
-                        .sort((a, b) => b.rating - a.rating)
-                        .map((restaurant) => (
-                            <div
-                                key={restaurant.place_id}
-                                onMouseEnter={() =>
-                                    handleRestaurantHover(restaurant)
-                                }
-                                onMouseLeave={() => handleRestaurantHover(null)}
-                                className={styles.restaurant}
-                            >
-                                {restaurant.name} - {restaurant.rating} / 5
-                            </div>
-                        ))}
+                    <h2>Nearby Restaurants:</h2>
+                    {filteredRestaurants.map((restaurant) => (
+                        <div
+                            key={restaurant.place_id}
+                            onMouseEnter={() =>
+                                handleRestaurantHover(restaurant)
+                            }
+                            onMouseLeave={() => handleRestaurantHover(null)}
+                            className={styles.restaurant}
+                        >
+                            {restaurant.name} - {restaurant.rating} / 5
+                        </div>
+                    ))}
                     {noMoreRestaurants && (
                         <div className={styles.loader}>
                             <p>
