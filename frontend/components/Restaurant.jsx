@@ -131,10 +131,18 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
                             })}
                         </div>
                     )}
-                    {restaurant.rating && <p>Rating: {restaurant.rating}</p>}
-                    {/* {restaurant.review_count && (
-                    <p>Review Count: {restaurant.review_count}</p>
-                )} */}
+                    {restaurant.rating && (
+                        <p>
+                            Rating: {restaurant.rating}
+                            {restaurant.review_count && (
+                                <span>
+                                    {" "}
+                                    [{restaurant.review_count} reviews]
+                                </span>
+                            )}
+                        </p>
+                    )}
+
                     {restaurant.distance && (
                         <p>
                             Distance away: {Math.round(restaurant.distance)}{" "}
