@@ -1,34 +1,32 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
 
-const useFetchNearbyRestaurants = (mapCenter, radius) => {
-    const [restaurants, setRestaurants] = useState([]);
-
-    useEffect(() => {
-        if (typeof google === "undefined") {
-            console.error("Google Maps API is not loaded yet.");
-            return;
-        }
-        const request = {
-            location: mapCenter,
-            radius: radius,
-            type: ["restaurant"],
-        };
-
-        const service = new google.maps.places.PlacesService(
-            document.createElement("div")
-        );
-
-        service.nearbySearch(request, (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                setRestaurants(results);
-                console.log("Restaurants:", results);
-            } else {
-                console.error("Error fetching nearby restaurants:", status);
-            }
+const useFetchRestaurants = async ({
+    lat,
+    lng,
+    cuisine,
+    sortType,
+    radius,
+    offset,
+    limit,
+}) => {
+    try {
+        const response = await axios.get("/api/yelp", {
+            params: {
+                latitude: lat,
+                longitude: lng,
+                term: cuisine,
+                sort_by: sortType,
+                radius: radius,
+                offset: offset,
+                limit: limit,
+            },
         });
-    }, [mapCenter, radius]);
 
-    return restaurants;
+        return response.data.businesses;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return [];
+    }
 };
 
-export default useFetchNearbyRestaurants;
+export default useFetchRestaurants;

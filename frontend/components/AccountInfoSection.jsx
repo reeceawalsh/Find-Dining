@@ -23,16 +23,15 @@ export default function AccountInfoSection({
                                 editable={isEditable}
                                 className={isEditable ? "blue-outline" : ""}
                             />
-                            <div className="info-section-item">
-                                <p>Email:</p>
-                                <ProfileTextInput
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    editable={isEditable}
-                                    className={isEditable ? "blue-outline" : ""}
-                                />
-                            </div>
+
+                            <p>Email:</p>
+                            <ProfileTextInput
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                editable={isEditable}
+                                className={isEditable ? "blue-outline" : ""}
+                            />
                         </div>
                     )
                 )}

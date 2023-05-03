@@ -59,7 +59,7 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
 
     useEffect(() => {
         if (user) {
-            addToFavourites(favourites, user.id);
+            // addToFavourites(favourites, user.id);
         }
         setFavourite(favourites.some((fav) => fav.id === restaurant.id));
     }, [favourites, user, restaurant.id]);

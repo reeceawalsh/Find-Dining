@@ -1,5 +1,14 @@
+.supportLinks {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
 .linkContainer {
   margin-bottom: 16px;
+  width: 100%;
+  padding: 2rem;
 }
 
 .link {

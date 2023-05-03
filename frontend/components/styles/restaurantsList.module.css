@@ -4,35 +4,3 @@
   width: 80vw;
   margin: 1rem 5rem 5rem 5rem;
 }
-
-.top {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.options {
-  display: flex;
-  gap: 1rem;
-}
-
-.button {
-  width: 4rem;
-  height: 1.7rem;
-  font-size: 0.9rem;
-  background-color: #EE7674;
-  border: 0;
-  color: white;
-  border-radius: 5px;
-}
-
-.button:hover {
-  background-color: #36DBFF;
-}
-
-.options select {
-  min-width: 10rem;
-  min-height: 1.7rem;
-}
