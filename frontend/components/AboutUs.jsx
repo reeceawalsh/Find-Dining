@@ -11,10 +11,7 @@ export default function AboutUs() {
                     solution to help users explore and find restaurants that are
                     nearby. Our goal is to provide a seamless and user-friendly
                     experience for discovering and selecting restaurants based
-                    on{" "}
-                    <span className={styles.highlightedText}>
-                        your preferences.
-                    </span>{" "}
+                    on your preferences.
                 </p>
                 <p>
                     Our application allows you to easily view restaurants on a
@@ -33,7 +30,9 @@ export default function AboutUs() {
                 </p>
                 <p>
                     Thank you for choosing{" "}
-                    <span className={styles.highlightedText}>Find Dining.</span>{" "}
+                    <a href="/restaurants" className={styles.highlightedText}>
+                        Find Dining.
+                    </a>{" "}
                     We hope you enjoy using it and discovering new culinary
                     experiences in your area! If you have any feedback or
                     suggestions, please don't hesitate to contact us.
