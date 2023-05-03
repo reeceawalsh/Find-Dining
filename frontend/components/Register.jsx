@@ -28,7 +28,7 @@ const Register = () => {
     });
 
     const [errors, setErrors] = useState([]);
-    const [validRegistration, setValidRegistration] = useState(false);
+    const [validRegistration, setValidRegistration] = useState(true);
     const setToken = useSetToken();
 
     const handleRegister = (e) => {
@@ -80,6 +80,7 @@ const Register = () => {
                 if (error.response) {
                     console.error("Server response:", error.response.data);
                 }
+                // if it cannot register the user then we need to keep track of that and give the appropriate error message.
                 setValidRegistration(false);
             });
     };
@@ -118,7 +119,7 @@ const Register = () => {
                         registrationData={registrationData}
                         errors={errors}
                         handleRegister={handleRegister}
-                        validRegister={validRegistration}
+                        validRegistration={validRegistration}
                     />
                 </div>
             </div>

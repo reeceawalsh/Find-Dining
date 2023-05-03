@@ -19,6 +19,7 @@ const Map = ({
     noMoreRestaurants,
     loader,
 }) => {
+    console.log(location);
     const [mapCenter, setMapCenter] = useState({
         lat: location.lat,
         lng: location.lng,
@@ -30,7 +31,6 @@ const Map = ({
         setHoveredRestaurant(restaurant);
     };
     const [activeInfoWindow, setActiveInfoWindow] = useState(null);
-
     const handlePlaceSelected = ({ address, lat, lng }) => {
         console.log("Selected address:", address);
         console.log("Latitude:", lat);
@@ -93,12 +93,13 @@ const Map = ({
             setZoom(17);
         }
     }, [radius]);
+
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
                 <div className={styles.restaurantsList}>
                     <h2>Nearby Restaurants:</h2>
-                    {filteredRestaurants.map((restaurant) => (
+                    {restaurants.map((restaurant) => (
                         <div
                             key={restaurant.place_id}
                             onMouseEnter={() =>

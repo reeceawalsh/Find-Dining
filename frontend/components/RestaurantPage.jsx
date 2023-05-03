@@ -243,17 +243,25 @@ const RestaurantPage = ({
                     </div>
                 </div>
             </div>
-            <div className={styles.filterContainer}>
-                <button onClick={() => handleFilterChange("all")}>All</button>
-                {Object.entries(getRatingCounts()).map(([rating, count]) => (
-                    <button
-                        key={rating}
-                        onClick={() => handleFilterChange(parseInt(rating))}
-                    >
-                        {rating} stars ({count})
+            {user && (
+                <div className={styles.filterContainer}>
+                    <button onClick={() => handleFilterChange("all")}>
+                        All
                     </button>
-                ))}
-            </div>
+                    {Object.entries(getRatingCounts()).map(
+                        ([rating, count]) => (
+                            <button
+                                key={rating}
+                                onClick={() =>
+                                    handleFilterChange(parseInt(rating))
+                                }
+                            >
+                                {rating} stars ({count})
+                            </button>
+                        )
+                    )}
+                </div>
+            )}
             <div
                 id="reviews"
                 ref={reviewsRef}

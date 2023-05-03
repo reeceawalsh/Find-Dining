@@ -1,12 +1,10 @@
 import { useState, useRef, useEffect, useMemo, useContext } from "react";
 import Layout from "@component/components/Layout";
-import { useUser } from "@component/lib/authContext";
 import Location from "@component/lib/locationContext";
 import RestaurantsList from "@component/components/RestaurantsList";
 import Toggle from "@component/components/FormElements/Toggle";
 import Map from "@component/components/Map";
 import useFetchRestaurants from "@component/lib/useFetchRestaurants";
-import useLocation from "@component/lib/useLocation";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import cuisines from "../../lib/cuisines.json";
 import filters from "../../lib/filters.json";
@@ -17,8 +15,8 @@ import DistanceSlider from "@component/components/DistanceSlider";
 export default function Restaurants() {
     const loader = useRef(null);
     const [selectedValue, setSelectedValue] = useState("List View");
-    const { location } = useContext(Location);
-    const { lat, lng } = location;
+    const { searchedLocation } = useContext(Location);
+    const { lat, lng } = searchedLocation;
     const [renderedIds, setRenderedIds] = useState([]);
     const [cuisine, setCuisine] = useState("");
     const [restaurants, setRestaurants] = useState([]);
@@ -209,7 +207,7 @@ export default function Restaurants() {
                         radius={radius}
                         setRadius={setRadius}
                         reset={reset}
-                        location={location}
+                        location={searchedLocation}
                         onRadiusChange={onRadiusChange}
                         noMoreRestaurants={noMoreRestaurants}
                         loader={loader}

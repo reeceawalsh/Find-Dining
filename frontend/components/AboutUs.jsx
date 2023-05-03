@@ -1,5 +1,6 @@
 import styles from "./styles/aboutUs.module.css";
 
+// this component displays information describing the project and giving some information about our team
 export default function AboutUs() {
     return (
         <div className={styles.container}>
