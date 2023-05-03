@@ -14,52 +14,51 @@ const logo = require("../public/LogoCropped.png");
 
 const Navbar = () => {
     const { user, loading, logout } = useUser();
-    const { currentLocation, searchedLocation, setSearchedLocation } =
-        useContext(Location);
+    // geoLocation is the users current location, location is the location that the user is currently searching around for restaurants.
+    const { geoLocation, location, setLocation } = useContext(Location);
+    const [postCode, setPostCode] = useState(null);
+    const [geoLocationPostCode, setGeoLocationPostCode] = useState(null);
     const router = useRouter();
+
+    // handles logging out
     const handleLogout = () => {
         logout();
     };
-    const [currPostCode, setCurrPostCode] = useState(null);
-    const [searchedPostCode, setSearchedPostCode] = useState(null);
 
     // will use the users actual location if they're on the home page and their searched for location if they're not.
     const handleSearch = () => {
         if (router.pathname === "/home") {
-            if (currentLocation?.lat && currentLocation?.lng) {
-                // need to set the searchedLocation to the current location as the restaurants page will look at the searchedLocation's lat and lng and for all intents and purposes, the current location is now the searched location.
-                setSearchedLocation(currentLocation);
-                router.push("/restaurants");
-            }
-        } else {
-            if (searchedLocation?.lat && searchedLocation?.lng) {
-                router.push("/restaurants");
-            }
+            setLocation(geoLocation);
+            router.push("/restaurants");
         }
     };
 
     // we want to display the post code of the users geo location if they're on the home page and their searched location, if they have one, if they're not on the home page. it will also just display no post code if neither is available.
     const displayPostCode = () => {
         if (router.pathname === "/home") {
-            return currPostCode;
+            return geoLocationPostCode || "";
         } else {
-            return searchedPostCode || currPostCode;
+            return postCode || "";
         }
     };
 
     // this useEffect will run when a currentLocation or a searchedLocation is updated, as when it runs on mount neither of these will be defined. this function retrieves both post codes from both locations and sets them in state.
     useEffect(() => {
-        fetchPostCode(currentLocation)
-            .then((postCode) => setCurrPostCode(postCode))
-            .catch((error) => console.error("Error fetching postcode:", error));
-        if (searchedLocation) {
-            fetchPostCode(searchedLocation)
-                .then((postCode) => setSearchedPostCode(postCode))
+        if (location) {
+            fetchPostCode(location)
+                .then((postCode) => setPostCode(postCode))
                 .catch((error) =>
                     console.error("Error fetching postcode:", error)
                 );
         }
-    }, [currentLocation, searchedLocation]);
+        if (geoLocation) {
+            fetchPostCode(geoLocation)
+                .then((postCode) => setGeoLocationPostCode(postCode))
+                .catch((error) =>
+                    console.error("Error fetching postcode:", error)
+                );
+        }
+    }, [location, geoLocation]);
 
     return (
         <div className={`${styles.navbar} blue-background`}>
@@ -105,9 +104,14 @@ const Navbar = () => {
                         >
                             Favourites
                         </NavLink>
-                        <NavLink className={styles.link} href="/restaurants">
-                            Find Dining
-                        </NavLink>
+                        {location && (
+                            <NavLink
+                                className={styles.link}
+                                href="/restaurants"
+                            >
+                                Find Dining
+                            </NavLink>
+                        )}
                     </>
                 )}
             </div>

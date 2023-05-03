@@ -1,12 +1,7 @@
-import React from "react";
 import styles from "./styles/achievements.module.css";
 
-export default function Achievement({
-    title,
-    description,
-    dateAchieved,
-    progress,
-}) {
+// this component contains and presents achievement data.
+const Achievement = ({ title, description, dateAchieved, progress }) => {
     return (
         <div className={`container ${styles.achievementContainer}`}>
             <h1>{title && title}</h1>
@@ -15,4 +10,6 @@ export default function Achievement({
             <p>{progress && progress}</p>
         </div>
     );
-}
+};
+
+export default Achievement;

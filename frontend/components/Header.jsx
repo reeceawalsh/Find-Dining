@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./styles/header.module.css";
 
-export default function Header({ name, handleEdit, handleSave, editMode }) {
+// this header component is used as a title block for some of the components, it requires a handleEdit and handleSave to allow the accountDetails page to handle changing user data.
+const Header = ({ name, handleEdit, handleSave, editMode }) => {
     return (
-        <div className={styles.container}>
-            <p></p>
+        <header className={styles.container}>
             <h1 className={styles.title}>{name && name}</h1>
             {handleSave && handleEdit ? (
                 !editMode ? (
@@ -19,6 +18,8 @@ export default function Header({ name, handleEdit, handleSave, editMode }) {
             ) : (
                 <p></p>
             )}
-        </div>
+        </header>
     );
-}
+};
+
+export default Header;

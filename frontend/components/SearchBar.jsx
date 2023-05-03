@@ -8,12 +8,7 @@ import { useRouter } from "next/router";
 import Location from "../lib/locationContext";
 
 const SearchBar = ({ onPlaceSelected }) => {
-    const {
-        currentLocation,
-        setCurrentLocation,
-        searchedLocation,
-        setSearchedLocation,
-    } = useContext(Location);
+    const { location, setLocation } = useContext(Location);
 
     const router = useRouter();
 
@@ -40,15 +35,16 @@ const SearchBar = ({ onPlaceSelected }) => {
             if (onPlaceSelected) {
                 onPlaceSelected({ address, lat, lng });
             }
+            console.log(lat, lng);
             // set the location as the searched location in location context
-            setSearchedLocation({ lat, lng });
+            setLocation({ lat, lng });
         } catch (error) {
             console.error("Error fetching geocode: ", error);
         }
     };
 
     const handleSearch = () => {
-        if (searchedLocation?.lat && searchedLocation?.lng) {
+        if (location?.lat && location?.lng) {
             router.push("/restaurants");
         }
     };

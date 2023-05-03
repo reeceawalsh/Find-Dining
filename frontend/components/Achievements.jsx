@@ -1,11 +1,10 @@
 import Achievement from "@component/components/Achievement";
 import Header from "@component/components/Header";
-import Layout from "@component/components/Layout";
 import { useUser } from "@component/lib/authContext";
 
-export default function Achievements() {
-    const { user, loading } = useUser();
-
+// this component houses many achievements and is displayed on the profile page.
+const Achievements = () => {
+    // achievement data is currently manually entered but will be pulled from the database in the future.
     return (
         <div className="container">
             <Header name="Achievements" />
@@ -73,4 +72,6 @@ export default function Achievements() {
             </div>
         </div>
     );
-}
+};
+
+export default Achievements;

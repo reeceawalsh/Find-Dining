@@ -4,13 +4,13 @@ import fetchUsersCurrentLocation from "./fetchUsersCurrentLocation";
 const Location = createContext();
 
 export const LocationProvider = ({ children }) => {
-    const [currentLocation, setCurrentLocation] = useState(null);
-    const [searchedLocation, setSearchedLocation] = useState(null);
+    const [geoLocation, setGeoLocation] = useState(null);
+    const [location, setLocation] = useState({ lat: 54.9783, lng: -1.61396 });
     useEffect(() => {
         const fetchLocation = async () => {
             try {
                 const currentLocation = await fetchUsersCurrentLocation();
-                setCurrentLocation(currentLocation);
+                setGeoLocation(currentLocation);
             } catch (error) {
                 console.error("Error getting current users location.", error);
             }
@@ -22,10 +22,10 @@ export const LocationProvider = ({ children }) => {
     return (
         <Location.Provider
             value={{
-                currentLocation,
-                setCurrentLocation,
-                searchedLocation,
-                setSearchedLocation,
+                geoLocation,
+                setGeoLocation,
+                setLocation,
+                location,
             }}
         >
             {children}

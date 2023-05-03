@@ -14,7 +14,7 @@ const RestaurantsList = ({
     const [favourites, setFavourites] = useState([]);
     const [userData, setUserData] = useState(null);
     // will load more restaurants once the user hits the bottom of the page
-    console.log(restaurants);
+
     useEffect(() => {
         const options = {
             root: null,

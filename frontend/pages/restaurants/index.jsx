@@ -15,8 +15,8 @@ import DistanceSlider from "@component/components/DistanceSlider";
 export default function Restaurants() {
     const loader = useRef(null);
     const [selectedValue, setSelectedValue] = useState("List View");
-    const { searchedLocation } = useContext(Location);
-    const { lat, lng } = searchedLocation;
+    const { location } = useContext(Location);
+    const { lat, lng } = location;
     const [renderedIds, setRenderedIds] = useState([]);
     const [cuisine, setCuisine] = useState("");
     const [restaurants, setRestaurants] = useState([]);
@@ -207,7 +207,7 @@ export default function Restaurants() {
                         radius={radius}
                         setRadius={setRadius}
                         reset={reset}
-                        location={searchedLocation}
+                        location={location}
                         onRadiusChange={onRadiusChange}
                         noMoreRestaurants={noMoreRestaurants}
                         loader={loader}

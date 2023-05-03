@@ -1,5 +1,6 @@
 import styles from "./styles/map.module.css";
 
+// distance slider which allows the user to increase or decrease the search radius, used by RestaurantList and Map but rendered in the restaurants parent page.
 const DistanceSlider = ({ radius, onRadiusChange }) => {
     return (
         <div className={styles.sliderWrapper}>
