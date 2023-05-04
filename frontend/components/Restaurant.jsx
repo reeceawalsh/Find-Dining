@@ -27,17 +27,19 @@ const Restaurant = ({
 
     // fetches the restaurant data for the restaurant, if it can't find the restaurant then fetchRestaurantID will add it to the database.
     const getRestaurantData = async () => {
-        const restaurantData = await fetchRestaurantID(
-            restaurant.id,
-            restaurant.name
-        );
-        return restaurantData;
+        if (restaurant) {
+            const restaurantData = await fetchRestaurantID(
+                restaurant.id,
+                restaurant.name
+            );
+            return restaurantData;
+        }
     };
 
     // handles clicking on favourite
     const handleFavoriteClick = async () => {
         const restaurantData = await getRestaurantData();
-        if (restaurantData) {
+        if (restaurantData && restaurant && restaurant.id) {
             let uuid = restaurantData.id;
             const tempRestaurant = { uuid: uuid, id: restaurant.id };
             const index = favourites.findIndex(
@@ -65,13 +67,19 @@ const Restaurant = ({
     useEffect(() => {
         setToken(getTokenFromLocalCookie(cookies));
     }, [cookies]);
-
     useEffect(() => {
-        if (user && clickedRestaurant === restaurant.id) {
+        if (
+            user &&
+            restaurant &&
+            restaurant.id &&
+            clickedRestaurant === restaurant.id
+        ) {
             addToFavourites(favourites, user.id);
         }
-        setFavourite(favourites.some((fav) => fav.id === restaurant.id));
-    }, [favourites, user, restaurant.id, clickedRestaurant]);
+        if (restaurant && restaurant.id) {
+            setFavourite(favourites.some((fav) => fav.id === restaurant.id));
+        }
+    }, [favourites, user, restaurant, clickedRestaurant]);
 
     return (
         <div className={styles.restaurantWrapper}>
