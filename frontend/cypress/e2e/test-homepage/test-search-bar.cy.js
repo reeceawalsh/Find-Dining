@@ -1,5 +1,5 @@
 describe('Test Home Page', () => {
-  it('Successfully load the find-dining page', () => {
+  it('Test the search bar', () => {
     
     cy.visit('http://localhost:3000')
     
@@ -9,9 +9,12 @@ describe('Test Home Page', () => {
 
     cy.get('.login_button___YVNj').contains('Login').click()
     
-    cy.get('.navbar_link__CkML7').contains('Profile').click()
+    cy.get('.searchbar_searchbar__Zi_Nu').type('Newcastle')
     
-    cy.url().should('include', '/profile')
+    cy.get(".searchbar_dropdownWrapper__59_wn").contains('Newcastle upon Tyne').click()
+
+    cy.get('.searchbar_button__qPnrO').contains('Search').click()
+
 
   })
 })
