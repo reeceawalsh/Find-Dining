@@ -10,7 +10,7 @@ describe('Test Login Page', () => {
 
         cy.get('.login_button___YVNj').contains('Login').click()
 
-        cy.contains('Hi test1, I hope you\'re hungry.')
+        cy.contains('Signed in as: test1')
 
     })
 })
