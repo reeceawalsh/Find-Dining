@@ -5,7 +5,6 @@ import styles from "./styles/home.module.css";
 
 export default function Home() {
     const { user, loading } = useUser();
-
     return (
         <Layout>
             <div className="container">

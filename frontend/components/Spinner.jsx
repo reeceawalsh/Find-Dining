@@ -1,7 +1,7 @@
 import Image from "next/image";
 const logo = require("../public/LogoCropped.png");
 
-const Spinner = () => {
+const Spinner = ({ message }) => {
     return (
         <div className="spinnerWrapper">
             <div className="spinnerContainer">
@@ -15,6 +15,7 @@ const Spinner = () => {
                     priority="true"
                 />
             </div>
+            {message && <p>{message}</p>}
         </div>
     );
 };

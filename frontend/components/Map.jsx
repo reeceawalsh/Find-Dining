@@ -6,39 +6,33 @@ import {
 } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
-import DistanceSlider from "./DistanceSlider";
 import haversineDistance from "@component/lib/haversineDistance";
 
-const Map = ({
-    setPage,
-    restaurants,
-    radius,
-    setRadius,
-    location,
-    onRadiusChange,
-    noMoreRestaurants,
-    loader,
-}) => {
+// map view component to display restaurants with a map beside them.
+const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
+    // sets the center of the map to the middle of the location passed in.
     const [mapCenter, setMapCenter] = useState({
         lat: location.lat,
         lng: location.lng,
     });
+    console.log(restaurants);
     const [hoveredRestaurant, setHoveredRestaurant] = useState(null);
+    // zoom will be set based on the radius that is passed down.
+    const [zoom, setZoom] = useState();
+    const [activeInfoWindow, setActiveInfoWindow] = useState(null);
 
-    const [zoom, setZoom] = useState(11);
+    // handles setting the restaurant that is currently being hovered over.
     const handleRestaurantHover = (restaurant) => {
         setHoveredRestaurant(restaurant);
     };
-    const [activeInfoWindow, setActiveInfoWindow] = useState(null);
 
+    // handles setting the place that is selected and moving the map to ensure it's now in the center (not currently in use).
     const handlePlaceSelected = ({ address, lat, lng }) => {
         console.log("Selected address:", address);
-        console.log("Latitude:", lat);
-        console.log("Longitude:", lng);
-
         setMapCenter({ lat, lng });
     };
 
+    // handles the info window opening and closing.
     const handleInfoWindow = (restaurant) => {
         if (activeInfoWindow === restaurant) {
             setActiveInfoWindow(null);
@@ -93,6 +87,7 @@ const Map = ({
             setZoom(17);
         }
     }, [radius]);
+
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>

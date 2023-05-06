@@ -1,6 +1,7 @@
 import styles from "./styles/aboutUs.module.css";
 
-export default function AboutUs() {
+// this component displays information describing the project and giving some information about our team
+const AboutUs = () => {
     return (
         <div className={styles.container}>
             <h1>About Us</h1>
@@ -40,4 +41,6 @@ export default function AboutUs() {
             </div>
         </div>
     );
-}
+};
+
+export default AboutUs;

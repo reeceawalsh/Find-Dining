@@ -1,12 +1,10 @@
 import { useState, useRef, useEffect, useMemo, useContext } from "react";
 import Layout from "@component/components/Layout";
-import { useUser } from "@component/lib/authContext";
 import Location from "@component/lib/locationContext";
 import RestaurantsList from "@component/components/RestaurantsList";
 import Toggle from "@component/components/FormElements/Toggle";
 import Map from "@component/components/Map";
 import useFetchRestaurants from "@component/lib/useFetchRestaurants";
-import useLocation from "@component/lib/useLocation";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import cuisines from "../../lib/cuisines.json";
 import filters from "../../lib/filters.json";

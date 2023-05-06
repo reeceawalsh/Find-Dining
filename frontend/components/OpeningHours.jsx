@@ -1,5 +1,7 @@
 import styles from "./styles/openingHours.module.css";
 import formatTime from "@component/lib/formatTime";
+
+// opening hours which get displayed on the restaurant page.
 const OpeningHours = ({ hours }) => {
     const days = [
         "Monday",

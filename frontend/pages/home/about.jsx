@@ -1,4 +1,3 @@
-import Navbar from "@component/components/MobileNavbar";
 import AboutUs from "@component/components/AboutUs";
 import Layout from "@component/components/Layout";
 
