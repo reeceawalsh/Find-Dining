@@ -10,21 +10,23 @@ describe("Login component", () => {
     test("Email and password inputs are initially empty", () => {
         render(<Login />);
 
-        expect(screen.getByPlaceholderText(/email/i).value).toBe("");
+        expect(screen.getByPlaceholderText(/email or username/i).value).toBe(
+            ""
+        );
         expect(screen.getByPlaceholderText(/password/i).value).toBe("");
     });
 
     test("Typing in the email and password inputs updates their values", () => {
         render(<Login />);
 
-        fireEvent.change(screen.getByPlaceholderText(/email/i), {
+        fireEvent.change(screen.getByPlaceholderText(/email or username/i), {
             target: { value: "test@test.com" },
         });
         fireEvent.change(screen.getByPlaceholderText(/password/i), {
             target: { value: "Password1!" },
         });
 
-        expect(screen.getByPlaceholderText(/email/i).value).toBe(
+        expect(screen.getByPlaceholderText(/email or username/i).value).toBe(
             "test@test.com"
         );
         expect(screen.getByPlaceholderText(/password/i).value).toBe(
@@ -41,7 +43,7 @@ describe("Login component", () => {
     test("Login button is enabled when email and password inputs have valid values", () => {
         render(<Login />);
 
-        fireEvent.change(screen.getByPlaceholderText(/email/i), {
+        fireEvent.change(screen.getByPlaceholderText(/email or username/i), {
             target: { value: "test@test.com" },
         });
         fireEvent.change(screen.getByPlaceholderText(/password/i), {

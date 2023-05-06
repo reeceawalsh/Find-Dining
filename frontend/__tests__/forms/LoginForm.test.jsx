@@ -1,4 +1,3 @@
-import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import LoginForm from "@component/components/Forms/LoginForm";
 
@@ -19,7 +18,7 @@ describe("LoginForm", () => {
         const handleRegisterMock = jest.fn();
 
         const loginData = {
-            email: "",
+            identifier: "",
             password: "",
         };
 
@@ -28,7 +27,7 @@ describe("LoginForm", () => {
                 styles={styles}
                 setLoginData={setLoginDataMock}
                 loginData={loginData}
-                errors={{ email: "", password: "" }}
+                errors={{ identifier: "", password: "" }}
                 handleForgotPassword={handleForgotPasswordMock}
                 handleLogin={handleLoginMock}
                 handleRegister={handleRegisterMock}
@@ -36,13 +35,15 @@ describe("LoginForm", () => {
             />
         );
 
-        const emailInput = getByPlaceholderText("Input your email address");
-        const passwordInput = getByPlaceholderText("Input your password");
+        const identifierInput = getByPlaceholderText(/email or username/i);
+        const passwordInput = getByPlaceholderText(/password/i);
         const loginButton = getByTestId("login-button");
         const registerButton = getByTestId("register-button");
         const forgotPasswordButton = getByTestId("forgot-password-button");
 
-        fireEvent.change(emailInput, { target: { value: "test@test.com" } });
+        fireEvent.change(identifierInput, {
+            target: { value: "test@test.com" },
+        });
         fireEvent.change(passwordInput, { target: { value: "Password1!" } });
 
         fireEvent.click(loginButton);

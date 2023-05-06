@@ -16,7 +16,7 @@ export default function LoginForm({
             <form data-testid="login-form">
                 <TextInput
                     className={styles.email}
-                    name="identifier"
+                    name="Identifier"
                     placeholder="Input your email or username."
                     value={loginData.identifier}
                     error={errors.identifier}
@@ -55,7 +55,7 @@ export default function LoginForm({
                         className={styles.button}
                         type="submit"
                         onClick={handleLogin}
-                        disabled={!loginData.email || !loginData.password}
+                        disabled={!loginData.identifier || !loginData.password}
                         data-testid="login-button"
                     >
                         Login
