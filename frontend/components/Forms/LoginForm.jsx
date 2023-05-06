@@ -56,6 +56,7 @@ export default function LoginForm({
                         className={styles.button}
                         type="submit"
                         onClick={handleLogin}
+                        disabled={!loginData.email || !loginData.password}
                     >
                         Login
                     </button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TextInput from "@component/components/FormElements/TextInput";
 import { fireEvent, render, screen } from "@testing-library/react";
 
