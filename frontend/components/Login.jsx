@@ -17,6 +17,8 @@ const Login = () => {
         password: "",
     });
 
+    console.log(loginData);
+
     const router = useRouter();
     const [errors, setErrors] = useState([]);
     const [validLogin, setValidLogin] = useState(true);
@@ -30,7 +32,7 @@ const Login = () => {
 
         // runs validation on the login details.
         let newErrors = checkErrors(loginData);
-
+        console.log(newErrors);
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
             // checks if the user is a valid user.

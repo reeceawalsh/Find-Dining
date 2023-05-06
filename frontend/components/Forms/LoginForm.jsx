@@ -16,15 +16,14 @@ export default function LoginForm({
             <form>
                 <TextInput
                     className={styles.email}
-                    name="Email"
-                    type="email"
-                    placeholder="Input your email address"
-                    value={loginData.email}
-                    error={errors.email}
+                    name="identifier"
+                    placeholder="Input your email or username."
+                    value={loginData.identifier}
+                    error={errors.identifier}
                     onChange={(event) =>
                         setLoginData({
                             ...loginData,
-                            email: event.target.value,
+                            identifier: event.target.value,
                         })
                     }
                 />

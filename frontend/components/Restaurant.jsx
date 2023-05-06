@@ -18,6 +18,8 @@ const Restaurant = ({
     favourites,
     setFavourites,
     updateFavourites,
+    history,
+    setHistory,
 }) => {
     const [cookies] = useCookies(["jwt"]);
     const [token, setToken] = useState(null);
