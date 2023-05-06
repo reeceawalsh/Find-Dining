@@ -57,6 +57,7 @@ export default function ChangePasswordForm({
                 <button
                     className={styles.button}
                     onClick={handleChangePassword}
+                    data-testid="change-password-button"
                 >
                     Change Password
                 </button>
