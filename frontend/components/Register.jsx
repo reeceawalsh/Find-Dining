@@ -10,16 +10,22 @@ import Link from "next/link";
 import Image from "next/image";
 const logo = require("../public/LogoCropped.png");
 
+// registration component which contains a form that handles registrations.
 const Register = () => {
     const router = useRouter();
     const { user } = useUser();
+    const [errors, setErrors] = useState([]);
+    const [validRegistration, setValidRegistration] = useState(true);
+    const setToken = useSetToken();
 
+    // this redirects users to the home page if they're already logged in.
     useEffect(() => {
         if (user) {
             router.push("/home");
         }
     }, [user, router]);
 
+    // empty registrationData
     const [registrationData, setRegistrationData] = useState({
         username: "",
         email: "",
@@ -27,10 +33,7 @@ const Register = () => {
         dateOfBirth: "",
     });
 
-    const [errors, setErrors] = useState([]);
-    const [validRegistration, setValidRegistration] = useState(false);
-    const setToken = useSetToken();
-
+    // handles clicking the register button
     const handleRegister = (e) => {
         console.log("registration Process");
         e.preventDefault();
@@ -46,7 +49,8 @@ const Register = () => {
             setErrors(newErrors);
         }
     };
-    // Posts email, username, password and DOB to be added to Database
+
+    // posts email, username, password and DOB to be added to Database
     const handleCheckRegistered = () => {
         console.log("checking user");
         const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
@@ -80,10 +84,12 @@ const Register = () => {
                 if (error.response) {
                     console.error("Server response:", error.response.data);
                 }
+                // if it cannot register the user then we need to keep track of that and give the appropriate error message.
                 setValidRegistration(false);
             });
     };
 
+    // checks for errors using RegistrationVR. Ensures the password and dob are valid and that their is a valid email and username present.
     const checkErrors = (data) => {
         let newErrors = validate(data);
         setErrors(newErrors);
@@ -118,7 +124,7 @@ const Register = () => {
                         registrationData={registrationData}
                         errors={errors}
                         handleRegister={handleRegister}
-                        validRegister={validRegistration}
+                        validRegistration={validRegistration}
                     />
                 </div>
             </div>

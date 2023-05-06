@@ -6,25 +6,28 @@ import ChangePasswordForm from "./Forms/ChangePasswordForm";
 import Button from "@mui/material/Button";
 import validate from "@component/validationRules/ChangePasswordVR";
 import changePassword from "@component/lib/changePassword";
-
 import { useState } from "react";
 
-export default function ChangePasswordDialog({ user, styles }) {
+// this component is accessed through the account details page and will open when the user presses the 'change password' button.
+const ChangePasswordDialog = ({ user, styles }) => {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
     const [openDialog, setOpenDialog] = useState(false);
+    // three passwords must be sent to the backend in order to set a new password
     const [passwordData, setPasswordData] = useState({
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
     });
-    const [errors, setErrors] = useState(validate(passwordData));
+    const [errors, setErrors] = useState([]);
 
+    // opens and closes the dialog
     const toggleDialog = () => {
         wipePasswordData();
         setOpenDialog(!openDialog);
     };
 
+    // handles changing the users password (TODO)
     const handleChangePassword = (e) => {
         // check that passwords match
         e.preventDefault();
@@ -33,7 +36,7 @@ export default function ChangePasswordDialog({ user, styles }) {
 
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
-            // if (passwordData.password === user password)
+            // TODO - if (passwordData.password === user password)
             const accessToken = user.jwt;
             changePassword(
                 passwordData.password,
@@ -48,12 +51,14 @@ export default function ChangePasswordDialog({ user, styles }) {
         }
     };
 
+    // checks for errors with the data, the logic is visible in the ChangePasswordVR in the validationRules folder
     const checkErrors = (data) => {
         let newErrors = validate(data);
         setErrors(newErrors);
         return newErrors;
     };
 
+    // wipes the form clean
     const wipePasswordData = () => {
         const newPasswordData = {
             password: "",
@@ -88,4 +93,6 @@ export default function ChangePasswordDialog({ user, styles }) {
             </Dialog>
         </div>
     );
-}
+};
+
+export default ChangePasswordDialog;

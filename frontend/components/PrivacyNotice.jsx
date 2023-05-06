@@ -1,16 +1,11 @@
 import Header from "@component/components/Header";
-import { useState } from "react";
-import Layout from "@component/components/Layout";
-import { useUser } from "@component/lib/authContext";
 
-// Privacy Notice Page
+// privacy notice page, displays our notice and last time updated.
 export default function PrivacyNotice() {
-    const { user, loading } = useUser();
-
     return (
-        <div className="container">
+        <div className={`container`}>
             <Header name="Privacy Notice Page" />
-            <div className="content-body">
+            <div>
                 <p>
                     At Find Dining, we are committed to protecting your privacy
                     and personal data. This privacy notice explains how we

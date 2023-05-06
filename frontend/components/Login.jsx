@@ -2,7 +2,6 @@ import { useState } from "react";
 import Image from "next/image";
 import useSetToken from "@component/lib/useSetToken";
 import { useRouter } from "next/router";
-
 import Link from "next/link";
 import styles from "./styles/login.module.css";
 import validate from "../validationRules/LoginVR";
@@ -10,41 +9,45 @@ import LoginForm from "./Forms/LoginForm";
 import ForgotPassword from "./Modals/ForgotPassword";
 import axios from "axios";
 
+// login component for the login page
 const Login = () => {
     // loginDetails are details the user inputs before validation
     const [loginData, setLoginData] = useState({
-        email: "",
+        identifier: "",
         password: "",
     });
 
     const router = useRouter();
-
     const [errors, setErrors] = useState([]);
     const [validLogin, setValidLogin] = useState(true);
     const [displayModal, setDisplayModal] = useState(false);
     const setToken = useSetToken();
 
+    // handles pressing the login button.
     const handleLogin = (e) => {
         console.log("loginProcess");
         e.preventDefault();
 
-        // runs validation on the logindetails
+        // runs validation on the login details.
         let newErrors = checkErrors(loginData);
 
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
+            // checks if the user is a valid user.
             handleCheckUser();
         } else {
             console.log("errors");
-            setLoginData({ email: "", password: "" });
+            // resets the form inputs.
+            setLoginData({ identifier: "", password: "" });
         }
     };
 
+    // attempts to log the user in with their given identifier, their email or username, and password.
     const handleCheckUser = () => {
         console.log("checking user");
         const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
         let data = JSON.stringify({
-            identifier: loginData.email,
+            identifier: loginData.identifier,
             password: loginData.password,
         });
 
@@ -71,29 +74,29 @@ const Login = () => {
             });
     };
 
+    // handles pressing the register button which will route the user to the registration page.
     const handleRegister = (e) => {
-        console.log("Registration process");
         e.preventDefault();
-
         router.push("/register");
-        // send them to registration page
     };
 
+    // checks for errors using the validation rules located in the  LoginVR file in the validationRules folder.
     const checkErrors = (data) => {
         let newErrors = validate(data);
         setErrors(newErrors);
         return newErrors;
     };
 
+    // handles clicking on the forgot password button, it toggles the modal that will allow users to input their email and send a link to change their password.
     const handleForgotPassword = (e) => {
         setDisplayModal(!displayModal);
         setErrors([]);
         e.preventDefault();
     };
 
+    // handles clicking out of the modal (will close it)
     const handleCancel = (e) => {
         e.preventDefault();
-
         setErrors({});
         setDisplayModal(!displayModal);
     };

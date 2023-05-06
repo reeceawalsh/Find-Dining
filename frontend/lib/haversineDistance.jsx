@@ -1,15 +1,16 @@
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
 
-const haversineDistance = (restaurantLat, restaurantLng) => {
-    const location = JSON.parse(localStorage.getItem("location"));
-    const userLat = location.lat;
-    const userLng = location.lng;
-
+const haversineDistance = (
+    locationLat,
+    locationLng,
+    restaurantLat,
+    restaurantLng
+) => {
     const R = 6371e3; // Earth's radius in meters
-    const phi1 = toRadians(userLat);
+    const phi1 = toRadians(locationLat);
     const phi2 = toRadians(restaurantLat);
-    const deltaPhi = toRadians(restaurantLat - userLat);
-    const deltaLambda = toRadians(restaurantLng - userLng);
+    const deltaPhi = toRadians(restaurantLat - locationLat);
+    const deltaLambda = toRadians(restaurantLng - locationLng);
 
     const a =
         Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +

@@ -106,6 +106,14 @@ a {
   color: red;
 }
 
+.error-message {
+  color: black;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
 .social-media-icon {
   height: 3rem !important;
   width: 3rem !important;
@@ -224,6 +232,7 @@ span.error:after {
 .hidden {
   display: none !important;
 }
+
 
 .eye-icon {
   position: absolute;

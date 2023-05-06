@@ -5,12 +5,12 @@
   left: 0;
   padding-left: 2rem;
   padding-top: 1.2rem;
-  width: 20vw;
+  width: 20vw !important;
   gap: 1rem;
 }
 
 .rightContainer {
-  min-width: 80vw;
+  min-width: 80vw !important;
 }
 
 .selected {

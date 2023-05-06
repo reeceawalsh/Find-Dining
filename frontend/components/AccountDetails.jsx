@@ -10,13 +10,13 @@ import ChangePasswordDialog from "./ChangePasswordDialog";
 import styles from "./styles/accountDetails.module.css";
 import { useUser } from "../lib/authContext";
 
-export default function AccountDetails() {
+const AccountDetails = () => {
     const { user, setUser, loading } = useUser();
     const router = useRouter();
     const [isEditable, setIsEditable] = useState(false);
     const [formData, setFormData] = useState({});
     const [, setCookie] = useCookies(["jwt", "username", "email"]);
-    const accessToken = user.jwt;
+    const [accessToken, setAccessToken] = useState(user && user.jwt);
 
     // handles pressing save
     const handleSave = async (e) => {
@@ -88,4 +88,6 @@ export default function AccountDetails() {
             <AccountDataDialogs />
         </div>
     );
-}
+};
+
+export default AccountDetails;

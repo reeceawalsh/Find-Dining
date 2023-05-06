@@ -15,6 +15,7 @@ import { getTokenFromLocalCookie } from "@component/lib/auth";
 import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
 import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
+import convertToDateObject from "@component/lib/convertToDateObject";
 
 const RestaurantPage = ({
     restaurant,
@@ -48,6 +49,9 @@ const RestaurantPage = ({
         lat: coordinates.latitude,
         lng: coordinates.longitude,
     });
+    const [displayedReviewsCount, setDisplayedReviewsCount] = useState(5);
+    const [filteredReviews, setFilteredReviews] = useState(reviews);
+
     const [error, setError] = useState(false);
 
     const { user } = useUser();
@@ -109,15 +113,42 @@ const RestaurantPage = ({
 
                 // need to update the local reviews as they wont automatically change until page load
                 setReviews((prevReviews) => [...prevReviews, newReview]);
+                setFilteredReviews((prevFilteredReviews) => [
+                    ...prevFilteredReviews,
+                    newReview,
+                ]);
             }
         } catch (error) {
             console.error("An error occurred:", error.message);
         }
     };
+    const getRatingCounts = () => {
+        const ratingCounts = {};
+        reviews.forEach((review) => {
+            const rating = Math.round(review.rating);
+            if (!ratingCounts[rating]) {
+                ratingCounts[rating] = 1;
+            } else {
+                ratingCounts[rating]++;
+            }
+        });
+        return ratingCounts;
+    };
+
+    const handleFilterChange = (rating) => {
+        if (rating === "all") {
+            setFilteredReviews(reviews);
+        } else {
+            const newFilteredReviews = reviews.filter(
+                (review) => review.rating === rating
+            );
+            setFilteredReviews(newFilteredReviews);
+        }
+    };
 
     const handleSubmitReview = (e) => {
         e.preventDefault();
-        if (review.length > 60) {
+        if (review && review.length > 60) {
             submitReview(review, token, selectedRating);
             console.log("Submitted review:", review);
             setReview("");
@@ -173,6 +204,14 @@ const RestaurantPage = ({
                     <div className={styles.leftContainer}>
                         <OpeningHours hours={hours} />
                         <p>{display_phone}</p>
+                        <a
+                            className={styles.yelpLink}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View on Yelp
+                        </a>
                     </div>
                     <div className={styles.rightContainer}>
                         <RestaurantAddress location={location} />
@@ -203,22 +242,56 @@ const RestaurantPage = ({
                         <p>Distance Away: {distance}</p>
                     </div>
                 </div>
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                    View on Yelp
-                </a>
             </div>
+            {user && (
+                <div className={styles.filterContainer}>
+                    <button onClick={() => handleFilterChange("all")}>
+                        All
+                    </button>
+                    {Object.entries(getRatingCounts()).map(
+                        ([rating, count]) => (
+                            <button
+                                key={rating}
+                                onClick={() =>
+                                    handleFilterChange(parseInt(rating))
+                                }
+                            >
+                                {rating} stars ({count})
+                            </button>
+                        )
+                    )}
+                </div>
+            )}
             <div
                 id="reviews"
                 ref={reviewsRef}
                 className={styles.reviewsSection}
             >
                 <h2>Reviews</h2>
-                {reviews &&
-                    reviews.map((review, index) => (
-                        <div key={index} className={styles.review}>
-                            <RestaurantReview review={review} />
-                        </div>
-                    ))}
+                {filteredReviews &&
+                    filteredReviews
+                        .sort(
+                            (a, b) =>
+                                Date.parse(b.created_at) -
+                                Date.parse(a.created_at)
+                        )
+                        .slice(0, displayedReviewsCount)
+                        .map((review, index) => (
+                            <div key={index} className={styles.review}>
+                                <RestaurantReview review={review} />
+                            </div>
+                        ))}
+
+                {displayedReviewsCount < filteredReviews.length && (
+                    <button
+                        onClick={() =>
+                            setDisplayedReviewsCount(displayedReviewsCount + 5)
+                        }
+                        className={styles.loadMoreButton}
+                    >
+                        Show More
+                    </button>
+                )}
             </div>
             <div id="writeReview" ref={writeReviewRef}>
                 {user ? (

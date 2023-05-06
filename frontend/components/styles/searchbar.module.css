@@ -16,7 +16,7 @@
 
 .dropdownWrapper {
   background-color: white;
-  max-width: calc(100% - 7rem + 2px);
+  max-width: 30.1rem;
   /* 100% of container but minus the button */
   cursor: pointer;
   border-radius: 2px 2px 20px 20px;

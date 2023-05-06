@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "../pages/profile/styles/support.module.css";
+import styles from "./styles/support.module.css";
 
 const SupportLink = ({ title, link, description }) => {
     return (
