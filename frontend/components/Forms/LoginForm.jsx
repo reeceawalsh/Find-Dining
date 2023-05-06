@@ -12,19 +12,18 @@ export default function LoginForm({
     validLogin,
 }) {
     return (
-        <div className={styles.loginForm}>
-            <form>
+        <div onSubmit={handleLogin} className={styles.loginForm}>
+            <form data-testid="login-form">
                 <TextInput
                     className={styles.email}
-                    name="Email"
-                    type="email"
-                    placeholder="Input your email address"
-                    value={loginData.email}
-                    error={errors.email}
+                    name="Identifier"
+                    placeholder="Input your email or username."
+                    value={loginData.identifier}
+                    error={errors.identifier}
                     onChange={(event) =>
                         setLoginData({
                             ...loginData,
-                            email: event.target.value,
+                            identifier: event.target.value,
                         })
                     }
                 />
@@ -56,16 +55,22 @@ export default function LoginForm({
                         className={styles.button}
                         type="submit"
                         onClick={handleLogin}
+                        disabled={!loginData.identifier || !loginData.password}
+                        data-testid="login-button"
                     >
                         Login
                     </button>
-                    <button className={styles.button} onClick={handleRegister}>
+                    <button
+                        className={styles.button}
+                        onClick={handleRegister}
+                        data-testid="register-button"
+                    >
                         Register
                     </button>
                     <button
                         className={styles.button}
-                        type="submit"
                         onClick={handleForgotPassword}
+                        data-testid="forgot-password-button"
                     >
                         Forgot Password
                     </button>

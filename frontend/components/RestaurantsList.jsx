@@ -3,6 +3,8 @@ import Restaurant from "./Restaurant";
 import styles from "./styles/restaurantsList.module.css";
 import { useUser } from "@component/lib/authContext";
 import fetchUserData from "@component/lib/fetchUserData";
+import addToFavourites from "@component/lib/addToFavourites";
+import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
 
 const RestaurantsList = ({
     setPage,
@@ -13,8 +15,12 @@ const RestaurantsList = ({
     const { user } = useUser();
     const [favourites, setFavourites] = useState([]);
     const [userData, setUserData] = useState(null);
-    // will load more restaurants once the user hits the bottom of the page
-    console.log(restaurants);
+
+    const updateFavourites = (newFavourites) => {
+        setFavourites(newFavourites);
+        addToFavourites(newFavourites, user.id);
+    };
+
     useEffect(() => {
         const options = {
             root: null,
@@ -41,14 +47,10 @@ const RestaurantsList = ({
     // ensure the list of favourite restaurants for the user is up to date
     useEffect(() => {
         const getData = async () => {
-            // get up-to-date userData
-            const data = await fetchUserData(user.id);
-            setUserData(data);
-            // create temp for immutability
+            const data = await fetchFavouriteRestaurants(user.id);
             const temp = [];
-            // need the uuid for adding to favourites and need the yelp id (id) for checking if they are favourited already
-            if (userData) {
-                userData.restaurants.map((restaurant) =>
+            if (data) {
+                data.map((restaurant) =>
                     temp.push({
                         uuid: restaurant.id,
                         id: restaurant.restaurantID,
@@ -72,6 +74,7 @@ const RestaurantsList = ({
                         restaurant={restaurant}
                         favourites={favourites}
                         setFavourites={setFavourites}
+                        updateFavourites={updateFavourites}
                     />
                 ))}
             </div>

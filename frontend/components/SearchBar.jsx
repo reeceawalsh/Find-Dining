@@ -3,7 +3,7 @@ import usePlacesAutocomplete, {
     getGeocode,
 } from "use-places-autocomplete";
 import styles from "./styles/searchbar.module.css";
-import { useState, useEffect, useMemo, useContext } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import Location from "../lib/locationContext";
 import Image from "next/image";
@@ -30,35 +30,27 @@ const SearchBar = ({ onPlaceSelected }) => {
     const handleSelect = async (address) => {
         setValue(address, false);
         clearSuggestions();
-
         // Get the latitude and longitude of the selected place
         try {
             const results = await getGeocode({ address });
-            const { lat, lng } = await getLatLng(results[0]);
+            const { lat, lng } = getLatLng(results[0]);
 
             if (onPlaceSelected) {
                 onPlaceSelected({ address, lat, lng });
             }
+            console.log(lat, lng);
+            // set the location as the searched location in location context
             setLocation({ lat, lng });
-            console.log(location);
         } catch (error) {
             console.error("Error fetching geocode: ", error);
         }
     };
 
     const handleSearch = () => {
-        if (location.lat && location.lng) {
+        if (location?.lat && location?.lng) {
             router.push("/restaurants");
         }
     };
-
-    useEffect(() => {
-        if (location.lat && location.lng) {
-            // Save the location to the local storage
-            localStorage.setItem("location", JSON.stringify(location));
-            console.log(location);
-        }
-    }, [location]);
 
     return (
         <div>
@@ -85,9 +77,9 @@ const SearchBar = ({ onPlaceSelected }) => {
             </div>
             <div className={styles.dropdownWrapper}>
                 {status === "OK" &&
-                    data.map(({ id, description }) => (
+                    data.map(({ id, index, description }) => (
                         <div
-                            key={id}
+                            key={index + id}
                             className={styles.dropdownItem}
                             onClick={() => handleSelect(description)}
                         >

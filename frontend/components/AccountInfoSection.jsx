@@ -1,12 +1,13 @@
 import ProfileTextInput from "./FormElements/ProfileTextInput";
 
-export default function AccountInfoSection({
+// this component contains text inputs that allow the user to change their username and email address
+const AccountInfoSection = ({
     isEditable,
     formData,
     handleInputChange,
     loading,
     user,
-}) {
+}) => {
     return (
         <div className="info-section-container">
             <div className="info-section-item">
@@ -38,4 +39,6 @@ export default function AccountInfoSection({
             </div>
         </div>
     );
-}
+};
+
+export default AccountInfoSection;

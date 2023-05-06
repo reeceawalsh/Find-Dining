@@ -1,9 +1,9 @@
-export default function validateLogin({ email, password }) {
+export default function validateLogin({ identifier, password }) {
     let errors = {};
 
     /** do not want to validate the email and password as it has been done already in the registration process. providing specific validation error messages during login is dangerous and could help attackers.**/
-    if (!email) {
-        errors.email = "Required";
+    if (!identifier) {
+        errors.identifier = "Required";
     }
 
     if (!password) {

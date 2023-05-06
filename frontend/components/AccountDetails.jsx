@@ -10,7 +10,7 @@ import ChangePasswordDialog from "./ChangePasswordDialog";
 import styles from "./styles/accountDetails.module.css";
 import { useUser } from "../lib/authContext";
 
-export default function AccountDetails() {
+const AccountDetails = () => {
     const { user, setUser, loading } = useUser();
     const router = useRouter();
     const [isEditable, setIsEditable] = useState(false);
@@ -88,4 +88,6 @@ export default function AccountDetails() {
             <AccountDataDialogs />
         </div>
     );
-}
+};
+
+export default AccountDetails;

@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./styles/footer.module.css";
 import NavLink from "./NavLink";
 
+// footer component to be displayed at the bottom of the page.
 const Footer = () => {
     return (
         <footer className={styles.footer}>

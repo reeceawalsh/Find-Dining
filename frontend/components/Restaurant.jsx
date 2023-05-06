@@ -9,27 +9,39 @@ import Link from "next/link";
 import { useCookies } from "react-cookie";
 import { getTokenFromLocalCookie } from "@component/lib/auth";
 import { useState, useEffect } from "react";
-import addToFavourites from "@component/lib/addToFavourites";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
+import addToFavourites from "@component/lib/addToFavourites";
 
-const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
+// restaurant component which is displayed on the list of restaurants.
+const Restaurant = ({
+    restaurant,
+    favourites,
+    setFavourites,
+    updateFavourites,
+    history,
+    setHistory,
+}) => {
     const [cookies] = useCookies(["jwt"]);
     const [token, setToken] = useState(null);
     const { user } = useUser();
-    const [favourite, setFavourite] = useState(false);
+    const [favourite, setFavourite] = useState();
+    const [clickedRestaurant, setClickedRestaurant] = useState(null);
 
+    // fetches the restaurant data for the restaurant, if it can't find the restaurant then fetchRestaurantID will add it to the database.
     const getRestaurantData = async () => {
-        const restaurantData = await fetchRestaurantID(
-            restaurant.id,
-            restaurant.name
-        );
-        return restaurantData;
+        if (restaurant) {
+            const restaurantData = await fetchRestaurantID(
+                restaurant.id,
+                restaurant.name
+            );
+            return restaurantData;
+        }
     };
 
+    // handles clicking on favourite
     const handleFavoriteClick = async () => {
         const restaurantData = await getRestaurantData();
-        if (restaurantData) {
-            console.log("working");
+        if (restaurantData && restaurant && restaurant.id) {
             let uuid = restaurantData.id;
             const tempRestaurant = { uuid: uuid, id: restaurant.id };
             const index = favourites.findIndex(
@@ -46,8 +58,9 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
             } else {
                 temp = [...favourites, { uuid: uuid, id: restaurant.id }];
             }
-            setFavourites(temp);
+            updateFavourites(temp);
             setFavourite(!favourite);
+            setClickedRestaurant(restaurant.id);
         } else {
             console.log("restaurant data not set yet", restaurantData);
         }
@@ -56,13 +69,19 @@ const Restaurant = ({ restaurant, uuid, favourites, setFavourites }) => {
     useEffect(() => {
         setToken(getTokenFromLocalCookie(cookies));
     }, [cookies]);
-
     useEffect(() => {
-        if (user) {
-            // addToFavourites(favourites, user.id);
+        if (
+            user &&
+            restaurant &&
+            restaurant.id &&
+            clickedRestaurant === restaurant.id
+        ) {
+            addToFavourites(favourites, user.id);
         }
-        setFavourite(favourites.some((fav) => fav.id === restaurant.id));
-    }, [favourites, user, restaurant.id]);
+        if (restaurant && restaurant.id) {
+            setFavourite(favourites.some((fav) => fav.id === restaurant.id));
+        }
+    }, [favourites, user, restaurant, clickedRestaurant]);
 
     return (
         <div className={styles.restaurantWrapper}>
