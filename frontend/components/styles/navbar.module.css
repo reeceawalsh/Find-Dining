@@ -85,17 +85,16 @@
   align-items: center;
 }
 
-<<<<<<< HEAD
-.logoName{
+.logoName {
   font-size: 40px;
 }
 
-.logoName span:nth-child(1){
+.logoName span:nth-child(1) {
   color: #36dbff;
   margin-left: 40px;
 }
 
-.logoName span:nth-child(2){
+.logoName span:nth-child(2) {
   color: #ee7674;
 }
 
@@ -104,7 +103,8 @@
   width: 81px;
   height: 76px;
   margin-left: 62px;
-=======
+}
+
 .postalCodeButton {
   background: none;
   border: none;
@@ -137,5 +137,4 @@
 
 .postalCode:hover {
   text-decoration: underline;
->>>>>>> main
 }
