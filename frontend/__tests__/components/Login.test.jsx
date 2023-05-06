@@ -1,8 +1,10 @@
 import Login from "@component/components/Login";
 import { screen, fireEvent } from "@testing-library/react";
-import { render } from "../test-router";
+import { render } from "../../lib/test-router";
 import "@testing-library/jest-dom/extend-expect";
 import { waitFor } from "@testing-library/react";
+
+HTMLFormElement.prototype.requestSubmit = jest.fn();
 
 describe("Login component", () => {
     test("Email and password inputs are initially empty", () => {

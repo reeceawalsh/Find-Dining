@@ -12,8 +12,8 @@ export default function LoginForm({
     validLogin,
 }) {
     return (
-        <div className={styles.loginForm}>
-            <form>
+        <div onSubmit={handleLogin} className={styles.loginForm}>
+            <form data-testid="login-form">
                 <TextInput
                     className={styles.email}
                     name="Email"
@@ -57,16 +57,21 @@ export default function LoginForm({
                         type="submit"
                         onClick={handleLogin}
                         disabled={!loginData.email || !loginData.password}
+                        data-testid="login-button"
                     >
                         Login
                     </button>
-                    <button className={styles.button} onClick={handleRegister}>
+                    <button
+                        className={styles.button}
+                        onClick={handleRegister}
+                        data-testid="register-button"
+                    >
                         Register
                     </button>
                     <button
                         className={styles.button}
-                        type="submit"
                         onClick={handleForgotPassword}
+                        data-testid="forgot-password-button"
                     >
                         Forgot Password
                     </button>
