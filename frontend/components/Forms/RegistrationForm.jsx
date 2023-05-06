@@ -13,7 +13,7 @@ export default function RegistrationForm({
 }) {
     console.log(validRegistration);
     return (
-        <div className={styles.registrationForm}>
+        <div className={styles.registrationForm} data-testid="register-form">
             <form>
                 <TextInput
                     className={styles.username}
@@ -84,7 +84,11 @@ export default function RegistrationForm({
                         })
                     }
                 />
-                <button className={styles.button} onClick={handleRegister}>
+                <button
+                    className={styles.button}
+                    onClick={handleRegister}
+                    data-testid="create-account-button"
+                >
                     Create Account
                 </button>
                 {!validRegistration && (
