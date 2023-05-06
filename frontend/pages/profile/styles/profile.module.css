@@ -3,14 +3,18 @@
   flex-direction: column;
   position: absolute;
   left: 0;
-  padding-left: 2rem;
-  padding-top: 1.2rem;
   width: 20vw !important;
   gap: 1rem;
+  border: 2px solid #36dbff;
+  border-radius: 20px;
+  margin: 68px 221px 0px 62px;
+  max-width: 300px;
 }
 
+
 .rightContainer {
-  min-width: 80vw !important;
+  min-width: 50vw;
+  margin: 68px 200px;
 }
 
 .selected {
@@ -28,15 +32,22 @@
   background: none;
   border: none;
   cursor: pointer;
-  text-align: left;
+  padding-top: 29px;
+  padding-bottom: 29px;
+}
+
+.leftContainer > *:not(:last-of-type)   {
+  border-bottom: 2px solid #36dbff;
 }
 
 .link:hover {
   font-weight: bold;
+  color: #ee7476;
 }
 
 .link:active {
   font-weight: bold;
+  color: #ee7476;
 }
 
 .leftContainer h1 {

@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 .navbar {
   display: flex;
   flex-direction: row;
   height: 7rem;
   justify-content: space-between;
   font-size: 1.2rem;
-  font-family: sans-serif, Arial, Helvetica;
+  font-family: 'Inter', Helvetica;
   align-items: center;
   padding: 1rem;
-  border-bottom: 2px solid black;
 }
 
 .rightNavbar {
@@ -16,6 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  font-size: 24px;
 }
 
 .rightNavbarLinks {
@@ -24,8 +26,15 @@
   justify-content: center;
 }
 
+.leftNavbarLinks {
+  display: block;
+  font-size: 24px;
+  background-color: #36dbffd9;
+  padding: 12px 0 12px 62px;
+}
+
 .link {
-  color: black;
+  color: #ee7674;
   padding-left: 1rem;
   padding-right: 1rem;
   background: none;
@@ -33,17 +42,36 @@
   cursor: pointer;
 }
 
+.profileBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: #ee7674;
+}
+
+
 .username {
   color: black;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 5rem;
 }
 
-.username span {
-  font-weight: bold;
+.userIcon {
+  padding-bottom: 2px;
+  margin-left: 10px;
 }
 
-.link:hover {
+.leftNavbarLinks .link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 18px;
+}
+
+.rightNavbarLinks .link:hover {
   text-decoration: underline;
 }
 
@@ -55,4 +83,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.logoName{
+  font-size: 40px;
+}
+
+.logoName span:nth-child(1){
+  color: #36dbff;
+  margin-left: 40px;
+}
+
+.logoName span:nth-child(2){
+  color: #ee7674;
+}
+
+.logo {
+  border-radius: 5px;
+  width: 81px;
+  height: 76px;
+  margin-left: 62px;
 }

@@ -71,11 +71,12 @@ export default function AccountDetails() {
     return (
         <div className={`container ${styles.container}`}>
             <Header
-                name="Account Details Page"
+                name="Account Details"
                 handleEdit={toggleEditable}
                 handleSave={handleSave}
                 editMode={isEditable}
             />
+            <p className={styles.subtitle}>Update your personal details and account information here.</p>
             <AccountInfoSection
                 isEditable={isEditable}
                 formData={formData}
@@ -84,7 +85,6 @@ export default function AccountDetails() {
                 user={user}
             />
             <ChangePasswordDialog user={user} styles={styles} />
-            <SocialAccountsSection user={user} />
             <AccountDataDialogs />
         </div>
     );

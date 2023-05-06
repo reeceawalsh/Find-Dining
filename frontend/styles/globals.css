@@ -295,7 +295,6 @@ span.error:after {
 }
 
 .info-section-container {
-  border: 2px black solid;
   background-color: #FFFFFF;
   min-width: 100%;
   padding-top: 0.3rem;
