@@ -37,7 +37,6 @@ export default function Profile() {
                     {page == "Support" && <Support />}
                 </div>
                 <div className={styles.leftContainer}>
-                    <h1>Profile</h1>
                     <button
                         className={styles.link}
                         onClick={() => changePage("Achievements")}

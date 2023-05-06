@@ -5,14 +5,14 @@
   padding: 2rem 0 2em 0;
   background-color: #EE7674;
   color: #fff;
-  margin-top: 5rem;
+  margin-top: 0;
   width: 100vw;
   bottom: 0;
   border-top: 1px solid black;
 }
 
 .link {
-  color: rgba(0, 0, 0, 0.747);
+  color: white;
   padding-left: 1rem;
   padding-right: 1rem;
   background: none;

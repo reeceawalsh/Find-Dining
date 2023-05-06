@@ -6,11 +6,14 @@ import styles from "./styles/searchbar.module.css";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import Location from "../lib/locationContext";
+import Image from "next/image";
 
 const SearchBar = ({ onPlaceSelected }) => {
     const { location, setLocation } = useContext(Location);
 
     const router = useRouter();
+
+    const searchIcon = require("../public/HomeSearchIcon.svg");
 
     const {
         ready,
@@ -56,7 +59,7 @@ const SearchBar = ({ onPlaceSelected }) => {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     disabled={!ready}
-                    placeholder="Search for a location"
+                    placeholder="Search for a location..."
                     className={styles.searchbar}
                 />
                 <button
@@ -65,7 +68,11 @@ const SearchBar = ({ onPlaceSelected }) => {
                         handleSearch(e);
                     }}
                 >
-                    Search
+                     <Image
+                        className={styles.searchIcon}
+                        src={searchIcon}
+                        alt="Search Icon"
+                    />
                 </button>
             </div>
             <div className={styles.dropdownWrapper}>

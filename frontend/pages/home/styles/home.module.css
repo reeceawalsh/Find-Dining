@@ -1,3 +1,11 @@
+
+.container {
+  background-image: url('/HomeBackgroundOpacity.png');
+  background-size: cover;
+  min-height: 80vh;
+}
+
+
 .searchSection {
   display: flex;
   flex-direction: column;
@@ -5,9 +13,16 @@
   align-items: center;
   border-radius: 5px;
   gap: 1rem;
+  margin-top: 220px;
+  color: black;
 }
 
 .welcomeMessage {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  margin-bottom: 0;
+  color: black;
 }
