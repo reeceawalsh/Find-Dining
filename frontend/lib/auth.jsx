@@ -1,16 +1,15 @@
 import { fetcher } from "./api";
 
 export const setToken = (data, setCookie) => {
-    setCookie("jwt", data.jwt);
-    setCookie("username", data.user.username);
+    setCookie("jwt", data.jwt, { path: "/" });
+    setCookie("username", data.user.username, { path: "/" });
 };
-
 export const unsetToken = (removeCookie) => {
     if (typeof window === "undefined") return;
 
-    removeCookie("id");
-    removeCookie("jwt");
-    removeCookie("username");
+    removeCookie("jwt", { path: "/" });
+    removeCookie("id", { path: "/" });
+    removeCookie("username", { path: "/" });
 };
 
 export const getTokenFromLocalCookie = (cookies) => {

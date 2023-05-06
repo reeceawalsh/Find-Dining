@@ -1,0 +1,155 @@
+.header {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  flex-direction: column;
+}
+
+.headerRating {
+  display: flex;
+  flex-direction: row;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.6rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.yelpLink:hover {
+  text-decoration: underline;
+}
+
+.headerRating span {
+  font-size: 1.5rem;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: black;
+}
+
+.restaurantInfo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+.ratingPrice {
+  display: flex;
+  align-items: center;
+}
+
+.reviewsSection {
+  margin: 2rem;
+}
+
+.review {
+  border-top: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 80vw;
+}
+
+.reviewForm textarea {
+  resize: none;
+  height: 10rem;
+  margin-bottom: 0.4rem;
+  width: 100%;
+  padding: 0.3rem;
+}
+
+.reviewForm p {
+  text-align: center;
+}
+
+.reviewForm button {
+  background-color: #EE7674;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  width: 20%;
+  border-radius: 5px;
+}
+
+.reviewForm button:hover {
+  background-color: #36DBFF;
+}
+
+.loadMoreButton {
+  margin-left: 1rem;
+  padding: 0.3rem;
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.loadMoreButton:hover {
+  border: 2px solid black;
+}
+
+.map {
+  height: 20rem;
+  width: 20rem;
+}
+
+.loginToLeaveReviewMsg {
+  font-size: 1.2rem;
+}
+
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filterContainer button {
+  background-color: #EE7674;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.filterContainer button:hover {
+  background-color: #36DBFF;
+  color: #ffffff;
+}

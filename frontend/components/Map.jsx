@@ -1,89 +1,130 @@
 import {
-    useLoadScript,
     GoogleMap,
     CircleF,
     MarkerF,
+    InfoWindowF,
 } from "@react-google-maps/api";
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
-import SearchBar from "./SearchBar";
-import DistanceSlider from "./DistanceSlider";
-import useFetchNearbyRestaurants from "../lib/useFetchRestaurants";
+import haversineDistance from "@component/lib/haversineDistance";
 
-const Map = () => {
-    const libraries = useMemo(() => ["places"], []);
+// map view component to display restaurants with a map beside them.
+const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
+    // sets the center of the map to the middle of the location passed in.
     const [mapCenter, setMapCenter] = useState({
-        lat: 54.9783,
-        lng: -1.61396,
+        lat: location.lat,
+        lng: location.lng,
     });
-
-    const [radius, setRadius] = useState(1000);
-    const [zoom, setZoom] = useState(14);
+    console.log(restaurants);
     const [hoveredRestaurant, setHoveredRestaurant] = useState(null);
+    // zoom will be set based on the radius that is passed down.
+    const [zoom, setZoom] = useState();
+    const [activeInfoWindow, setActiveInfoWindow] = useState(null);
 
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: libraries,
-    });
+    // handles setting the restaurant that is currently being hovered over.
+    const handleRestaurantHover = (restaurant) => {
+        setHoveredRestaurant(restaurant);
+    };
 
-    const restaurants = useFetchNearbyRestaurants(mapCenter, radius, isLoaded);
-
-    if (!isLoaded) {
-        return <p>Loading...</p>;
-    }
-
+    // handles setting the place that is selected and moving the map to ensure it's now in the center (not currently in use).
     const handlePlaceSelected = ({ address, lat, lng }) => {
         console.log("Selected address:", address);
-        console.log("Latitude:", lat);
-        console.log("Longitude:", lng);
-
         setMapCenter({ lat, lng });
     };
+
+    // handles the info window opening and closing.
+    const handleInfoWindow = (restaurant) => {
+        if (activeInfoWindow === restaurant) {
+            setActiveInfoWindow(null);
+        } else {
+            setActiveInfoWindow(restaurant);
+        }
+    };
+
+    const filteredRestaurants = useMemo(() => {
+        return restaurants.filter((restaurant) => {
+            const restaurantLat = restaurant.coordinates.latitude;
+            const restaurantLng = restaurant.coordinates.longitude;
+            const distance = haversineDistance(
+                mapCenter.lat,
+                mapCenter.lng,
+                restaurantLat,
+                restaurantLng
+            );
+            return distance <= radius;
+        });
+    }, [restaurants, mapCenter, radius]);
+
+    const loadMore = () => {
+        console.log("loading more");
+        setPage((prev) => prev + 1);
+    };
+
+    useEffect(() => {
+        if (restaurants.length <= 20) {
+            loadMore();
+        }
+    }, []);
+
+    useEffect(() => {
+        if (radius >= 10000) {
+            setZoom(11);
+        } else if (radius >= 7200) {
+            setZoom(12);
+        } else if (radius >= 5000) {
+            setZoom(12.5);
+        } else if (radius >= 3600) {
+            setZoom(13);
+        } else if (radius >= 2000) {
+            setZoom(13.5);
+        } else if (radius >= 1000) {
+            setZoom(14);
+        } else if (radius >= 500) {
+            setZoom(15);
+        } else if (radius >= 300) {
+            setZoom(16);
+        } else {
+            setZoom(17);
+        }
+    }, [radius]);
+
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
-                <h1 className={styles.title}>Set Location</h1>
-                <SearchBar onPlaceSelected={handlePlaceSelected} />
-                <DistanceSlider
-                    radius={radius}
-                    onRadiusChange={(newRadius) => {
-                        setRadius(newRadius);
-
-                        if (newRadius >= 10000) {
-                            setZoom(11.2);
-                        } else if (newRadius >= 7200) {
-                            setZoom(11.5);
-                        } else if (newRadius >= 3600) {
-                            setZoom(12);
-                        } else if (newRadius >= 2000) {
-                            setZoom(13.5);
-                        } else if (newRadius >= 1000) {
-                            setZoom(14);
-                        } else if (newRadius >= 500) {
-                            setZoom(15);
-                        } else if (newRadius >= 300) {
-                            setZoom(16);
-                        } else {
-                            setZoom(17);
-                        }
-                    }}
-                />
                 <div className={styles.restaurantsList}>
-                    <h2>Top Rated Nearby Restaurants:</h2>
-                    {restaurants
-                        .sort((a, b) => b.rating - a.rating)
-                        .map((restaurant) => (
-                            <div
-                                key={restaurant.place_id}
-                                onMouseEnter={() =>
-                                    setHoveredRestaurant(restaurant)
-                                }
-                                onMouseLeave={() => setHoveredRestaurant(null)}
-                                className={styles.restaurant}
+                    <h2>Nearby Restaurants:</h2>
+                    {filteredRestaurants.map((restaurant) => (
+                        <div
+                            key={restaurant.place_id}
+                            onMouseEnter={() =>
+                                handleRestaurantHover(restaurant)
+                            }
+                            onMouseLeave={() => handleRestaurantHover(null)}
+                            className={styles.restaurant}
+                        >
+                            {restaurant.name} - {restaurant.rating} / 5
+                        </div>
+                    ))}
+                    {noMoreRestaurants && (
+                        <div className={styles.loader}>
+                            <p>
+                                There are no more restaurants that fit this
+                                criteria. Please change your criteria or
+                                location to find matching restaurants in your
+                                area.
+                            </p>
+                        </div>
+                    )}
+                    {!noMoreRestaurants && (
+                        <div className={styles.loader}>
+                            <button
+                                className={styles.loadBtn}
+                                onClick={loadMore}
                             >
-                                {restaurant.name} - {restaurant.rating} / 5
-                            </div>
-                        ))}
+                                More Restaurants
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={styles.map}>
@@ -111,10 +152,33 @@ const Map = () => {
                     {hoveredRestaurant && (
                         <MarkerF
                             position={{
-                                lat: hoveredRestaurant.geometry.location.lat(),
-                                lng: hoveredRestaurant.geometry.location.lng(),
+                                lat: hoveredRestaurant.coordinates.latitude,
+                                lng: hoveredRestaurant.coordinates.longitude,
                             }}
+                            onClick={() => handleInfoWindow(hoveredRestaurant)}
                         />
+                    )}
+                    {activeInfoWindow && (
+                        <InfoWindowF
+                            position={{
+                                lat: activeInfoWindow.lat,
+                                lng: activeInfoWindow.lng,
+                            }}
+                            onCloseClick={() => handleInfoWindow(null)}
+                        >
+                            <div>
+                                <h3>{activeInfoWindow.name}</h3>
+                                <p>Rating: {activeInfoWindow.rating} / 5</p>
+                                <p>{activeInfoWindow.address}</p>
+                                {activeInfoWindow.image_url && (
+                                    <img
+                                        src={activeInfoWindow.image_url}
+                                        alt={activeInfoWindow.name}
+                                        style={{ maxWidth: "200px" }}
+                                    />
+                                )}
+                            </div>
+                        </InfoWindowF>
                     )}
                 </GoogleMap>
             </div>

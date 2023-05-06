@@ -16,20 +16,24 @@ const AccountDataDialogs = () => {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+    // toggles the save data modal open and closed.
     const handleToggleSavedDataModal = () => {
         setOpenSavedData(!openSavedData);
     };
 
+    // toggles the delete account modal open and closed.
     const handleToggleAccountModal = () => {
         setOpenAccount(!openAccount);
     };
 
+    // handles deleting all saved data.
     const handleDeleteAllSavedData = (e) => {
         e.preventDefault();
         handleToggleSavedDataModal();
         console.log("Deleting all saved data");
     };
 
+    // handles deleting the users account.
     const handleDeleteAccount = (e) => {
         e.preventDefault();
         handleToggleAccountModal();
@@ -49,7 +53,6 @@ const AccountDataDialogs = () => {
                 </Button>
             </div>
 
-            {/* Saved Data Dialog */}
             <Dialog
                 fullScreen={fullScreen}
                 open={openSavedData}
@@ -78,7 +81,6 @@ const AccountDataDialogs = () => {
                 </DialogActions>
             </Dialog>
 
-            {/* Account Deletion Dialog */}
             <Dialog
                 fullScreen={fullScreen}
                 open={openAccount}

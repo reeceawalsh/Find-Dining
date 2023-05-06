@@ -1,7 +1,6 @@
 import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
-import TextInputLabel from "../FormElements/TextInputLabel";
 
 export default function RegistrationForm({
     styles,
@@ -10,11 +9,13 @@ export default function RegistrationForm({
     errors,
     handleRegister,
     alreadyRegistered,
+    validRegistration,
 }) {
+    console.log(validRegistration);
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>
-                <TextInputLabel
+                <TextInput
                     className={styles.username}
                     name="Username"
                     type="text"
@@ -30,7 +31,7 @@ export default function RegistrationForm({
                         })
                     }
                 />
-                <TextInputLabel
+                <TextInput
                     className={styles.email}
                     name="Email"
                     type="email"
@@ -90,6 +91,11 @@ export default function RegistrationForm({
                 >
                     Create Account
                 </button>
+                {!validRegistration && (
+                    <p className="error error-message">
+                        That username or email is already taken.
+                    </p>
+                )}
             </form>
         </div>
     );

@@ -10,6 +10,8 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  border: 1px solid black;
+  margin-top: 1rem;
 }
 
 .title {
@@ -21,6 +23,9 @@
   width: 30vw;
   border-right: 2px solid black;
   padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 100vh;
+  overflow: scroll;
 }
 
 .map {
@@ -28,14 +33,16 @@
   width: 70vw;
 }
 
-.sliderWrapper {
-  margin-top: 1rem;
-}
 
 .restaurant {
   cursor: pointer;
 }
 
 .restaurant:hover {
+  font-weight: bold;
+}
+
+.loader {
+  margin-top: 1.2rem;
   font-weight: bold;
 }

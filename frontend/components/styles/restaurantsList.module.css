@@ -1,0 +1,6 @@
+.restaurantsWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 80vw;
+  margin: 1rem 5rem 5rem 5rem;
+}

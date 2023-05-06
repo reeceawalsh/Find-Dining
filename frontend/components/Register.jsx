@@ -8,17 +8,24 @@ import RegistrationForm from "./Forms/RegistrationForm";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+const logo = require("../public/LogoCropped.png");
 
+// registration component which contains a form that handles registrations.
 const Register = () => {
     const router = useRouter();
     const { user } = useUser();
+    const [errors, setErrors] = useState([]);
+    const [validRegistration, setValidRegistration] = useState(true);
+    const setToken = useSetToken();
 
+    // this redirects users to the home page if they're already logged in.
     useEffect(() => {
         if (user) {
             router.push("/home");
         }
     }, [user, router]);
 
+    // empty registrationData
     const [registrationData, setRegistrationData] = useState({
         username: "",
         email: "",
@@ -26,10 +33,7 @@ const Register = () => {
         dateOfBirth: "",
     });
 
-    const [errors, setErrors] = useState([]);
-    const [validRegistration, setValidRegistration] = useState(false);
-    const setToken = useSetToken();
-
+    // handles clicking the register button
     const handleRegister = (e) => {
         console.log("registration Process");
         e.preventDefault();
@@ -45,11 +49,11 @@ const Register = () => {
             setErrors(newErrors);
         }
     };
-    // Posts email, username, password and DOB to be added to Database
+
+    // posts email, username, password and DOB to be added to Database
     const handleCheckRegistered = () => {
         console.log("checking user");
-        const token =
-            "853026529cdea7d5f74ced9350fed93bcd88245bf2be9d213ec035b2c99907ed9fef5fd0d40b5ef8d1fcc74b27e7f24bf115a8b324c4263346dbb4ea8bf3a987f5e7783a5db09c18cc80baec220ae4804af218622a86c7b16ce3968f1ef82b3f24f353f67f2088dfdc994c4ade2403ac6e2641a729d724c7e791e879da66a811";
+        const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
         let data = JSON.stringify({
             email: registrationData.email,
             username: registrationData.username,
@@ -61,7 +65,7 @@ const Register = () => {
         const config = {
             method: "post",
             maxBodyLength: Infinity,
-            url: "http://localhost:1337/api/auth/local/register",
+            url: `${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/local/register`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
@@ -80,10 +84,12 @@ const Register = () => {
                 if (error.response) {
                     console.error("Server response:", error.response.data);
                 }
+                // if it cannot register the user then we need to keep track of that and give the appropriate error message.
                 setValidRegistration(false);
             });
     };
 
+    // checks for errors using RegistrationVR. Ensures the password and dob are valid and that their is a valid email and username present.
     const checkErrors = (data) => {
         let newErrors = validate(data);
         setErrors(newErrors);
@@ -96,13 +102,14 @@ const Register = () => {
         >
             <div className={`${styles.container}`}>
                 <div className={styles.header}>
-                    <Image
-                        src="/LogoCropped.png"
-                        className={`app-logo ${styles.logo}`}
-                        height="70"
-                        width="120"
-                        alt="logo"
-                    />{" "}
+                    <Link href="/home">
+                        <Image
+                            className={`logo app-logo ${styles.logo}`}
+                            src={logo}
+                            alt="Find Dining Logo - A very cute burger with a knife and fork."
+                            priority="true"
+                        />
+                    </Link>
                     <Link className={styles.skip} href="/home">
                         Home
                     </Link>
@@ -117,7 +124,7 @@ const Register = () => {
                         registrationData={registrationData}
                         errors={errors}
                         handleRegister={handleRegister}
-                        validRegister={validRegistration}
+                        validRegistration={validRegistration}
                     />
                 </div>
             </div>

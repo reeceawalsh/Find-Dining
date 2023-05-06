@@ -13,8 +13,8 @@
 
 html,
 body {
-  max-width: 100vw;
-  background-color: #EE7674;
+  height: 100%;
+  margin: 0;
 }
 
 body {
@@ -64,6 +64,11 @@ a {
   margin-top: 0.5rem;
 }
 
+.logo {
+  height: 5rem;
+  width: 8rem;
+}
+
 .title {
   font-size: 2.8rem;
   letter-spacing: 4px;
@@ -101,16 +106,24 @@ a {
   color: red;
 }
 
+.error-message {
+  color: black;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
 .social-media-icon {
-  height: 3em;
-  width: 3em;
+  height: 3rem !important;
+  width: 3rem !important;
   opacity: 0.5;
 }
 
 .social-media-icon:hover {
   opacity: 1;
-  height: 3.1em;
-  width: 3.1em;
+  height: 3.1rem !important;
+  width: 3.1rem !important;
 }
 
 .content-body {
@@ -220,6 +233,7 @@ span.error:after {
   display: none !important;
 }
 
+
 .eye-icon {
   position: absolute;
   right: 10px;
@@ -228,6 +242,8 @@ span.error:after {
   cursor: pointer;
   background: none;
   border: none;
+  width: 20px;
+  height: 20px;
 }
 
 /** Containers for modals **/
@@ -406,18 +422,37 @@ span.error:after {
   resize: none;
 }
 
-.spinner {
+/* Spinner */
+.spinnerWrapper {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerContainer {
   position: absolute;
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  width: 36px;
-  height: 36px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  width: 63px;
+  height: 63px;
   border-radius: 50%;
   border-left-color: #000;
   animation: spinner 1s linear infinite;
-  left: 50%;
-  right: 50%;
-  top: 50%;
-  bottom: 50%;
+}
+
+.spinnerImage {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  animation: spinner 2.5s linear infinite;
 }
 
 @keyframes spinner {
