@@ -4,8 +4,7 @@ import styles from "./styles/aboutUs.module.css";
 const AboutUs = () => {
     return (
         <div className={styles.container}>
-            <h1>About Us</h1>
-            <div>
+            <h1>About Find Dining</h1>
                 <p>
                     Welcome to our restaurant discovery application! We are a
                     team of passionate developers who have created an innovative
@@ -32,14 +31,13 @@ const AboutUs = () => {
                 <p>
                     Thank you for choosing{" "}
                     <a href="/restaurants" className={styles.highlightedText}>
-                        Find Dining.
-                    </a>{" "}
-                    We hope you enjoy using it and discovering new culinary
+                        Find Dining
+                    </a>{""}
+                    . We hope you enjoy using it and discovering new culinary
                     experiences in your area! If you have any feedback or
                     suggestions, please don't hesitate to contact us.
                 </p>
             </div>
-        </div>
     );
 };
 

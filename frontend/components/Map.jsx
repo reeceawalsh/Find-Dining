@@ -92,7 +92,7 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
         <div className={styles.container}>
             <div className={styles.sidebar}>
                 <div className={styles.restaurantsList}>
-                    <h2>Nearby Restaurants:</h2>
+                    <h2 style = {{color: "#ee7674"}}>Nearby Restaurants</h2>
                     {filteredRestaurants.map((restaurant) => (
                         <div
                             key={restaurant.place_id}
@@ -102,7 +102,14 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
                             onMouseLeave={() => handleRestaurantHover(null)}
                             className={styles.restaurant}
                         >
-                            {restaurant.name} - {restaurant.rating} / 5
+                            <div className={styles.individualRestaurantContainer}>
+                                <div className={styles.restuarantName}>
+                                    {restaurant.name} 
+                                </div>
+                                <div className={styles.ratingContainer}>
+                                    {restaurant.rating.toFixed(1)}
+                                </div>
+                            </div>
                         </div>
                     ))}
                     {noMoreRestaurants && (
