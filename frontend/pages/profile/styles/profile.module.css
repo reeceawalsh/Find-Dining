@@ -3,18 +3,17 @@
   flex-direction: column;
   position: absolute;
   left: 0;
-  width: 20vw !important;
-  gap: 1rem;
-  border: 2px solid #36dbff;
+  border: 2px solid #ee7674;
   border-radius: 20px;
   margin: 68px 221px 0px 62px;
-  max-width: 300px;
+  width: 300px;
 }
 
 
 .rightContainer {
-  min-width: 50vw;
-  margin: 68px 200px;
+  position: relative;
+  margin: 56px auto;
+
 }
 
 .selected {
@@ -32,12 +31,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding-top: 29px;
-  padding-bottom: 29px;
+  padding-bottom: 20px;
 }
 
 .leftContainer > *:not(:last-of-type)   {
-  border-bottom: 2px solid #36dbff;
+  border-bottom: 2px solid #ee7674;
 }
 
 .link:hover {
@@ -54,4 +52,22 @@
   font-size: 1.6rem;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.icon {
+  position: relative;
+  margin-right: 10px;
+  margin-left: 15px;
+  top: 30px;
+}
+
+.buttonContainer {
+  margin-right: 20px;
+  text-align: left;
+
+}
+
+.iconText {
+  position: relative;
+  left: 60px;
 }

@@ -1,7 +1,9 @@
+
 .container h1 {
     min-width: 600px;
     max-width: 35vw;
     text-align: center;
+    color: #ee7674;
 }
 
 .container p {
@@ -11,7 +13,7 @@
 }
 
 .highlightedText {
-    color: #36DBFF;
+    color: #ee7674;
 }
 
 .container {
@@ -19,9 +21,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
-    border-radius: 20px;
     padding: 2em 2em 2em 2em;
-    margin-top: 1.5rem;
-    background-color: #EE7674;
+}
+
+.logo {
+    height: 100px;
+    width: 150px;
+    margin-top: 50px;
+    border-radius: 10px;
 }

@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import deleteAccount from "@component/lib/deleteAccount";
 import { useUser } from "@component/lib/authContext";
+import styles from "./styles/accountDataDialogs.module.css"
 
 const AccountDataDialogs = () => {
     const { user, logout } = useUser();
@@ -45,10 +46,10 @@ const AccountDataDialogs = () => {
     return (
         <div className="container">
             <div className="info-section-container">
-                <Button variant="outlined" onClick={handleToggleSavedDataModal}>
+                <Button className={styles.deleteButton} variant="outlined" onClick={handleToggleSavedDataModal}>
                     Delete all saved data
                 </Button>
-                <Button variant="outlined" onClick={handleToggleAccountModal}>
+                <Button className={styles.deleteButtonBold} variant="outlined" onClick={handleToggleAccountModal}>
                     Delete account
                 </Button>
             </div>
