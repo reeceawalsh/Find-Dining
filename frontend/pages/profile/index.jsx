@@ -51,6 +51,7 @@ export default function Profile() {
                         onClick={() => changePage("Account Details")}
                         style = {{color: page == "Account Details" && "#ee7674"}}
                     >
+                        <div className={styles.buttonContainer}>
                         {page == "Account Details" ?
                         <Image
                             className={styles.icon}
@@ -63,13 +64,15 @@ export default function Profile() {
                             alt="Black spanner icon"
                             />
                         }
-                        Account Details
+                        <span className={styles.iconText}>Accounts Details</span>
+                        </div>
                     </button>
                     <button
                         className={styles.link}
                         onClick={() => changePage("Achievements")}
                         style = {{color: page == "Achievements" && "#ee7674"}}
                     >
+                        <div className={styles.buttonContainer}>
                         {page == "Achievements" ?
                         <Image
                             className={styles.icon}
@@ -82,26 +85,29 @@ export default function Profile() {
                             alt="Black award icon"
                             />
                         }
-                        Achievements
+                        <span className={styles.iconText}>Achievements</span>
+                        </div>
                     </button>
                     <button
                         className={styles.link}
                         onClick={() => changePage("Support")}
                         style = {{color: page == "Support" && "#ee7674"}}
                     >
-                        {page == "Support" ?
-                        <Image
-                            className={styles.icon}
-                            src={orangeHelpIcon}
-                            alt="Orange help icon"
-                        />
-                        :<Image
-                            className={styles.icon}
-                            src={blackHelpIcon}
-                            alt="Black help icon"
+                        <div className={styles.buttonContainer}>
+                            {page == "Support" ?
+                            <Image
+                                className={styles.icon}
+                                src={orangeHelpIcon}
+                                alt="Orange help icon"
                             />
-                        }
-                        Support
+                            :<Image
+                                className={styles.icon}
+                                src={blackHelpIcon}
+                                alt="Black help icon"
+                                />
+                            }
+                            <span className={styles.iconText}>Support</span>
+                        </div>
                     </button>
                 </div>
             </div>

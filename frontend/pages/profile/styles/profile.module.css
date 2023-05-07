@@ -3,17 +3,17 @@
   flex-direction: column;
   position: absolute;
   left: 0;
-  width: 20vw;
   border: 2px solid #ee7674;
   border-radius: 20px;
   margin: 68px 221px 0px 62px;
-  max-width: 30vw;
+  width: 300px;
 }
 
 
 .rightContainer {
-  min-width: 50vw;
-  margin: 68px 200px;
+  position: relative;
+  margin: 56px auto;
+
 }
 
 .selected {
@@ -59,4 +59,15 @@
   margin-right: 10px;
   margin-left: 10px;
   top: 30px;
+}
+
+.buttonContainer {
+  margin-right: 20px;
+  text-align: left;
+
+}
+
+.iconText {
+  position: relative;
+  left: 60px;
 }
