@@ -1,6 +1,5 @@
 .toggleWrapper {
   display: flex;
-  border: 1px solid black;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;

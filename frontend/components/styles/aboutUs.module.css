@@ -24,3 +24,10 @@
     padding: 2em 2em 2em 2em;
     margin-top: 1.5rem;
 }
+
+.logo {
+    height: 100px;
+    width: 150px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
