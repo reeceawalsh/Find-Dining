@@ -1,6 +1,5 @@
-
 .container {
-  background-image: url('/HomeBackgroundOpacity.png');
+  background-image: url('/HomeBackground.jpg');
   background-size: cover;
   min-height: 80vh;
 }
@@ -13,8 +12,8 @@
   align-items: center;
   border-radius: 5px;
   gap: 1rem;
-  margin-top: 220px;
   color: black;
+  padding-top: 15rem;
 }
 
 .welcomeMessage {
@@ -24,5 +23,7 @@
   align-items: center;
   padding-top: 2rem;
   margin-bottom: 0;
+  font-size: 3rem;
   color: black;
+  text-shadow: white 1px 2px;
 }

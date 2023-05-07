@@ -1,24 +1,29 @@
 .footer {
   display: flex;
-  gap: 10rem;
+  justify-content: space-between;
   align-items: center;
-  padding: 2rem 0 2em 0;
-  background-color: #EE7674;
+  padding: 2rem 5rem;
+  background-color: #ee7674;
   color: #fff;
-  margin-top: 0;
-  width: 100vw;
-  bottom: 0;
-  border-top: 1px solid black;
+  margin-top: auto;
+  width: 100%;
+
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .link {
-  color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  color: black;
+  padding: 0 1rem;
   background: none;
   border: none;
   cursor: pointer;
-  justify-self: flex-start;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
 .link:hover {
@@ -31,6 +36,9 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .info a {

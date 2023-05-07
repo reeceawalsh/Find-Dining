@@ -59,7 +59,7 @@ const SearchBar = ({ onPlaceSelected }) => {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     disabled={!ready}
-                    placeholder="Search for a location..."
+                    placeholder="Input your location to find restaurants near you..."
                     className={styles.searchbar}
                 />
                 <button
@@ -68,7 +68,7 @@ const SearchBar = ({ onPlaceSelected }) => {
                         handleSearch(e);
                     }}
                 >
-                     <Image
+                    <Image
                         className={styles.searchIcon}
                         src={searchIcon}
                         alt="Search Icon"

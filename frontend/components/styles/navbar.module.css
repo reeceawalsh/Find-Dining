@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
+.headerContainer {
+  position: relative;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
-  height: 7rem;
+  height: 10vh;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: 'Inter', Helvetica;
   align-items: center;
-  padding: 1rem;
+  border-bottom: 0.5px solid #ee7674;
+  background-color: white;
 }
 
 .rightNavbar {
@@ -17,7 +22,8 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  font-size: 24px;
+  height: 100%;
+  padding-right: 5rem;
 }
 
 .rightNavbarLinks {
@@ -29,30 +35,61 @@
 .leftNavbarLinks {
   display: block;
   font-size: 24px;
-  background-color: #36dbffd9;
-  padding: 12px 0 12px 62px;
+  height: 100%;
+}
+
+.leftNavbar {
+  color: #ee7674 !important;
 }
 
 .link {
-  color: #ee7674;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.profileBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 24px;
-  background-color: #d9d9d9;
-  border-radius: 5px;
-  padding: 5px 15px;
+  height: 3rem;
   color: #ee7674;
 }
 
+.profileBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0 1.5rem 0 2rem;
+  background: #ee7674;
+  border-radius: 500px;
+  color: black;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.profileBoxDropdownOpen {
+  border-radius: 20px 20px 0px 0px !important;
+}
+
+
+.profileLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  color: WHITE !important;
+}
+
+.profileLink:hover {
+  background-color: #ee7674bc !important;
+}
+
+.link:hover {
+  color: white;
+  background-color: #ee7674;
+  border-radius: 800px;
+
+}
 
 .username {
   color: black;
@@ -63,46 +100,28 @@
 .userIcon {
   padding-bottom: 2px;
   margin-left: 10px;
+  background: white;
+  border-radius: 50%;
 }
 
-.leftNavbarLinks .link:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 18px;
-}
-
-.rightNavbarLinks .link:hover {
-  text-decoration: underline;
-}
-
-.underline {
-  text-decoration: underline;
-}
 
 .logoContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.logoName {
-  font-size: 40px;
-}
-
-.logoName span:nth-child(1) {
-  color: #36dbff;
-  margin-left: 40px;
-}
-
-.logoName span:nth-child(2) {
-  color: #ee7674;
+  font-size: 1.2rem;
+  background-color: #ee7674;
+  width: 22vw;
+  height: 100%;
+  /* border-radius: 0 800px 800px 0; */
 }
 
 .logo {
   border-radius: 5px;
-  width: 81px;
-  height: 76px;
-  margin-left: 62px;
+  width: 5.2em;
+  height: 3.5em;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
 }
 
 .postalCodeButton {
@@ -114,11 +133,14 @@
   flex-direction: row;
   white-space: nowrap;
   width: 6rem;
-  margin-left: 1em;
+  margin-left: 0.5em;
+  font-size: 1.2rem;
+  color: white;
 }
 
 .locationPin {
   font-size: 20px;
+  color: white;
 }
 
 .pinWrapper {
@@ -137,4 +159,34 @@
 
 .postalCode:hover {
   text-decoration: underline;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #ee7674;
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 180px;
+  width: 100%;
+  margin-left: -1.5rem;
+}
+
+.dropdownLink {
+  padding: 0.8rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  /* color: #36DBFF; */
+  text-decoration: none;
+}
+
+.dropdownLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* color: #36DBFF; */
 }

@@ -461,8 +461,9 @@ span.error:after {
 }
 
 .active-link {
-  text-decoration: underline;
-  font-weight: bolder;
+  font-weight: bold;
+  background: #36DBFF;
+  border-radius: 800px;
 }
 
 .padding-left {

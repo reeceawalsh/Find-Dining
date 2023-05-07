@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Spinner from "./Spinner";
 import { useLoadScript } from "@react-google-maps/api";
-import { useMemo } from "react";
+import { useMemo, Suspense } from "react";
 import Footer from "./Footer";
 import styles from "./styles/layout.module.css";
 
@@ -17,7 +17,9 @@ const Layout = ({ children }) => {
             {isLoaded ? (
                 <div className={styles.pageContainer}>
                     <Navbar />
-                    <main className={styles.main}>{children}</main>
+                    <Suspense fallback={<Spinner />}>
+                        <main className={styles.main}>{children}</main>
+                    </Suspense>
                     <Footer />
                 </div>
             ) : (

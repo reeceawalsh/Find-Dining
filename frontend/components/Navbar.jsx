@@ -10,11 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import fetchPostCode from "@component/lib/fetchPostCode";
 
-const logo = require("../public/HeaderLogo.jpg");
+const logo = require("../public/LogoCropped.png");
 const userIcon = require("../public/OrangeUserIcon.svg");
 
 const Navbar = () => {
     const { user, loading, logout } = useUser();
+    const [showDropdown, setShowDropdown] = useState(false);
     // geoLocation is the users current location, location is the location that the user is currently searching around for restaurants.
     const { geoLocation, location, setLocation } = useContext(Location);
     const [postCode, setPostCode] = useState(null);
@@ -61,131 +62,126 @@ const Navbar = () => {
         }
     }, [location, geoLocation]);
 
+    console.log(showDropdown);
+
     return (
         //CHANGE THIS BACK TO BLUE BACKGROUND
         <div className="headerContainer">
-        <div className={`${styles.navbar} white-background`}> 
-            <div className={styles.logoContainer}>
-                <Link href="/home">
-                    <Image
-                        className={styles.logo}
-                        src={logo}
-                        alt="Find Dining Logo - A very cute burger with a knife and fork."
-                        priority="true"
-                    />
-                </Link>
-<<<<<<< HEAD
-                <div className={styles.logoName}><span>Find </span><span>Dining</span></div>
-=======
-                <button
-                    className={styles.postalCodeButton}
-                    onClick={handleSearch}
-                >
-                    <div className={styles.pinWrapper}>
-                        <FontAwesomeIcon
-                            icon={faMapMarkerAlt}
-                            className={styles.locationPin}
+            <div className={`${styles.navbar} white-background`}>
+                <div className={styles.logoContainer}>
+                    <Link href="/home">
+                        <Image
+                            className={styles.logo}
+                            src={logo}
+                            alt="Find Dining Logo - A very cute burger with a knife and fork."
+                            priority="true"
                         />
-                    </div>
-                    <Link href="/restaurants">
-                        <span className={styles.postalCode}>
-                            {displayPostCode() || ""}
-                        </span>
                     </Link>
-                </button>
-            </div>
-            <div className="left-navbar">
-                <NavLink className={styles.link} href="/home">
-                    Home
-                </NavLink>
-                <NavLink className={styles.link} href="/home/about">
-                    About
-                </NavLink>
-
-                {user && (
-                    <>
-                        <NavLink
-                            className={styles.link}
-                            href="/home/favourites"
+                    {location && (
+                        <button
+                            className={styles.postalCodeButton}
+                            onClick={handleSearch}
                         >
-                            Favourites
-                        </NavLink>
-                        {location && (
-                            <NavLink
-                                className={styles.link}
-                                href="/restaurants"
-                            >
-                                Find Dining
-                            </NavLink>
-                        )}
-                    </>
-                )}
->>>>>>> main
-            </div>
-            <div className={styles.rightNavbar}>
-                {loading ? (
-                    <span>Loading...</span>
-                ) : user ? (
-                    <>     
-                        <div className={styles.profileBox}>        
-                                <span>
-                                    {" "}
-                                    {!loading ? user.username : "Loading..."}{" "}
+                            <div className={styles.pinWrapper}>
+                                <FontAwesomeIcon
+                                    icon={faMapMarkerAlt}
+                                    className={styles.locationPin}
+                                />
+                            </div>
+                            <Link href="/restaurants">
+                                <span className={styles.postalCode}>
+                                    {displayPostCode() || ""}
                                 </span>
-                            <Image
-                                className={styles.userIcon}
-                                src={userIcon}
-                                alt="User Icon"
-                            />
-                        </div> 
-                        <div className={styles.rightNavbarLinks}>
-                            <NavLink className={styles.link} href="/profile">
-                                Profile
-                            </NavLink>
+                            </Link>
+                        </button>
+                    )}
+                </div>
+                <div className={styles.leftNavbar}>
+                    <NavLink className={styles.link} href="/home">
+                        Home
+                    </NavLink>
+
+                    {user && (
+                        <>
                             <NavLink
                                 className={styles.link}
-                                href="/home"
-                                onClick={handleLogout}
+                                href="/home/favourites"
                             >
-                                Logout
+                                Favourites
                             </NavLink>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <NavLink className={styles.link} href="/login">
-                            Login
-                        </NavLink>
-                        <NavLink className={styles.link} href="/register">
-                            Register
-                        </NavLink>
-                    </>
-                )}
+                            {location && (
+                                <NavLink
+                                    className={styles.link}
+                                    href="/restaurants"
+                                >
+                                    Find Dining
+                                </NavLink>
+                            )}
+                        </>
+                    )}
+                </div>
+                <div className={styles.rightNavbar}>
+                    {loading ? (
+                        <span>Loading...</span>
+                    ) : user ? (
+                        <>
+                            <div
+                                className={`${styles.profileBox} ${
+                                    showDropdown
+                                        ? styles.profileBoxDropdownOpen
+                                        : ""
+                                }`}
+                                onMouseEnter={() => setShowDropdown(true)}
+                                onMouseLeave={() => setShowDropdown(false)}
+                            >
+                                <NavLink
+                                    className={`${styles.link} ${styles.profileLink}`}
+                                    href="/profile"
+                                >
+                                    <span>
+                                        {" "}
+                                        {!loading
+                                            ? user.username
+                                            : "Loading..."}{" "}
+                                    </span>
+                                    <Image
+                                        className={styles.userIcon}
+                                        src={userIcon}
+                                        alt="User Icon"
+                                    />
+                                </NavLink>
+                                {showDropdown && (
+                                    <div className={styles.dropdown}>
+                                        <NavLink
+                                            className={styles.dropdownLink}
+                                            href="/profile"
+                                        >
+                                            Profile
+                                        </NavLink>
+                                        <NavLink
+                                            className={styles.dropdownLink}
+                                            href="/logout"
+                                            onClick={handleLogout}
+                                        >
+                                            Logout
+                                        </NavLink>
+                                    </div>
+                                )}
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink className={styles.link} href="/login">
+                                Login
+                            </NavLink>
+                            <NavLink className={styles.link} href="/register">
+                                Register
+                            </NavLink>
+                        </>
+                    )}
+                </div>
             </div>
-            </div>
-            <div className={styles.leftNavbarLinks}>
-            <NavLink className={styles.link} href="/home">
-                Home
-            </NavLink>
-            <NavLink className={styles.link} href="/home/about">
-                About
-            </NavLink>
-
-            {user && (
-                <>
-                    <NavLink
-                        className={styles.link}
-                        href="/home/favourites"
-                    >
-                        Favourites
-                    </NavLink>
-                    <NavLink className={styles.link} href="/restaurants">
-                        Find Dining
-                    </NavLink>
-                </>
-            )}
         </div>
-       </div>
     );
 };
 

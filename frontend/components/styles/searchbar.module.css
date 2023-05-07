@@ -16,8 +16,7 @@
 
 .dropdownWrapper {
   background-color: white;
-  max-width: 30.1rem;
-  /* 100% of container but minus the button */
+  max-width: calc(100% - 100px - 36px);
   cursor: pointer;
   border-radius: 2px 2px 20px 20px;
   border: 2px solid #ee7674;
@@ -38,6 +37,8 @@
 .searchbarContainer {
   display: flex;
   flex-direction: row;
+  font-size: 1.3rem;
+
 }
 
 .searchbar {
