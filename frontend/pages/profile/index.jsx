@@ -8,6 +8,7 @@ import AccountDetails from "../../components/AccountDetails";
 import Achievements from "../../components/Achievements";
 import Support from "../../components/Support";
 import PrivacyNotice from "../../components/PrivacyNotice";
+import Image from "next/image";
 
 export default function Profile() {
     const { user, loading, setUser } = useUser();
@@ -15,6 +16,14 @@ export default function Profile() {
     const router = useRouter();
     console.log("Profile");
     console.log(user);
+
+    const orangeSpannerIcon = require("/public/OrangeSpannerIcon.svg");
+    const blackSpannerIcon = require("/public/BlackSpannerIcon.svg");
+    const orangeAwardIcon = require("/public/OrangeAwardIcon.svg");
+    const blackAwardIcon = require("/public/BlackAwardIcon.svg");
+    const orangeHelpIcon = require("/public/OrangeHelpIcon.svg");
+    const blackHelpIcon = require("/public/BlackHelpIcon.svg");
+
 
     const changePage = (pageName) => {
         setPage(pageName);
@@ -39,20 +48,59 @@ export default function Profile() {
                 <div className={styles.leftContainer}>
                     <button
                         className={styles.link}
-                        onClick={() => changePage("Achievements")}
-                    >
-                        Achievements
-                    </button>
-                    <button
-                        className={styles.link}
                         onClick={() => changePage("Account Details")}
+                        style = {{color: page == "Account Details" && "#ee7674"}}
                     >
+                        {page == "Account Details" ?
+                        <Image
+                            className={styles.icon}
+                            src={orangeSpannerIcon}
+                            alt="Orange spanner icon"
+                        />
+                        :<Image
+                            className={styles.icon}
+                            src={blackSpannerIcon}
+                            alt="Black spanner icon"
+                            />
+                        }
                         Account Details
                     </button>
                     <button
                         className={styles.link}
-                        onClick={() => changePage("Support")}
+                        onClick={() => changePage("Achievements")}
+                        style = {{color: page == "Achievements" && "#ee7674"}}
                     >
+                        {page == "Achievements" ?
+                        <Image
+                            className={styles.icon}
+                            src={orangeAwardIcon}
+                            alt="Orange award icon"
+                        />
+                        :<Image
+                            className={styles.icon}
+                            src={blackAwardIcon}
+                            alt="Black award icon"
+                            />
+                        }
+                        Achievements
+                    </button>
+                    <button
+                        className={styles.link}
+                        onClick={() => changePage("Support")}
+                        style = {{color: page == "Support" && "#ee7674"}}
+                    >
+                        {page == "Support" ?
+                        <Image
+                            className={styles.icon}
+                            src={orangeHelpIcon}
+                            alt="Orange help icon"
+                        />
+                        :<Image
+                            className={styles.icon}
+                            src={blackHelpIcon}
+                            alt="Black help icon"
+                            />
+                        }
                         Support
                     </button>
                 </div>

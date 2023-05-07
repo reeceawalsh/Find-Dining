@@ -3,12 +3,11 @@
   flex-direction: column;
   position: absolute;
   left: 0;
-  width: 20vw !important;
-  gap: 1rem;
-  border: 2px solid #36dbff;
+  width: 20vw;
+  border: 2px solid #ee7674;
   border-radius: 20px;
   margin: 68px 221px 0px 62px;
-  max-width: 300px;
+  max-width: 30vw;
 }
 
 
@@ -32,12 +31,11 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding-top: 29px;
-  padding-bottom: 29px;
+  padding-bottom: 20px;
 }
 
 .leftContainer > *:not(:last-of-type)   {
-  border-bottom: 2px solid #36dbff;
+  border-bottom: 2px solid #ee7674;
 }
 
 .link:hover {
@@ -54,4 +52,11 @@
   font-size: 1.6rem;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.icon {
+  position: relative;
+  margin-right: 10px;
+  margin-left: 10px;
+  top: 30px;
 }
