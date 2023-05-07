@@ -49,7 +49,7 @@ const AccountDataDialogs = () => {
                 <Button className={styles.deleteButton} variant="outlined" onClick={handleToggleSavedDataModal}>
                     Delete all saved data
                 </Button>
-                <Button className={styles.deleteButton} style = {{fontWeight: "bold"}} variant="outlined" onClick={handleToggleAccountModal}>
+                <Button className={styles.deleteButtonBold} variant="outlined" onClick={handleToggleAccountModal}>
                     Delete account
                 </Button>
             </div>

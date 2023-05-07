@@ -65,7 +65,6 @@ const Navbar = () => {
     console.log(showDropdown);
 
     return (
-        //CHANGE THIS BACK TO BLUE BACKGROUND
         <div className="headerContainer">
             <div className={`${styles.navbar} white-background`}>
                 <div className={styles.logoContainer}>

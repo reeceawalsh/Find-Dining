@@ -13,9 +13,11 @@
   margin-top: 1rem;
 }
 
-.title {
-  padding-top: 1rem;
+.listTitle {
+  color: #ee7674
 }
+
+
 
 .sidebar {
   height: 100vh;

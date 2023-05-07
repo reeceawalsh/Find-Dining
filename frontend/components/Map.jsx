@@ -92,7 +92,7 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
         <div className={styles.container}>
             <div className={styles.sidebar}>
                 <div className={styles.restaurantsList}>
-                    <h2 style = {{color: "#ee7674"}}>Nearby Restaurants</h2>
+                    <h2 className={styles.listTitle}>Nearby Restaurants</h2>
                     {filteredRestaurants.map((restaurant) => (
                         <div
                             key={restaurant.place_id}
