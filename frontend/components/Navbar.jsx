@@ -77,7 +77,7 @@ const Navbar = () => {
                         />
                     </Link>
                     <Link href="/home">
-                        <span className="blue-font">Find</span>{" "}
+                        <span className="white-font">Find</span>{" "}
                         <span className="blue-font">Dining</span>
                     </Link>
                     {location && (

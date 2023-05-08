@@ -1,21 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styles from "./styles/restaurantPage.module.css";
 import StarRating from "./StarRating";
 import OpeningHours from "./OpeningHours";
-import haversineDistance from "@component/lib/haversineDistance";
 import RestaurantAddress from "./RestaurantAddress";
 import RestaurantReview from "./RestaurantReview";
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { useRef } from "react";
 import getOffsetTop from "@component/lib/getOffsetTop";
-// import reviewsData from "../lib/reviewsData.json";
 import { useCookies } from "react-cookie";
 import { getTokenFromLocalCookie } from "@component/lib/auth";
 import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
-import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
-import convertToDateObject from "@component/lib/convertToDateObject";
+import haversineDistance from "@component/lib/haversineDistance";
+import Location from "@component/lib/locationContext";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MapIcon from "@mui/icons-material/Map";
+import PersonIcon from "@mui/icons-material/Person";
 
 const RestaurantPage = ({
     restaurant,
@@ -37,6 +39,7 @@ const RestaurantPage = ({
         coordinates,
         categories,
     } = restaurant;
+    const { user } = useUser();
     const [cookies] = useCookies(["jwt"]);
     const reviewsRef = useRef(null);
     const writeReviewRef = useRef(null);
@@ -51,9 +54,9 @@ const RestaurantPage = ({
     const [displayedReviewsCount, setDisplayedReviewsCount] = useState(5);
     const [filteredReviews, setFilteredReviews] = useState(reviews);
 
-    const [error, setError] = useState(false);
+    const { geoLocation } = useContext(Location);
 
-    const { user } = useUser();
+    const [error, setError] = useState(false);
 
     const getDistance = () => {
         const restaurantLat = coordinates.latitude;
@@ -61,7 +64,8 @@ const RestaurantPage = ({
 
         const distanceAwayFromUser = haversineDistance(
             restaurantLat,
-            restaurantLng
+            restaurantLng,
+            geoLocation
         );
         return `${Math.round(distanceAwayFromUser)} metres`;
     };
@@ -149,7 +153,7 @@ const RestaurantPage = ({
 
     const handleSubmitReview = (e) => {
         e.preventDefault();
-        if (review && review.length > 60) {
+        if (review && review.length > 10) {
             submitReview(review, token, selectedRating);
             console.log("Submitted review:", review);
             setReview("");
@@ -160,9 +164,10 @@ const RestaurantPage = ({
         }
     };
 
+    // will set the distance away when geoLocation changes
     useEffect(() => {
         setDistance(getDistance);
-    }, []);
+    }, [geoLocation]);
 
     console.log(reviews);
 
@@ -176,6 +181,8 @@ const RestaurantPage = ({
                 className={styles.header}
                 style={{
                     backgroundImage: `url(${photos[0]}), url(${photos[1]})`,
+                    backgroundColor: "#48a7ff",
+                    borderBottom: "1px solid #e34f4f",
                 }}
             >
                 <h1 className={styles.restaurantName}>{name}</h1>
@@ -204,6 +211,12 @@ const RestaurantPage = ({
                 <div className={styles.subContainer}>
                     <div className={styles.leftContainer}>
                         <OpeningHours hours={hours} />
+                        <div className={styles.icon}>
+                            <AccessTimeIcon
+                                className={styles.icon}
+                                fontSize="small"
+                            />
+                        </div>
                         <p>{display_phone}</p>
                         <a
                             className={styles.yelpLink}
@@ -306,7 +319,7 @@ const RestaurantPage = ({
                         />
                         <textarea
                             placeholder="Write your review here..."
-                            value={review}
+                            value={review || ""}
                             onChange={(e) => setReview(e.target.value)}
                         />
                         {error && (

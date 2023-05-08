@@ -3,14 +3,14 @@ import usePlacesAutocomplete, {
     getGeocode,
 } from "use-places-autocomplete";
 import styles from "./styles/searchbar.module.css";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Location from "../lib/locationContext";
 import Image from "next/image";
 
 const SearchBar = ({ onPlaceSelected }) => {
     const { location, setLocation } = useContext(Location);
-
+    const [selected, setSelected] = useState(false);
     const router = useRouter();
 
     const searchIcon = require("../public/HomeSearchIcon.svg");
@@ -41,13 +41,14 @@ const SearchBar = ({ onPlaceSelected }) => {
             console.log(lat, lng);
             // set the location as the searched location in location context
             setLocation({ lat, lng });
+            setSelected(true);
         } catch (error) {
             console.error("Error fetching geocode: ", error);
         }
     };
 
     const handleSearch = () => {
-        if (location?.lat && location?.lng) {
+        if (location?.lat && location?.lng && selected) {
             router.push("/restaurants");
         }
     };
