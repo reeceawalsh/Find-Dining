@@ -3,8 +3,8 @@ import styles from "./styles/achievements.module.css";
 // this component contains and presents achievement data.
 const Achievement = ({ title, description, dateAchieved, progress }) => {
     return (
-        <div className={`container ${styles.achievementContainer}`}>
-            <h1>{title && title}</h1>
+        <div className={styles.achievementContainer}>
+            <h3>{title && title}</h3>
             <p>{description && description}</p>
             <p>{dateAchieved && dateAchieved}</p>
             <p>{progress && progress}</p>

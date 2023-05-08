@@ -2,23 +2,29 @@ import { useState, useEffect } from "react";
 import Restaurant from "./Restaurant";
 import styles from "./styles/restaurantsList.module.css";
 import { useUser } from "@component/lib/authContext";
-import addToFavourites from "@component/lib/addToFavourites";
-import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
+import fetchHistory from "@component/lib/fetchHistory";
+import addToHistory from "@component/lib/addToHistory";
 
-const History = ({ restaurants }) => {
+const VisitedRestaurants = ({
+    restaurants,
+    favourites,
+    updateFavourites,
+    history,
+    updateHistory,
+    setHistory,
+}) => {
     const { user } = useUser();
-    const [favourites, setFavourites] = useState([]);
-    const [history, setHistory] = useState([]);
-
-    const updateFavourites = (newFavourites) => {
-        setFavourites(newFavourites);
-        addToFavourites(newFavourites, user.id);
-    };
-
-    // ensure the list of favourite restaurants for the user is up to date
+    const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
+    useEffect(() => {
+        setFilteredRestaurants(
+            restaurants.filter((restaurant) =>
+                history.some((visited) => visited.id === restaurant.id)
+            )
+        );
+    }, [history, restaurants]);
     useEffect(() => {
         const getData = async () => {
-            const data = await fetchFavouriteRestaurants(user.id);
+            const data = await fetchHistory(user.id);
             const temp = [];
             if (data) {
                 data.map((restaurant) =>
@@ -27,8 +33,7 @@ const History = ({ restaurants }) => {
                         id: restaurant.restaurantID,
                     })
                 );
-                setFavourites(temp);
-                console.log(favourites);
+                setHistory(temp);
             }
         };
         if (user) {
@@ -39,13 +44,15 @@ const History = ({ restaurants }) => {
     return (
         <div className={`container`}>
             <div className={styles.restaurantsWrapper}>
-                {restaurants.map((restaurant, index) => (
+                {filteredRestaurants.map((restaurant, index) => (
                     <Restaurant
                         key={index}
                         restaurant={restaurant}
-                        favourites={favourites}
-                        setFavourites={setFavourites}
+                        history={history}
+                        setHistory={setHistory}
+                        updateHistory={updateHistory}
                         updateFavourites={updateFavourites}
+                        favourites={favourites}
                     />
                 ))}
             </div>
@@ -53,4 +60,4 @@ const History = ({ restaurants }) => {
     );
 };
 
-export default FavouriteRestaurants;
+export default VisitedRestaurants;

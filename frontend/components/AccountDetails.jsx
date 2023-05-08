@@ -69,14 +69,16 @@ const AccountDetails = () => {
     }
 
     return (
-        <div className={`container ${styles.container}`}>
+        <div className="profileContainer">
             <Header
                 name="Account Details"
                 handleEdit={toggleEditable}
                 handleSave={handleSave}
                 editMode={isEditable}
             />
-            <p className={styles.subtitle}>Update your personal details and account information here.</p>
+            <p className={styles.subtitle}>
+                Update your personal details and account information here.
+            </p>
             <AccountInfoSection
                 isEditable={isEditable}
                 formData={formData}

@@ -5,16 +5,24 @@ import { useUser } from "@component/lib/authContext";
 import addToFavourites from "@component/lib/addToFavourites";
 import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
 
-const FavouriteRestaurants = ({ restaurants }) => {
+const FavouriteRestaurants = ({
+    restaurants,
+    favourites,
+    setFavourites,
+    updateFavourites,
+    history,
+    updateHistory,
+}) => {
+    const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
+
     const { user } = useUser();
-    const [favourites, setFavourites] = useState([]);
-
-    const updateFavourites = (newFavourites) => {
-        setFavourites(newFavourites);
-        addToFavourites(newFavourites, user.id);
-    };
-
-    // ensure the list of favourite restaurants for the user is up to date
+    useEffect(() => {
+        setFilteredRestaurants(
+            restaurants.filter((restaurant) =>
+                favourites.some((fav) => fav.id === restaurant.id)
+            )
+        );
+    }, [favourites, restaurants]);
     useEffect(() => {
         const getData = async () => {
             const data = await fetchFavouriteRestaurants(user.id);
@@ -38,13 +46,15 @@ const FavouriteRestaurants = ({ restaurants }) => {
     return (
         <div className={`container`}>
             <div className={styles.restaurantsWrapper}>
-                {restaurants.map((restaurant, index) => (
+                {filteredRestaurants.map((restaurant, index) => (
                     <Restaurant
                         key={index}
                         restaurant={restaurant}
                         favourites={favourites}
                         setFavourites={setFavourites}
                         updateFavourites={updateFavourites}
+                        history={history}
+                        updateHistory={updateHistory}
                     />
                 ))}
             </div>

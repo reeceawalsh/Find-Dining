@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import styles from "./styles/support.module.css";
 
 const SupportLink = ({ title, link, description }) => {

@@ -13,8 +13,11 @@ const Footer = () => {
                 >
                     Feedback Survey
                 </NavLink>
-                <NavLink className={styles.link} href="/home/about">
-                    About This Project
+                <NavLink
+                    className={styles.link}
+                    href="mailto:finddiningcontact@gmail.com"
+                >
+                    Contact Us
                 </NavLink>
             </div>
             <div className={styles.info}>

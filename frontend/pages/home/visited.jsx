@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import Layout from "@component/components/Layout";
 import styles from "./styles/favourites.module.css";
 import { useUser } from "@component/lib/authContext";
-import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
-import FavouriteRestaurants from "@component/components/FavouriteRestaurants";
+import fetchHistory from "@component/lib/fetchHistory";
+import VisitedRestaurants from "@component/components/VisitedRestaurants";
 import fetchYelpRestaurantDetails from "@component/lib/fetchYelpRestaurantDetails";
 import addToFavourites from "@component/lib/addToFavourites";
-import fetchHistory from "@component/lib/fetchHistory";
+import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
 import addToHistory from "@component/lib/addToHistory";
 
-export default function Restaurants() {
+export default function Visited() {
     const [restaurants, setRestaurants] = useState([]);
     const { user } = useUser();
     const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ export default function Restaurants() {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await fetchHistory(user.id);
+            const data = await fetchFavouriteRestaurants(user.id);
             const temp = [];
             if (data) {
                 data.map((restaurant) =>
@@ -37,7 +37,8 @@ export default function Restaurants() {
                         id: restaurant.restaurantID,
                     })
                 );
-                setHistory(temp);
+                setFavourites(temp);
+                console.log(favourites);
             }
         };
         if (user) {
@@ -45,10 +46,10 @@ export default function Restaurants() {
         }
     }, [user]);
 
-    const fetchData = async () => {
+    const fetchVisited = async () => {
         setLoading(true);
         if (user) {
-            const data = await fetchFavouriteRestaurants(user.id);
+            const data = await fetchHistory(user.id);
             if (data) {
                 console.log(data);
                 const validData = data.filter(
@@ -63,14 +64,14 @@ export default function Restaurants() {
                 const yelpDataResults = await Promise.all(yelpDataPromises);
                 setRestaurants(yelpDataResults);
             } else {
-                console.log("No favourites.");
+                console.log("No visited restaurants.");
             }
         }
         setLoading(false);
     };
 
     useEffect(() => {
-        fetchData();
+        fetchVisited();
     }, []);
 
     return (
@@ -79,14 +80,14 @@ export default function Restaurants() {
                 <div className="container">
                     {restaurants.length === 0 && (
                         <p className={styles.message}>
-                            You have no favorite restaurants.
+                            You have no visited restaurants.
                         </p>
                     )}
                     {restaurants.length !== 0 && (
-                        <FavouriteRestaurants
+                        <VisitedRestaurants
                             restaurants={restaurants}
                             favourites={favourites}
-                            setFavourites={setFavourites}
+                            setHistory={setHistory}
                             updateFavourites={updateFavourites}
                             updateHistory={updateHistory}
                             history={history}
@@ -95,7 +96,7 @@ export default function Restaurants() {
                 </div>
             ) : (
                 <p className={styles.message}>
-                    Retrieiving your favourite restaurants.
+                    Retrieiving your visited restaurants.
                 </p>
             )}
         </Layout>

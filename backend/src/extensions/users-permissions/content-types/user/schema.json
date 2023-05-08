@@ -96,6 +96,12 @@
       "relation": "manyToMany",
       "target": "api::restaurant.restaurant",
       "inversedBy": "users"
+    },
+    "history": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "visitors"
     }
   }
 }

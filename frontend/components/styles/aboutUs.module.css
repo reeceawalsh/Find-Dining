@@ -1,29 +1,3 @@
-
-.container h1 {
-    min-width: 600px;
-    max-width: 35vw;
-    text-align: center;
-    color: #ee7674;
-}
-
-.container p {
-    padding-top: 30px;
-    min-width: 600px;
-    max-width: 35vw;
-}
-
-.highlightedText {
-    color: #ee7674;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em 2em 2em 2em;
-}
-
 .logo {
     height: 100px;
     width: 150px;

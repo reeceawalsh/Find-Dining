@@ -5,6 +5,8 @@ import { useUser } from "@component/lib/authContext";
 import fetchUserData from "@component/lib/fetchUserData";
 import addToFavourites from "@component/lib/addToFavourites";
 import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
+import addToHistory from "@component/lib/addToHistory";
+import fetchHistory from "@component/lib/fetchHistory";
 
 const RestaurantsList = ({
     setPage,
@@ -14,11 +16,17 @@ const RestaurantsList = ({
 }) => {
     const { user } = useUser();
     const [favourites, setFavourites] = useState([]);
+    const [history, setHistory] = useState([]);
     const [userData, setUserData] = useState(null);
 
     const updateFavourites = (newFavourites) => {
         setFavourites(newFavourites);
         addToFavourites(newFavourites, user.id);
+    };
+
+    const updateHistory = (newHistory) => {
+        setHistory(newHistory);
+        addToHistory(newHistory, user.id);
     };
 
     useEffect(() => {
@@ -47,23 +55,36 @@ const RestaurantsList = ({
     // ensure the list of favourite restaurants for the user is up to date
     useEffect(() => {
         const getData = async () => {
-            const data = await fetchFavouriteRestaurants(user.id);
+            const favouritesData = await fetchFavouriteRestaurants(user.id);
             const temp = [];
-            if (data) {
-                data.map((restaurant) =>
+            if (favouritesData) {
+                favouritesData.map((restaurant) =>
                     temp.push({
                         uuid: restaurant.id,
                         id: restaurant.restaurantID,
                     })
                 );
                 setFavourites(temp);
-                console.log(favourites);
             }
+            const historyData = await fetchHistory(user.id);
+            const temp2 = [];
+            if (historyData) {
+                historyData.map((restaurant) =>
+                    temp2.push({
+                        uuid: restaurant.id,
+                        id: restaurant.restaurantID,
+                    })
+                );
+            }
+            setHistory(temp2);
         };
         if (user) {
             getData();
         }
     }, [user]);
+
+    console.log(history);
+    console.log(favourites);
 
     return (
         <div className={`container`}>
@@ -75,6 +96,8 @@ const RestaurantsList = ({
                         favourites={favourites}
                         setFavourites={setFavourites}
                         updateFavourites={updateFavourites}
+                        history={history}
+                        updateHistory={updateHistory}
                     />
                 ))}
             </div>

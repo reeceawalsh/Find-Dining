@@ -11,21 +11,25 @@ import { getTokenFromLocalCookie } from "@component/lib/auth";
 import { useState, useEffect } from "react";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import addToFavourites from "@component/lib/addToFavourites";
+import addToHistory from "@component/lib/addToHistory";
 
 // restaurant component which is displayed on the list of restaurants.
 const Restaurant = ({
     restaurant,
-    favourites,
-    setFavourites,
+    favourites = [],
     updateFavourites,
-    history,
-    setHistory,
+    history = [],
+    updateHistory,
 }) => {
     const [cookies] = useCookies(["jwt"]);
     const [token, setToken] = useState(null);
     const { user } = useUser();
     const [favourite, setFavourite] = useState();
-    const [clickedRestaurant, setClickedRestaurant] = useState(null);
+    const [visited, setVisited] = useState();
+    const [clickedFavouriteRestaurant, setClickedFavouriteRestaurant] =
+        useState(null);
+    const [clickedHistoryRestaurant, setClickedHistoryRestaurant] =
+        useState(null);
 
     // fetches the restaurant data for the restaurant, if it can't find the restaurant then fetchRestaurantID will add it to the database.
     const getRestaurantData = async () => {
@@ -39,7 +43,7 @@ const Restaurant = ({
     };
 
     // handles clicking on favourite
-    const handleFavoriteClick = async () => {
+    const handleFavouriteClick = async () => {
         const restaurantData = await getRestaurantData();
         if (restaurantData && restaurant && restaurant.id) {
             let uuid = restaurantData.id;
@@ -60,7 +64,34 @@ const Restaurant = ({
             }
             updateFavourites(temp);
             setFavourite(!favourite);
-            setClickedRestaurant(restaurant.id);
+            setClickedFavouriteRestaurant(restaurant.id);
+        } else {
+            console.log("restaurant data not set yet", restaurantData);
+        }
+    };
+
+    const handleVisitedClick = async () => {
+        const restaurantData = await getRestaurantData();
+        if (restaurantData && restaurant && restaurant.id) {
+            let uuid = restaurantData.id;
+            const tempRestaurant = { uuid: uuid, id: restaurant.id };
+            const index = history.findIndex(
+                (hist) =>
+                    hist.uuid === tempRestaurant.uuid &&
+                    hist.id === tempRestaurant.id
+            );
+            let temp;
+            if (index !== -1) {
+                temp = [
+                    ...history.slice(0, index),
+                    ...history.slice(index + 1),
+                ];
+            } else {
+                temp = [...history, { uuid: uuid, id: restaurant.id }];
+            }
+            updateHistory(temp);
+            setVisited(!visited);
+            setClickedHistoryRestaurant(restaurant.id);
         } else {
             console.log("restaurant data not set yet", restaurantData);
         }
@@ -74,14 +105,28 @@ const Restaurant = ({
             user &&
             restaurant &&
             restaurant.id &&
-            clickedRestaurant === restaurant.id
+            clickedFavouriteRestaurant === restaurant.id
         ) {
             addToFavourites(favourites, user.id);
         }
         if (restaurant && restaurant.id) {
             setFavourite(favourites.some((fav) => fav.id === restaurant.id));
         }
-    }, [favourites, user, restaurant, clickedRestaurant]);
+    }, [favourites, restaurant, clickedFavouriteRestaurant]);
+
+    useEffect(() => {
+        if (
+            user &&
+            restaurant &&
+            restaurant.id &&
+            clickedHistoryRestaurant === restaurant.id
+        ) {
+            addToHistory(history, user.id);
+        }
+        if (restaurant && restaurant.id) {
+            setVisited(history.some((visited) => visited.id === restaurant.id));
+        }
+    }, [history, user, restaurant, clickedHistoryRestaurant]);
 
     return (
         <div className={styles.restaurantWrapper}>
@@ -121,21 +166,35 @@ const Restaurant = ({
                                     className={
                                         (styles.iconButton, styles.favourited)
                                     }
-                                    onClick={handleFavoriteClick}
+                                    onClick={handleFavouriteClick}
                                 >
                                     <FavoriteIcon />
                                 </button>
                             ) : (
                                 <button
                                     className={styles.iconButton}
-                                    onClick={handleFavoriteClick}
+                                    onClick={handleFavouriteClick}
                                 >
                                     <FavoriteBorderIcon />
                                 </button>
                             )}
-                            <button className={styles.iconButton}>
-                                <CheckCircleIcon />
-                            </button>
+                            {visited ? (
+                                <button
+                                    className={
+                                        (styles.iconButton, styles.favourited)
+                                    }
+                                    onClick={handleVisitedClick}
+                                >
+                                    <CheckCircleIcon />
+                                </button>
+                            ) : (
+                                <button
+                                    className={styles.iconButton}
+                                    onClick={handleVisitedClick}
+                                >
+                                    <CheckCircleIcon />
+                                </button>
+                            )}
                         </div>
                     )}
                 </div>
@@ -168,7 +227,7 @@ const Restaurant = ({
                             meters
                         </p>
                     )}
-                    {restaurant.location.address1 && (
+                    {restaurant.location && (
                         <p>Address: {restaurant.location.address1}</p>
                     )}
                     {restaurant.display_phone && (

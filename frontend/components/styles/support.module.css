@@ -1,20 +1,28 @@
+.container {
+  width: 100%;
+}
+
 .supportLinks {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .linkContainer {
-  margin-bottom: 16px;
   width: 100%;
-  padding: 2rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 .link {
   color: #333;
   text-decoration: none;
   display: block;
+  border: solid 1px #ee7674;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .title {

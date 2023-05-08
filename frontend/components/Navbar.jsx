@@ -76,6 +76,10 @@ const Navbar = () => {
                             priority="true"
                         />
                     </Link>
+                    <Link href="/home">
+                        <span className="blue-font">Find</span>{" "}
+                        <span className="blue-font">Dining</span>
+                    </Link>
                     {location && (
                         <button
                             className={styles.postalCodeButton}
@@ -108,12 +112,18 @@ const Navbar = () => {
                             >
                                 Favourites
                             </NavLink>
+                            <NavLink
+                                className={styles.link}
+                                href="/home/visited"
+                            >
+                                Visited
+                            </NavLink>
                             {location && (
                                 <NavLink
                                     className={styles.link}
                                     href="/restaurants"
                                 >
-                                    Find Dining
+                                    Nearby Restaurants
                                 </NavLink>
                             )}
                         </>
@@ -159,7 +169,7 @@ const Navbar = () => {
                                         </NavLink>
                                         <NavLink
                                             className={styles.dropdownLink}
-                                            href="/logout"
+                                            href="/home"
                                             onClick={handleLogout}
                                         >
                                             Logout

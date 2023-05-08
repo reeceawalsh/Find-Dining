@@ -6,7 +6,7 @@ import { useUser } from "@component/lib/authContext";
 const Achievements = () => {
     // achievement data is currently manually entered but will be pulled from the database in the future.
     return (
-        <div className="container">
+        <div className="profileContainer">
             <Header name="Achievements" />
             <div className="info-section-container">
                 <Achievement

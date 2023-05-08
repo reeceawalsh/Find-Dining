@@ -83,6 +83,14 @@ a {
   color: #36DBFF;
 }
 
+.white-font {
+  color: #fff;
+}
+
+.orange-font {
+  color: #EE7674;
+}
+
 .peach-background {
   background-color: #EE7674;
 }
@@ -472,4 +480,42 @@ span.error:after {
 
 .pointer {
   cursor: pointer !important;
+}
+
+.profileContainer {
+  border: 1px solid #ee7674;
+  padding: 2rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.support-container h1,
+.support-container h2 {
+  min-width: 600px;
+  max-width: 35vw;
+  text-align: center;
+  color: #ee7674;
+}
+
+.support-container h2 {
+  margin-top: 1rem;
+  text-align: start;
+}
+
+.support-container ul {
+  margin-left: 1rem;
+}
+
+
+.support-container p {
+  padding-top: 1rem;
+  min-width: 600px;
+  max-width: 35vw;
+}
+
+.support-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2em 2em 2em 2em;
 }

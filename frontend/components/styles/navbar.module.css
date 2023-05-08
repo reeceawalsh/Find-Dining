@@ -111,7 +111,7 @@
   align-items: center;
   font-size: 1.2rem;
   background-color: #ee7674;
-  width: 22vw;
+  width: 28vw;
   height: 100%;
   /* border-radius: 0 800px 800px 0; */
 }
@@ -120,7 +120,7 @@
   border-radius: 5px;
   width: 5.2em;
   height: 3.5em;
-  margin-right: 1.5em;
+  margin-right: 0.5em;
   margin-left: 1.5em;
 }
 
@@ -144,7 +144,8 @@
 }
 
 .pinWrapper {
-  margin-right: 1em;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
   min-width: 20px;
 }
 
