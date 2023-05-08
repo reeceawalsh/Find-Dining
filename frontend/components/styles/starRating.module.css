@@ -2,4 +2,14 @@
   display: inline-flex;
   margin-right: 0.5rem;
   width: 10rem;
+  color: white;
+}
+
+.individualStarSolid {
+  border: 2px solid #ee7674;
+  background-color: #ee7674;
+  border-radius: 10px;
+  margin-right: 4px;
+  padding-left: 3.5px;
+  padding-right: 3.5px;
 }

@@ -1,35 +1,66 @@
 .header {
   height: 300px;
-  background-size: cover;
-  background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 2.5rem;
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  color: black;
+  font-size: 1.5rem;
   width: 100%;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
   flex-direction: column;
+  margin-left: 100px;
+  margin-top: 50px;
 }
 
 .headerRating {
+  justify-content: center;
   display: flex;
-  flex-direction: row;
 }
 
-.headerInfo {
+.restaurantName {
+  justify-content: center;
+
   display: flex;
-  flex-direction: row;
+  font-weight: normal;
+  color: #ee7674;
+}
+
+
+.headerInfo {
+  justify-content: center;
+  display: flex;
   font-size: 1.6rem;
-  gap: 1rem;
   margin-top: 1rem;
+}
+
+.price {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.separatorDot {
+  color: #ee7674;
+  font-weight: bold;
+}
+
+.restaurantImage {
+  position: relative;
+  display: flex;
+  height: 300px;
+  width: 300px;
+  border-radius: 15px;
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.photos {
+  width: 100%;
+  position: relative;
+  bottom: 120px;
+  display: flex;
+  justify-content: center;
+
 }
 
 .categories {
   display: flex;
-  flex-direction: row;
   gap: 0;
 }
 
@@ -38,9 +69,13 @@
 }
 
 .headerRating span {
+  position: relative;
+  top: 1px;
+  left: 10px;
   font-size: 1.5rem;
-  -webkit-text-stroke-width: 0.2px;
-  -webkit-text-stroke-color: black;
+  color: black;
+  font-weight: bold;
+  opacity: 0.7;
 }
 
 .restaurantInfo {
@@ -53,14 +88,80 @@
 
 .subContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 90vw;
+  justify-content: center;
+  width: 100vw;
+  position: relative;
+  left: 50px;
+  bottom: 60px;
+}
+
+.subContainerTitle {
+  position: relative;
+  left: 50px;
+  bottom: 50px;
+}
+
+.leftContainer {
+  position: relative;
+  margin-right: 50px;
+  margin-top: 125px;
+}
+
+.phoneNumber {
+  display: flex;
+  color: #ee7674;
+  font-weight: bold;
+}
+
+.phoneIcon {
+  margin-right: 20px;
+}
+
+.rightContainer {
+  position: relative;
+  margin-top: 50px;
+  border-left: 3px solid #ee7674;
+  padding-left: 50px;
+}
+
+.yelpLogo {
+  position: relative;
+  bottom: 3px;
+  width: 76px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.yelpLink {
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .ratingPrice {
   display: flex;
   align-items: center;
+}
+
+.distance {
+  font-weight: bold;
+  color: #ee7674;
+}
+
+.map {
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.address {
+  margin-top: 10px;
+  font-weight: bold;
+  border: 2px dashed black;
+  padding: 10px 0 10px 10px;
+  border-radius: 5px;
 }
 
 .reviewsSection {
@@ -85,7 +186,8 @@
   height: 10rem;
   margin-bottom: 0.4rem;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 10px;
 }
 
 .reviewForm p {
@@ -115,6 +217,17 @@
   background-color: transparent;
   border-radius: 2px;
   cursor: pointer;
+}
+
+.reviewTitle {
+  position: relative;
+  left: 5px;
+}
+
+.reviewRating {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 .loadMoreButton:hover {

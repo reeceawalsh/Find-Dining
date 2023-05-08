@@ -16,6 +16,7 @@ import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
 import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
 import convertToDateObject from "@component/lib/convertToDateObject";
+import Image from "next/image";
 
 const RestaurantPage = ({
     restaurant,
@@ -52,6 +53,10 @@ const RestaurantPage = ({
     const [filteredReviews, setFilteredReviews] = useState(reviews);
 
     const [error, setError] = useState(false);
+
+    const yelpLogo = require("../public/YelpLogo.png");
+    const phoneIconOrange = require("../public/PhoneIconOrange.svg");
+
 
     const { user } = useUser();
 
@@ -172,50 +177,76 @@ const RestaurantPage = ({
 
     return (
         <div className="container">
-            <header
-                className={styles.header}
-                style={{
-                    backgroundImage: `url(${photos[0]}), url(${photos[1]})`,
-                }}
-            >
-                <h1 className={styles.restaurantName}>{name}</h1>
-                <div className={styles.headerRating}>
-                    <StarRating rating={rating} />
-                    <span>{review_count} reviews</span>
-                </div>
-                <div className={styles.headerInfo}>
-                    <span>{price}</span>
-                    <div className={styles.categories}>
-                        {categories &&
-                            categories.map((type, index) => (
-                                <div key={index}>
-                                    {categories.length - 1 == index ? (
-                                        <p>{type.title}. </p>
-                                    ) : (
-                                        // ${"\u00A0"} is a white space character
-                                        <p>{`${type.title},${"\u00A0"}`}</p>
-                                    )}
-                                </div>
-                            ))}
+                <header
+                    className={styles.header}
+                >
+                    <h1 className={styles.restaurantName}>{name}</h1>
+                    <div className={styles.headerRating}>
+                        <StarRating rating={rating} />
+                        <span>{review_count} reviews</span>
                     </div>
-                </div>
-            </header>
+                    <div className={styles.headerInfo}>
+                        <span className={styles.price}>{price} <span className={styles.separatorDot}>·</span></span>
+                        <div className={styles.categories}>
+                            {categories &&
+                                categories.map((type, index) => (
+                                    <div key={index}>
+                                        {categories.length - 1 == index ? (
+                                            <p>{type.title}</p>
+                                        ) : (
+                                            // ${"\u00A0"} is a white space character
+                                            <p>{`${type.title}${"\u00A0"}`}
+                                            <span className={styles.separatorDot}>·</span>
+                                            {`${"\u00A0"}`}</p>
+                                        )}
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
+                </header>
+            <div className={styles.photos}>
+                <img
+                    className={styles.restaurantImage}
+                    src={photos[1]}
+                />
+                <img
+                    className={styles.restaurantImage}
+                    src={photos[0]}
+                />
+                <img
+                    className={styles.restaurantImage}
+                    src={photos[2]}
+                />
+            </div>
             <div className={styles.restaurantInfo}>
+            <h2 className={styles.subContainerTitle}>Opening Times and Location</h2>
+
                 <div className={styles.subContainer}>
                     <div className={styles.leftContainer}>
                         <OpeningHours hours={hours} />
-                        <p>{display_phone}</p>
                         <a
                             className={styles.yelpLink}
                             href={url}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            View on Yelp
+                            View opening hours on 
+                            <Image
+                            className={styles.yelpLogo}
+                            src={yelpLogo}
+                            alt="The Yelp logo"
+                            />
                         </a>
+                        <p className={styles.phoneNumber}>
+                            <Image
+                                className={styles.phoneIcon}
+                                src={phoneIconOrange}
+                                alt="The Yelp logo"
+                            />
+                            {display_phone}
+                        </p>
                     </div>
                     <div className={styles.rightContainer}>
-                        <RestaurantAddress location={location} />
                         <div className={styles.map}>
                             <GoogleMap
                                 options={{
@@ -239,8 +270,11 @@ const RestaurantPage = ({
                                     }}
                                 />
                             </GoogleMap>
-                        </div>
-                        <p>Distance Away: {distance}</p>
+                            </div>
+                            <p>This restaurant is <span className={styles.distance}>{distance}</span> away!</p>
+                            <div className={styles.address}>
+                                <RestaurantAddress className = {styles.restaurantAddress} location={location} />
+                            </div>
                     </div>
                 </div>
             </div>
@@ -294,16 +328,18 @@ const RestaurantPage = ({
                     </button>
                 )}
             </div>
-            <div id="writeReview" ref={writeReviewRef}>
+            <div className={styles.writeReview} id="writeReview" ref={writeReviewRef}>
                 {user ? (
                     <form
                         className={styles.reviewForm}
                         onSubmit={handleSubmitReview}
                     >
-                        <h2>Submit your review</h2>
-                        <InteractiveStarRating
-                            onRatingChange={setSelectedRating}
-                        />
+                        <h2 className={styles.reviewTitle}>Submit a review!</h2>
+                        <div className = {styles.reviewRating}>
+                            <InteractiveStarRating
+                                onRatingChange={setSelectedRating}
+                            />
+                        </div>
                         <textarea
                             placeholder="Write your review here..."
                             value={review}

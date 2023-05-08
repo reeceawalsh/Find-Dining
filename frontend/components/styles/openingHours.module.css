@@ -1,0 +1,14 @@
+.container {
+    font-weight: bold;
+}
+
+.container li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.dayContainer {
+    margin-right: 30px;
+    min-width: 100px;
+}
