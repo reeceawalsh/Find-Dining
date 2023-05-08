@@ -1,16 +1,15 @@
+import Location from "@component/lib/locationContext";
+import { useContext } from "react";
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
 
-const haversineDistance = (
-    locationLat,
-    locationLng,
-    restaurantLat,
-    restaurantLng
-) => {
+const haversineDistance = (restaurantLat, restaurantLng) => {
+    const { geoLocation, location, setLocation } = useContext(Location);
+    console.log(restaurantLat);
     const R = 6371e3; // Earth's radius in meters
-    const phi1 = toRadians(locationLat);
+    const phi1 = toRadians(geoLocation.lat);
     const phi2 = toRadians(restaurantLat);
-    const deltaPhi = toRadians(restaurantLat - locationLat);
-    const deltaLambda = toRadians(restaurantLng - locationLng);
+    const deltaPhi = toRadians(restaurantLat - geoLocation.lat);
+    const deltaLambda = toRadians(restaurantLng - geoLocation.lng);
 
     const a =
         Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +

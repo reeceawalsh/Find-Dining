@@ -28,8 +28,8 @@ const RestaurantPage = ({
         image_url,
         photos,
         display_phone,
-        location,
         price,
+        location,
         rating,
         review_count,
         url,
@@ -37,7 +37,6 @@ const RestaurantPage = ({
         coordinates,
         categories,
     } = restaurant;
-
     const [cookies] = useCookies(["jwt"]);
     const reviewsRef = useRef(null);
     const writeReviewRef = useRef(null);
@@ -66,6 +65,8 @@ const RestaurantPage = ({
         );
         return `${Math.round(distanceAwayFromUser)} metres`;
     };
+
+    console.log(distance);
 
     // handles scrolling to the correct section, writeReview not currently in use.
     useEffect(() => {
@@ -243,7 +244,7 @@ const RestaurantPage = ({
                     </div>
                 </div>
             </div>
-            {user && (
+            {user && filteredReviews.length != 0 && (
                 <div className={styles.filterContainer}>
                     <button onClick={() => handleFilterChange("all")}>
                         All
@@ -267,7 +268,7 @@ const RestaurantPage = ({
                 ref={reviewsRef}
                 className={styles.reviewsSection}
             >
-                <h2>Reviews</h2>
+                {filteredReviews.length !== 0 && <h2>Reviews</h2>}
                 {filteredReviews &&
                     filteredReviews
                         .sort(

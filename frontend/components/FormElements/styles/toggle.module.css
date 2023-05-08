@@ -1,19 +1,18 @@
 .toggleWrapper {
   display: flex;
-  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 15px solid black;
   margin: 1rem;
 }
 
 .toggleValue {
   padding: 8px 16px;
-  background-color: #EE7674;
+  background-color: #FFF;
   transition: background-color 0.3s ease;
+  border: 1px solid black;
 }
 
 .selectedValue {
-  background-color: #36DBFF;
-  border: 1.5px solid black;
-  font-weight: bold;
+  background-color: #EE7674;
 }
