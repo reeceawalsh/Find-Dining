@@ -41,7 +41,7 @@ export default function Profile() {
             <div className={styles.container}>
                 <div className={styles.rightContainer}>
                     {page == "Account Details" && <AccountDetails />}
-                    {page == "Achievements" && <Achievements />}
+                    {/* {page == "Achievements" && <Achievements />} */}
                     {page == "Support" && <Support />}
                 </div>
                 <div className={styles.leftContainer}>
@@ -71,7 +71,7 @@ export default function Profile() {
                             </span>
                         </div>
                     </button>
-                    <button
+                    {/* <button
                         className={styles.link}
                         onClick={() => changePage("Achievements")}
                         style={{ color: page == "Achievements" && "#ee7674" }}
@@ -94,7 +94,7 @@ export default function Profile() {
                                 Achievements
                             </span>
                         </div>
-                    </button>
+                    </button> */}
                     <button
                         className={styles.link}
                         onClick={() => changePage("Support")}
