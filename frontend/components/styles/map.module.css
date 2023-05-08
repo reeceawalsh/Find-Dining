@@ -51,6 +51,12 @@
   font-weight: bold;
 }
 
+.restaurantName {
+  border: 0;
+  background-color: transparent;
+  font-weight: normal;
+}
+
 .restaurantsList h2 {
   margin-bottom: 12px;
 }

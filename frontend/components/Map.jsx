@@ -7,6 +7,7 @@ import {
 import styles from "./styles/map.module.css";
 import { useState, useEffect, useMemo } from "react";
 import haversineDistance from "@component/lib/haversineDistance";
+import NavLink from "./NavLink";
 
 // map view component to display restaurants with a map beside them.
 const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
@@ -102,10 +103,16 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
                             onMouseLeave={() => handleRestaurantHover(null)}
                             className={styles.restaurant}
                         >
-                            <div className={styles.individualRestaurantContainer}>
-                                <div className={styles.restuarantName}>
-                                    {restaurant.name} 
-                                </div>
+                            <div
+                                className={styles.individualRestaurantContainer}
+                            >
+                                <NavLink
+                                    className={styles.restaurantName}
+                                    href={`/restaurants/${restaurant.name}?id=${restaurant.id}`}
+                                >
+                                    <h4>{restaurant.name}</h4>
+                                </NavLink>
+
                                 <div className={styles.ratingContainer}>
                                     {restaurant.rating.toFixed(1)}
                                 </div>
