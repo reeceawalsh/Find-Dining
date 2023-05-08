@@ -158,6 +158,10 @@
   align-items: center;
 }
 
+.geolocationOff {
+  font-weight: bold;
+}
+
 .distance {
   font-weight: bold;
   color: #ee7674;

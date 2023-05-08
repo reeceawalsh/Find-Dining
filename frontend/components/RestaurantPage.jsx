@@ -54,6 +54,7 @@ const RestaurantPage = ({
     });
     const [displayedReviewsCount, setDisplayedReviewsCount] = useState(5);
     const [filteredReviews, setFilteredReviews] = useState(reviews);
+    const isGeolocationAvailable = 'geolocation' in navigator;
 
     const [error, setError] = useState(false);
 
@@ -278,7 +279,13 @@ const RestaurantPage = ({
                                 />
                             </GoogleMap>
                             </div>
-                            <p>This restaurant is <span className={styles.distance}>{distance}</span> away!</p>
+                            {isGeolocationAvailable ?
+                            <p className={styles.geolocationOff}>Please enable location to find out how far away the restaurant is!</p> :
+                            <div>
+                                <p>This restaurant is <span className={styles.distance}>{distance}</span> away!</p>
+                                <p>This is <span className={styles.distance}>{distance / 84}</span> minutes away when walking!</p>
+                            </div>
+                            }
                             <div className={styles.address}>
                                 <RestaurantAddress className = {styles.restaurantAddress} location={location} />
                             </div>
