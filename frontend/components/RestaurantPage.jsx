@@ -17,6 +17,9 @@ import { useUser } from "@component/lib/authContext";
 import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
 import convertToDateObject from "@component/lib/convertToDateObject";
 import Image from "next/image";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const RestaurantPage = ({
     restaurant,
@@ -180,7 +183,11 @@ const RestaurantPage = ({
                 <header
                     className={styles.header}
                 >
-                    <h1 className={styles.restaurantName}>{name}</h1>
+                    <div className={styles.headerTitleContainer}>
+                        <h1 className={styles.restaurantName}>{name}</h1>
+                        <CheckCircleIcon className={styles.titleIcon} />
+                        <FavoriteIcon className={styles.titleIcon} />
+                    </div>
                     <div className={styles.headerRating}>
                         <StarRating rating={rating} />
                         <span>{review_count} reviews</span>

@@ -7,6 +7,20 @@
   flex-direction: column;
   margin-left: 100px;
   margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.headerTitleContainer {
+  position: relative;
+  left: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+.titleIcon {
+  position: relative;
+  top: 25px;
+  margin-left: 25px;
 }
 
 .headerRating {
@@ -16,7 +30,6 @@
 
 .restaurantName {
   justify-content: center;
-
   display: flex;
   font-weight: normal;
   color: #ee7674;
@@ -164,10 +177,6 @@
   border-radius: 5px;
 }
 
-.reviewsSection {
-  margin: 2rem;
-}
-
 .review {
   border-top: 1px solid #ccc;
   padding: 1rem 0;
@@ -203,7 +212,7 @@
   border: none;
   cursor: pointer;
   align-self: center;
-  width: 20%;
+  width: 200px;
   border-radius: 5px;
 }
 
@@ -227,7 +236,6 @@
 .reviewRating {
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .loadMoreButton:hover {
