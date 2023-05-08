@@ -7,7 +7,10 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.links}>
-                <NavLink className={styles.link} href="/home/about">
+                <NavLink
+                    className={styles.link}
+                    href="https://www.surveymonkey.co.uk/r/SWPLSD7"
+                >
                     Feedback Survey
                 </NavLink>
                 <NavLink className={styles.link} href="/home/about">
