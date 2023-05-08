@@ -1,8 +1,8 @@
 const ProfileTextInput = (props) => {
     return (
         <div className="form-group">
-            <span className={`error ${!props.error ? "hidden" : ""}`}>
-                {props.error}
+            <span className={`error ${!props.errors ? "hidden" : ""}`}>
+                {props.errors}
             </span>
             <input
                 type="text"

@@ -7,6 +7,7 @@ const AccountInfoSection = ({
     handleInputChange,
     loading,
     user,
+    errors,
 }) => {
     return (
         <div className="info-section-container">
@@ -23,6 +24,7 @@ const AccountInfoSection = ({
                                 onChange={handleInputChange}
                                 editable={isEditable}
                                 className={isEditable ? "blue-outline" : ""}
+                                errors={errors.username}
                             />
 
                             <p>Email:</p>
@@ -32,6 +34,7 @@ const AccountInfoSection = ({
                                 onChange={handleInputChange}
                                 editable={isEditable}
                                 className={isEditable ? "blue-outline" : ""}
+                                errors={errors.email}
                             />
                         </div>
                     )

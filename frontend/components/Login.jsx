@@ -109,7 +109,7 @@ const Login = () => {
         >
             <div className={styles.container}>
                 <div className="header">
-                    <h1>Find Dining</h1>
+                    <h1 className={styles.title}>Find Dining</h1>
                     <Link className={styles.skip} href="/home">
                         Skip
                     </Link>
