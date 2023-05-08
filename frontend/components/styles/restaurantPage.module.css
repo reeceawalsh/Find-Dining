@@ -135,6 +135,7 @@
   margin-top: 50px;
   border-left: 3px solid #ee7674;
   padding-left: 50px;
+  max-width: 370px;
 }
 
 .yelpLogo {
