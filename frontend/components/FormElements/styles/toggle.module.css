@@ -10,7 +10,7 @@
   padding: 8px 16px;
   background-color: #FFF;
   transition: background-color 0.3s ease;
-  border: 1px solid black;
+  border: 1px solid #EE7674;
 }
 
 .selectedValue {

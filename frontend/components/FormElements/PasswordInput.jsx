@@ -29,7 +29,7 @@ const PasswordInput = (props) => {
                         autoComplete={props.autoComplete}
                     />
 
-                    <button
+                    <div
                         className="eye-icon"
                         onClick={(e) => toggleShowPassword(e)}
                     >
@@ -38,7 +38,7 @@ const PasswordInput = (props) => {
                         ) : (
                             <FontAwesomeIcon icon={faEye} />
                         )}
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
