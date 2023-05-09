@@ -2,16 +2,16 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+// password input used in the registration form, login form and account details, if there is an error message in the props it will display them as a span and also outline the input in red.
 const PasswordInput = (props) => {
-    console.log(props);
+    // controls if the password is shown or displaying asterixes'
     const [showPassword, setShowPassword] = useState(false);
 
+    // handles pressing the eye icon which will toggle password to be shown or not shown
     const toggleShowPassword = (e) => {
         e.preventDefault();
         setShowPassword(!showPassword);
     };
-
-    console.log(props.error);
 
     return (
         <div>
@@ -35,7 +35,6 @@ const PasswordInput = (props) => {
                         }`}
                         autoComplete={props.autoComplete}
                     />
-
                     <div
                         className="eye-icon"
                         onClick={(e) => toggleShowPassword(e)}

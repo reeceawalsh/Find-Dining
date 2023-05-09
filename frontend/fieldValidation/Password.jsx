@@ -1,3 +1,4 @@
+// password validation, there is a separation between a new password and the current password because we plan to add an error message if the password doesn't match the one that's in the database but it's out of specification at the moment.
 export default function validatePassword(errors, password, type) {
     if (!password) {
         errors.password = "Password is required.";

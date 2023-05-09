@@ -1,5 +1,6 @@
 import TextInput from "../FormElements/TextInput";
 
+// this modal appears when the user clicks the forgot password link
 const ForgotPassword = ({
     styles,
     displayModal,

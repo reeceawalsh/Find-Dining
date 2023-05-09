@@ -1,3 +1,4 @@
+// profile text input used in the account details form, if there is an error message in the props it will display them as a span and also outline the input in red. This form element is different from textInput because it includes editable props an editable button which will allow the user to edit the input.
 const ProfileTextInput = (props) => {
     return (
         <div className="form-group">
@@ -16,6 +17,7 @@ const ProfileTextInput = (props) => {
                 readOnly={!props.editable}
                 autoComplete={props.autoComplete}
             />
+            {/* if theres an edit button in props then it will render one */}
             {props.hasEditButton && (
                 <button onClick={props.onToggleEditable}>
                     {props.editable ? "Save" : "Edit"}

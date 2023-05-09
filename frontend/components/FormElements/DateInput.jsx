@@ -1,11 +1,5 @@
-import { useState } from "react";
+// date input used in the registration form, if there is an error message in the props it will display them as a span and also outline the input in red.
 const DateInput = (props) => {
-    const [showError, setShowError] = useState(true);
-
-    const handleCloseError = () => {
-        setShowError(false);
-    };
-
     return (
         <div>
             <div className="form-group">

@@ -1,3 +1,4 @@
+// text input used in most of the forms, if there is an error message in the props it will display them as a span and also outline the input in red.
 const TextInput = (props) => {
     return (
         <div className="form-group">

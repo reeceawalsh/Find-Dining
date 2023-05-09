@@ -1,3 +1,4 @@
+// email validation, takes an email and errors and returns the new errors.
 export default function validateEmail(errors, email) {
     if (!email) {
         errors.email = "Email is required.";

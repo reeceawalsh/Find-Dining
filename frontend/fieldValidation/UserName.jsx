@@ -1,3 +1,4 @@
+// validates a username, returns an error if it's empty or not 3-15 characters long with only digits letters and underscores.
 export default function validateUsername(errors, username) {
     if (!username) {
         errors.username = "Username is required.";

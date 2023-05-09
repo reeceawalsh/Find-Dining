@@ -1,3 +1,4 @@
+// validation for a data of birth, ensures the user is atleast 13 years old.
 export default function validateDateOfBirth(errors, dateOfBirth) {
     if (!dateOfBirth) {
         errors.dateOfBirth = "Date of birth is required.";
