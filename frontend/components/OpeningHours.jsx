@@ -26,20 +26,23 @@ const OpeningHours = ({ hours }) => {
 
     return (
         <div className={styles.container}>
-            <h2>Opening Hours</h2>
             {hours ? (
                 <ul>
                     {Object.keys(groupedHours).map((day) => (
                         <li key={day}>
-                            {days[day]}:{" "}
-                            {groupedHours[day]
-                                .map(
-                                    (hour) =>
-                                        `${formatTime(
-                                            hour.start
-                                        )} - ${formatTime(hour.end)}`
-                                )
-                                .join(" | ")}
+                            <div className={styles.dayContainer}>
+                                {days[day]}
+                            </div>
+                            <div className={styles.hourContainer}>
+                                {groupedHours[day]
+                                    .map(
+                                        (hour) =>
+                                            `${formatTime(
+                                                hour.start
+                                            )} - ${formatTime(hour.end)}`
+                                    )
+                                    .join(" | ")}
+                            </div>
                         </li>
                     ))}
                 </ul>

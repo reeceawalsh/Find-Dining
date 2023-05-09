@@ -62,8 +62,6 @@ const Navbar = () => {
         }
     }, [location, geoLocation]);
 
-    console.log(showDropdown);
-
     return (
         <div className="headerContainer">
             <div className={`${styles.navbar} white-background`}>

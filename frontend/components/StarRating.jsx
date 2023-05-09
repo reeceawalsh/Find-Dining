@@ -11,10 +11,10 @@ const StarRating = ({ rating }) => {
     return (
         <div className={styles.stars}>
             {[...Array(fullStars)].map((_, index) => (
-                <FontAwesomeIcon key={index} icon={faStarSolid} />
+                <FontAwesomeIcon className={styles.individualStarSolid} key={index} icon={faStarSolid} />
             ))}
             {[...Array(emptyStars)].map((_, index) => (
-                <FontAwesomeIcon key={`empty-${index}`} icon={faStarRegular} />
+                <FontAwesomeIcon className={styles.individualStarEmpty} key={`empty-${index}`} icon={faStarRegular} />
             ))}
         </div>
     );
