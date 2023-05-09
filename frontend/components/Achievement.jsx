@@ -1,5 +1,6 @@
 import styles from "./styles/achievements.module.css";
 
+// NOT IN USE
 // this component contains and presents achievement data.
 const Achievement = ({ title, description, dateAchieved, progress }) => {
     return (

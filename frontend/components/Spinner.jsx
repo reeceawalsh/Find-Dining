@@ -1,6 +1,7 @@
 import Image from "next/image";
 const logo = require("../public/LogoCropped.png");
 
+// this spinner will display when loading, it can take a message but doesn't currently in any of the iterations.
 const Spinner = ({ message }) => {
     return (
         <div className="spinnerWrapper">

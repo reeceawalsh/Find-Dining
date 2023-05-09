@@ -2,6 +2,7 @@ import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
 
+// registration form used by the register component
 export default function RegistrationForm({
     styles,
     setRegistrationData,
@@ -11,7 +12,6 @@ export default function RegistrationForm({
     alreadyRegistered,
     validRegistration,
 }) {
-    console.log(validRegistration);
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>

@@ -2,6 +2,7 @@ import Achievement from "@component/components/Achievement";
 import Header from "@component/components/Header";
 import { useUser } from "@component/lib/authContext";
 
+// NOT IN USE
 // this component houses many achievements and is displayed on the profile page.
 const Achievements = () => {
     // achievement data is currently manually entered but will be pulled from the database in the future.

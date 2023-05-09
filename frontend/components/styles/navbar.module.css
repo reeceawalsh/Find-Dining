@@ -312,6 +312,15 @@
     font-size: 1.2rem;
   }
 
+  .pinWrapper {
+    display: none;
+  }
+
+  .postalCode {
+    display: none;
+  }
+
+
 
 
 }
@@ -322,13 +331,6 @@
     min-height: 10vh;
   }
 
-  .pinWrapper {
-    display: none;
-  }
-
-  .postalCode {
-    display: none;
-  }
 
   .info {
     position: relative;

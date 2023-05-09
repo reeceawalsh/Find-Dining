@@ -1,4 +1,5 @@
 import styles from "./styles/socialLinkItem.module.css";
+// NOT IN USE
 export default function SocialLinkItem({
     icon,
     name,

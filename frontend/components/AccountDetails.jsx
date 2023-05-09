@@ -11,6 +11,7 @@ import styles from "./styles/accountDetails.module.css";
 import { useUser } from "../lib/authContext";
 import validate from "../validationRules/ChangeAccountDetails";
 
+// account details component located on the profile page
 const AccountDetails = () => {
     const { user, setUser, loading } = useUser();
     const router = useRouter();
@@ -44,6 +45,7 @@ const AccountDetails = () => {
                 setUser((prevUser) => {
                     return { ...prevUser, ...updatedUser };
                 });
+                // turn edit mode off
                 toggleEditable();
             }
         } else {
@@ -54,8 +56,6 @@ const AccountDetails = () => {
             console.log("User not authenticated or logged in.");
             router.push("/home");
         }
-
-        // turn edit mode off
     };
 
     // checks for errors using RegistrationVR. Ensures the username and email are valid.

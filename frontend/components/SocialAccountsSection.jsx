@@ -4,6 +4,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import SocialLinkItem from "./SocialLinkItem";
 import { useState, useEffect } from "react";
 
+// NOT IN USE
 export default function SocialAccountsSection({ user }) {
     const [connected, setConnected] = useState({});
 
@@ -20,6 +21,7 @@ export default function SocialAccountsSection({ user }) {
         }
     };
 
+    // will check if the user is connected on the backend and update the local state accordingly.
     useEffect(() => {
         if (user) {
             setConnected({

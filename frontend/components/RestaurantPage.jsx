@@ -14,8 +14,6 @@ import { getTokenFromLocalCookie } from "@component/lib/auth";
 import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
 import Image from "next/image";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import Location from "@component/lib/locationContext";
 
 const RestaurantPage = ({
@@ -59,6 +57,7 @@ const RestaurantPage = ({
 
     const { user } = useUser();
 
+    // works out how far away the restaurant is from the users geolocation
     const getDistance = () => {
         const restaurantLat = coordinates.latitude;
         const restaurantLng = coordinates.longitude;
@@ -71,11 +70,11 @@ const RestaurantPage = ({
         return `${Math.round(distanceAwayFromUser)} metres`;
     };
 
+    // sets the distance away from the user and works out how far that is in minutes based on average walking speed. This will update if the users location changes.
     useEffect(() => {
         setDistance(getDistance);
         if (distance) {
             const minutes = (distance.split(" ")[0] / 84).toFixed(2);
-            console.log(minutes);
             setMinutesAway(minutes);
         }
     }, [geoLocation]);
@@ -114,7 +113,7 @@ const RestaurantPage = ({
         const Restaurant = strapiRestaurantDetails.id;
         const User = user.id;
         const reviewer = user.username;
-        console.log(reviewer);
+        // send the review to the backend
         try {
             const response = await axios.get(
                 `${process.env.NEXT_PUBLIC_BASE_URL}/api/addReview?review=${review}&Restaurant=${Restaurant}&User=${User}&rating=${rating}&token=${token}&reviewer=${reviewer}`
@@ -136,19 +135,27 @@ const RestaurantPage = ({
         }
     };
 
+    // this function counts the amount of each rating and returns them as an object. example output - {0: 1, 4: 1}
     const getRatingCounts = () => {
         const ratingCounts = {};
+        // iterate over each review
         reviews.forEach((review) => {
+            // round the rating to the nearest integer
             const rating = Math.round(review.rating);
+            // if the rating doesn't exist in the ratingCounts object, add it and initialize the count to 1
             if (!ratingCounts[rating]) {
                 ratingCounts[rating] = 1;
             } else {
+                // if the rating does exist in the ratingCounts object, increment the count
                 ratingCounts[rating]++;
             }
         });
+
+        console.log(ratingCounts);
         return ratingCounts;
     };
 
+    // handles changing the review filter, filters through and only shows reviews based on the rating based in as a parameter
     const handleFilterChange = (rating) => {
         if (rating === "all") {
             setFilteredReviews(reviews);
@@ -160,6 +167,7 @@ const RestaurantPage = ({
         }
     };
 
+    // handles submitted a review. ensures the review is atleast 11 characters long. then sets review, resets the star rating back to 0 and removes any errors that may be there from not writing a long enough review
     const handleSubmitReview = (e) => {
         e.preventDefault();
         if (review && review.length > 10) {
@@ -173,16 +181,14 @@ const RestaurantPage = ({
         }
     };
 
-    useEffect(() => {
-        setDistance(getDistance);
-    }, []);
-
+    // sets token based on cookies
     useEffect(() => {
         setToken(getTokenFromLocalCookie(cookies));
     }, [cookies]);
 
     return (
         <div className="container">
+            {/** Header Section */}
             <header className={styles.header}>
                 <div className={styles.headerTitleContainer}>
                     <h1 className={styles.restaurantName}>{name}</h1>
@@ -197,6 +203,7 @@ const RestaurantPage = ({
                     <span className={styles.price}>
                         {price} <span className={styles.separatorDot}>·</span>
                     </span>
+                    {/** Categories are food types the restaurant serves */}
                     <div className={styles.categories}>
                         {categories &&
                             categories.map((type, index) => (
@@ -220,6 +227,7 @@ const RestaurantPage = ({
                     </div>
                 </div>
             </header>
+            {/** Will display photos if they are available and a line if not. */}
             {photos[0] ? (
                 <div className={styles.photos}>
                     <img className={styles.restaurantImage} src={photos[1]} />
@@ -233,7 +241,7 @@ const RestaurantPage = ({
                 <h2 className={styles.subContainerTitle}>
                     Opening Times and Location
                 </h2>
-
+                {/** Information Sections */}
                 <div className={styles.subContainer}>
                     <div className={styles.leftContainer}>
                         <OpeningHours hours={hours} />
@@ -243,7 +251,7 @@ const RestaurantPage = ({
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            View opening hours on
+                            View more information on
                             <Image
                                 className={styles.yelpLogo}
                                 src={yelpLogo}
@@ -256,6 +264,7 @@ const RestaurantPage = ({
                                 src={phoneIconOrange}
                                 alt="The Yelp logo"
                             />
+                            {/** This will attempt to call that phone number when clicked on supporting browsers. */}
                             <a href={`tel:${display_phone}`}>{display_phone}</a>
                         </p>
                     </div>
@@ -276,6 +285,7 @@ const RestaurantPage = ({
                                 }}
                                 onLoad={() => console.log("Map loaded")}
                             >
+                                {/** This marker is placed at the location of the restaurant. */}
                                 <MarkerF
                                     position={{
                                         lat: coordinates.latitude,
@@ -284,13 +294,14 @@ const RestaurantPage = ({
                                 />
                             </GoogleMap>
                         </div>
+                        {/** If a distance has not been calculated i.e. no location has been provided then it will provide a message to show that it's a feature that can be enabled. */}
                         {!distance && (
                             <p className={styles.geolocationOff}>
                                 Please enable location to find out how far away
                                 the restaurant is!
                             </p>
                         )}
-                        {distance && (
+                        {distance && minutesAway && (
                             <div>
                                 <p>
                                     This restaurant is{" "}
@@ -317,6 +328,7 @@ const RestaurantPage = ({
                     </div>
                 </div>
             </div>
+            {/* Ensure only a logged in user can view reviews. */}
             {user && filteredReviews.length != 0 && (
                 <div className={styles.filterContainer}>
                     <button onClick={() => handleFilterChange("all")}>
@@ -341,6 +353,7 @@ const RestaurantPage = ({
                 ref={reviewsRef}
                 className={styles.reviewsSection}
             >
+                {/* Will only display the reviews title if there are any reviews to actually display. Reviews are sorted by date of creation. */}
                 {filteredReviews.length !== 0 && <h2>Reviews</h2>}
                 {filteredReviews &&
                     filteredReviews
@@ -355,7 +368,7 @@ const RestaurantPage = ({
                                 <RestaurantReview review={review} />
                             </div>
                         ))}
-
+                {/* If there are less reviews shown than actual reviews, this show more button will appear to allow the user to show more reviews (just increases the amount of reviews that are shown, doesn't hide previous ones. */}
                 {displayedReviewsCount < filteredReviews.length && (
                     <button
                         onClick={() =>
@@ -372,6 +385,7 @@ const RestaurantPage = ({
                 id="writeReview"
                 ref={writeReviewRef}
             >
+                {/* If a user is logged in it will allow them to submit a review, otherwise it will notify them to login if they want to submit a review. */}
                 {user ? (
                     <form
                         className={styles.reviewForm}
@@ -388,6 +402,7 @@ const RestaurantPage = ({
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                         />
+                        {/* This error message will appear if the user tries to submit a message without writing enough characters. */}
                         {error && (
                             <p className="error">
                                 I'm sorry, we don't expect War and Peace, but a

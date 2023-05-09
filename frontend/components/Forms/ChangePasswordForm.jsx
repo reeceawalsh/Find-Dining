@@ -1,7 +1,7 @@
 import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
-import DateInput from "../FormElements/DateInput";
 
+// change password form used by the changePasswordDialog component
 export default function ChangePasswordForm({
     styles,
     setPasswordData,
@@ -10,7 +10,6 @@ export default function ChangePasswordForm({
     handleChangePassword,
     toggleDialog,
 }) {
-    console.log(errors);
     return (
         <div>
             <form>

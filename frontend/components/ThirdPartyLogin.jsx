@@ -6,6 +6,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 import { getSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
+// NOT IN USE
 export default function ThirdPartyLogin() {
     return (
         <div className={`container ${styles.container} peach-background`}>

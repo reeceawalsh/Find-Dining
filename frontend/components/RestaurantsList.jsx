@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Restaurant from "./Restaurant";
 import styles from "./styles/restaurantsList.module.css";
 import { useUser } from "@component/lib/authContext";
-import fetchUserData from "@component/lib/fetchUserData";
 import addToFavourites from "@component/lib/addToFavourites";
 import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
 import addToHistory from "@component/lib/addToHistory";
 import fetchHistory from "@component/lib/fetchHistory";
 
+// this component is the list view which shows a list of restaurants.
 const RestaurantsList = ({
     setPage,
     restaurants,
@@ -17,18 +17,20 @@ const RestaurantsList = ({
     const { user } = useUser();
     const [favourites, setFavourites] = useState([]);
     const [history, setHistory] = useState([]);
-    const [userData, setUserData] = useState(null);
 
+    // handles updating favourites list
     const updateFavourites = (newFavourites) => {
         setFavourites(newFavourites);
         addToFavourites(newFavourites, user.id);
     };
 
+    // handles updating the history list
     const updateHistory = (newHistory) => {
         setHistory(newHistory);
         addToHistory(newHistory, user.id);
     };
 
+    // this use effect "turns the page" i.e. loads more restaurants if possible, once the user scrolls down enough.
     useEffect(() => {
         const options = {
             root: null,
@@ -52,11 +54,14 @@ const RestaurantsList = ({
             }
         };
     }, [loader]);
+
     // ensure the list of favourite restaurants for the user is up to date
     useEffect(() => {
         const getData = async () => {
+            // fetching favourite restaurants will retrieve restaurants from our database which will come with a uuid and a yelp id.
             const favouritesData = await fetchFavouriteRestaurants(user.id);
             const temp = [];
+            // if there are favourites, it maps through them and sets favourites to equal just the uuid and id. this is the only required data.
             if (favouritesData) {
                 favouritesData.map((restaurant) =>
                     temp.push({
@@ -66,6 +71,7 @@ const RestaurantsList = ({
                 );
                 setFavourites(temp);
             }
+            // fetching visited restaurants from the database
             const historyData = await fetchHistory(user.id);
             const temp2 = [];
             if (historyData) {
@@ -76,15 +82,15 @@ const RestaurantsList = ({
                     })
                 );
             }
+            // sets the array to be the most up to date version of visited restaurants.
             setHistory(temp2);
         };
+        // will only run if there is a user logged in
         if (user) {
             getData();
         }
+        // there is a user dependency arrray to ensure it reruns if the user changes as they will have different visited and favourites.
     }, [user]);
-
-    console.log(history);
-    console.log(favourites);
 
     return (
         <div className={`container`}>
@@ -101,7 +107,7 @@ const RestaurantsList = ({
                     />
                 ))}
             </div>
-
+            {/* If there are no more restaurants it will display a message informing the user. */}
             {noMoreRestaurants && (
                 <div>
                     <p>
@@ -111,6 +117,7 @@ const RestaurantsList = ({
                     </p>
                 </div>
             )}
+            {/* If there are more restaurants to load, it will display a spinner */}
             {!noMoreRestaurants && (
                 <div ref={loader} className={styles.loader}></div>
             )}

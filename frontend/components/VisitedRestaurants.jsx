@@ -3,8 +3,8 @@ import Restaurant from "./Restaurant";
 import styles from "./styles/restaurantsList.module.css";
 import { useUser } from "@component/lib/authContext";
 import fetchHistory from "@component/lib/fetchHistory";
-import addToHistory from "@component/lib/addToHistory";
 
+// displays all of the restaurants that the user has marked as visited.
 const VisitedRestaurants = ({
     restaurants,
     favourites,
@@ -15,6 +15,8 @@ const VisitedRestaurants = ({
 }) => {
     const { user } = useUser();
     const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
+
+    // runs through the list of restaurants passed in to ensure that each restaurant in the list is definitely in the history.
     useEffect(() => {
         setFilteredRestaurants(
             restaurants.filter((restaurant) =>
@@ -22,6 +24,8 @@ const VisitedRestaurants = ({
             )
         );
     }, [history, restaurants]);
+
+    // updates history with the databases history
     useEffect(() => {
         const getData = async () => {
             const data = await fetchHistory(user.id);

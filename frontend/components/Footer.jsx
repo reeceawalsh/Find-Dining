@@ -3,10 +3,12 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./styles/footer.module.css";
 import NavLink from "./NavLink";
 
+// footer which sits at the bottom of the page and contains a feedback survey and about link, and also a github link to the repo.
 const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.links}>
+                {/* Users can fill out this survey to provide feedback about the application. */}
                 <NavLink
                     className={styles.link}
                     href="https://www.surveymonkey.co.uk/r/SWPLSD7"
@@ -23,8 +25,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span className="white-font">Find</span>{" "}
-                    <span className="white-font">Dining</span>
+                    <span className="white-font">Find Dining</span>
                 </a>
                 <div className={styles.githubIcon}>
                     <a

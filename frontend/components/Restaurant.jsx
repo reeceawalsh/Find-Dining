@@ -31,22 +31,33 @@ const Restaurant = ({
     const [clickedHistoryRestaurant, setClickedHistoryRestaurant] =
         useState(null);
 
-    // fetches the restaurant data for the restaurant, if it can't find the restaurant then fetchRestaurantID will add it to the database.
+    /* fetches the restaurant data for the restaurant, if it can't find the restaurant then fetchRestaurantID will add it to the database. This restaurantData will return an object like so
+    {createdAt : "2023-04-25T10:59:12.160Z"
+     id: 16
+     publishedAt:"2023-04-25T10:59:12.155Z"
+     restaurantID: "cgHI5wFR-o5k_aWsTpIUVg"
+     updatedAt: "2023-04-25T11:48:25.080Z"}
+     We only store the yelp restaurant id and the uuid of the restaurant because we can retrieve all of the restaurant information using the yelp restaurant id. This ensures that our information always stays up to date. 
+    */
     const getRestaurantData = async () => {
         if (restaurant) {
             const restaurantData = await fetchRestaurantID(
                 restaurant.id,
                 restaurant.name
             );
+            console.log(restaurantData);
             return restaurantData;
         }
     };
 
-    // handles clicking on favourite
+    // handles clicking on favourite icon, this handles adding and removing an item from the list of favourites.
     const handleFavouriteClick = async () => {
         const restaurantData = await getRestaurantData();
+        // if there's a restaurant and it has an id continue..
         if (restaurantData && restaurant && restaurant.id) {
+            // the uuid is our databases unique identifier for the restaurant, not the yelp id.
             let uuid = restaurantData.id;
+            // search for the restaurant in the list of favourites
             const tempRestaurant = { uuid: uuid, id: restaurant.id };
             const index = favourites.findIndex(
                 (fav) =>
@@ -54,22 +65,28 @@ const Restaurant = ({
                     fav.id === tempRestaurant.id
             );
             let temp;
+            // if it found the restaurant then remove it from the list.
             if (index !== -1) {
                 temp = [
                     ...favourites.slice(0, index),
                     ...favourites.slice(index + 1),
                 ];
             } else {
+                // if it's not found then create a new array by spreading the list of favourites and then adding the new restaurants uuid and id. No more information is required for our use.
                 temp = [...favourites, { uuid: uuid, id: restaurant.id }];
             }
+            // update the list of favourites with the new favourites.
             updateFavourites(temp);
+            // set this specific restaurant to be a favourite (this controls the icon being blue (favourited) or not (not favourited))
             setFavourite(!favourite);
+            // set the clickedRestaurant as this one's id.
             setClickedFavouriteRestaurant(restaurant.id);
         } else {
             console.log("restaurant data not set yet", restaurantData);
         }
     };
 
+    // this function exhibits the exact same behaviour as above but for history (visited) instead of for favourites.
     const handleVisitedClick = async () => {
         const restaurantData = await getRestaurantData();
         if (restaurantData && restaurant && restaurant.id) {
@@ -97,9 +114,12 @@ const Restaurant = ({
         }
     };
 
+    // sets the token when cookies change.
     useEffect(() => {
         setToken(getTokenFromLocalCookie(cookies));
     }, [cookies]);
+
+    // if the current restaurant is the one that was clicked, a user is logged in, and the restaurant exists, then add it to favourites. The dependency array ensures it checks each time the favourites, restaurant or clickedRestaurant reports.
     useEffect(() => {
         if (
             user &&
@@ -109,11 +129,14 @@ const Restaurant = ({
         ) {
             addToFavourites(favourites, user.id);
         }
+        //
         if (restaurant && restaurant.id) {
+            // checks if atleast one of the restaurants id's matches this restaurants id.
             setFavourite(favourites.some((fav) => fav.id === restaurant.id));
         }
     }, [favourites, restaurant, clickedFavouriteRestaurant]);
 
+    // same as above but for history.
     useEffect(() => {
         if (
             user &&

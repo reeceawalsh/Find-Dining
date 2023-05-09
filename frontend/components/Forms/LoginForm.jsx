@@ -1,6 +1,7 @@
 import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 
+// login form used by the login component
 export default function LoginForm({
     styles,
     setLoginData,

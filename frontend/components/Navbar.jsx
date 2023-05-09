@@ -62,6 +62,7 @@ const Navbar = () => {
         }
     }, [location, geoLocation]);
 
+    console.log(location);
     return (
         <div className="headerContainer">
             <div className={`${styles.navbar} white-background`}>
@@ -77,7 +78,7 @@ const Navbar = () => {
                     <Link href="/home">
                         <div className={styles.title}>
                             <span className="white-font">Find</span>{" "}
-                            <span className="blue-font">Dining</span>
+                            <span className="white-font">Dining</span>
                         </div>
                     </Link>
                     {location && (

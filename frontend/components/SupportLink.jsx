@@ -1,5 +1,6 @@
 import styles from "./styles/support.module.css";
 
+// this support link is used by the support page
 const SupportLink = ({ title, link, description }) => {
     return (
         <div className={styles.linkContainer}>

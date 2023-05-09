@@ -1,3 +1,4 @@
+// these terms and conditions outline our terms of use for using the Find Dining website, these terms are not prepared by a lawyer so they may not be 100% correct but we did some research into what should be included.
 export default function TermsOfUse() {
     return (
         <div className="support-container">
