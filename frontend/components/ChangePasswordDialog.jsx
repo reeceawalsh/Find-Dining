@@ -99,6 +99,7 @@ const ChangePasswordDialog = ({ user, styles }) => {
                         passwordData={passwordData}
                         errors={errors}
                         handleChangePassword={handleChangePassword}
+                        toggleDialog={toggleDialog}
                         styles={styles}
                     />
                 </DialogContent>

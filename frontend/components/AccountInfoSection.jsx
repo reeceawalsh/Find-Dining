@@ -16,7 +16,7 @@ const AccountInfoSection = ({
                     <span>Loading...</span>
                 ) : (
                     user && (
-                        <div>
+                        <div className="form-container">
                             <p>Username:</p>
                             <ProfileTextInput
                                 name="username"

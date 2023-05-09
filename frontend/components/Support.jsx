@@ -14,9 +14,9 @@ export default function Support() {
                     description="Need help with something specific? Reach out to us directly."
                 />
                 <SupportLink
-                    title="App Feedback"
+                    title="Feedback Survey"
                     link="https://www.surveymonkey.co.uk/r/SWPLSD7"
-                    description="Let us know how we can improve your experience with our app."
+                    description="Let us know how we can improve your experience with our website."
                 />
                 <SupportLink
                     title="Privacy Policy"

@@ -73,8 +73,8 @@ export default function RestaurantInfo() {
     // }, [restaurantId]);
 
     return (
-        <Layout user={user}>
-            <div>
+        <Layout>
+            <div className="container">
                 {restaurantDetails ? (
                     <RestaurantPage
                         restaurant={restaurantDetails}

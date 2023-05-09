@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: row;
   height: 10vh;
+  min-width: 100%;
   justify-content: space-between;
   font-size: 1.3rem;
   font-family: 'Inter', Helvetica;
@@ -190,4 +191,149 @@
 .dropdownLink:hover {
   background-color: rgba(255, 255, 255, 0.1);
   /* color: #36DBFF; */
+}
+
+.mobileDropdown {
+  display: none;
+}
+
+.desktopNavbar {
+  display: none;
+}
+
+@media (max-width: 1255px) {
+  .title {
+    display: none;
+  }
+
+  .logoContainer {
+    width: 20vw;
+  }
+
+  .rightNavbar {
+    padding-right: 1rem;
+  }
+
+  .logo {
+    border-radius: 5px;
+    width: 3.2em;
+    height: 2.4em;
+    margin-left: 0.3em;
+    margin-right: 0.1em;
+  }
+
+  .postalCodeButton {
+    width: 3rem;
+    margin-left: 0.2em;
+    font-size: 0.2rem;
+  }
+
+  .postalCode {
+    font-size: 0.7rem;
+  }
+
+  .link {
+    font-size: 0.9rem;
+  }
+
+  .profileBox {
+    width: 100%;
+    padding: 0 1.5rem 0 1rem;
+  }
+
+  .dropdown {
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (max-width: 853px) {
+  .logoContainer {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rightNavbar {
+    display: none;
+  }
+
+  .leftNavbar {
+    display: none;
+  }
+
+  .desktopNavbar {
+    display: flex;
+  }
+
+  .mobileDropdown {
+    display: flex;
+  }
+
+  .logo {
+    border-radius: 5px;
+    width: 4em;
+    height: 3em;
+    margin: 1em;
+
+  }
+
+  .postalCodeButton {
+    width: 3rem;
+    margin-left: 0.2em;
+    font-size: 0.5rem;
+  }
+
+  .postalCode {
+    font-size: 0.8rem;
+  }
+
+  .notLoggedIn {
+    display: none;
+  }
+
+  .pinWrapper {
+    min-width: 15px;
+  }
+
+  .navbar {
+    background-color: #ee7674;
+  }
+
+  .profileBox {
+    width: 100%;
+    padding: 0 1.5rem 0 2rem;
+    margin-right: 2rem;
+    border: 1px solid white;
+  }
+
+  .link {
+    font-size: 1.2rem;
+  }
+
+
+
+}
+
+@media (max-width: 400px) {
+
+  .navbar {
+    min-height: 10vh;
+  }
+
+  .pinWrapper {
+    display: none;
+  }
+
+  .postalCode {
+    display: none;
+  }
+
+  .info {
+    position: relative;
+    left: 0;
+    transform: none;
+
+  }
 }

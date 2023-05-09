@@ -75,8 +75,10 @@ const Navbar = () => {
                         />
                     </Link>
                     <Link href="/home">
-                        <span className="blue-font">Find</span>{" "}
-                        <span className="blue-font">Dining</span>
+                        <div className={styles.title}>
+                            <span className="white-font">Find</span>{" "}
+                            <span className="blue-font">Dining</span>
+                        </div>
                     </Link>
                     {location && (
                         <button
@@ -184,6 +186,112 @@ const Navbar = () => {
                             <NavLink className={styles.link} href="/register">
                                 Register
                             </NavLink>
+                        </>
+                    )}
+                </div>
+                <div className={styles.desktopNavbar}>
+                    {loading ? (
+                        <span>Loading...</span>
+                    ) : (
+                        <>
+                            <div
+                                className={`${styles.profileBox} ${
+                                    showDropdown
+                                        ? styles.profileBoxDropdownOpen
+                                        : ""
+                                }`}
+                                onMouseEnter={() => setShowDropdown(true)}
+                                onMouseLeave={() => setShowDropdown(false)}
+                            >
+                                <p
+                                    className={`${styles.link} ${styles.profileLink}`}
+                                >
+                                    <span>Menu</span>
+                                    <Image
+                                        className={styles.userIcon}
+                                        src={userIcon}
+                                        alt="User Icon"
+                                    />
+                                </p>
+                                {showDropdown && (
+                                    <>
+                                        {user ? (
+                                            <div className={styles.dropdown}>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/home"
+                                                >
+                                                    Home
+                                                </NavLink>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/home/favourites"
+                                                >
+                                                    Favourites
+                                                </NavLink>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/home/visited"
+                                                >
+                                                    Visited
+                                                </NavLink>
+                                                {location && (
+                                                    <NavLink
+                                                        className={
+                                                            styles.dropdownLink
+                                                        }
+                                                        href="/restaurants"
+                                                    >
+                                                        Restaurants
+                                                    </NavLink>
+                                                )}
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/profile"
+                                                >
+                                                    Profile
+                                                </NavLink>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/home"
+                                                    onClick={handleLogout}
+                                                >
+                                                    Logout
+                                                </NavLink>
+                                            </div>
+                                        ) : (
+                                            <div className={styles.dropdown}>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/login"
+                                                >
+                                                    Login
+                                                </NavLink>
+                                                <NavLink
+                                                    className={
+                                                        styles.dropdownLink
+                                                    }
+                                                    href="/register"
+                                                >
+                                                    Register
+                                                </NavLink>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+                            </div>
                         </>
                     )}
                 </div>

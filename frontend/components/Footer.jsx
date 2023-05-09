@@ -13,11 +13,8 @@ const Footer = () => {
                 >
                     Feedback Survey
                 </NavLink>
-                <NavLink
-                    className={styles.link}
-                    href="mailto:finddiningcontact@gmail.com"
-                >
-                    Contact Us
+                <NavLink className={styles.link} href="/home/about">
+                    About
                 </NavLink>
             </div>
             <div className={styles.info}>
@@ -26,7 +23,8 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Find Dining
+                    <span className="white-font">Find</span>{" "}
+                    <span className="white-font">Dining</span>
                 </a>
                 <div className={styles.githubIcon}>
                     <a

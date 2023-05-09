@@ -2,6 +2,7 @@
   background-image: url('/HomeBackground.jpg');
   background-size: cover;
   min-height: 80vh;
+  overflow-y: hidden;
 }
 
 

@@ -136,7 +136,7 @@ export default function Restaurants() {
 
     return (
         <Layout>
-            <div className="container">
+            <div className={`container`}>
                 <Toggle
                     value1="List View"
                     value2="Map View"

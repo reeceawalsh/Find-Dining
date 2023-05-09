@@ -8,6 +8,7 @@ export default function ChangePasswordForm({
     passwordData,
     errors,
     handleChangePassword,
+    toggleDialog,
 }) {
     console.log(errors);
     return (
@@ -62,6 +63,13 @@ export default function ChangePasswordForm({
                     data-testid="change-password-button"
                 >
                     Change Password
+                </button>
+                <button
+                    className={styles.button}
+                    onClick={toggleDialog}
+                    data-testid="back-button"
+                >
+                    Back
                 </button>
             </form>
         </div>

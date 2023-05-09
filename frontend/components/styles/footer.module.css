@@ -53,3 +53,50 @@
 .githubIcon a {
   color: #fff;
 }
+
+@media (max-width: 1255px) {
+
+  .footer {
+    padding-left: 5px;
+  }
+
+  .link {
+    font-size: 80%;
+  }
+
+  .info a {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 0;
+    align-items: center;
+  }
+
+  .link {
+    color: #fff;
+  }
+
+  .githubIcon {
+    display: none;
+  }
+
+
+  .info {
+    position: relative;
+    left: 0;
+    transform: none;
+
+  }
+}

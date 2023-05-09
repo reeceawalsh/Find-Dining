@@ -27,6 +27,7 @@
   cursor: pointer;
   border: 1px solid black;
   background-color: #ee7674;
+  margin-left: 5px;
 }
 
 .button:hover {

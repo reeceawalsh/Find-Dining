@@ -35,3 +35,25 @@
 .slider {
   margin-bottom: 0.8rem;
 }
+
+@media (max-width: 630px) {
+  .top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slider {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .slider {
+    margin: 0;
+  }
+
+  .options {
+    flex-direction: column;
+    font-size: 90%;
+  }
+}
