@@ -20,6 +20,7 @@ const ChangePasswordDialog = ({ user, styles }) => {
         confirmPassword: "",
     });
     const [errors, setErrors] = useState([]);
+    const [invalidPassword, setInvalidPassword] = useState(false);
 
     // opens and closes the dialog
     const toggleDialog = () => {
@@ -33,7 +34,7 @@ const ChangePasswordDialog = ({ user, styles }) => {
         e.preventDefault();
         // runs validation on the new password
         let newErrors = checkErrors(passwordData);
-
+        console.log(newErrors);
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
             // TODO - if (passwordData.password === user password)
@@ -48,6 +49,7 @@ const ChangePasswordDialog = ({ user, styles }) => {
         } else {
             console.log("errors", newErrors);
             setErrors(newErrors);
+            setInvalidPassword(true);
         }
     };
 
@@ -69,7 +71,13 @@ const ChangePasswordDialog = ({ user, styles }) => {
     };
 
     return (
-        <div className="container">
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}
+        >
             <div className="info-section-container">
                 <Button variant="outlined" onClick={toggleDialog}>
                     Change Password
@@ -81,7 +89,11 @@ const ChangePasswordDialog = ({ user, styles }) => {
                 onClose={toggleDialog}
                 aria-labelledby="responsive-dialog-title"
             >
-                <DialogContent>
+                <DialogContent
+                    style={{
+                        padding: theme.spacing(5),
+                    }}
+                >
                     <ChangePasswordForm
                         setPasswordData={setPasswordData}
                         passwordData={passwordData}

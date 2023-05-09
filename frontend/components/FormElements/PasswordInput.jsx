@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const PasswordInput = (props) => {
+    console.log(props);
     const [showPassword, setShowPassword] = useState(false);
 
     const toggleShowPassword = (e) => {
@@ -10,10 +11,16 @@ const PasswordInput = (props) => {
         setShowPassword(!showPassword);
     };
 
+    console.log(props.error);
+
     return (
         <div>
             <div className="form-group">
-                <span className={`error ${!props.error ? "hidden" : ""}`}>
+                <span
+                    className={`error password-error ${
+                        !props.error ? "hidden" : ""
+                    }`}
+                >
                     {props.error}
                 </span>
                 <div className="form-sub-group">
@@ -24,7 +31,7 @@ const PasswordInput = (props) => {
                         value={props.value}
                         onChange={props.onChange}
                         className={`form-control password-input ${
-                            props.error ? "red-outline" : ""
+                            props.errors ? "red-outline" : ""
                         }`}
                         autoComplete={props.autoComplete}
                     />

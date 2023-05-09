@@ -8,7 +8,9 @@ import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import deleteAccount from "@component/lib/deleteAccount";
 import { useUser } from "@component/lib/authContext";
-import styles from "./styles/accountDataDialogs.module.css"
+import styles from "./styles/accountDataDialogs.module.css";
+import addToFavourites from "@component/lib/addToFavourites";
+import addToHistory from "@component/lib/addToHistory";
 
 const AccountDataDialogs = () => {
     const { user, logout } = useUser();
@@ -32,6 +34,10 @@ const AccountDataDialogs = () => {
         e.preventDefault();
         handleToggleSavedDataModal();
         console.log("Deleting all saved data");
+        const favourites = [];
+        addToFavourites(favourites, user.id);
+        const history = [];
+        addToHistory(history, user.id);
     };
 
     // handles deleting the users account.
@@ -46,10 +52,18 @@ const AccountDataDialogs = () => {
     return (
         <div className="container">
             <div className="info-section-container">
-                <Button className={styles.deleteButton} variant="outlined" onClick={handleToggleSavedDataModal}>
+                <Button
+                    className={styles.deleteButton}
+                    variant="outlined"
+                    onClick={handleToggleSavedDataModal}
+                >
                     Delete all saved data
                 </Button>
-                <Button className={styles.deleteButtonBold} variant="outlined" onClick={handleToggleAccountModal}>
+                <Button
+                    className={styles.deleteButtonBold}
+                    variant="outlined"
+                    onClick={handleToggleAccountModal}
+                >
                     Delete account
                 </Button>
             </div>
@@ -64,7 +78,7 @@ const AccountDataDialogs = () => {
                     <DialogContentText>
                         Are you sure you want to delete all your saved data?
                         <br></br>(This will include your history and
-                        achievements)
+                        favourites.)
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

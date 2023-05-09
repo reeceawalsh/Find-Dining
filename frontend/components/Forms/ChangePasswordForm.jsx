@@ -9,6 +9,7 @@ export default function ChangePasswordForm({
     errors,
     handleChangePassword,
 }) {
+    console.log(errors);
     return (
         <div>
             <form>
@@ -24,6 +25,7 @@ export default function ChangePasswordForm({
                             password: event.target.value,
                         })
                     }
+                    error={errors.password}
                     autocomplete="off"
                 />
                 <PasswordInput

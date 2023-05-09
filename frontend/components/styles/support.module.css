@@ -25,6 +25,10 @@
   border-radius: 5px;
 }
 
+.link:hover {
+  border: solid 2px #ee7674;
+}
+
 .title {
   margin-bottom: 4px;
   font-size: 1.2rem;
