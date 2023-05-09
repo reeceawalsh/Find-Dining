@@ -10,7 +10,9 @@ export default function RestaurantReview({ review }) {
     return (
         <div className={styles.container}>
             <p className={styles.username}>{review.reviewer}</p>
-            <StarRating rating={review.rating} />
+            <div className={styles.ratingWrapper}>
+                <StarRating rating={review.rating} />
+            </div>
             <p className={styles.text}>
                 {review.review.length > 500 && !isExpanded
                     ? review.review.slice(0, 500) + "..."

@@ -44,13 +44,15 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
 
     const filteredRestaurants = useMemo(() => {
         return restaurants.filter((restaurant) => {
-            const restaurantLat = restaurant.coordinates.latitude;
-            const restaurantLng = restaurant.coordinates.longitude;
+            const geoLocation = {
+                lat: restaurant.coordinates.latitude,
+                lng: restaurant.coordinates.longitude,
+            };
+
             const distance = haversineDistance(
                 mapCenter.lat,
                 mapCenter.lng,
-                restaurantLat,
-                restaurantLng
+                geoLocation
             );
             return distance <= radius;
         });
@@ -88,6 +90,8 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
             setZoom(17);
         }
     }, [radius]);
+
+    console.log(filteredRestaurants, "filtered restaurants");
 
     return (
         <div className={styles.container}>

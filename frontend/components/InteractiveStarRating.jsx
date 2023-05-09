@@ -30,9 +30,15 @@ const InteractiveStarRating = ({ onRatingChange }) => {
                         }}
                     >
                         {isFull ? (
-                            <FontAwesomeIcon icon={faStarSolid} />
+                            <FontAwesomeIcon
+                                icon={faStarSolid}
+                                className={styles.individualStarSolid}
+                            />
                         ) : (
-                            <FontAwesomeIcon icon={faStarRegular} />
+                            <FontAwesomeIcon
+                                icon={faStarRegular}
+                                className={styles.individualStarEmpty}
+                            />
                         )}
                     </div>
                 );

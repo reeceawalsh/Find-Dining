@@ -1,5 +1,7 @@
 .stars {
-  display: flex;
+  display: inline-flex;
+  margin-right: 0.5rem;
+  color: white;
 }
 
 .starWrapper {
@@ -14,4 +16,20 @@
   top: 0;
   left: 0;
   pointer-events: none;
+}
+
+.individualStarSolid {
+  border: 2px solid #ee7674;
+  background-color: #ee7674;
+  border-radius: 10px;
+  margin-right: 4px;
+  padding: 2px;
+}
+
+.individualStarEmpty {
+  border: 2px solid #ee7674;
+  background-color: #ee7674;
+  border-radius: 10px;
+  margin-right: 4px;
+  padding: 2px;
 }
