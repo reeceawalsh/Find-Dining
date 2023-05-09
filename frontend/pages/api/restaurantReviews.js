@@ -1,5 +1,7 @@
 import axios from "axios";
-// not in use
+
+// Not currently in use as it only returns three reviews.
+// gets yelp reviews from yelp about a specific restaurant id
 export default async function handler(req, res) {
     const { id, token } = req.query;
 

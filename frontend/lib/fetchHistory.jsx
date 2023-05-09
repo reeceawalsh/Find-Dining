@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// returns the list of restaurants that the user has marked as visited.
 export default async function fetchHistory(id) {
     if (id) {
         try {

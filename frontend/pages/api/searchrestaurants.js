@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// searches for restaurants with an id that matches the passed in id.
 export default async function handler(req, res) {
     console.log("Search Restaurants");
     if (req.method === "GET") {

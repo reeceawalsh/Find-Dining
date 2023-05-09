@@ -17,8 +17,6 @@ const Login = () => {
         password: "",
     });
 
-    console.log(loginData);
-
     const router = useRouter();
     const [errors, setErrors] = useState([]);
     const [validLogin, setValidLogin] = useState(true);

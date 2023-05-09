@@ -11,6 +11,7 @@ const deleteAccount = async (userId, accessToken, logout) => {
             }
         );
         console.log("Account deleted successfully:");
+        // after the account has been deleted, log the user out to avoid errors.
         logout();
     } catch (error) {
         console.error("Error:", error);

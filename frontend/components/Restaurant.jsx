@@ -7,7 +7,6 @@ import { useUser } from "@component/lib/authContext";
 import NavLink from "./NavLink";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
-import { getTokenFromLocalCookie } from "@component/lib/auth";
 import { useState, useEffect } from "react";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import addToFavourites from "@component/lib/addToFavourites";
@@ -116,7 +115,7 @@ const Restaurant = ({
 
     // sets the token when cookies change.
     useEffect(() => {
-        setToken(getTokenFromLocalCookie(cookies));
+        setToken(cookies["jwt"]);
     }, [cookies]);
 
     // if the current restaurant is the one that was clicked, a user is logged in, and the restaurant exists, then add it to favourites. The dependency array ensures it checks each time the favourites, restaurant or clickedRestaurant reports.

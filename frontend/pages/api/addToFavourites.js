@@ -1,8 +1,8 @@
 import axios from "axios";
 
+// updates the users list of favourites
 async function updateUserFavourites(uuid, restaurants, retryCount = 0) {
     const maxRetries = 3;
-
     try {
         const data = JSON.stringify({
             restaurants: restaurants,
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         console.log(req.body);
         const { uuid, restaurants } = req.body;
 
-        console.log("restaurants to add to favourites", restaurants);
+        console.log("Restaurants to add to favourites", restaurants);
         try {
             const response = await updateUserFavourites(uuid, restaurants);
             res.status(201).json(response);

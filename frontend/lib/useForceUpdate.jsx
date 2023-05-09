@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 
+// forces a rerender
 const useForceUpdate = () => {
     const [, setTick] = useState(0);
     return useCallback(() => {

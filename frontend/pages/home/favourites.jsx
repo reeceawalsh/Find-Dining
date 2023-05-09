@@ -55,10 +55,7 @@ export default function Restaurants() {
                     (restaurant) => restaurant && restaurant.restaurantID
                 );
                 const yelpDataPromises = validData.map((restaurant) =>
-                    fetchYelpRestaurantDetails(
-                        restaurant.restaurantID,
-                        process.env.NEXT_PUBLIC_YELP_API_KEY
-                    )
+                    fetchYelpRestaurantDetails(restaurant.restaurantID)
                 );
                 const yelpDataResults = await Promise.all(yelpDataPromises);
                 setRestaurants(yelpDataResults);

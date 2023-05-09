@@ -1,5 +1,6 @@
 import { createClient } from "@google/maps";
 
+// pulls in google maps data
 const googleMapsClient = createClient({
     key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     Promise: Promise,

@@ -1,3 +1,4 @@
+// update user details (an email and a username)
 async function updateUserDetails(userId, email, username, accessToken) {
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`,

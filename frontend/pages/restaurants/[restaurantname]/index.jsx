@@ -8,32 +8,23 @@ import RestaurantPage from "@component/components/RestaurantPage";
 import Spinner from "@component/components/Spinner";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
+import getRestaurantName from "@component/lib/getRestaurantName";
 export default function RestaurantInfo() {
     const router = useRouter();
     const { user, loading } = useUser();
+    console.log(user);
     const [restaurantDetails, setRestaurantDetails] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [strapiRestaurantDetails, setStrapiRestaurantDetails] =
         useState(null);
-    // returns the name of the restaurant based on the url
-    const getRestaurantName = (path) => {
-        const decodedPath = decodeURIComponent(path);
-        const pathArray = decodedPath.split("/");
-        const lastPathSegment = pathArray[pathArray.length - 1];
-        // Remove the query string from the last path segment
-        const restaurantName = lastPathSegment.split("?")[0];
-        return restaurantName;
-    };
 
     const restaurantName = getRestaurantName(router.asPath);
     const restaurantId = router.query.id;
 
     // base url path (/restaurants/[restaurantname]))
-    const basePath = router.pathname;
     useEffect(() => {
         if (restaurantId) {
-            const token = process.env.NEXT_PUBLIC_YELP_API_KEY;
-            fetchYelpRestaurantDetails(restaurantId, token).then((data) => {
+            fetchYelpRestaurantDetails(restaurantId).then((data) => {
                 setRestaurantDetails(data);
             });
         }

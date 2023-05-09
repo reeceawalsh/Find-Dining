@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// gets a lot of restaurants with the params passed in from the helper function.
 export default async function handler(req, res) {
     const { term, sort_by, radius, offset, limit } = req.query;
     const latitude = req.query.latitude || 54.9783;

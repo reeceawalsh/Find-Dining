@@ -1,3 +1,4 @@
+// formats the given time (1200) into (12:00 PM)
 const formatTime = (time) => {
     const hour = parseInt(time.slice(0, 2), 10);
     const minute = time.slice(2);

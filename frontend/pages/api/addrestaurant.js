@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// handles adding a restaurant to the database, takes a yelp id and a name.
 export default async function handler(req, res) {
     if (req.method === "GET") {
         const { id, name } = req.query;

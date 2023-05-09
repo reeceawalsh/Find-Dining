@@ -1,3 +1,4 @@
+// converts a string to a Date.
 const convertToDateObject = (dateStr) => {
     if (!dateStr) {
         return new Date(0);

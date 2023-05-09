@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// gets a restaurants reviews
 export default async function handler(req, res) {
     if (req.method === "GET") {
         const { id } = req.query;

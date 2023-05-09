@@ -1,3 +1,4 @@
+// this reverse geoCode takes a lat and lng and returns an address including a postcode which is very useful.
 export default async function reverseGeocode(lat, lng) {
     const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
 

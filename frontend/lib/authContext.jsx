@@ -1,27 +1,32 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserFromLocalCookie } from "./auth";
 import { useCookies } from "react-cookie";
-import { unsetToken } from "./auth";
+
+import useUnsetToken from "./useUnsetToken";
 import useForceUpdate from "@component/lib/useForceUpdate.jsx";
 import { useRouter } from "next/router";
 
+// create context for User
 const User = createContext({ user: null, loading: false });
 
+// this user provider keeps track of the
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
     const router = useRouter();
+    const unsetToken = useUnsetToken();
 
-    const forceUpdate = useForceUpdate(); // Add this line
+    // forces a re-render when required
+    const forceUpdate = useForceUpdate();
 
+    // fetches the user if there's a jwt token.
     useEffect(() => {
         const fetchUser = async () => {
             const fetchedUser = await getUserFromLocalCookie(cookies);
             setUser(fetchedUser);
             setLoading(false);
         };
-
         if (cookies.jwt) {
             fetchUser();
         } else {
@@ -30,8 +35,9 @@ export const UserProvider = ({ children }) => {
         }
     }, [cookies.jwt]);
 
+    // logs the user out and routes them to the home page
     const logout = () => {
-        unsetToken(removeCookie);
+        unsetToken();
         setUser(null);
         router.push("/home");
     };

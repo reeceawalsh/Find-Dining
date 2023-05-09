@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// fetches restaurants from yelp using certain search criteria which will change based on filters, radius and sort type as defined by the user.
 const useFetchRestaurants = async ({
     lat,
     lng,

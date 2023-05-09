@@ -10,7 +10,6 @@ import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { useRef } from "react";
 import getOffsetTop from "@component/lib/getOffsetTop";
 import { useCookies } from "react-cookie";
-import { getTokenFromLocalCookie } from "@component/lib/auth";
 import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
 import Image from "next/image";
@@ -81,7 +80,9 @@ const RestaurantPage = ({
 
     // handles scrolling to the correct section, writeReview not currently in use.
     useEffect(() => {
+        // identifies the current section.
         const hash = window.location.hash;
+        // target element is the section we want to scroll to.
         let targetElement;
         const scrollToTargetElement = () => {
             switch (hash) {
@@ -92,17 +93,22 @@ const RestaurantPage = ({
                     targetElement = writeReviewRef.current;
                     break;
             }
+            // scrolls to the target section if it exists and theres a base point (hash)
             if (hash && targetElement) {
                 window.scrollTo({
+                    // calculate top using a custom function "getOffsetTop" because the built in function wasn't calculating it correctly.
                     top: getOffsetTop(targetElement),
                     behavior: "smooth",
                 });
             }
         };
+        // if the page has loaded it will scroll to the target element
         if (document.readyState === "complete") {
             scrollToTargetElement();
         } else {
+            // will scroll to the target element when it's finally loaded
             window.addEventListener("load", scrollToTargetElement);
+            // will remove the function from the window on unmount to prevent memory leaks
             return () =>
                 window.removeEventListener("load", scrollToTargetElement);
         }
@@ -183,7 +189,7 @@ const RestaurantPage = ({
 
     // sets token based on cookies
     useEffect(() => {
-        setToken(getTokenFromLocalCookie(cookies));
+        setToken(cookies["jwt"]);
     }, [cookies]);
 
     return (

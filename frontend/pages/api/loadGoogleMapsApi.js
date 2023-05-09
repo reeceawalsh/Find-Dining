@@ -1,3 +1,4 @@
+// loads google maps api
 export const loadGoogleMapsApi = (callback) => {
     const existingScript = document.getElementById("googleMaps");
 

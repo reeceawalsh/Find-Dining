@@ -20,6 +20,7 @@ const changePassword = async (
                 },
             }
         );
+        // the response is the jwt token and the user's data
         console.log("Successfully changed password.");
     } catch (error) {
         console.error("Error:" + error);

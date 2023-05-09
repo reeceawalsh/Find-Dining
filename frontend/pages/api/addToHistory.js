@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// updates the users history
 async function updateUserHistory(uuid, restaurants, retryCount = 0) {
     const maxRetries = 3;
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// fetches the users data using the getUserData call in the api folder. This returns an indepth and deep user and will contain favourite restaurants and visited restaurants for example.
 export default async function fetchUserData(id) {
     if (id) {
         try {

@@ -1,5 +1,6 @@
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
 
+// calculates the distance from the location based in, to the restaurants location by using an algorithm called haversineDistance. https://en.wikipedia.org/wiki/Haversine_formula#:~:text=The%20haversine%20formula%20determines%20the,and%20angles%20of%20spherical%20triangles.
 const haversineDistance = (restaurantLat, restaurantLng, geoLocation) => {
     if (geoLocation) {
         const R = 6371e3; // Earth's radius in meters

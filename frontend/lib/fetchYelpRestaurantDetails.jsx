@@ -1,5 +1,7 @@
 import axios from "axios";
-const fetchYelpRestaurantDetails = async (id, token) => {
+// fetches restaurant details about a specific restaurant from yelp.
+const fetchYelpRestaurantDetails = async (id) => {
+    const token = process.env.NEXT_PUBLIC_YELP_API_KEY;
     try {
         const response = await axios.get(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/restaurantDetails?id=${id}&token=${token}`

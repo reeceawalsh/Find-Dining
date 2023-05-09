@@ -1,3 +1,4 @@
+// formats the given date from our backend, usually very long, and returns a shorter formatted date --> format: 24-04-2023 14:49
 const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -12,4 +13,3 @@ const formatDate = (dateString) => {
 };
 
 export default formatDate;
-// format: 24-04-2023 14:49

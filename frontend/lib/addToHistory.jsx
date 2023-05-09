@@ -1,12 +1,15 @@
 import axios from "axios";
 
+// this function adds an array of history to the users list of history. An array is needed because when you update the users list of history you must pass all of the history, not just one to add. It completely replaces the value in the database.
 export default async function addToHistory(history, uuid) {
     console.log("history", history);
     console.log("user id", uuid);
+
     const restaurants = history.map((restaurant) => restaurant.uuid);
 
     if (uuid && history) {
         try {
+            // sends a put request to the /api/addToHistory file
             const response = await axios.put(
                 `${process.env.NEXT_PUBLIC_BASE_URL}/api/addToHistory`,
                 {
