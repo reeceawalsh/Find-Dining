@@ -97,11 +97,11 @@
       "target": "api::restaurant.restaurant",
       "inversedBy": "users"
     },
-    "history": {
+    "histories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "visitors"
+      "relation": "oneToMany",
+      "target": "api::history.history",
+      "mappedBy": "users"
     }
   }
 }
