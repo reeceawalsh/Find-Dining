@@ -66,15 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "facebookLinked": {
-      "type": "boolean"
-    },
-    "instagramLinked": {
-      "type": "boolean"
-    },
-    "googleLinked": {
-      "type": "boolean"
-    },
     "dateOfBirth": {
       "type": "date",
       "required": true
@@ -84,12 +75,6 @@
       "relation": "oneToMany",
       "target": "api::review.review",
       "mappedBy": "user"
-    },
-    "dietary_restrictions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::dietary-restriction.dietary-restriction",
-      "mappedBy": "users_permissions_user"
     },
     "restaurants": {
       "type": "relation",
