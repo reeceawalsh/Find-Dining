@@ -12,12 +12,14 @@ import styles from "./restaurants.module.css";
 import Spinner from "@component/components/Spinner";
 import DistanceSlider from "@component/components/DistanceSlider";
 
+// route -> /restaurants
 export default function Restaurants() {
     const loader = useRef(null);
+    // this can change between List View and Map View
     const [selectedValue, setSelectedValue] = useState("List View");
     const { location } = useContext(Location);
     const { lat, lng } = location;
-    const [renderedIds, setRenderedIds] = useState([]);
+    // cuisine keeps track of what cuisine the user is searching for
     const [cuisine, setCuisine] = useState("");
     const [restaurants, setRestaurants] = useState([]);
     // Yelps maximum radius is 40k
@@ -25,13 +27,18 @@ export default function Restaurants() {
     const [page, setPage] = useState(1);
     // can sort by rating, review_count, distance, price, open_now and best_match (Default)
     const [sortType, setSortType] = useState("best_match");
-
     const [loading, setLoading] = useState(true);
+
+    // maintains a list of unique restaurants, the issue with yelp is that they have multiple duplicate restaurants so they need to be filtered through.
     const uniqueRestaurants = useMemo(
         () => removeDuplicatesById(restaurants),
         [restaurants]
     );
+
+    // if there are no more restaurants we want to display a message.
     const [noMoreRestaurants, setNoMoreRestaurants] = useState(false);
+
+    // fetches restaurant data using those parameters
     const fetchData = async () => {
         setLoading(true);
         const fetchedRestaurants = await useFetchRestaurants({
@@ -44,7 +51,8 @@ export default function Restaurants() {
             limit: 30,
         });
 
-        if (fetchedRestaurants.length === 0) {
+        // if there are
+        if (fetchedRestaurants.length < 30) {
             console.log("no more restaurants");
             setLoading(false);
             setNoMoreRestaurants(true);
@@ -58,10 +66,6 @@ export default function Restaurants() {
         setRestaurants((prevRestaurants) => [
             ...prevRestaurants,
             ...newRestaurants,
-        ]);
-        setRenderedIds((prevIds) => [
-            ...prevIds,
-            ...newRestaurants.map((restaurant) => restaurant.id),
         ]);
 
         newRestaurants.forEach(async (restaurant) => {
@@ -88,7 +92,6 @@ export default function Restaurants() {
         setPage(1);
         setRestaurants([]);
         setCuisine(e.target.value);
-        setRenderedIds([]);
         setNoMoreRestaurants(false);
     };
 
@@ -97,7 +100,6 @@ export default function Restaurants() {
         setPage(1);
         setRestaurants([]);
         setSortType(e.target.value);
-        setRenderedIds([]);
         setNoMoreRestaurants(false);
     };
 
@@ -123,7 +125,6 @@ export default function Restaurants() {
     useEffect(() => {
         console.log("fetching data through dependencies");
         setRestaurants([]);
-        setRenderedIds([]);
         fetchData();
     }, [cuisine, sortType, lat, lng, radius]);
 

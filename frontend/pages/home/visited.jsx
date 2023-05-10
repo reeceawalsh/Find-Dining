@@ -8,24 +8,38 @@ import fetchYelpRestaurantDetails from "@component/lib/fetchYelpRestaurantDetail
 import addToFavourites from "@component/lib/addToFavourites";
 import fetchFavouriteRestaurants from "@component/lib/fetchFavouriteRestaurants";
 import addToHistory from "@component/lib/addToHistory";
+import { useRouter } from "next/router";
 
+// route -> home/visited
+// contains all of the users restaurants that they have visited.
 export default function Visited() {
     const [restaurants, setRestaurants] = useState([]);
     const { user } = useUser();
     const [loading, setLoading] = useState(true);
     const [favourites, setFavourites] = useState([]);
     const [history, setHistory] = useState([]);
+    const router = useRouter();
 
+    useEffect(() => {
+        // redirect logged-out users to the homepage
+        if (!user) {
+            router.push("/home");
+        }
+    }, [user, router]);
+
+    // updates local favourites array
     const updateFavourites = (newFavourites) => {
         setFavourites(newFavourites);
         addToFavourites(newFavourites, user.id);
     };
 
+    // updates local history array
     const updateHistory = (newHistory) => {
         setHistory(newHistory);
         addToHistory(newHistory, user.id);
     };
 
+    // fetches favourite restaurants from database
     useEffect(() => {
         const getData = async () => {
             const data = await fetchFavouriteRestaurants(user.id);
@@ -46,6 +60,7 @@ export default function Visited() {
         }
     }, [user]);
 
+    // fetches visited restaurants from database
     const fetchVisited = async () => {
         setLoading(true);
         if (user) {

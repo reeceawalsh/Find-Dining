@@ -3,21 +3,20 @@ import { useEffect, useState } from "react";
 import { useUser } from "@component/lib/authContext";
 import Layout from "@component/components/Layout";
 import fetchYelpRestaurantDetails from "@component/lib/fetchYelpRestaurantDetails";
-import fetchYelpRestaurantReviews from "@component/lib/fetchYelpRestaurantReviews";
 import RestaurantPage from "@component/components/RestaurantPage";
 import Spinner from "@component/components/Spinner";
 import fetchRestaurantID from "@component/lib/fetchRestaurantID";
 import fetchRestaurantReviews from "@component/lib/fetchRestaurantReviews";
 import getRestaurantName from "@component/lib/getRestaurantName";
+
+// route -> /restaurants/[restaurantName]
+// the restaurant name is passed into the url when a user clicks on a restaurant, it also sends the id as well to be used and retrieved with router.query.id.
 export default function RestaurantInfo() {
     const router = useRouter();
-    const { user, loading } = useUser();
-    console.log(user);
     const [restaurantDetails, setRestaurantDetails] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [strapiRestaurantDetails, setStrapiRestaurantDetails] =
         useState(null);
-
     const restaurantName = getRestaurantName(router.asPath);
     const restaurantId = router.query.id;
 
@@ -30,6 +29,7 @@ export default function RestaurantInfo() {
         }
     }, [restaurantId]);
 
+    // fetches restaurant data for this restaurant and fetches the reviews for this restaurant
     useEffect(() => {
         const fetchData = async () => {
             if (restaurantId) {
@@ -63,6 +63,7 @@ export default function RestaurantInfo() {
     //     }
     // }, [restaurantId]);
 
+    // displays the page if it's loaded and a spinner if not
     return (
         <Layout>
             <div className="container">

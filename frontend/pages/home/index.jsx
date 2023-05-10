@@ -3,8 +3,8 @@ import Layout from "../../components/Layout";
 import SearchBar from "@component/components/SearchBar";
 import styles from "./styles/home.module.css";
 
+// route -> /home
 export default function Home() {
-    const { user, loading } = useUser();
     return (
         <Layout>
             <div className={styles.container}>

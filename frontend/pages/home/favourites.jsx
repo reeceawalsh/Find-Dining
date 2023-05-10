@@ -8,24 +8,37 @@ import fetchYelpRestaurantDetails from "@component/lib/fetchYelpRestaurantDetail
 import addToFavourites from "@component/lib/addToFavourites";
 import fetchHistory from "@component/lib/fetchHistory";
 import addToHistory from "@component/lib/addToHistory";
+import { useRouter } from "next/router";
 
-export default function Restaurants() {
+// route -> home/favourites
+export default function Favourites() {
     const [restaurants, setRestaurants] = useState([]);
     const { user } = useUser();
     const [loading, setLoading] = useState(true);
     const [favourites, setFavourites] = useState([]);
     const [history, setHistory] = useState([]);
+    const router = useRouter();
 
+    useEffect(() => {
+        // redirect logged-out users to the homepage
+        if (!user) {
+            router.push("/home");
+        }
+    }, [user, router]);
+
+    // updates the users local favourites array
     const updateFavourites = (newFavourites) => {
         setFavourites(newFavourites);
         addToFavourites(newFavourites, user.id);
     };
 
+    // updates the users local history array
     const updateHistory = (newHistory) => {
         setHistory(newHistory);
         addToHistory(newHistory, user.id);
     };
 
+    // fetches latest history
     useEffect(() => {
         const getData = async () => {
             const data = await fetchHistory(user.id);
@@ -45,6 +58,7 @@ export default function Restaurants() {
         }
     }, [user]);
 
+    // fetches latest favourites
     const fetchData = async () => {
         setLoading(true);
         if (user) {
@@ -76,7 +90,7 @@ export default function Restaurants() {
                 <div className="container">
                     {restaurants.length === 0 && (
                         <p className={styles.message}>
-                            You have no favorite restaurants.
+                            You have no favourite restaurants.
                         </p>
                     )}
                     {restaurants.length !== 0 && (

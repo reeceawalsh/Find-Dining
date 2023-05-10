@@ -60,7 +60,9 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
 
     const loadMore = () => {
         console.log("loading more");
-        setPage((prev) => prev + 1);
+        if (!noMoreRestaurants) {
+            setPage((prev) => prev + 1);
+        }
     };
 
     useEffect(() => {
@@ -91,7 +93,7 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
         }
     }, [radius]);
 
-    console.log(filteredRestaurants, "filtered restaurants");
+    console.log(noMoreRestaurants);
 
     return (
         <div className={styles.container}>
