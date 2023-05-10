@@ -6,10 +6,10 @@ export default async function handler(req, res) {
         const { id } = req.query;
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/restaurants/${id}?populate=*`,
+                `${process.env.STRAPI_URL}/restaurants/${id}?populate=*`,
                 {
                     headers: {
-                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_TOKEN}`,
+                        Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
                     },
                 }
             );

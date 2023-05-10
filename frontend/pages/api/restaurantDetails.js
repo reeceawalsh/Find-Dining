@@ -2,7 +2,8 @@ import axios from "axios";
 
 // retrieves specific restaurant information from yelp fusion api
 export default async function handler(req, res) {
-    const { id, token } = req.query;
+    const { id } = req.query;
+    const token = process.env.YELP_API_KEY;
 
     if (!id || !token) {
         res.status(400).json({

@@ -14,6 +14,7 @@ import InteractiveStarRating from "./InteractiveStarRating";
 import { useUser } from "@component/lib/authContext";
 import Image from "next/image";
 import Location from "@component/lib/locationContext";
+import postReview from "@component/lib/postReview";
 
 const RestaurantPage = ({
     restaurant,
@@ -115,16 +116,16 @@ const RestaurantPage = ({
     }, []);
 
     // submits a review using the /api/addReview route
-    const submitReview = async (review, token, rating) => {
-        const Restaurant = strapiRestaurantDetails.id;
-        const User = user.id;
-        const reviewer = user.username;
+    const submitReview = async (review, rating) => {
         // send the review to the backend
+        const newReview = {
+            review: review,
+            Restaurant: strapiRestaurantDetails.id,
+            reviewer: user.username,
+            rating: rating,
+        };
         try {
-            const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/addReview?review=${review}&Restaurant=${Restaurant}&User=${User}&rating=${rating}&token=${token}&reviewer=${reviewer}`
-            );
-
+            const response = await postReview(newReview);
             if (response.status === 201) {
                 const newReview = response.data.data;
                 console.log("Created new review:", newReview);
@@ -157,7 +158,6 @@ const RestaurantPage = ({
             }
         });
 
-        console.log(ratingCounts);
         return ratingCounts;
     };
 
@@ -177,10 +177,11 @@ const RestaurantPage = ({
     const handleSubmitReview = (e) => {
         e.preventDefault();
         if (review && review.length > 10) {
-            submitReview(review, token, selectedRating);
+            submitReview(review, selectedRating);
             console.log("Submitted review:", review);
             setReview("");
             setSelectedRating(0);
+            console.log(selectedRating);
             setError(false);
         } else {
             setError(true);

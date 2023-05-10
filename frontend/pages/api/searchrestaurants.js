@@ -9,10 +9,10 @@ export default async function handler(req, res) {
         try {
             const response = await axios.get(
                 // this will return the data for restaurants with the id of {id}. this is the yelp id (not the uuid)
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/restaurants?filters[restaurantID][$eq]=${id}`,
+                `${process.env.STRAPI_URL}/restaurants?filters[restaurantID][$eq]=${id}`,
                 {
                     headers: {
-                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_TOKEN}`,
+                        Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
                     },
                 }
             );

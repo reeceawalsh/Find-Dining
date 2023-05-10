@@ -8,6 +8,7 @@ import validate from "../validationRules/LoginVR";
 import LoginForm from "./Forms/LoginForm";
 import ForgotPassword from "./Modals/ForgotPassword";
 import axios from "axios";
+import loginUser from "@component/lib/loginUser";
 
 // login component for the login page
 const Login = () => {
@@ -45,31 +46,22 @@ const Login = () => {
     // attempts to log the user in with their given identifier, their email or username, and password.
     const handleCheckUser = () => {
         console.log("checking user");
-        const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
-        let data = JSON.stringify({
+        let userData = {
             identifier: loginData.identifier,
             password: loginData.password,
-        });
-
-        const config = {
-            method: "post",
-            maxBodyLength: Infinity,
-            url: "http://localhost:1337/api/auth/local",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-            data: data,
         };
-
-        axios(config)
+        console.log(userData);
+        loginUser(userData)
             .then(function (response) {
                 console.log(response.data);
                 setToken(response.data);
                 setValidLogin(true);
             })
             .catch(function (error) {
-                console.error(error);
+                console.error("Request failed");
+                if (error.response) {
+                    console.error("Server response:", error.response.data);
+                }
                 setValidLogin(false);
             });
     };

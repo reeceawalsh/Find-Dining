@@ -12,7 +12,7 @@ export default async function handler(req, res) {
             {
                 headers: {
                     "Content-type": "application/json",
-                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API_KEY}`,
+                    Authorization: `Bearer ${process.env.YELP_API_KEY}`,
                 },
                 params: {
                     latitude,

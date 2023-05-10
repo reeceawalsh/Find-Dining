@@ -9,6 +9,7 @@ import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 const logo = require("../public/LogoCropped.png");
+import registerUser from "@component/lib/registerUser";
 
 // registration component which contains a form that handles registrations.
 const Register = () => {
@@ -53,38 +54,24 @@ const Register = () => {
     // posts email, username, password and DOB to be added to Database
     const handleCheckRegistered = () => {
         console.log("checking user");
-        const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
-        let data = JSON.stringify({
+        let userData = {
             email: registrationData.email,
             username: registrationData.username,
             password: registrationData.password,
             dateOfBirth: registrationData.dateOfBirth,
-        });
-        console.log(data);
-
-        const config = {
-            method: "post",
-            maxBodyLength: Infinity,
-            url: `${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/local/register`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-            data: data,
         };
-
-        axios(config)
+        registerUser(userData)
             .then(function (response) {
                 console.log(response.data);
                 setToken(response.data);
+                console.log(user);
                 setValidRegistration(true);
             })
             .catch(function (error) {
-                console.error("Request failed with status code 400");
+                console.error("Request failed");
                 if (error.response) {
                     console.error("Server response:", error.response.data);
                 }
-                // if it cannot register the user then we need to keep track of that and give the appropriate error message.
                 setValidRegistration(false);
             });
     };

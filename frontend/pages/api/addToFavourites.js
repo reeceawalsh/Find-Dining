@@ -9,11 +9,11 @@ async function updateUserFavourites(uuid, restaurants, retryCount = 0) {
         });
 
         const response = await axios.put(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${uuid}?populate=*`,
+            `${process.env.STRAPI_URL}/users/${uuid}?populate=*`,
             data,
             {
                 headers: {
-                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_TOKEN}`,
+                    Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
                     "Content-Type": "application/json",
                 },
                 maxBodyLength: Infinity,

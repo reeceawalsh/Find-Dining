@@ -1,30 +1,15 @@
-const axios = require("axios");
-
-// posts a review to the backend through the use of the api/reviews route
-const postReview = async ({ reviewData, token, restaurantID, User }) => {
-    let config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/reviews`,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-        data: {
-            review: { reviewData },
-            reviewer: User,
-            restaurant: restaurantID,
-        },
-    };
-
-    axios
-        .request(config)
-        .then((response) => {
-            console.log(JSON.stringify(response.data));
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+import axios from "axios";
+const postReview = async (newReview) => {
+    const data = { ...newReview };
+    console.log(data);
+    try {
+        const response = await axios.post("/api/reviews", data);
+        return response;
+    } catch (error) {
+        console.log(error);
+        console.log(error.response.data);
+        throw error;
+    }
 };
 
 export default postReview;

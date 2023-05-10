@@ -10,13 +10,10 @@ export default async function addToFavourites(favourites, uuid) {
     if (uuid && restaurants) {
         try {
             // sends a put request to the /api/addToFavourites file.
-            const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/addToFavourites`,
-                {
-                    uuid: uuid,
-                    restaurants: restaurants,
-                }
-            );
+            const response = await axios.put("/api/addToFavourites", {
+                uuid: uuid,
+                restaurants: restaurants,
+            });
             if (response.status === 201) {
                 console.log("Added to favourites", response);
             } else if (response.status === 204) {

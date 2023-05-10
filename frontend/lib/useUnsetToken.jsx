@@ -4,9 +4,9 @@ const useUnsetToken = () => {
     const [_, removeCookie] = useCookies(["jwt", "username", "id"]);
     console.log("unsetting token");
     const unsetToken = () => {
-        removeCookie("jwt");
-        removeCookie("username");
-        removeCookie("id");
+        removeCookie("jwt", { path: "/" });
+        removeCookie("username", { path: "/" });
+        removeCookie("id", { path: "/" });
     };
 
     return unsetToken;

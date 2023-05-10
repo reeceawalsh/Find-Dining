@@ -1,30 +1,25 @@
 import axios from "axios";
-const changePassword = async (
+const changePassword = (
     password,
     newPassword,
     confirmPassword,
     accessToken
 ) => {
-    try {
-        const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/change-password`,
-            {
-                currentPassword: password,
-                password: newPassword,
-                passwordConfirmation: confirmPassword,
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        );
-        // the response is the jwt token and the user's data
-        console.log("Successfully changed password.");
-    } catch (error) {
-        console.error("Error:" + error);
-    }
+    let data = {
+        currentPassword: password,
+        newPassword: newPassword,
+        passwordConfirmation: confirmPassword,
+        token: accessToken,
+    };
+
+    axios
+        .post("/api/change-password", data)
+        .then(function (response) {
+            console.log("Successfully changed password.", response.data);
+        })
+        .catch(function (error) {
+            console.error("Error:" + error);
+        });
 };
 
 export default changePassword;

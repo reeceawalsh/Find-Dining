@@ -10,13 +10,10 @@ export default async function addToHistory(history, uuid) {
     if (uuid && history) {
         try {
             // sends a put request to the /api/addToHistory file
-            const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/addToHistory`,
-                {
-                    uuid: uuid,
-                    restaurants: restaurants,
-                }
-            );
+            const response = await axios.put("/api/addToHistory", {
+                uuid: uuid,
+                restaurants: restaurants,
+            });
             if (response.status === 201) {
                 console.log("Added to visited restaurants", response);
             } else if (response.status === 204) {

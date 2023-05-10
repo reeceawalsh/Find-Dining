@@ -2,7 +2,7 @@ import axios from "axios";
 
 // handles adding a restaurant to the database, takes a yelp id and a name.
 export default async function handler(req, res) {
-    if (req.method === "GET") {
+    if (req.method === "POST") {
         const { id, name } = req.query;
 
         console.log(id);
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
         try {
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/restaurants`,
+                `${process.env.STRAPI_URL}/restaurants`,
                 {
                     data: {
                         restaurantID: id,
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_TOKEN}`,
+                        Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
                         "Content-Type": "application/json",
                     },
                 }

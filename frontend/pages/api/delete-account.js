@@ -1,23 +1,26 @@
 import axios from "axios";
 
-// gets users data
 export default async function handler(req, res) {
-    if (req.method === "GET") {
-        const { id } = req.query;
+    if (req.method === "POST") {
+        const { userId, token } = req.body;
+
         try {
-            const response = await axios.get(
-                `${process.env.STRAPI_URL}/users/${id}?populate=*`,
+            const response = await axios.delete(
+                `${process.env.STRAPI_URL}/users/${userId}`,
                 {
                     headers: {
-                        Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
                         "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            console.log(response.data);
+
             res.status(200).json(response.data);
         } catch (error) {
-            res.status(500).json({ message: "An error occurred" });
+            res.status(500).json({
+                message: "An error occurred",
+                error: error.response.data,
+            });
         }
     } else {
         res.status(405).json({ message: "Method not allowed" });

@@ -7,18 +7,16 @@ export const getTokenFromLocalCookie = (cookies) => {
 
 // retrieves the user data using the jwt token from local cookies.
 export const getUserFromLocalCookie = async (cookies) => {
-    const jwt = getTokenFromLocalCookie(cookies);
+    const jwt = cookies.jwt;
     if (jwt) {
+        console.log("JWT token in getUserFromLocalCookie:", jwt);
         try {
-            const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${jwt}`,
-                    },
-                }
-            );
+            const response = await axios.get("/api/user", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${jwt}`,
+                },
+            });
 
             const data = response.data;
 

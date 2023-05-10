@@ -20,6 +20,12 @@ const AccountDetails = () => {
     const [, setCookie] = useCookies(["jwt", "username", "email"]);
     const [accessToken, setAccessToken] = useState(user && user.jwt);
     const [errors, setErrors] = useState([]);
+    const [updatedUser, setUpdatedUser] = useState({
+        id: "",
+        email: "",
+        username: "",
+        accessToken: "",
+    });
 
     // handles pressing save
     const handleSave = async (e) => {
@@ -31,12 +37,25 @@ const AccountDetails = () => {
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
             // sends a put request to the server to update the users email and username. updating password is a separate request.
-            const updatedUser = await updateUserDetails(
-                user.id,
-                formData.email,
-                formData.username,
-                accessToken
-            );
+            try {
+                const temp = await updateUserDetails(
+                    user.id,
+                    formData.email,
+                    formData.username,
+                    accessToken
+                );
+                if (temp) {
+                    setUpdatedUser(temp);
+                    console.log(temp);
+                    console.log(updatedUser);
+                }
+            } catch (error) {
+                if (error.isAxiosError) {
+                    console.log(error.response.data);
+                } else {
+                    console.log(error);
+                }
+            }
 
             // update cookies with the new username and email if applicable
             if (updatedUser.id == user.id) {
