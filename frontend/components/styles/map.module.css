@@ -113,3 +113,37 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+
+  .mapContainer {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .sidebar {
+    height: 50vh;
+    width: 100%;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .map {
+    height: 50vh;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .individualRestaurantContainer {
+    padding-left: 1rem;
+  }
+
+  .ratingContainer {
+    margin-right: 1rem;
+  }
+}
