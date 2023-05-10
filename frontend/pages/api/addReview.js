@@ -1,6 +1,7 @@
 import axios from "axios";
 
 // adds a review to the users reviews.
+// Strapi uses Object-Relational Mapping and the Knex.js library as a query builder, which provides protection against SQL injection attacks, so there is no need to sanitize data sent to the backend.
 export default async function handler(req, res) {
     if (req.method === "GET") {
         const { review, Restaurant, User, rating, reviewer } = req.query;
