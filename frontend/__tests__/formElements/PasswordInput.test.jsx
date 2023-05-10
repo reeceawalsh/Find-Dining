@@ -4,7 +4,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 describe("<PasswordInput />", () => {
     test("User should be able to toggle password visibility", () => {
         const mockOnChange = jest.fn();
-        render(
+        const { getByTestId } = render(
             <PasswordInput
                 name="password"
                 placeholder="Password"
@@ -21,7 +21,7 @@ describe("<PasswordInput />", () => {
         expect(passwordInput.type).toBe("password");
 
         //Find the eye icon button
-        const eyeIconButton = screen.getByRole("button");
+        const eyeIconButton = screen.getByTestId("eye-button");
 
         // Toggle visibility
         fireEvent.click(eyeIconButton);

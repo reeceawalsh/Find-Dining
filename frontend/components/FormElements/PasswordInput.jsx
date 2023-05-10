@@ -37,6 +37,7 @@ const PasswordInput = (props) => {
                     />
                     <div
                         className="eye-icon"
+                        data-testid="eye-button"
                         onClick={(e) => toggleShowPassword(e)}
                     >
                         {showPassword ? (
