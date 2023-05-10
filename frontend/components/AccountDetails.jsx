@@ -4,7 +4,6 @@ import { useCookies } from "react-cookie";
 import Header from "./Header";
 import updateUserDetails from "@component/lib/updateUserDetails";
 import AccountInfoSection from "./AccountInfoSection";
-import SocialAccountsSection from "./SocialAccountsSection";
 import AccountDataDialogs from "./AccountDataDialogs";
 import ChangePasswordDialog from "./ChangePasswordDialog";
 import styles from "./styles/accountDetails.module.css";
@@ -33,21 +32,29 @@ const AccountDetails = () => {
 
         // runs validation on the registration details
         let newErrors = checkErrors(formData);
-        console.log(newErrors);
         // if there are no errors...
         if (Object.keys(newErrors).length === 0) {
             // sends a put request to the server to update the users email and username. updating password is a separate request.
             try {
-                const temp = await updateUserDetails(
+                const data = await updateUserDetails(
                     user.id,
                     formData.email,
                     formData.username,
                     accessToken
                 );
-                if (temp) {
-                    setUpdatedUser(temp);
-                    console.log(temp);
-                    console.log(updatedUser);
+
+                if (data) {
+                    setCookie("username", data.username);
+                    setCookie("email", data.email);
+                    setUser((prevUser) => {
+                        return {
+                            ...prevUser,
+                            email: data.email,
+                            username: data.username,
+                        };
+                    });
+                    console.log(user);
+                    toggleEditable();
                 }
             } catch (error) {
                 if (error.isAxiosError) {
@@ -55,17 +62,6 @@ const AccountDetails = () => {
                 } else {
                     console.log(error);
                 }
-            }
-
-            // update cookies with the new username and email if applicable
-            if (updatedUser.id == user.id) {
-                setCookie("username", updatedUser.username);
-                setCookie("email", updatedUser.email);
-                setUser((prevUser) => {
-                    return { ...prevUser, ...updatedUser };
-                });
-                // turn edit mode off
-                toggleEditable();
             }
         } else {
             console.log("errors", newErrors);

@@ -62,7 +62,6 @@ const Navbar = () => {
         }
     }, [location, geoLocation]);
 
-    console.log(location);
     return (
         <div className="headerContainer">
             <div className={`${styles.navbar} white-background`}>
