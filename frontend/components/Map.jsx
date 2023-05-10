@@ -42,6 +42,7 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
         }
     };
 
+    // filteres through the restaurants and ensures only ones within distance are included
     const filteredRestaurants = useMemo(() => {
         return restaurants.filter((restaurant) => {
             const geoLocation = {
@@ -58,19 +59,12 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
         });
     }, [restaurants, mapCenter, radius]);
 
+    // will load more restaurants (i.e add pages)
     const loadMore = () => {
-        console.log("loading more");
-        if (!noMoreRestaurants) {
-            setPage((prev) => prev + 1);
-        }
+        setPage((prev) => prev + 1);
     };
 
-    useEffect(() => {
-        if (restaurants.length <= 20) {
-            loadMore();
-        }
-    }, []);
-
+    // will change the map view when the radius slider is changed
     useEffect(() => {
         if (radius >= 10000) {
             setZoom(11);
@@ -92,8 +86,6 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
             setZoom(17);
         }
     }, [radius]);
-
-    console.log(noMoreRestaurants);
 
     return (
         <div className={styles.container}>
@@ -169,6 +161,7 @@ const Map = ({ setPage, restaurants, radius, location, noMoreRestaurants }) => {
                             strokeOpacity: 0.35,
                         }}
                     />
+                    {/* places a marker on the map on hover */}
                     {hoveredRestaurant && (
                         <MarkerF
                             position={{

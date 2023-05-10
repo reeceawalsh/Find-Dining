@@ -13,6 +13,7 @@ import Spinner from "@component/components/Spinner";
 import DistanceSlider from "@component/components/DistanceSlider";
 
 // route -> /restaurants
+// it's important to have all of the following logic such as radius changes, cuisine changes etc. in this parent component so that our list of restaurants stays consistent between list view and map view.
 export default function Restaurants() {
     const loader = useRef(null);
     // this can change between List View and Map View
@@ -51,30 +52,34 @@ export default function Restaurants() {
             limit: 30,
         });
 
-        // if there are
+        // if there are less than 30 restaurants then we need to tell the user theres no more restaurants so we don't attempt to fetch more restaurants and the user doesn't expect more.
         if (fetchedRestaurants.length < 30) {
             console.log("no more restaurants");
             setLoading(false);
             setNoMoreRestaurants(true);
-            return;
         }
 
+        // new restaurants ensure the restaurants don't already exist in our array of restaurants
         const newRestaurants = fetchedRestaurants.filter(
             (restaurant) => !restaurants.find((r) => r.id === restaurant.id)
         );
 
+        // set the restaurants to equal our previous restaurants plus the new filtered restaurants
         setRestaurants((prevRestaurants) => [
             ...prevRestaurants,
             ...newRestaurants,
         ]);
 
+        // for every restaurant that we get, it will fetch the restaurantID (our unique uuid that every restaurant in our database has), if it cannot find the restaurantID it will add them to the database, this functionality is contained within fetchRestaurantID. we need the restaurants in our database for reviews, favourites and history. doing it at this point ensures no delays, rather than doing it at another point.
         newRestaurants.forEach(async (restaurant) => {
             await fetchRestaurantID(restaurant.id, restaurant.name);
         });
 
+        // set loading to false as the new restaurants have been loaded in.
         setLoading(false);
     };
 
+    // creates a set of ids then filters through and ensures that the restaurants don't have multiple ids, this is extra sanitisation to ensure no duplicates have got through.
     function removeDuplicatesById(restaurants) {
         const idSet = new Set();
         return restaurants.filter((obj) => {
@@ -114,20 +119,24 @@ export default function Restaurants() {
         document.getElementById("sort-type-select").value = "";
     };
 
+    // handles toggle between map view and list view
     const handleToggle = (newValue) => {
         setSelectedValue(newValue);
     };
 
+    // handles radius changes
     const onRadiusChange = (newRadius) => {
         setRadius(newRadius);
     };
 
+    // wipes the list of restaurants then fetches new data, the dependency array ensures this useEffect runs when of the array changes. it's important they change because the user wants different restaurants.
     useEffect(() => {
         console.log("fetching data through dependencies");
         setRestaurants([]);
         fetchData();
     }, [cuisine, sortType, lat, lng, radius]);
 
+    // will load more restaurants but not wipe the restaurants data because this is dependent on page turn.
     useEffect(() => {
         if (page > 1) {
             console.log("fetching data via page turn", page);

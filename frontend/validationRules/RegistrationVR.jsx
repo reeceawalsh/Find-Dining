@@ -3,12 +3,11 @@ import validateEmail from "@component/fieldValidation/Email";
 import validatePassword from "@component/fieldValidation/Password";
 import validateUsername from "@component/fieldValidation/UserName";
 
+// handles validating registration, the rules and error generation is made in the above imports. the errors and item that needs validating is sent and then errors are returned. these errors are passed in as props to various form elements and forms then when they're submitted, it will display the errors if there are any.
 export default function validateRegistration({
     username,
     email,
     password,
-    firstName,
-    lastName,
     dateOfBirth,
 }) {
     let errors = {};
@@ -18,14 +17,6 @@ export default function validateRegistration({
     errors = validateEmail(errors, email);
 
     errors = validatePassword(errors, password);
-
-    // if (!firstName) {
-    //     errors.firstName = "Required";
-    // }
-
-    // if (!lastName) {
-    //     errors.lastName = "Required";
-    // }
 
     errors = validateDateOfBirth(errors, dateOfBirth);
 
