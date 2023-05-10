@@ -379,11 +379,17 @@
 
   .headerInfo {
     font-size: 1rem;
+    margin-bottom: 2rem;
   }
 
   .restaurantImage {
     height: 150px;
     width: 150px;
+  }
+
+
+  .subContainer {
+    margin: 3rem;
   }
 
   .map {
