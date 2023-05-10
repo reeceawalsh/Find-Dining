@@ -122,3 +122,9 @@ build
 terraform.*
 terraform.*
 .auto.tfvars
+
+############################
+# Deployment
+############################
+package-lock.json
+
