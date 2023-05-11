@@ -114,6 +114,24 @@
   cursor: pointer;
 }
 
+.loadBtn {
+  padding: 0.4rem;
+  color: black;
+  font-weight: 500;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid #ee7674;
+  letter-spacing: 2px;
+  background: transparent;
+}
+
+.loadBtn:hover {
+  border: 1px solid black;
+  background: #ee7674;
+}
+
+
+
 @media (max-width: 768px) {
 
   .mapContainer {

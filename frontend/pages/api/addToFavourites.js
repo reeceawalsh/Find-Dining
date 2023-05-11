@@ -7,6 +7,7 @@ async function updateUserFavourites(uuid, restaurants, retryCount = 0) {
         const data = JSON.stringify({
             restaurants: restaurants,
         });
+        console.log(data);
 
         const response = await axios.put(
             `${process.env.STRAPI_URL}/users/${uuid}?populate=*`,
