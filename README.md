@@ -120,6 +120,6 @@ color: blue;
 ### [Tharan Patel](https://github.com/tharanpatel)
 ### [Felix Liu](https://github.com/FelixLiu666)
 ### [Panos Kaouris](https://github.com/AzuratC1)
-### [Jacky](https://github.com/WZheng99)
+### [Jacky Z](https://github.com/WZheng99)
 ### [Y Ren](https://github.com/220543691)
 ### [Lee](https://github.com/draymondlee1997)
