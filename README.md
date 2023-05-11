@@ -93,17 +93,17 @@ color: blue;
 
 - All secrets that need to be private are used in the /api folder. This is a serverless psuedo backend and ensures the secrets aren't available to be seen on the client side. Any env secret which starts with NEXT_PUBLIC will be accessible on deployment. 
 - The Google Maps API key cannot be private as the function to call it needs to be on the client side, however, this key can only be used on our domain. This is a setting I setup on the Google Maps account page. 
-- If you want to run this project you will need your own .env secrets for the frontend:
+### Frontend .env secrets
  - STRAPI_URL (url of the strapi backend)
- - YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/)
- - YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/)
+ - YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/))
+ - YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/))
  - ADMIN_TOKEN (this is a strapi admin token which can be generated on the website in settings)
-- For the backend you will need: 
- -HOST (ip)
- -PORT (port)
- -APP_KEYS (any keys that fit)
- -API_TOKEN_SALT (generate a salt)
- -ADMIN_JWT_SECRET (generate a jwt secret)
- -TRANSFER_TOKEN_SALT (generate a random salt)
- -JWT_SECRET (jwt secret for database
- -SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/)
+### Backend .env secrets
+ - HOST (ip)
+ - PORT (port)
+ - APP_KEYS (any keys that fit)
+ - API_TOKEN_SALT (generate a salt)
+ - ADMIN_JWT_SECRET (generate a jwt secret)
+ - TRANSFER_TOKEN_SALT (generate a random salt)
+ - JWT_SECRET (jwt secret for database
+ - SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
