@@ -12,6 +12,12 @@ Create a web application that allows users to find nearby restaurants.
 
 We're using [Next.js](https://nextjs.org/) and [React.js](https://react.dev/) for the frontend and [Strapi](https://strapi.io/) for the backend. Testing was done with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit tests and [Cypress](https://www.cypress.io/) for end to end tests. The server is a locally setup [MYSQL server](https://www.mysql.com/). You can configure a database with Strapi [here](https://strapi.io/blog/configuring-strapi-mysql-database). 
 
+## APIs 
+
+- [Yelp](https://fusion.yelp.com/)
+- [GoogleMaps](https://developers.google.com/maps)
+- [PlacesAutoComplete](https://developers.google.com/maps/documentation/places/web-service/autocomplete)
+
 ## Installation 
 1. Clone the repository. 
 ```
@@ -107,3 +113,11 @@ color: blue;
  - TRANSFER_TOKEN_SALT (generate a random salt)
  - JWT_SECRET (jwt secret for database
  - SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
+
+## Team Members
+### [Reece Walsh](https://github.com/reeceawalsh)
+### [Shakti Raja Kumar](https://github.com/shaktiv8)
+### [Tharan Patel](https://github.com/tharanpatel)
+### [Felix Liu](https://github.com/FelixLiu666)
+### [Panos Kaouris](https://github.com/AzuratC1)
+### [Y Ren](https://github.com/220543691)
