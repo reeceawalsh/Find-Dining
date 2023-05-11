@@ -115,9 +115,11 @@ color: blue;
  - SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
 
 ## Team Members
-### [Felix Liu](https://github.com/FelixLiu666)
-### [Panos Kaouris](https://github.com/AzuratC1)
 ### [Reece Walsh](https://github.com/reeceawalsh)
 ### [Shakti Raja Kumar](https://github.com/shaktiv8)
 ### [Tharan Patel](https://github.com/tharanpatel)
+### [Felix Liu](https://github.com/FelixLiu666)
+### [Panos Kaouris](https://github.com/AzuratC1)
+### [Jacky](https://github.com/WZheng99)
 ### [Y Ren](https://github.com/220543691)
+### [Lee](https://github.com/draymondlee1997)
