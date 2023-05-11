@@ -1,4 +1,9 @@
-# Find-Dining
+<img align="left" width="auto" height="120" src="frontend/public/LogoCropped.png" />
+
+# Find Dining
+
+A web application that helps users find nearby restaurants.  
+ </br>
 
 ## Specification
 
@@ -6,68 +11,138 @@ Create a web application that allows users to find nearby restaurants.
 
 ## Tech
 
-We're using Next.js and React.js for the frontend and Strapi for the backend.
+We're using [Next.js](https://nextjs.org/) and [React.js](https://react.dev/) for the frontend and [Strapi](https://strapi.io/) for the backend. Testing was done with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit tests and [Cypress](https://www.cypress.io/) for end to end tests. The server is a locally setup [MYSQL server](https://www.mysql.com/). You can configure a database with Strapi [here](https://strapi.io/blog/configuring-strapi-mysql-database).
 
-## Setting Up Repo
+## APIs
 
-Clone the repo onto your local machine.
-Install Node.js from the internet.
-Open the repo in Visual Studio Code.
-Download ES7 React and Auto-Save from extensions on the left.
-In the terminal, navigate to the frontend folder.
-Type 'npm i' to install all of the dependencies.
-Every design has a corresponding page, these are all on FlyingDonut.
-Look at the designs and pick one you would like to do.
-Go to FlyingDonut and assign a task to yourself.
+- [Yelp](https://fusion.yelp.com/)
+- [GoogleMaps](https://developers.google.com/maps)
+- [PlacesAutoComplete](https://developers.google.com/maps/documentation/places/web-service/autocomplete)
 
-Type 'git branch <name>' to make a new branch where <name> is the name of the feature you are working on.
-E.g. git branch login-page.
-Type 'git checkout <name>' to go to the branch.
-e.g. git checkout login-page.
+## Installation
 
-Type 'npm run dev' in the frontend and 'npm run develop' in the backend to start the website.
-It will show you the url in the terminal.
-Open the url and you can see the website.
-The file structure of the code is the same as the structure of the url.
-The pages folder is the main website i.e. localhost:3000.
-There is a file called login in this folder, if I want to access it I can just type /login after the url. -> localhost:3000/login.
-There is also a folder called profile in the pages folder.
-If I want to go to profile I just put /profile after the url.
-In profile there is a page called history, as I'm in profile my url is already localhost:3000/profile, to go to history I need to add it. localhost:3000/profile/history.
-Do not change file structure, as you can see it is very important.
+1. Clone the repository.
 
-If you are writing global css, put it in the globals.css file located in pages.
-Global CSS are styles that will be used everywhere, and are not specific to the page you are working on. An example of a global style is .blue {
+```
+git clone https://github.com/reeceawalsh/Find-Dining
+```
+
+2. Install Node.js
+
+```
+brew install node
+```
+
+## Running The Code
+
+Start the frontend
+
+```
+cd frontend
+```
+
+```
+npm i
+```
+
+```
+npm run dev
+```
+
+Start the backend
+
+```
+cd backend
+```
+
+```
+npm i
+```
+
+```
+npm run develop
+```
+
+## Styling
+
+- If you are writing global css, put it in the globals.css file located in pages.
+- Global CSS are styles that will be used everywhere, and are not specific to the page you are working on. An example of a global style is `.blue {
 color: blue;
-}
-The class blue can now be used everywhere to make font blue.
-If you are writing specific css you need to use css modules.
-These are css files that are specific to the file you are working on.
-They end in module.css.
-If I'm working on the login page I would have a css file called login.module.css.
-
-I can import it to the login page by typing 'import styles from './styles/login.module.css' or whatever the path is.
-Then I can access the classnames as properties of the styles object e.g. {styles.SubmitButton} (ignore the slashes)
+}` The class blue can now be used everywhere to make font blue.
+- If you are writing specific css you need to use css modules. These are css files that are specific to the file you are working on. They end in module.css.
+- If I'm working on the login page I would have a css file called login.module.css.I can import it to the login page by typing 'import styles from './styles/login.module.css' or whatever the path is. Then I can access the classnames as properties of the styles object e.g. {styles.SubmitButton} (ignore the slashes)
 
 ## Before Working Each Time
 
-Always use 'git pull' before working to get the latest version.
-Always use 'npm i' to install the latest dependencies.
-Always make a separate branch and create a pull request when working.
+- Always use 'git pull' before working to get the latest version.
+- Always use 'npm i' to install the latest dependencies.
+- Always make a separate branch and create a pull request when working.
 
 ## Formatting Rules
 
-Type in terminal "npm i -g prettier" without the double quotes (will install an auto formatter that will format on save).
-Functions not classes.
-Components named with Capital Letters (PASCAL CASE) e.g. Component.jsx
-Variables are camelCase e.g. firstButton.
-Global classes are lower case with dashes e.g. upper-case.
-Pages should be named lowercase (for routing purposes).
-Components uppercase.
+- Components named with Capital Letters (PASCAL CASE) e.g. Component.jsx
+- Variables are camelCase e.g. firstButton.
+- Global classes are lower case with dashes e.g. upper-case.
+- Pages should be named lowercase (for routing purposes).
 
 ## Folder Structure
 
-Public for images and designs.
-Styles are for css files. (If you want to make a css file for each component that is okay.)
-Pages store pages.
-Components store components.
+- Public is for images and designs.
+- Styles are for css files. (If you want to make a css file for each component that is okay.)
+- Pages store pages, these will automatically be made into routes by Next.js.
+- Components store components.
+- Lib for helper functions.
+- API for backend functions.
+- **tests** for unit tests.
+
+## Forms
+
+- Forms are all custom with custom made form elements that are located in their own folders.
+- Each form element uses field validation located in the field validation and validationRules folder.
+- Errors are passed into the validationRules on submit of a form, and the resulting errors are passed back into the form elements as an errors object. The form element will then check if there are ny erorrs are display the appropriate messages as set out in the fieldValidation file.
+
+## Context
+
+- There is location, user and cookie context providers that encompass the application, these are visible in the \_\_app file.
+- This ensures they stay up to date and provide correct information to all components.
+
+## .env
+
+- All secrets that need to be private are used in the /api folder. This is a serverless psuedo backend and ensures the secrets aren't available to be seen on the client side. Any env secret which starts with NEXT_PUBLIC will be accessible on deployment.
+- The Google Maps API key cannot be private as the function to call it needs to be on the client side, however, this key can only be used on our domain. This is a setting I setup on the Google Maps account page.
+
+### Frontend .env secrets
+
+- STRAPI_URL (url of the strapi backend)
+- YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/))
+- YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/))
+- ADMIN_TOKEN (this is a strapi admin token which can be generated on the website in settings)
+
+### Backend .env secrets
+
+- HOST (ip)
+- PORT (port)
+- APP_KEYS (any keys that fit)
+- API_TOKEN_SALT (generate a salt)
+- ADMIN_JWT_SECRET (generate a jwt secret)
+- TRANSFER_TOKEN_SALT (generate a random salt)
+- JWT_SECRET (jwt secret for database
+- SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
+
+## Team Members
+
+### [Reece Walsh](https://github.com/reeceawalsh)
+
+### [Shakti Raja Kumar](https://github.com/shaktiv8)
+
+### [Tharan Patel](https://github.com/tharanpatel)
+
+### [Felix Liu](https://github.com/FelixLiu666)
+
+### [Panos Kaouris](https://github.com/AzuratC1)
+
+### [Jacky Z](https://github.com/WZheng99)
+
+### [Y Ren](https://github.com/220543691)
+
+### [Lee](https://github.com/draymondlee1997)
