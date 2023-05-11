@@ -10,6 +10,10 @@
   color: #ee7674;
 }
 
+.activeItem {
+  color: #ee7674;
+}
+
 .dropdownItem:last-child {
   border-radius: 0 0 18px 18px;
 }
@@ -48,6 +52,7 @@
   outline: none;
   border: 2px solid #d9d9d9;
   border-right: 0;
+  padding-right: 1rem;
 }
 
 .searchbar:focus,

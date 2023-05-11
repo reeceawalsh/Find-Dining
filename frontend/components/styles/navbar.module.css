@@ -65,6 +65,7 @@
   color: black;
   height: 3rem;
   cursor: pointer;
+  min-width: 180px;
 }
 
 .profileBoxDropdownOpen {
@@ -79,6 +80,7 @@
   justify-content: center;
   height: 3rem;
   color: WHITE !important;
+  min-width: 180px;
 }
 
 .profileLink:hover {

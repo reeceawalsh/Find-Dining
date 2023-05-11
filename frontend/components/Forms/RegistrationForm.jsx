@@ -12,6 +12,7 @@ export default function RegistrationForm({
     alreadyRegistered,
     validRegistration,
 }) {
+    console.log(errors);
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>

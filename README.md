@@ -25,7 +25,7 @@ E.g. git branch login-page.
 Type 'git checkout <name>' to go to the branch.
 e.g. git checkout login-page.
 
-Type 'npm run dev' to start the website.
+Type 'npm run dev' in the frontend and 'npm run develop' in the backend to start the website.
 It will show you the url in the terminal.
 Open the url and you can see the website.
 The file structure of the code is the same as the structure of the url.
@@ -45,6 +45,7 @@ If you are writing specific css you need to use css modules.
 These are css files that are specific to the file you are working on.
 They end in module.css.
 If I'm working on the login page I would have a css file called login.module.css.
+
 I can import it to the login page by typing 'import styles from './styles/login.module.css' or whatever the path is.
 Then I can access the classnames as properties of the styles object e.g. {styles.SubmitButton} (ignore the slashes)
 

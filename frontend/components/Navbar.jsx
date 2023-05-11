@@ -13,7 +13,7 @@ import fetchPostCode from "@component/lib/fetchPostCode";
 const logo = require("../public/LogoCropped.png");
 const userIcon = require("../public/OrangeUserIcon.svg");
 
-const Navbar = () => {
+const Navbar = ({ page }) => {
     const { user, loading, logout } = useUser();
     const [showDropdown, setShowDropdown] = useState(false);
     // geoLocation is the users current location, location is the location that the user is currently searching around for restaurants.

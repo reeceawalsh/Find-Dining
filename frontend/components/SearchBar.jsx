@@ -3,7 +3,7 @@ import usePlacesAutocomplete, {
     getGeocode,
 } from "use-places-autocomplete";
 import styles from "./styles/searchbar.module.css";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Location from "../lib/locationContext";
 import Image from "next/image";
@@ -13,6 +13,7 @@ const SearchBar = ({ onPlaceSelected }) => {
     const { location, setLocation } = useContext(Location);
     const router = useRouter();
     const searchIcon = require("../public/HomeSearchIcon.svg");
+    const [activeIndex, setActiveIndex] = useState(-1); // index of selected dropdown item.
     const {
         ready,
         value,
@@ -51,6 +52,27 @@ const SearchBar = ({ onPlaceSelected }) => {
         }
     };
 
+    useEffect(() => {
+        if (status !== "OK") {
+            setActiveIndex(-1); // reset active index when suggestions aren't showing
+        }
+    }, [status]);
+
+    const handleKeyDown = (event) => {
+        console.log(event);
+        if (event.keyCode === 38 && activeIndex > 0) {
+            // up arrow
+            setActiveIndex(activeIndex - 1);
+        } else if (event.keyCode === 40 && activeIndex < data.length - 1) {
+            // down arrow
+            setActiveIndex(activeIndex + 1);
+        } else if (event.keyCode === 13 && activeIndex !== -1) {
+            // enter key
+            event.preventDefault(); // prevent form submission
+            handleSelect(data[activeIndex].description);
+        }
+    };
+
     return (
         <div>
             <div className={styles.searchbarContainer}>
@@ -60,6 +82,11 @@ const SearchBar = ({ onPlaceSelected }) => {
                     disabled={!ready}
                     placeholder="Input your location to find restaurants near you..."
                     className={styles.searchbar}
+                    aria-controls="dropdown"
+                    aria-expanded="false"
+                    role="combobox"
+                    type="search"
+                    onKeyDown={handleKeyDown}
                 />
                 <button
                     className={styles.button}
@@ -74,12 +101,14 @@ const SearchBar = ({ onPlaceSelected }) => {
                     />
                 </button>
             </div>
-            <div className={styles.dropdownWrapper}>
+            <div id="dropdown" className={styles.dropdownWrapper}>
                 {status === "OK" &&
                     data.map(({ id, index, description }) => (
                         <div
-                            key={index + id}
-                            className={styles.dropdownItem}
+                            key={index}
+                            className={`${styles.dropdownItem} ${
+                                activeIndex === index ? styles.activeItem : ""
+                            }`}
                             onClick={() => handleSelect(description)}
                         >
                             {description}
