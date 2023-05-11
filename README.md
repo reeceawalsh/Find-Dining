@@ -1,45 +1,56 @@
-# Find-Dining
+<img align="left" width="auto" height="120" src="frontend/public/LogoCropped.png" />
 
+# Find Dining  
+A web application that helps users find nearby restaurants.  
+ </br>
+ 
 ## Specification
 
 Create a web application that allows users to find nearby restaurants.
 
 ## Tech
 
-We're using Next.js and React.js for the frontend and Strapi for the backend.
+We're using [Next.js](https://nextjs.org/) and [React.js](https://react.dev/) for the frontend and [Strapi](https://strapi.io/) for the backend. Testing was done with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit tests and [Cypress](https://www.cypress.io/) for end to end tests. The server is a locally setup [MYSQL server](https://www.mysql.com/). You can configure a database with Strapi [here](https://strapi.io/blog/configuring-strapi-mysql-database). 
 
-## Setting Up Repo
+## Installation 
+1. Clone the repository. 
+```
+git clone https://github.com/reeceawalsh/Find-Dining
+```
+2. Install Node.js
+```
+brew install node
+```
 
-Clone the repo onto your local machine.
-Install Node.js from the internet.
-Open the repo in Visual Studio Code.
-Download ES7 React and Auto-Save from extensions on the left.
-In the terminal, navigate to the frontend folder.
-Type 'npm i' to install all of the dependencies.
-Every design has a corresponding page, these are all on FlyingDonut.
-Look at the designs and pick one you would like to do.
-Go to FlyingDonut and assign a task to yourself.
+## Running The Code 
 
-Type 'git branch <name>' to make a new branch where <name> is the name of the feature you are working on.
-E.g. git branch login-page.
-Type 'git checkout <name>' to go to the branch.
-e.g. git checkout login-page.
-
-Type 'npm run dev' to start the website.
-It will show you the url in the terminal.
-Open the url and you can see the website.
-The file structure of the code is the same as the structure of the url.
-The pages folder is the main website i.e. localhost:3000.
-There is a file called login in this folder, if I want to access it I can just type /login after the url. -> localhost:3000/login.
-There is also a folder called profile in the pages folder.
-If I want to go to profile I just put /profile after the url.
-In profile there is a page called history, as I'm in profile my url is already localhost:3000/profile, to go to history I need to add it. localhost:3000/profile/history.
-Do not change file structure, as you can see it is very important.
+Start the frontend
+```
+cd frontend
+```
+```
+npm i
+```
+```
+npm run dev
+```
+Start the backend
+```
+cd backend
+```
+```
+npm i
+```
+```
+npm run develop
+```
+  
+## Styling 
 
 If you are writing global css, put it in the globals.css file located in pages.
-Global CSS are styles that will be used everywhere, and are not specific to the page you are working on. An example of a global style is .blue {
+Global CSS are styles that will be used everywhere, and are not specific to the page you are working on. An example of a global style is ```.blue {
 color: blue;
-}
+}```
 The class blue can now be used everywhere to make font blue.
 If you are writing specific css you need to use css modules.
 These are css files that are specific to the file you are working on.
@@ -56,8 +67,6 @@ Always make a separate branch and create a pull request when working.
 
 ## Formatting Rules
 
-Type in terminal "npm i -g prettier" without the double quotes (will install an auto formatter that will format on save).
-Functions not classes.
 Components named with Capital Letters (PASCAL CASE) e.g. Component.jsx
 Variables are camelCase e.g. firstButton.
 Global classes are lower case with dashes e.g. upper-case.
@@ -70,3 +79,7 @@ Public for images and designs.
 Styles are for css files. (If you want to make a css file for each component that is okay.)
 Pages store pages.
 Components store components.
+Lib for helper functions. 
+API for backend functions. 
+__tests__ for unit tests. 
+
