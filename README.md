@@ -95,7 +95,7 @@ color: blue;
 - There is location, user and cookie context providers that encompass the application, these are visible in the __app file. 
 - This ensures they stay up to date and provide correct information to all components. 
 
-## .env 
+## .env
 
 - All secrets that need to be private are used in the /api folder. This is a serverless psuedo backend and ensures the secrets aren't available to be seen on the client side. Any env secret which starts with NEXT_PUBLIC will be accessible on deployment. 
 - The Google Maps API key cannot be private as the function to call it needs to be on the client side, however, this key can only be used on our domain. This is a setting I setup on the Google Maps account page. 
