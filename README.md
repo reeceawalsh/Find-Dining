@@ -126,7 +126,7 @@ color: blue;
 - API_TOKEN_SALT (generate a salt)
 - ADMIN_JWT_SECRET (generate a jwt secret)
 - TRANSFER_TOKEN_SALT (generate a random salt)
-- JWT_SECRET (jwt secret for database
+- JWT_SECRET (jwt secret for database)
 - SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
 
 ## Team Members
