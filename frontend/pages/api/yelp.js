@@ -2,7 +2,7 @@ import axios from "axios";
 
 // gets a lot of restaurants with the params passed in from the helper function.
 export default async function handler(req, res) {
-    const { term, sort_by, radius, offset, limit } = req.query;
+    const { term, sort_by, radius, offset, limit, is_closed } = req.query;
     const latitude = req.query.latitude || 54.9783;
     const longitude = req.query.longitude || -1.61396;
 
@@ -22,6 +22,8 @@ export default async function handler(req, res) {
                     radius: radius,
                     offset: offset,
                     limit: limit,
+                    is_closed,
+                    is_closed,
                 },
             }
         );

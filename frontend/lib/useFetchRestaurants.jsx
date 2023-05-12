@@ -9,6 +9,7 @@ const useFetchRestaurants = async ({
     radius,
     offset,
     limit,
+    is_closed,
 }) => {
     try {
         const response = await axios.get("/api/yelp", {
@@ -20,6 +21,7 @@ const useFetchRestaurants = async ({
                 radius: radius,
                 offset: offset,
                 limit: limit,
+                is_closed: is_closed,
             },
         });
 

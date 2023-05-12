@@ -103,7 +103,7 @@ const SearchBar = ({ onPlaceSelected }) => {
             </div>
             <div id="dropdown" className={styles.dropdownWrapper}>
                 {status === "OK" &&
-                    data.map(({ id, index, description }) => (
+                    data.map(({ id, description }, index) => (
                         <div
                             key={index}
                             className={`${styles.dropdownItem} ${

@@ -35,7 +35,7 @@ export default async function handler(req, res) {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
+                        Authorization: `Bearer ${token}`,
                     },
                 }
             );

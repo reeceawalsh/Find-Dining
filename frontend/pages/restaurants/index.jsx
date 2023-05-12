@@ -29,7 +29,7 @@ export default function Restaurants() {
     // can sort by rating, review_count, distance, price, open_now and best_match (Default)
     const [sortType, setSortType] = useState("best_match");
     const [loading, setLoading] = useState(true);
-
+    console.log(restaurants);
     // maintains a list of unique restaurants, the issue with yelp is that they have multiple duplicate restaurants so they need to be filtered through.
     const uniqueRestaurants = useMemo(
         () => removeDuplicatesById(restaurants),
@@ -50,6 +50,7 @@ export default function Restaurants() {
             radius,
             offset: (page - 1) * 30,
             limit: 30,
+            is_closed: false,
         });
 
         // if there are less than 30 restaurants then we need to tell the user theres no more restaurants so we don't attempt to fetch more restaurants and the user doesn't expect more.

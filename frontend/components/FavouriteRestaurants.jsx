@@ -45,6 +45,7 @@ const FavouriteRestaurants = ({
 
     return (
         <div className={`container`}>
+            <h1 className="orange-font padding-top">Favourite Restaurants</h1>
             <div className={styles.restaurantsWrapper}>
                 {filteredRestaurants.map((restaurant, index) => (
                     <Restaurant

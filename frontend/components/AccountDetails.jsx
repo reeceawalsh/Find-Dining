@@ -16,7 +16,7 @@ const AccountDetails = () => {
     const router = useRouter();
     const [isEditable, setIsEditable] = useState(false);
     const [formData, setFormData] = useState({});
-    const [, setCookie] = useCookies(["jwt", "username", "email"]);
+    const [cookies, setCookie] = useCookies(["jwt", "username", "email"]);
     const [accessToken, setAccessToken] = useState(user && user.jwt);
     const [errors, setErrors] = useState([]);
     const [updatedUser, setUpdatedUser] = useState({
@@ -40,7 +40,7 @@ const AccountDetails = () => {
                     user.id,
                     formData.email,
                     formData.username,
-                    accessToken
+                    cookies.jwt
                 );
 
                 if (data) {

@@ -47,6 +47,7 @@ const VisitedRestaurants = ({
 
     return (
         <div className={`container`}>
+            <h1 className="orange-font padding-top">Visited Restaurants</h1>
             <div className={styles.restaurantsWrapper}>
                 {filteredRestaurants.map((restaurant, index) => (
                     <Restaurant

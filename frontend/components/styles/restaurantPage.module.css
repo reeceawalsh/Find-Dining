@@ -336,6 +336,10 @@
     font-size: 1.2rem;
   }
 
+  .restaurantInfo {
+    text-align: center;
+  }
+
   .restaurantImage {
     display: none;
   }
@@ -349,12 +353,19 @@
   .leftContainer {
     margin-top: 0;
     margin-right: 0;
+    text-align: center;
+  }
+
+  .yelpLink,
+  .phoneNumber {
+    padding-left: 2rem;
   }
 
   .rightContainer {
     border-left: none;
     padding-left: 0;
     margin-top: 30px;
+    text-align: center;
   }
 
   .map {

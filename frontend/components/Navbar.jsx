@@ -21,7 +21,6 @@ const Navbar = ({ page }) => {
     const [postCode, setPostCode] = useState(null);
     const [geoLocationPostCode, setGeoLocationPostCode] = useState(null);
     const router = useRouter();
-
     // handles logging out
     const handleLogout = () => {
         logout();
@@ -38,6 +37,7 @@ const Navbar = ({ page }) => {
     // we want to display the post code of the users geo location if they're on the home page and their searched location, if they have one, if they're not on the home page. it will also just display no post code if neither is available.
     const displayPostCode = () => {
         if (router.pathname === "/home") {
+            console.log(geoLocationPostCode);
             return geoLocationPostCode || "";
         } else {
             return postCode || "";

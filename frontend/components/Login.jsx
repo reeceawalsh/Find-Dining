@@ -56,6 +56,7 @@ const Login = () => {
                 console.log(response.data);
                 setToken(response.data);
                 setValidLogin(true);
+                router.push("/home");
             })
             .catch(function (error) {
                 console.error("Request failed");

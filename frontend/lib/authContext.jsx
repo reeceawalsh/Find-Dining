@@ -25,6 +25,7 @@ export const UserProvider = ({ children }) => {
         const fetchUser = async () => {
             const fetchedUser = await getUserFromLocalCookie(cookies);
             setUser(fetchedUser);
+            console.log(user);
             setLoading(false);
         };
         if (cookies.jwt) {

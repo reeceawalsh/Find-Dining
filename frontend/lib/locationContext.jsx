@@ -15,6 +15,7 @@ export const LocationProvider = ({ children }) => {
         const fetchLocation = async () => {
             try {
                 const currentLocation = await fetchUsersCurrentLocation();
+                console.log(currentLocation);
                 setGeoLocation(currentLocation);
             } catch (error) {
                 console.error("Error getting current users location.", error);
