@@ -118,10 +118,10 @@ color: blue;
 - YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/))
 - YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/))
 - ADMIN_TOKEN (this is a strapi admin token which can be generated on the website in settings)
-- NEXT_PUBLIC_GOOGLE_CLIENT_ID="94395568903-cn55j85v1juvrmqso8io0sqe1b38flvj.apps.googleusercontent.com"
-- NEXT_PUBLIC_GOOGLE_CLIENT_SECRET="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"
-- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="AIzaSyAsegmpcbpF-g8FTugS2Y5x3_CkqA-Djz0"
-- NEXT_PUBLIC_BASE_URL=http://localhost:3000
+- NEXT_PUBLIC_GOOGLE_CLIENT_ID (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_GOOGLE_CLIENT_SECRET (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_BASE_URL (your base url the frontend is running on)
 
 ### Backend .env secrets
 
