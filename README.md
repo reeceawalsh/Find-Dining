@@ -63,6 +63,30 @@ npm i
 ```
 npm run develop
 ```
+## Setup a MySQL database
+https://strapi.io/blog/configuring-strapi-mysql-database
+
+### Frontend .env secrets
+
+- STRAPI_URL (url of the strapi backend)
+- YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/))
+- YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/))
+- ADMIN_TOKEN (this is a strapi admin token which can be generated on the website in settings)
+- NEXT_PUBLIC_GOOGLE_CLIENT_ID (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_GOOGLE_CLIENT_SECRET (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY (can be generated at [Google](https://developers.google.com/maps))
+- NEXT_PUBLIC_BASE_URL (your base url the frontend is running on)
+
+### Backend .env secrets
+
+- HOST (ip)
+- PORT (port)
+- APP_KEYS (any keys that fit)
+- API_TOKEN_SALT (generate a salt)
+- ADMIN_JWT_SECRET (generate a jwt secret)
+- TRANSFER_TOKEN_SALT (generate a random salt)
+- JWT_SECRET (jwt secret for database)
+- SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
 
 ## Styling
 
@@ -111,28 +135,6 @@ color: blue;
 
 - All secrets that need to be private are used in the /api folder. This is a serverless psuedo backend and ensures the secrets aren't available to be seen on the client side. Any env secret which starts with NEXT_PUBLIC will be accessible on deployment.
 - The Google Maps API key cannot be private as the function to call it needs to be on the client side, however, this key can only be used on our domain. This is a setting I setup on the Google Maps account page.
-
-### Frontend .env secrets
-
-- STRAPI_URL (url of the strapi backend)
-- YELP_CLIENT_ID (can be generated at [Yelp](https://fusion.yelp.com/))
-- YELP_API_KEY (can be generated at [Yelp](https://fusion.yelp.com/))
-- ADMIN_TOKEN (this is a strapi admin token which can be generated on the website in settings)
-- NEXT_PUBLIC_GOOGLE_CLIENT_ID (can be generated at [Google](https://developers.google.com/maps))
-- NEXT_PUBLIC_GOOGLE_CLIENT_SECRET (can be generated at [Google](https://developers.google.com/maps))
-- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY (can be generated at [Google](https://developers.google.com/maps))
-- NEXT_PUBLIC_BASE_URL (your base url the frontend is running on)
-
-### Backend .env secrets
-
-- HOST (ip)
-- PORT (port)
-- APP_KEYS (any keys that fit)
-- API_TOKEN_SALT (generate a salt)
-- ADMIN_JWT_SECRET (generate a jwt secret)
-- TRANSFER_TOKEN_SALT (generate a random salt)
-- JWT_SECRET (jwt secret for database)
-- SENDGRID_API_KEY (api key from [Sendgrid](https://sendgrid.com/solutions/email-api/))
 
 ## Team Members
 
