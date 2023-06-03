@@ -1,6 +1,6 @@
 <img align="left" width="auto" height="120" src="frontend/public/LogoCropped.png" />
 
-# Find Dining
+# Find Dining https://find-dining.herokuapp.com/home
 
 A web application that helps users find nearby restaurants. [Github](https://github.com/reeceawalsh/Find-Dining)
 
